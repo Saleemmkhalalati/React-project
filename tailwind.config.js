@@ -2,26 +2,23 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        PrimaryColor: "#2BC2F7",
-        SecondaryColor: "#5A81FD",
-        WarningColor: "#FAA209",
-        SuccessColor: "#00A66F",
-        ErrorColor: "#ED5565",
-        backgroundColor: "#FFFFFF",
-        LineOutlineColor: "#EEEEEE",
-        TitleTextColor: "#000000",
-        IconsColor: "#434343",
-        TextOtherColor: "#7B7B7B",
-        TextDashboardColor: "#C4C4C4",
-        TitleTabelColor: "#1AB394",
-        BackColor: "#F8FAFB",
+      extend: {
+          colors: {
+              primary: "#2BC2F7",
+              secondary: "#5A81FD",
+              warning: "#FAA209",
+              success: "#00A66F",
+              error: "#ED5565",
+              "myGray-100": "#EEEEEE", // for outline
+              "myGray-200": "#F8FAFB", // for bg-Field
+              "myGray-400": "#C4C4C4", // for textDashboard
+              "myGray-500": "#7B7B7B", // for textOther
+              mySlate: "#2F4050", // for titleTabel
+          },
+          fontFamily: {
+              alegreya: ["Alegreya", "sans-serif"],
+          },
       },
-      fontFamily: {
-        "font-Alegreya": ["Alegrya", "sans-serif"],
-      },
-    },
   },
   plugins: [],
 };
