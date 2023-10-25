@@ -1,0 +1,11 @@
+{
+    "navbar": {
+        "links": [
+            "Home",
+            "Services",
+            "About us",
+            "Contact us",
+            "Get Started"
+        ]
+    }
+}
