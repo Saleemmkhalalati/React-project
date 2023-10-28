@@ -16,8 +16,7 @@ export default function Login() {
   const [isFilled, setIsFilled] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
 
-  //show password
-  function handelpass() {
+  function ShowPassword() {
     Setshowpass(!showpass);
   }
 
@@ -106,7 +105,7 @@ export default function Login() {
             {passwordError}
             <div className="absolute end-4 top-[16px] cursor-pointer">
               <img
-                onClick={() => handelpass()}
+                onClick={() => ShowPassword()}
                 className="w-4 cursor-pointer "
                 src={showpass ? eye : iconShow}
                 alt=""
@@ -128,7 +127,7 @@ export default function Login() {
         </form>
       </div>
       <div className=" lg:grid-cols-5 hiddin lg:block">
-        <div className="relative ltr:-rotate-45 rtl:rotate-45  ">
+        <div className="relative ltr:-rotate-45 rtl:rotate-45 rtl:-end-8  ">
           <div className="absolute ltr:end-72 -top-10 w-[345px] h-[345px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
             <div className="absolute  z-10 w-[338px] h-[338px] rounded-2xl top-[3px] start-[3px] bg-white"></div>
           </div>
