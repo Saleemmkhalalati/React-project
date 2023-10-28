@@ -1,5 +1,13 @@
 import PropTypes from "prop-types";
-export function Input({ label, name, value, onChange, icon, errorMsg }) {
+export function Input({
+    label,
+    name,
+    value,
+    onBlur,
+    onChange,
+    icon,
+    errorMsg,
+}) {
     console.log(errorMsg);
     return (
         <div className="relative">
@@ -20,6 +28,7 @@ export function Input({ label, name, value, onChange, icon, errorMsg }) {
                         id={name}
                         name={name}
                         value={value}
+                        onBlur={onBlur}
                         onChange={onChange}
                     />
                     <span className="absolute start-0 -top-[1.40rem] px-1 text-mySlate text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mySlate peer-placeholder-shown:top-0 peer-focus:-top-[1.40rem] peer-focus:text-mySlate peer-focus:text-sm rounded-md bg-gradient-to-b from-transparent from-65% to-white to-35%">
@@ -43,10 +52,19 @@ Input.propTypes = {
     type: PropTypes.oneOf(["text", "password", "email", "number", "date"])
         .isRequired,
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
     icon: PropTypes.string.isRequired,
     errorMsg: PropTypes.string.isRequired,
 };
-export function Textarea({ label, value, onChange, errorMsg, rows, name }) {
+export function Textarea({
+    label,
+    value,
+    onBlur,
+    onChange,
+    errorMsg,
+    rows,
+    name,
+}) {
     return (
         <div>
             <div className={`relative z-[0]`}>
@@ -63,6 +81,7 @@ export function Textarea({ label, value, onChange, errorMsg, rows, name }) {
                     id={name}
                     name={name}
                     value={value}
+                    onBlur={onBlur}
                     onChange={onChange}
                 />
                 <label
@@ -84,6 +103,7 @@ Textarea.propTypes = {
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     value: PropTypes.string,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     errorMsg: PropTypes.string.isRequired,
     rows: PropTypes.number,

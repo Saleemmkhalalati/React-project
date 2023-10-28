@@ -1,13 +1,14 @@
+import {useEffect} from "react";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import Button from "../../utilities/Button";
 import { Input, Textarea } from "../../utilities/Inputs";
 import Typography from "../../utilities/Typography";
-import * as Yup from "yup";
-import { useFormik } from "formik";
 // assets
 import characterImage from "./img/Intersect.svg";
 import personIcon from "../../../assets/icons/Person.svg";
 import emailIcon from "../../../assets/icons/Email.svg";
-const validateSchema = Yup.object().shape({
+const validationSchema = Yup.object().shape({
     fullname: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
     msg: Yup.string().required("Required"),
@@ -20,7 +21,7 @@ export default function ContactUs() {
             msg: "",
         },
         // enableReinitialize: true, // for Update Page
-        validationSchema: validateSchema,
+        validationSchema: validationSchema,
         validateOnBlur: true,
         validateOnChange: true,
         validateOnMount: false,
@@ -29,6 +30,9 @@ export default function ContactUs() {
             formik.handleReset();
         },
     });
+    useEffect(()=>{
+        console.log(formik)
+    },[formik])
     return (
         <div className="px-5 min-h-[100vh] overflow-x-clip">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
@@ -72,6 +76,7 @@ export default function ContactUs() {
                                             ? formik.errors.fullname
                                             : ""
                                     }
+                                    onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                 />
                                 <Input
@@ -86,6 +91,7 @@ export default function ContactUs() {
                                             ? formik.errors.email
                                             : ""
                                     }
+                                    onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                 />
                                 <Textarea
@@ -94,10 +100,11 @@ export default function ContactUs() {
                                     name={"msg"}
                                     value={formik.values.msg}
                                     errorMsg={
-                                        formik.errors.msg && formik.touched.msg
+                                        formik.touched.msg
                                             ? formik.errors.msg
                                             : ""
                                     }
+                                    onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                 />
                                 <Button
