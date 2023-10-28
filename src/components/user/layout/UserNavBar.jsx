@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import menuIcon from "../../assets/icons/menu.svg";
-import MultiLanguage from "./MultiLanguage";
 import { useTranslation } from "react-i18next";
-import Button from "../utilities/Button";
-import Logo from "../utilities/Logo";
+import { Link, useLocation } from "react-router-dom";
+import Button from "../../utilities/Button";
+import MultiLangDropdown from "../../utilities/MultiLangDropdown";
+import Logo from "../../utilities/Logo";
+import menuIcon from "../../../assets/icons/menu.svg";
 const UserNavBar = () => {
     const location = useLocation();
     const { t } = useTranslation("global");
@@ -37,7 +37,7 @@ const UserNavBar = () => {
                         </li>
                     ))}
                     <li className="">
-                        <MultiLanguage />
+                        <MultiLangDropdown />
                     </li>
                     <li>
                         <Link to="/login">

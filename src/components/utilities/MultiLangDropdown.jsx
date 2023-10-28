@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import arrowIcon from "../../assets/icons/arrowDropdown.svg";
-export default function MultiLanguage() {
+export default function MultiLangDropdown() {
     const [, i18n] = useTranslation("global");
     const langs = ["EN", "AR"];
     const [isOpen, setIsOpen] = useState(false);

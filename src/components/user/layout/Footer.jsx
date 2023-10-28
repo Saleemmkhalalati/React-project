@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../utilities/Logo";
-import Typography from "../utilities/Typography";
+import Logo from "../../utilities/Logo";
+import Typography from "../../utilities/Typography";
 import { useTranslation } from "react-i18next";
 export default function Footer() {
     const location = useLocation();

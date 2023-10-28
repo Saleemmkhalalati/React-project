@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./components/user/Langing/Landing";
-import UserLayout from "./components/user/UserLayout";
+import UserLayout from "./components/user/layout/UserLayout";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 function App() {
     return (

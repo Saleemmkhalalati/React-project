@@ -34,7 +34,7 @@ export default function ContactUs() {
         console.log(formik)
     },[formik])
     return (
-        <div className="px-5 min-h-[100vh] overflow-x-clip">
+        <div className="p-5 min-h-[100vh] overflow-x-clip">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
                 <div className="hidden lg:block lg:grid-cols-7 lg:mt-72 xl:mt-80">
                     <div className="relative start-16 origin-center ltr:rotate-45 rtl:-rotate-45">
