@@ -38,5 +38,6 @@
 
 .login .input:focus + .placeholder {
   top: -13px;
-  transition: 0.4s;
+  transition: 0.3s;
+  background: linear-gradient(to top, white 30%, transparent);
 }

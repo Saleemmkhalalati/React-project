@@ -4,8 +4,8 @@ import iconEmail from "../Login/logain-image/Email.svg";
 import iconShow from "../Login/logain-image/View.svg";
 import eye from "../Login/logain-image/eyepass.svg";
 
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
   const [email, SetEmail] = useState("");
@@ -15,15 +15,15 @@ export default function Login() {
   const [showpass, Setshowpass] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [isFilledPass, setIsFilledPass] = useState(false);
-  const [isFocus, setIsFocus] = useState(false);
-  const [topplace, settopplace] = useState("top-3");
 
+  //show password or
   function ShowPassword() {
     Setshowpass(!showpass);
   }
 
+  //check if email and password has a value
   const checkEmailAndPass = () => {
-    email === "" ? setIsFilled(false) : setIsFilled(true);
+    email.length === "" ? setIsFilled(false) : setIsFilled(true);
     password === "" ? setIsFilledPass(false) : setIsFilledPass(true);
   };
 
@@ -33,7 +33,7 @@ export default function Login() {
   }
 
   return (
-    <div className="login grid grid-cols-1 sm:grid-cols-2 h-screen overflow-hidden ">
+    <div className="login grid grid-cols-1 lg:grid-cols-2  h-screen overflow-hidden ">
       <div className="relative lg:grid-cols-7  pt-20 m-3  sm:pt-20 sm-ps-0 md:pt-40 md:ps-14">
         <div className="absolute rotate-45 w-80 h-80  top-24  bg-sky-50 rounded-3xl -start-14"></div>
         <div className="fixed rotate-45 w-80 h-80  top-[600px] sm:top-[470px] start-28  bg-sky-50 rounded-3xl"></div>
@@ -58,7 +58,6 @@ export default function Login() {
         <form onSubmit={submit} className="mt-10 relative">
           <div className="relative mb-5">
             <input
-              onFocus={() => setIsFocus(true)}
               type="email"
               value={email}
               onChange={(e) => {
@@ -70,12 +69,10 @@ export default function Login() {
               }`}
             />
             <label
-              className={`placeholder px-1 absolute bg-white top-3 start-3 text-sm text-gray-500 ${
+              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${
                 isFilled
-                  ? "-top-[13px] bg-gradient-to-b from-blue-50 to-white"
-                  : "top-3" && isFocus
-                  ? "bg-gradient-to-b from-blue-50 to-white"
-                  : "bg-white"
+                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                  : "top-3"
               }`}
             >
               Email Address
@@ -90,7 +87,6 @@ export default function Login() {
 
           <div className=" relative mb-1  ">
             <input
-              onFocus={() => setIsFocus(true)}
               type={showpass ? "text" : "password"}
               value={password}
               onChange={(e) => {
@@ -102,12 +98,10 @@ export default function Login() {
               }`}
             />
             <label
-              className={`placeholder px-1 bg-transparent absolute top-3 start-3 text-sm text-gray-500 ${
+              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${
                 isFilledPass
-                  ? "-top-[13px] bg-gradient-to-b from-blue-50 to-white"
-                  : "top-3" && isFocus
-                  ? "bg-gradient-to-b from-blue-50 to-white"
-                  : ""
+                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                  : "top-3"
               }`}
             >
               Password
@@ -115,7 +109,7 @@ export default function Login() {
             {accept && password === "" && (
               <p className="text-sm text-error">This field is required</p>
             )}
-            {passwordError}
+
             <div className="absolute end-4 top-[16px] cursor-pointer">
               <img
                 onClick={() => ShowPassword()}
@@ -135,34 +129,32 @@ export default function Login() {
           </div>
 
           <button
-            className=" rounded-lg  p-2  w-full text-white bg-gradient-to-b from-primary to-secondary"
+            className=" rounded-lg  p-2 w-full text-white bg-gradient-to-b from-primary to-secondary hover:opacity-[0.9]"
             type="submit"
           >
             Login in med - sal
           </button>
         </form>
       </div>
-      <div className=" lg:grid-cols-5 hiddin lg:block">
-        <div className=" relative start-72 top-44 origin-center ltr:rotate-45 rtl:-rotate-45  ">
-          <div className="absolute  w-[345px] h-[345px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
-            <div className="absolute  z-10 w-[338px] h-[338px] rounded-2xl top-[3px] start-[3px] bg-white"></div>
+      <div className=" lg:grid-cols-5 hiddin lg:block ltr:flex ltr:flex-col ltr:justify-between rtl:flex rtl:flex-col rtl:justify-between ">
+        <div className="hidden lg:block">
+          <div className=" relative start-[20rem] top-[9.5rem] xl:start-[17rem] origin-center ltr:rotate-45 rtl:-rotate-45  ">
+            <div className="absolute w-[346px] h-[346px] xl:w-[370px]  xl:h-[370px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
+              <div className="absolute z-10 w-[340px] h-[340px] xl:w-[364px]  xl:h-[364px] rounded-2xl top-[3px] start-[3px] bg-white"></div>
+            </div>
+          </div>
+          <div className=" relative start-[27rem] top-24 origin-center ltr:rotate-45 rtl:-rotate-45">
+            <div className="absolute  w-[400px] h-[400px] xl:w-[450px]  xl:h-[450px]  rounded-2xl bg-myGray-100 shadow-md overflow-hidden">
+              <img
+                src={loginImage}
+                alt="img"
+                className="absolute hidden xl:block rtl:start-16  z-10 w-[450px] h-[500px] ltr:-rotate-45 rtl:rotate-45 ltr:top-9 ltr:start-16 rtl:top-16"
+              />
+            </div>
           </div>
         </div>
-        <div className=" relative start-32 -top-8 origin-center ltr:rotate-45 rtl:-rotate-45">
-          <div className="absolute -end-20 -top-[125px] w-[450px] h-[450px] rounded-2xl bg-myGray-100 shadow-md overflow-hidden">
-            <img
-              src={loginImage}
-              alt="img"
-              className="absolute rtl:start-16  z-10 w-[450px] h-[500px] ltr:-rotate-45 rtl:rotate-45 ltr:top-9 ltr:start-16 rtl:top-16"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
-/* <div className="m-auto pb-0  sm:text-start text-center sm:ps-0 md:ps-20  ">
+        <div className="relative pb-0 md:pb-10  sm:text-start text-center sm:ps-5 md:ps-20 lg:ps-40   ">
           <h3 className="bg-gradient-to-b from-primary to-secondary text-transparent bg-clip-text mb-4 text-xl font-bold">
             Welcome back to Med - Sal ...
           </h3>
@@ -171,4 +163,8 @@ export default function Login() {
             doctors in various medical specialties and pharmacies all over the
             Emirates.
           </p>
-        </div> */
+        </div>
+      </div>
+    </div>
+  );
+}
