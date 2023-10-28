@@ -152,8 +152,8 @@ const Register = () => {
                         </motion.div>}
                         <img src={data.inputIcon} alt={data.name} onClick={handleShowPass} className='w-[12px] h-[15px] m-auto cursor-pointer' />
                       </div>
-                      {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <div className='text-[12px] text-error'>{t("register.fieldRequier")}</div>}
-                      {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <div className='text-[12px] text-error'>{t("register.passwordMatch")}</div>}
+                      {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+                      {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.passwordMatch")}</motion.div>}
                     </>
                   ) : (
                     data.inputType !== "select" && data.name !== "bank" ? (
@@ -164,7 +164,11 @@ const Register = () => {
                           <div name="serviceType" value={serviceSelected}>
                             <div className={`flex justify-between items-center custom-select flex bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
                               <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
-                              {(serviceSelected !== "") && <label className='place top-[-15px] text-mySlate absolute bg-white'>{data.placeHolder}</label>}
+                              {(serviceSelected !== "") && 
+                              <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                                  <label>{data.placeHolder}</label>
+                                  <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
+                              </motion.div>}
                               <img src={data.inputIcon} alt="dropdown" className='w-[15px] h-[15px]' />
                             </div>
                             {showDrop && (
@@ -177,7 +181,8 @@ const Register = () => {
                               </ul>
                             )}
                           </div>
-                          {isFormSubmitted && (serviceSelected === "") && <div className='text-[12px] text-error'>{t("register.fieldRequier")}</div>}
+                          {isFormSubmitted && (serviceSelected === "") && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+                          
                         </>
                       ) : (
                         <div className='flex flex-col gap-[32px]'>
