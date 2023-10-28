@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="font-alegreya">
       <BrowserRouter>
-        {/* <NavBar /> */}
+        <NavBar />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/services" element={<></>} />
