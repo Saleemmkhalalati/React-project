@@ -2,7 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./components/user/Langing/Landing";
 import UserLayout from "./components/user/layout/UserLayout";
 import ContactUs from "./components/user/CantactUs/ContactUs";
-
+import Register from "./components/user/Auth/Register/Register";
+import ConfirmEmail from "./components/user/Auth/ConfirmEmail/ConfirmEmail"
 function App() {
     return (
         <div className="font-alegreya">
@@ -14,6 +15,10 @@ function App() {
                         <Route path="/services" element={<></>} />
                         <Route path="/about-us" element={<></>} />
                         <Route path="/contact-us" element={<ContactUs/>} />
+                        <Route path="/register" element={<Register/>} />
+                        <Route path="/confirm-email" element={<ConfirmEmail/>} />
+
+
                     </Route>
                 </Routes>
             </BrowserRouter>
