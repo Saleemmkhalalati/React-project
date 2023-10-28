@@ -18,7 +18,6 @@ function App() {
                     <Route path="/login" element={<></>} />
                 </Routes>
             </BrowserRouter>
-            <Register />
         </div>
     );
 }
