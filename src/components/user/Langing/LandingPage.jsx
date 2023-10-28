@@ -5,7 +5,7 @@ import Services from './Services/Services'
 import GetApp from './Get_App/GetApp'
 import Testimonals from './Testimonals/Testimonals'
 
-const landing = () => {
+const LandingPage = () => {
   return (
     <>
     <Hero />
@@ -19,4 +19,4 @@ const landing = () => {
   )
 }
 
-export default landing
+export default LandingPage
