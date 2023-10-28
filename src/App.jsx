@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
-import Landing from "./components/user/Langing/Landing";
+import Landing from "./components/user/Landing/Landing";
 
 
 
