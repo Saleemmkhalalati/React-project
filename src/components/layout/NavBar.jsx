@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/icons/Logo.svg";
 import menuIcon from "../../assets/icons/menu.svg";
 import MultiLanguage from "./MultiLanguage";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"; 
 import Button from "../utilities/Button";
 const NavBar = () => {
     const location = useLocation();
