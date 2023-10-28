@@ -8,10 +8,10 @@ const ContainerImg = ({ docImg, action }) => {
   return (
     <div className='relative'>
       {/* Container for gradient border */}
-      <div className='w-[457px] h-[457px] absolute z-1 left-[92px] top-[-92px] rounded-[16px] rotate-[46deg] gradient-border hidden lg:block'></div>
+      <div className='w-[457px] h-[457px] absolute z-1 start-[22px] top-[-92px] rounded-[16px] rotate-[46deg] gradient-border hidden lg:block'></div>
 
       {/* Container for the main image */}
-      <div className='w-[547px] h-[547px] bg-myGray-400 hidden lg:flex justify-end items-center s z-2 translate-x-[190px] translate-y-[-130px] rotate-[46deg] rounded-[16px] overflow-hidden'>
+      <div className='w-[547px] h-[547px] bg-myGray-400 hidden lg:flex justify-end items-center z-2 translate-x-[160px] translate-y-[-130px] rotate-[46deg] rounded-[16px] overflow-hidden'>
         <img src={docImg} className='rotate-[-46deg] translate-x-[90px] translate-y-[130px] absolute bottom-0 w-[545.43px] origin-center max-w-full max-h-full bottom-0' />
       </div>
 

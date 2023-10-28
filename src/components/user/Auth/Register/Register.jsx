@@ -6,6 +6,7 @@ import ContainerImg from '../ContainerImage/ContainerImg';
 import { useTranslation } from 'react-i18next';
 import "./Register.css"
 import {easeInOut, motion} from 'framer-motion'
+import Typography from '../../../utilities/Typography';
 
 const Register = () => {
   // State variables
@@ -120,9 +121,9 @@ const Register = () => {
       <div className={`relative py-[70px] flex justify-between flex-col ${currentLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"} items-center lg:items-start gap-[45px] overflow-hidden`}>
         <div className='w-[90%] lg:w-[50%] p-[25px] md:p-[70px] pr-0 flex flex-col gap-[56px]'>
           <div className='flex flex-col gap-[32px] text-center lg:text-start'>
-            <p className='text-[25px] lg:text-[39.06px] font-bold leading-[51.99px] text-primary'>{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</p>
-            <div className='text-[16px] font-normal leading-[25.14px] flex justify-center lg:justify-start gap-[8px]'>
-              <p className='text-mtGray-600'>{t("register.loginQuest")}</p>
+            <Typography component="h1" className='leading-[51.99px]'>{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</Typography>
+            <div className='leading-[25.14px] flex justify-center lg:justify-start gap-[8px]'>
+              <Typography component="h4" className='text-mtGray-600'>{t("register.loginQuest")}</Typography>
               <p className='text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</p>
             </div>
           </div>
