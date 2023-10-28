@@ -54,8 +54,8 @@ export default function ContactUs() {
                 </div>
                 <div className="lg:grid-cols-7">
                     <div className="relative">
-                        <div className="absolute end-0 top-12 w-[400px] h-[400px] origin-center rounded-2xl ltr:rotate-45 rtl:-rotate-45 bg-primary opacity-5"></div>
-                        <div className="mt-12 flex flex-col gap-y-11 w-full sm:pe-20 lg:pe-10 xl:pe-20">
+                        <div className="absolute end-0 top-8 w-[400px] h-[400px] origin-center rounded-2xl ltr:rotate-45 rtl:-rotate-45 bg-primary opacity-5"></div>
+                        <div className="mt-8 flex flex-col gap-y-11 w-full sm:pe-20 lg:pe-10 xl:pe-20">
                             <Typography component={"h1"}>Contact US</Typography>
                             <Typography component={"p"}>
                                 Feel Free to contact us, If you need some help.
