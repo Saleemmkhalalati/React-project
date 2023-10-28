@@ -5,7 +5,7 @@ import Button from "../../utilities/Button";
 import MultiLangDropdown from "../../utilities/MultiLangDropdown";
 import Logo from "../../utilities/Logo";
 import menuIcon from "../../../assets/icons/menu.svg";
-const UserNavBar = () => {
+const NavBar = () => {
     const location = useLocation();
     const { t } = useTranslation("global");
     const links = [
@@ -63,4 +63,4 @@ const UserNavBar = () => {
         </div>
     );
 };
-export default UserNavBar;
+export default NavBar;
