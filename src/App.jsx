@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Landing from "./components/user/Langing/Landing";
 import UserLayout from "./components/user/layout/UserLayout";
+import Landing from "./components/user/Landing/Landing"
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import Register from "./components/user/Auth/Register/Register";
 import ConfirmEmail from "./components/user/Auth/ConfirmEmail/ConfirmEmail"
@@ -25,4 +25,4 @@ function App() {
         </div>
     );
 }
-export default App;
+export default App
