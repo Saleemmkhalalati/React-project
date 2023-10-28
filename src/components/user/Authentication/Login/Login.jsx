@@ -14,17 +14,18 @@ export default function Login() {
   const [accept, setAccept] = useState("");
   const [showpass, Setshowpass] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
+  const [isFilledPass, setIsFilledPass] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
+  const [topplace, settopplace] = useState("top-3");
 
   function ShowPassword() {
     Setshowpass(!showpass);
   }
 
-  const checkEmail = () => {
+  const checkEmailAndPass = () => {
     email === "" ? setIsFilled(false) : setIsFilled(true);
+    password === "" ? setIsFilledPass(false) : setIsFilledPass(true);
   };
-
-  console.log(isFocus);
 
   async function submit(e) {
     e.preventDefault();
@@ -62,19 +63,19 @@ export default function Login() {
               value={email}
               onChange={(e) => {
                 SetEmail(e.target.value);
-                checkEmail();
+                checkEmailAndPass();
               }}
               className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${
                 accept && email === "" ? "border-error" : ""
               }`}
             />
             <label
-              className={`placeholder px-1 absolute bg-white  top-3 start-5 text-sm text-gray-500 ${
+              className={`placeholder px-1 absolute bg-white top-3 start-3 text-sm text-gray-500 ${
                 isFilled
                   ? "-top-[13px] bg-gradient-to-b from-blue-50 to-white"
                   : "top-3" && isFocus
                   ? "bg-gradient-to-b from-blue-50 to-white"
-                  : ""
+                  : "bg-white"
               }`}
             >
               Email Address
@@ -89,14 +90,26 @@ export default function Login() {
 
           <div className=" relative mb-1  ">
             <input
+              onFocus={() => setIsFocus(true)}
               type={showpass ? "text" : "password"}
               value={password}
-              onChange={(e) => SetPassword(e.target.value)}
+              onChange={(e) => {
+                SetPassword(e.target.value);
+                checkEmailAndPass();
+              }}
               className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${
                 accept && password === "" ? "border-error" : ""
               }`}
             />
-            <label className="placeholder bg-transparent absolute top-3 start-5 text-sm text-gray-500 pointer-events-none">
+            <label
+              className={`placeholder px-1 bg-transparent absolute top-3 start-3 text-sm text-gray-500 ${
+                isFilledPass
+                  ? "-top-[13px] bg-gradient-to-b from-blue-50 to-white"
+                  : "top-3" && isFocus
+                  ? "bg-gradient-to-b from-blue-50 to-white"
+                  : ""
+              }`}
+            >
               Password
             </label>
             {accept && password === "" && (
@@ -113,7 +126,10 @@ export default function Login() {
             </div>
           </div>
           <div className="text-end mb-5">
-            <Link className="text-sm texe-mySlate" to={""}>
+            <Link
+              className="text-sm texe-mySlate hover:text-secondary transition hover:animate-bounce"
+              to={""}
+            >
               Forget password ?
             </Link>
           </div>
@@ -127,8 +143,8 @@ export default function Login() {
         </form>
       </div>
       <div className=" lg:grid-cols-5 hiddin lg:block">
-        <div className="relative ltr:-rotate-45 rtl:rotate-45 rtl:-end-8  ">
-          <div className="absolute ltr:end-72 -top-10 w-[345px] h-[345px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
+        <div className=" relative start-72 top-44 origin-center ltr:rotate-45 rtl:-rotate-45  ">
+          <div className="absolute  w-[345px] h-[345px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
             <div className="absolute  z-10 w-[338px] h-[338px] rounded-2xl top-[3px] start-[3px] bg-white"></div>
           </div>
         </div>

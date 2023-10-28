@@ -37,6 +37,6 @@
 } */
 
 .login .input:focus + .placeholder {
-  top: -12px;
+  top: -13px;
   transition: 0.4s;
 }
