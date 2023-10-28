@@ -42,7 +42,7 @@ export default function ContactUs() {
                             <div className="absolute z-10 w-80 h-80 rounded-2xl top-[2px] start-[2px] bg-white"></div>
                         </div>
                     </div>
-                    <div className="relative start-44 -top-8 origin-center ltr:rotate-45 rtl:-rotate-45">
+                    <div className="relative lg:start-40 xl:start-48 -top-8 origin-center ltr:rotate-45 rtl:-rotate-45">
                         <div className="absolute w-[400px] h-[400px] rounded-2xl bg-myGray-100 shadow-md overflow-hidden">
                             <img
                                 src={characterImage}
