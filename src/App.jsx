@@ -1,8 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./components/user/Langing/Landing";
+<<<<<<< HEAD
 import UserLayout from "./components/user/layout/UserLayout";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import Register from "./components/user/Auth/Register/Register";
+=======
+import Register from './components/user/Auth/Register/Register'
+>>>>>>> loukman
 function App() {
     return (
         <div className="font-alegreya">
@@ -17,6 +21,7 @@ function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>
+            <Register />
         </div>
     );
 }
