@@ -1,49 +1,42 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../../assets/icons/Logo.svg";
 import menuIcon from "../../assets/icons/menu.svg";
 import MultiLanguage from "./MultiLanguage";
 import { useTranslation } from "react-i18next";
 import Button from "../utilities/Button";
-const NavBar = () => {
+import Logo from "../utilities/Logo";
+const UserNavBar = () => {
     const location = useLocation();
     const { t } = useTranslation("global");
-    const [openList, setOpenList] = useState(false);
     const links = [
         { name: t("navbar.links.0"), to: "/" },
         { name: t("navbar.links.1"), to: "/services" },
         { name: t("navbar.links.2"), to: "/about-us" },
         { name: t("navbar.links.3"), to: "/contact-us" },
     ];
+    const [openList, setOpenList] = useState(false);
     return (
-        <div className="pt-5 px-5">
-            <div className="flex justify-between items-center border-b-2">
-                <Link to="/">
-                    <div className="flex flex-row">
-                        <img src={logo} alt="logo" width={35} height={30} />
-                        <div className="font-bold text-xl bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
-                            Med - Sal
-                        </div>
-                    </div>
-                </Link>
+        <div className="p-5">
+            <div className="flex justify-between items-center border-b-2 py-2">
+                <Logo />
                 <ul
-                    className={`absolute flex items-start flex-col space-y-4 ps-5 left-0 shadow-lg w-full py-2 z-10 transition-all duration-300 ease-in text-myGray-600 bg-white
-                lg:static lg:items-center lg:flex-row lg:space-y-0 lg:pe-0 lg:shadow-none lg:w-auto lg:h-auto
-                ${openList ? "top-14 " : "top-[-490px]"}`}
+                    className={`absolute flex flex-col items-start ps-5 shadow-md lg w-full left-0 py-5 gap-x-9 gap-y-3 z-10 transition-all duration-300 ease-in text-myGray-600 bg-white
+                                lg:static lg:flex-row lg:items-center lg:pe-0 lg:shadow-none lg:w-auto lg:h-auto lg:py-0
+                                ${openList ? " top-16 " : " top-[-490px] "}`}
                 >
-                    {links.map((page) => (
+                    {links.map((link) => (
                         <li
-                            key={page.name}
-                            className={`me-0 lg:me-9 ${
-                                location.pathname !== page.to
+                            key={link.name}
+                            className={`${
+                                location.pathname !== link.to
                                     ? ""
                                     : "text-secondary"
                             }`}
                         >
-                            <Link to={page.to}>{page.name}</Link>
+                            <Link to={link.to}>{link.name}</Link>
                         </li>
                     ))}
-                    <li className="me-0 lg:me-9">
+                    <li className="">
                         <MultiLanguage />
                     </li>
                     <li>
@@ -56,7 +49,7 @@ const NavBar = () => {
                     onClick={() => {
                         setOpenList(!openList);
                     }}
-                    className="lg:hidden text-3xl cursor-pointer"
+                    className="lg:hidden cursor-pointer"
                 >
                     <img
                         src={menuIcon}
@@ -70,4 +63,4 @@ const NavBar = () => {
         </div>
     );
 };
-export default NavBar;
+export default UserNavBar;
