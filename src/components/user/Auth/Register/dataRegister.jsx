@@ -7,7 +7,6 @@ import card from './RegisterImage/Card.svg';
 import code from './RegisterImage/Code.svg';
 import showPass from './RegisterImage/Vector.svg'
 import hidePassword from './RegisterImage/icons8-eye-26.png'
-import MultiLanguage from '../../../layout/MultiLanguage';
 import { useTranslation } from 'react-i18next';
 
 export const RegisterData = (showPassword,showRePass) => {

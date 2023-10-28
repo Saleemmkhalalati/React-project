@@ -1,7 +1,6 @@
 import React from 'react';
 import ContainerImg from '../ContainerImage/ContainerImg';
 import docImg from "./ConfirmImage/Login.svg";
-import MultiLanguage from '../../../../layout/MultiLanguage';
 import BackPolygon from '../BackPolygon/BackPolygon';
 import { useTranslation } from 'react-i18next';
 

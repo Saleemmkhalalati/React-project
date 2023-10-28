@@ -3,7 +3,6 @@ import { RegisterData } from './dataRegister';
 import BackPolygon from '../BackPolygon/BackPolygon';
 import docImg from "./RegisterImage/Register.svg";
 import ContainerImg from '../ContainerImage/ContainerImg';
-import MultiLanguage from '../../../layout/MultiLanguage';
 import { useTranslation } from 'react-i18next';
 import "./Register.css"
 import {easeInOut, motion} from 'framer-motion'
