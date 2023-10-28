@@ -10,7 +10,6 @@ import { useState } from "react";
 export default function Login() {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
-  const [passwordError, SetPasswordError] = useState("");
   const [accept, setAccept] = useState("");
   const [showpass, Setshowpass] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
