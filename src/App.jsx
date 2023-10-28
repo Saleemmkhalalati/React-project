@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
 import Landing from "./components/user/Langing/Landing";
+import Register from './components/user/Auth/Register/Register'
 function App() {
     return (
         <div className="font-alegreya">
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/login" element={<></>} />
                 </Routes>
             </BrowserRouter>
+            <Register />
         </div>
     );
 }

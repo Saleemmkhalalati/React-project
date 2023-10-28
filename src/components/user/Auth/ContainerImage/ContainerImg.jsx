@@ -1,5 +1,5 @@
 import React from 'react';
-import MultiLanguage from '../../../../layout/MultiLanguage';
+import MultiLanguage from '../../../layout/MultiLanguage';
 import { useTranslation } from 'react-i18next';
 
 const ContainerImg = ({ docImg, action }) => {
