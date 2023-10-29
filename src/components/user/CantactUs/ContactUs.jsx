@@ -38,7 +38,7 @@ export default function ContactUs() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
         <div className="hidden lg:block lg:grid-cols-7 lg:mt-72 xl:mt-80">
           <div className="relative start-16 origin-center ltr:rotate-45 rtl:-rotate-45">
-            <div className="absolute w-[345px] h-[345px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
+            <div className="absolute w-[20.3rem] h-[20.3rem] rounded-2xl bg-gradient-to-r from-primary to-secondary">
               <div className="absolute z-10 w-80 h-80 rounded-2xl top-[2px] start-[2px] bg-white"></div>
             </div>
           </div>
