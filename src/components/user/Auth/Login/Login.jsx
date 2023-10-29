@@ -46,7 +46,7 @@ export default function Login() {
               {
                 <Link
                   className="text-success text-md border-b-[1px] border-success"
-                  to={""}
+                  to={"/register"}
                 >
                   Create account
                 </Link>

@@ -11,8 +11,8 @@ const ContainerImg = ({ docImg, action }) => {
       <div className='w-[457px] h-[457px] absolute z-1 start-[22px] top-[-92px] rounded-[16px] rotate-[46deg] gradient-border hidden lg:block'></div>
 
       {/* Container for the main image */}
-      <div className='w-[547px] h-[547px] bg-myGray-400 hidden lg:flex justify-end items-center z-2 translate-x-[160px] translate-y-[-130px] rotate-[46deg] rounded-[16px] overflow-hidden'>
-        <img src={docImg} className='rotate-[-46deg] translate-x-[90px] translate-y-[130px] absolute bottom-0 w-[545.43px] origin-center max-w-full max-h-full bottom-0' />
+      <div className='w-[547px] h-[547px] bg-myGray-100 shadow-sm hidden lg:flex justify-end items-center z-2 translate-x-[160px] translate-y-[-130px] rotate-[46deg] rounded-[16px] overflow-hidden'>
+        <img src={docImg} className='rotate-[-46deg] absolute bottom-[-100px] left-[60px] w-[545.43px] origin-center max-w-full max-h-full bottom-0' />
       </div>
 
       <div className='w-[90%] lg:w-[74%] flex gap-[24px] flex-col ml-auto pr-[22px]'>
