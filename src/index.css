@@ -6,3 +6,16 @@
 a.active {
     color: theme('colors.primary');
 }
+.gradient-border {
+    border:3px solid hotpink;
+    border-radius:16px;
+    border:double 3px transparent;
+    background-image:linear-gradient(white , white) , theme('backgroundImage.linear');
+    background-origin:border-box;
+    background-clip:content-box , border-box
+}
+.gradient-text {
+    background-image: theme('backgroundImage.linear');
+    background-clip: text; /* لدعم متصفحات WebKit مثل Chrome و Safari */
+    color: transparent; /* جعل النص شفافًا */
+}

@@ -11,13 +11,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/confirm-email" element={<ConfirmEnail />} />
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Landing />} />
             <Route path="/services" element={<></>} />
             <Route path="/about-us" element={<></>} />
             <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/confirm-email" element={<ConfirmEnail />} />
 
           </Route>
         </Routes>
