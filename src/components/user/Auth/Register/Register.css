@@ -1,0 +1,14 @@
+
+select.custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('./Components/User/Register/Register_Image/Dropdown.png') no-repeat calc(100% - 15px) 50%;
+}
+.selectService:hover,
+.selectService.select {
+    background-color: #EEEEEE;
+    color: #5A81FD;
+}
+
+
