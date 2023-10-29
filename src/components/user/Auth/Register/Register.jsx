@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { RegisterData } from './dataRegister';
-import BackPolygon from '../BackPolygon/BackPolygon';
-import docImg from "./RegisterImage/Register.svg";
+import BackPolygon from '../../../utilities/BackPolygon/BackPolygon';
+import docImg from "./RegisterImage/Intersect.svg";
 import ContainerImg from '../ContainerImage/ContainerImg';
 import { useTranslation } from 'react-i18next';
 import "./Register.css"
 import {easeInOut, motion} from 'framer-motion'
 import Typography from '../../../utilities/Typography';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   // State variables
@@ -124,7 +125,7 @@ const Register = () => {
             <Typography component="h1" className='leading-[51.99px]'>{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</Typography>
             <div className='leading-[25.14px] flex justify-center lg:justify-start gap-[8px]'>
               <Typography component="h4" className='text-mtGray-600'>{t("register.loginQuest")}</Typography>
-              <p className='text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</p>
+              <Link to="/login" className='text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</Link>
             </div>
           </div>
           <form className='flex flex-col gap-[32px]' onSubmit={handleSubmit}>
@@ -137,7 +138,7 @@ const Register = () => {
                     <>
                       <div className={`flex bg-[#FFFFFF] relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) ? 'border-error' : ''} ${isFocus[data.name] ? "border-primary" : "border-myGray-400"}`}>
                         <input
-                          className='w-full border-none outline-none bg-transparent placeholder:text-mySlate'
+                          className='w-full border-none outline-none  placeholder:text-mySlate'
                           name={data.name}
                           type={data.name === "password" && showPassword ? "text" : data.name === "repassword" && showRePass ? "text" : data.inputType}
                           placeholder={isFocus[data.name] ? '' : data.placeHolder}
@@ -146,11 +147,11 @@ const Register = () => {
                           onBlur={handleBlur}
                         />
                         {(isFocus[data.name] || formData[data.name]) &&
-                          <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                          <motion.div className='w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
                           <label>{data.placeHolder}</label>
                           <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
                         </motion.div>}
-                        <img src={data.inputIcon} alt={data.name} onClick={handleShowPass} className='w-[12px] h-[15px] m-auto cursor-pointer' />
+                        <img src={data.inputIcon} alt={data.name} onClick={handleShowPass} className='w-[17px] h-[17px] m-auto cursor-pointer f' />
                       </div>
                       {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
                       {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.passwordMatch")}</motion.div>}
@@ -169,7 +170,7 @@ const Register = () => {
                                   <label>{data.placeHolder}</label>
                                   <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
                               </motion.div>}
-                              <img src={data.inputIcon} alt="dropdown" className='w-[15px] h-[15px]' />
+                              <img src={data.inputIcon} alt="dropdown" className='w-[18px] h-[18px]' />
                             </div>
                             {showDrop && (
                               <ul className='bg-[#FFFFFF] opacity-100 flex flex-col gap-[1px] shadow-lg rounded-[8px]'>
@@ -205,7 +206,7 @@ const Register = () => {
                                   <label>{inp.placeHolder}</label>
                                   <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
                                 </motion.div>}
-                              <img src={inp.inputIcon} alt={inp.inputType} />
+                              <img src={inp.inputIcon} alt={inp.inputType} className='w-[17px] h-[17px]'/>
                             </div>
                           ))}
                         </div>
@@ -215,7 +216,7 @@ const Register = () => {
                 </div>
               );
             })}
-            <div onClick={changeUserType} className='text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
+            <div onClick={changeUserType} className='text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
           </form>
         </div>
         <div className='w-[90%] lg:w-[45%] shrink-0 lg:ml-auto'>

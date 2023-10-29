@@ -1,7 +1,7 @@
 import React from 'react';
 import ContainerImg from '../ContainerImage/ContainerImg';
-import docImg from "./ConfirmImage/Login.svg";
-import BackPolygon from '../BackPolygon/BackPolygon';
+import docImg from "./ConfirmImage/Intersect.svg";
+import BackPolygon from '../../../utilities/BackPolygon/BackPolygon';
 import { useTranslation } from 'react-i18next';
 
 const ConfirmEmail = () => {

@@ -1,8 +1,8 @@
 .gradient-border {
-    border:5px solid hotpink;
+    border:3px solid hotpink;
     border-radius:16px;
-    border:double 5px transparent;
-    background-image:linear-gradient(white , white) , linear-gradient(154.83deg, #2BC2F7 21.91%, #5A81FD 72.02%);
+    border:double 3px transparent;
+    background-image:linear-gradient(white , white) , linear-gradient(90deg, #2BC2F7 21.91%, #5A81FD 72.02%);
     background-origin:border-box;
     background-clip:content-box , border-box
 }
@@ -22,3 +22,5 @@ select.custom-select {
     background-color: #EEEEEE;
     color: #5A81FD;
 }
+
+
