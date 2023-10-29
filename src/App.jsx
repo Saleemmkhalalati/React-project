@@ -3,6 +3,7 @@ import UserLayout from "./components/user/layout/UserLayout";
 import Landing from "./components/user/Landing/Landing";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import Login from "./components/user/Auth/Login/Login";
+import AboutUs from "./components/user/AboutUs/AboutUS";
 function App() {
   return (
     <div className="font-alegreya">
@@ -12,7 +13,7 @@ function App() {
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Landing />} />
             <Route path="/services" element={<></>} />
-            <Route path="/about-us" element={<></>} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
           </Route>
         </Routes>
