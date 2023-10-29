@@ -3,6 +3,9 @@ import UserLayout from "./components/user/layout/UserLayout";
 import Landing from "./components/user/Landing/Landing";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import Login from "./components/user/Auth/Login/Login";
+import AboutUs from "./components/user/AboutUs/AboutUS";
+import Register from "./components/user/Auth/Register/Register";
+import ConfirmEnail from "./components/user/Auth/ConfirmEmail/ConfirmEmail";
 function App() {
   return (
     <div className="font-alegreya">
@@ -16,7 +19,6 @@ function App() {
             <Route path="/services" element={<></>} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
-
           </Route>
         </Routes>
       </BrowserRouter>
