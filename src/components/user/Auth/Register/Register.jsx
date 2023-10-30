@@ -107,16 +107,14 @@ const Register = () => {
       <div className={`relative py-[70px] flex justify-between flex-col ${currentLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"} items-center lg:items-start gap-[45px] overflow-hidden`}>
         <div className='w-[90%] lg:w-[50%] p-[25px] md:p-[70px] pr-0 flex flex-col gap-[56px]'>
           <div className='flex flex-col gap-[32px] text-center lg:text-start'>
-            <Typography component="h1" className='leading-[51.99px]'>{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</Typography>
-            <div className='leading-[25.14px] flex justify-center lg:justify-start gap-[8px]'>
-              <Typography component="h4" className='text-mtGray-600'>{t("register.loginQuest")}</Typography>
-              <Link to="/login" className='text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</Link>
-            </div>
+            <Typography component="h1">{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</Typography>
+            <Typography component="h4" >{t("register.loginQuest")}
+              <Link to="/login" className='ms-1 text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</Link>
+            </Typography>
           </div>
           <form className='flex flex-col gap-[32px]' onSubmit={handleSubmit}>
             {userData.map((data, index) => {
               const isFieldEmpty = isEmpty[data.name];
-
               return (
                 <div key={index}>
                   {data.name !== 'submit' && data.name !== "serviceType" && data.name !== "bank" ? (
@@ -148,7 +146,7 @@ const Register = () => {
                       data.name !== "bank" ? (
                         <>
                           <div name="serviceType" value={serviceSelected}>
-                            <div className={`flex justify-between items-center custom-select flex bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
+                            <div className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
                               <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
                               {(serviceSelected !== "") && 
                               <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
