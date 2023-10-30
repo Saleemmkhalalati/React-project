@@ -10,9 +10,8 @@ export default function Button({
             disabled={disabled}
             type={type}
             onClick={onClick}
-            className={`px-3 py-1 ${
-                fullWidth === true ? "w-full" : ""
-            } text-white rounded bg-gradient-to-b from-primary to-secondary transform rotate-15 hover:opacity-90 opacity-100 disabled:opacity-80 disabled:pointer-events-none`}
+            className={`px-3 py-1 ${fullWidth === true ? "w-full" : ""
+                } text-white rounded bg-gradient-to-b from-primary to-secondary transform rotate-15 hover:opacity-90 opacity-100 disabled:opacity-80 disabled:pointer-events-none`}
         >
             {children}
         </button>
