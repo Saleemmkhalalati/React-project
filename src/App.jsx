@@ -8,12 +8,10 @@ import Register from "./components/user/Auth/Register/Register";
 import ConfirmEmail from "./components/user/Auth/ConfirmEmail/ConfirmEmail";
 import ForgetPassword from "./components/user/Auth/ForgetPassword/ForgetPassword";
 import ResettPassword from "./components/user/Auth/Reset Password/ResetPassword";
-import NavBar from "./components/user/layout/NavBar";
 function App() {
     return (
         <div className="font-alegreya">
             <BrowserRouter>
-                <NavBar />
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
