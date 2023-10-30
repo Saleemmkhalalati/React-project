@@ -7,7 +7,7 @@ export default function Logo() {
         <Link to="/">
             <div className="flex flex-row items-center">
                 <img
-                    className="ml-1"
+                    className="ltr:mr-1 rtl:ml-1"
                     src={logo}
                     alt="logo"
                     width={25}
