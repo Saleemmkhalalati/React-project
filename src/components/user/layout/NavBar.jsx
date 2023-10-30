@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation ,NavLink} from "react-router-dom";
+import { Link,NavLink} from "react-router-dom";
 import Button from "../../utilities/Button";
 import MultiLangDropdown from "../../utilities/MultiLangDropdown";
 import Logo from "../../utilities/Logo";
 import menuIcon from "../../../assets/icons/menu.svg";
 
 const NavBar = () => {
-    const location = useLocation();
     const { t } = useTranslation("global");
     const links = [
         { name: t("navbar.links.0"), to: "/" },
@@ -27,7 +26,7 @@ const NavBar = () => {
                 >
                     {links.map((link) => (
                         
-                            <NavLink to={link.to}  >{link.name}</NavLink>
+                            <NavLink to={link.to} key={link.to} >{link.name}</NavLink>
                     ))}
                     <li className="">
                         <MultiLangDropdown />

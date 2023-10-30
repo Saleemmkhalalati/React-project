@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RegisterData } from './dataRegister';
-import BackPolygon from '../../../utilities/BackPolygon/BackPolygon';
+import BackPolygon from '../../../utilities/BackPolygon';
 import docImg from "./RegisterImage/Intersect.svg";
 import ContainerImg from '../ContainerImage/ContainerImg';
 import { useTranslation } from 'react-i18next';
-import "./Register.css"
 import {easeInOut, motion} from 'framer-motion'
 import Typography from '../../../utilities/Typography';
 import { Link } from 'react-router-dom';
@@ -33,7 +32,6 @@ const Register = () => {
 
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
-
   // Handle the selection of the service type
   const handleServiceType = (event) => {
     const selectedService = event.target.textContent;
@@ -42,10 +40,8 @@ const Register = () => {
       ...formData,
       serviceSelected: selectedService,
     });
-
     setShowDrop(false);
   };
-
   // Handle form input changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -53,29 +49,24 @@ const Register = () => {
       ...formData,
       [name]: value,
     });
-
     // Check if the field is empty
     setIsEmpty({
       ...isEmpty,
       [name]: value === '' ? true : false,
     });
   };
-
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsFormSubmitted(true);
-
     // Check if the passwords match
     if (formData.password !== formData.repassword) {
       setIsPasswordMatch(false);
       console.log("Passwords do not match");
     } else {
       setIsPasswordMatch(true);
-
       const requiredFields = ["email", "password", "repassword", "number", "business", "serviceSelected"];
       const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
-
       if (hasEmptyFields) {
         console.log("Some required fields are empty.");
       } else {
@@ -83,13 +74,11 @@ const Register = () => {
       }
     }
   };
-
   // Send form data to the server
   const sendFormDataToServer = () => {
     console.log("Sending data to the server...");
     console.log(formData);
   };
-
   // Handle input field focus
   const handleFocus = (event) => {
     const { name } = event.target;
@@ -98,7 +87,6 @@ const Register = () => {
       [name]: true,
     });
   };
-
   // Handle input field blur
   const handleBlur = (event) => {
     const { name } = event.target;
@@ -107,16 +95,13 @@ const Register = () => {
       [name]: false,
     });
   };
-
   // Handle show/hide password
   const handleShowPass = (event) => {
     event.target.alt === "password" ? setShowPassword(!showPassword) : event.target.alt === "repassword" ? setReShowPass(!showRePass) : null;
   };
-
   // Replace this function with your own implementation
   const registerData = RegisterData(showPassword, showRePass);
   const userData = userType === "patient" ? registerData.patient : registerData.provider;
-
   return (
     <>
       <div className={`relative py-[70px] flex justify-between flex-col ${currentLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"} items-center lg:items-start gap-[45px] overflow-hidden`}>

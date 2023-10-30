@@ -8,12 +8,10 @@ import code from './RegisterImage/Code.svg';
 import showPass from './RegisterImage/Vector.svg'
 import hidePassword from './RegisterImage/icons8-eye-26.png'
 import { useTranslation } from 'react-i18next';
-
 export const RegisterData = (showPassword,showRePass) => {
   const getPasswordIcon = showPassword ? hidePassword : showPass;
   const getRePasswordIcon = showRePass ? hidePassword : showPass;
   const {t} = useTranslation("global")
-
   return {
     patient: [
       {

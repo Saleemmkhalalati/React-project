@@ -1,17 +1,13 @@
-import React from 'react';
 import ContainerImg from '../ContainerImage/ContainerImg';
 import docImg from "./ConfirmImage/Intersect.svg";
-import BackPolygon from '../../../utilities/BackPolygon/BackPolygon';
+import BackPolygon from '../../../utilities/BackPolygon';
 import { useTranslation } from 'react-i18next';
-
 const ConfirmEmail = () => {
   // Initialize the i18n translation hook
   const { t } = useTranslation("global");
-  
   // Get the current language from i18n
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
-
   return (
     <div className={`relative py-[70px] flex justify-between flex-col ${currentLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"} items-center gap-[45px] overflow-hidden`}>
       <div className='w-[90%] lg:w-[50%] p-[25px] md:p-[70px] pr-0 flex flex-col gap-[48px]'>

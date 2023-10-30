@@ -1,9 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from "../../utilities/Logo";
 import Typography from "../../utilities/Typography";
 import { useTranslation } from "react-i18next";
 export default function Footer() {
-    const location = useLocation();
     const { t } = useTranslation("global");
     const links = [
         { name: t("navbar.links.0"), to: "/" },
@@ -23,7 +22,9 @@ export default function Footer() {
                     </Typography>
                 </div>
                 <div className="flex flex-col gap-y-3 mt-2">
-                    <p htmlFor="email">Subscribe to our Quarterly newsletter ....</p>
+                    <p htmlFor="email">
+                        Subscribe to our Quarterly newsletter ....
+                    </p>
                     <div className="flex flex-row">
                         <input
                             id="email"
@@ -51,16 +52,9 @@ export default function Footer() {
                     className={`flex flex-row flex-wrap items-center text-myGray-600 gap-x-9 `}
                 >
                     {links.map((link) => (
-                        <li
-                            key={link.name}
-                            className={`${
-                                location.pathname !== link.to
-                                    ? ""
-                                    : "text-secondary"
-                            }`}
-                        >
-                            <Link to={link.to}>{link.name}</Link>
-                        </li>
+                        <NavLink to={link.to} key={link.to}>
+                            {link.name}
+                        </NavLink>
                     ))}
                 </ul>
             </div>
