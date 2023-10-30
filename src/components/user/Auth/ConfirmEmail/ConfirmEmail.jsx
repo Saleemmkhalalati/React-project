@@ -2,6 +2,7 @@ import ContainerImg from '../ContainerImage/ContainerImg';
 import docImg from "./ConfirmImage/Intersect.svg";
 import BackPolygon from '../../../utilities/BackPolygon';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 const ConfirmEmail = () => {
   // Initialize the i18n translation hook
   const { t } = useTranslation("global");
@@ -22,7 +23,9 @@ const ConfirmEmail = () => {
           </div>
         </div>
         {/* Link to go back */}
-        <Link className='text-secondary hover:text-success cursor-pointer  text-[16px] font-normal leading-[25.14px]'>{t("confirmEmail.back")}</Link>
+        <p className='text-secondary hover:text-success cursor-pointer  text-[16px] font-normal leading-[25.14px]'>
+          <Link to="/login">{t("confirmEmail.back")}</Link>
+        </p>
       </div>
       <div className='w-[90%] lg:w-[45%]'>
         {/* Display a container with an image for confirmation */}
