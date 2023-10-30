@@ -53,7 +53,7 @@ export default function ForgetPassword() {
                             </div>
                             {err ? <label className='text-sm text-error mt-[-10px] ml-2' htmlFor="">{err}</label> : ''}
                         </div>
-                        <Button>{Forget.button}</Button>
+                        <Button fullWidth>{Forget.button}</Button>
                     </form>
                 </div>
                 <div className='flex-2 relative max-[1750px]:overflow-hidden min-[1100px]:h-screen'>
@@ -62,7 +62,7 @@ export default function ForgetPassword() {
                         <img className='absolute right-[-70px]  w-[58.9%] top-[-22px] h-[100%] mt-[50px] ml-[150px]' src={doc} alt="" />
                         <img className='relative z-[-1] ltr:ml-[29%] rtl:mr-[-8%] max-[1100px]:w-[46%] max-[1000px]:ml-[50%]' src={img3} width={'79%'} alt="" />
                     </div>
-                    <div className='absolute max-[1100px]:relative max-[1100px]:px-10 min-[1100px]:mt-12 rtl:pr-[50px] pl-[26px] pr-[150px]'>
+                    <div className='absolute max-[1100px]:relative max-[1100px]:px-10    min-[1100px]:mt-12 rtl:pr-[50px] pl-[26px] pr-[150px]'>
                         <h3 className='bg-gradient-to-r from-primary via-secondary to-secondary bg-clip-text text-transparent md:text-xl max-md:text-lg font-bold py-4'>
                             {Forget.resetTitle}
                         </h3>

@@ -63,16 +63,14 @@ export default function Login() {
                 SetEmail(e.target.value);
                 checkEmailAndPass();
               }}
-              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${
-                accept && email === "" ? "border-error" : ""
-              }`}
+              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${accept && email === "" ? "border-error" : ""
+                }`}
             />
             <label
-              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${
-                isFilled
-                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
-                  : "top-3"
-              }`}
+              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${isFilled
+                ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                : "top-3"
+                }`}
             >
               Email Address
             </label>
@@ -92,16 +90,14 @@ export default function Login() {
                 SetPassword(e.target.value);
                 checkEmailAndPass();
               }}
-              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${
-                accept && password === "" ? "border-error" : ""
-              }`}
+              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${accept && password === "" ? "border-error" : ""
+                }`}
             />
             <label
-              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${
-                isFilledPass
-                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
-                  : "top-3"
-              }`}
+              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${isFilledPass
+                ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                : "top-3"
+                }`}
             >
               Password
             </label>
@@ -121,7 +117,7 @@ export default function Login() {
           <div className="text-end mb-5">
             <Link
               className="text-sm texe-mySlate hover:text-secondary transition hover:animate-bounce"
-              to={""}
+              to={"/forget-password"}
             >
               Forget password ?
             </Link>

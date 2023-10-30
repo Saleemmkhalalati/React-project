@@ -64,7 +64,7 @@ export default function ResettPassword() {
                             </div>
                             {err2 ? <label className='text-sm text-error mt-[-10px] ml-2' htmlFor="">{err2}</label> : ''}
                         </div>
-                        <Button>{reset.button}</Button>
+                        <Button fullWidth>{reset.button}</Button>
                     </form>
                 </div>
                 <div className='flex-2 relative max-[1750px]:overflow-hidden min-[1100px]:h-screen'>
