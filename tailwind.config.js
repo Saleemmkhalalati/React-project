@@ -19,6 +19,9 @@ export default {
             fontFamily: {
                 alegreya: ["Alegreya", "sans-serif"],
             },
+            backgroundImage: {
+                linear: "linear-gradient(154.83deg, #2BC2F7 21.91%, #5A81FD 72.02%)",
+            },
         },
     },
     plugins: [],
