@@ -16,7 +16,7 @@ const NavBar = () => {
         { name: t("navbar.links.3"), to: "/contact-us" },
     ];
     return (
-        <div className="pt-5 px-5">
+        <div className="relative bg-white z-30 pt-5 px-5">
             <div className="flex justify-between items-center border-b-2">
                 <Link to="/">
                     <div className="flex flex-row">
@@ -34,11 +34,10 @@ const NavBar = () => {
                     {links.map((page) => (
                         <li
                             key={page.name}
-                            className={`me-0 lg:me-9 ${
-                                location.pathname !== page.to
-                                    ? ""
-                                    : "text-secondary"
-                            }`}
+                            className={`me-0 lg:me-9 ${location.pathname !== page.to
+                                ? ""
+                                : "text-secondary"
+                                }`}
                         >
                             <Link to={page.to}>{page.name}</Link>
                         </li>

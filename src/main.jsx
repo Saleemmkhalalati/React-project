@@ -4,15 +4,15 @@ import App from "./App.jsx";
 import "./index.css";
 import global_en from "./translations/en/global.json";
 import global_ar from "./translations/ar/global.json";
-import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
+import { I18nextProvider } from "react-i18next";
 i18next.init({
     resources: {
         en: {
-            global: global_en,
+            global: global_en
         },
         ar: {
-            global: global_ar,
+            global: global_ar
         },
     },
     lng: "en", // Default Language

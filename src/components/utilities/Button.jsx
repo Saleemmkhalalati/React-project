@@ -1,7 +1,7 @@
-export default function Button({children}) {
+export default function Button({ children }) {
     return (
         <button
-            type="button"
+            type="submit"
             className="px-3 py-1 rounded w-full text-white bg-gradient-to-b from-primary to-secondary"
         >
             {children}

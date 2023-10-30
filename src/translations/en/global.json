@@ -7,5 +7,25 @@
             "Contact us",
             "Get Started"
         ]
+    },
+    "forget": {
+        "title": "Forget Password",
+        "p": "We are here to help you, So enter the email for reset password.",
+        "placeholder": "Email address",
+        "erremail": "This field is required",
+        "button": "Send Verification Code",
+        "resetTitle": "Reset password for Med - Sal ...",
+        "resetPar": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
+    },
+    "reset": {
+        "title": "Reset Password",
+        "p": "We are here to  help you, So enter new password then confirm it. ",
+        "placeholder1": "New Password",
+        "placeholder2": "Confirm Password",
+        "err": "password must be more than 4",
+        "errcunfirm": "please match the password",
+        "button": "Change Password",
+        "resetTitle": "Reset password for Med - Sal ...",
+        "resetPar": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
     }
 }
