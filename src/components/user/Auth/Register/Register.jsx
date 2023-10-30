@@ -21,17 +21,13 @@ const Register = () => {
   const [showBankDetails, setShowBankDetails] = useState(false); // Shows/hides bank details
   const [showPassword, setShowPassword] = useState(false); // Shows/hides password
   const [showRePass, setReShowPass] = useState(false); // Shows/hides re-entered password
-
   // Language translation
-  const { t } = useTranslation("global");
-
+  const { t, i18n} = useTranslation("global");
+  const currentLanguage = i18n.language;
   // Function to toggle between "patient" and "Service Provider"
   const changeUserType = () => {
     userType === "patient" ? setUserType("Service Provider") : setUserType("patient");
   };
-
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
   // Handle the selection of the service type
   const handleServiceType = (event) => {
     const selectedService = event.target.textContent;
@@ -215,5 +211,4 @@ const Register = () => {
     </>
   );
 };
-
 export default Register;
