@@ -7,23 +7,18 @@ import Test from './SideBar_Dashbord/Test'
 const DashbordLayout = () => {
   return (
     <>
-
-       <div className=" ">
-      <NavBarDashbord/>
-
-        
-       <div className="  flex">
-      {/* <SideBardashbord/> */}
-    
+    <div className='flex '>
     <Test/>
+      <div className='w-[80%]'>
+      <NavBarDashbord/>
+      <Outlet/>
+      ,,
 
        
-        <div style={{width:"80%"}} className='bg-myGray-100'>
-            ,,,,,,
-        <Outlet/>
-        </div>
-       </div>
-        </div>
+      </div>
+    </div>
+
+    
     </>
   )
 }

@@ -13,7 +13,7 @@ const NavBarDashbord = () => {
   return (
     <div className='py-5 px-10  flex  justify-between'>
       
-      <Logo/>
+  
 
       
         {/* input serch  */}

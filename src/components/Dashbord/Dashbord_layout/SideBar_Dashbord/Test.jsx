@@ -1,56 +1,120 @@
 import React, { useState } from 'react';
-// import {
-//   MdOutlineDashboard,
-//   MdAccountCircle,
-//   MdAnalytics,
-//   MdOutlineSettings,
-//   MdLogout,
-// } from 'react-icons/md';
-// import {
-//   BsChevronDown,
-//   BsChatLeftText,
-//   BsCalendarCheck,
-//   BsFiles,
-//   BsServer,
-// } from 'react-icons/bs';
+import Logo from "../../../utilities/Logo";
+import vector from "./SideBar_Dashbord_images/Vector.svg"
+import person from "./SideBar_Dashbord_images/Person.svg"
+import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg"
+import Services from "./SideBar_Dashbord_images/Services.svg"
+import person_pluse from "./SideBar_Dashbord_images/Person Plus.svg"
+import Graph from "./SideBar_Dashbord_images/Graph.svg"
+import Notification from "./SideBar_Dashbord_images/Notification.svg"
+import setting from "./SideBar_Dashbord_images/Setting.svg"
+import logout from './SideBar_Dashbord_images/Logout.svg'
+
+
+
+
 
 const Menus = [
-  { title: 'Dashboard', src: 'Chart_fill', icon :null },
-  { title: 'Inbox', src: 'Chat', icon: null },
-  { title: 'Accounts', src: 'User', gap: true, icon: null },
-  { title: 'Schedule ', src: 'Calendar', icon: null},
+  {
+    main_title:'About users',
+    data:[
+      {
+             title: 'All Users'
+          , 
+          src: 'Chart_fill'
+          , 
+          icon :person,
+           subMenus: [
+            {
+              title: 'Service Providers',
+              src: '/all_users/Service_Providers',
+        
+              cName: 'sub-nav',
+             },
+            {
+               title: 'Patient Users ',
+               src: '/all_users/Patient_Users ',
+        
+               cName: 'sub-nav',
+            },
+           {
+               title: 'Admin Users  ',
+               src: '/all_users/Admin_Users ',
+        
+              cName: 'sub-nav',
+             },
+           ]
+        
+         },
+         
   {
     title: 'Services',
     src: 'Services',
-    icon: null,
-    subMenus: [
-      {
-        title: 'Service 1',
-        src: '/services/services1',
+    icon: Services,
+    // subMenus: [
+    //   {
+    //     title: 'Service 1',
+    //     src: '/services/services1',
 
-        cName: 'sub-nav',
-      },
-      {
-        title: 'Service 2',
-        src: '/services/services2',
+    //     cName: 'sub-nav',
+    //   },
+    //   {
+    //     title: 'Service 2',
+    //     src: '/services/services2',
 
-        cName: 'sub-nav',
-      },
-      {
-        title: 'Service 3',
-        src: '/services/services3',
-      },
-    ],
+    //     cName: 'sub-nav',
+    //   },
+    //   {
+    //     title: 'Service 3',
+    //     src: '/services/services3',
+    //   },
+    // ],
   },
-  { title: 'Analytics', src: 'Chart', icon: null },
-  { title: 'Files ', src: 'Folder', gap: true, icon: null },
-  { title: 'Setting', src: 'Setting', icon: null },
-  { title: 'Logout', src: 'Logout', icon: null },
+  { title: 'Requests ', src: 'Chart', icon: person_pluse },
+  { title: 'Report  ', src: 'Folder', gap: true, icon: Graph },
+  { title: 'Notifications', src: 'Setting', icon: Notification },
+ 
+         
+
+    ]
+
+
+  },
+  {
+    main_title:'About Dashboard',
+    data:[
+      {
+             title: 'Settings'
+          , 
+          src: 'Chart_fill'
+          , 
+          icon :setting,
+          
+        
+         },
+         
+  {
+    title: 'Sign Out',
+    src: 'Services',
+    icon: logout,
+
+  },
+
+ 
+         
+
+    ]
+
+
+  }
+  
 ]
 
 
+
+
 const Test = () => {
-  console.log("tes")
+
   
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
@@ -60,7 +124,7 @@ const Test = () => {
 
   return (
 
-    <div className=" h-screen flex items-end justify-end red ">
+    <div className=" h-screen  flex justify-center   red  py-5 px-10 w-[20%] ">
       {/* for md and sm screen */}
     <button
       className="fixed lg:hidden z-90 bottom-10 right-8 bg-teal-800 w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-teal-800   duration-300"
@@ -84,53 +148,116 @@ const Test = () => {
     <div
       className={` ${
         open ? 'w-48 px-2 ' : 'w-0 '
-      } lg:w-72 bg-teal-800 h-screen   relative duration-500`}
+      } lg:w-72  h-screen  red relative duration-500 flex flex-wrap justify-center items-center `}
     >
-      <div className=" justify-center mt-3">
-        <h1
-          className={`text-white  font-medium text-2xl text-center duration-200 ${
-            !open && 'invisible'
-          }`}
-        >
-          LOGO
-        </h1>
+      {/* logo */}
+      <div className=" justify-center flex ">
+
+       <Logo/>
       </div>
-      <ul className="pt-6">
-        {Menus.map((Menu, index) => (
-          <>
-            <li
-              key={index}
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-teal-400 text-white text-sm items-center gap-x-4 
-            ${Menu.gap ? 'mt-9' : 'mt-2'}  `}
-            >
-              {Menu.icon ? Menu.icon : null}
-              <span className="flex-1">{Menu.title}</span>
-              {Menu.subMenus!=null && (
-                <img
-                src='./SideBar_Dashbord_images/Vector.svg'
-                  onClick={() => {setSubMenuOpen(!subMenuOpen); console.log("sssssssss")}}
-                  className={`${subMenuOpen && 'rotate-180 w-[100px] h-[100px] red bg-black'}`}
-                />
-              )}
-            </li>
-            {Menu.subMenus && subMenuOpen && open && (
-              <ul>
-                {Menu.subMenus.map((subMenuItem, idx) => (
-                  <li
-                    key={idx}
-                    className=" red flex px-5 cursor-pointer text-center text-sm text-gray-200 py-1"
-                  >
-                    {subMenuItem.title}
-                  </li>
-                ))}
-              </ul>
+      {/* Dashbord  */}
+     <div className='flex px-5 py-2 items-center gap-5 grident rounded-[8px] w-full '> 
+        <img src={vector} alt="" />
+       <p className='text-white'>Dashboard</p>
+    </div>
+    {/* <p className='text-[16px] font-normal text-myGray-500 red'>About Users</p> */}
+    {Menus.map((Menu,index)=>{
+      return(
+      <div className='red w-full'>
+        <p className='text-[16px] font-normal text-myGray-500'>{Menu.main_title}</p>
+        <ul className=" red  w-full">
+      
+
+      {Menu.data.map((d, index) => (
+        <>
+          <li
+            key={index}
+            className={`flex  rounded-md  cursor-pointer   text-sm items-center gap-x-4 
+          ${d.gap ? 'mt-9' : 'mt-2'}  `}
+          >
+            {/* {Menu.icon ? Menu.icon : null} */}
+            <img src={d.icon} alt="" />
+            <span className="flex-1">{d.title}</span>
+            {d.subMenus && (
+              <img
+              src={Arrow_Dropdown}
+                onClick={() => {setSubMenuOpen(!subMenuOpen); console.log("sssssssss")}}
+                className={`${subMenuOpen && 'rotate-180 '}`}
+              />
             )}
-          </>
-        ))}
-      </ul>
+          </li>
+          {d.subMenus && subMenuOpen && open && (
+            <ul>
+              {d.subMenus.map((subMenuItem, idx) => (
+                <li
+                  key={idx}
+                  className=" red flex px-5 cursor-pointer text-center text-sm text-gray-200 py-1"
+                >
+                  {subMenuItem.title}
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      ))}
+    </ul>
+        
+      </div>
+      )
+
+    })}
+
+
+    
+  
+
+
     </div>
   </div>
 );
                 }
             
 export default Test
+
+
+
+
+
+
+
+// <ul className=" red  w-full">
+      
+
+// {Menus.map((Menu, index) => (
+//   <>
+//     <li
+//       key={index}
+//       className={`flex  rounded-md  cursor-pointer   text-sm items-center gap-x-4 
+//     ${Menu.gap ? 'mt-9' : 'mt-2'}  `}
+//     >
+//       {/* {Menu.icon ? Menu.icon : null} */}
+//       <img src={Menu.icon} alt="" />
+//       <span className="flex-1">{Menu.title}</span>
+//       {Menu.subMenus && (
+//         <img
+//         src={Arrow_Dropdown}
+//           onClick={() => {setSubMenuOpen(!subMenuOpen); console.log("sssssssss")}}
+//           className={`${subMenuOpen && 'rotate-180 '}`}
+//         />
+//       )}
+//     </li>
+//     {Menu.subMenus && subMenuOpen && open && (
+//       <ul>
+//         {Menu.subMenus.map((subMenuItem, idx) => (
+//           <li
+//             key={idx}
+//             className=" red flex px-5 cursor-pointer text-center text-sm text-gray-200 py-1"
+//           >
+//             {subMenuItem.title}
+//           </li>
+//         ))}
+//       </ul>
+//     )}
+//   </>
+// ))}
+// </ul>
