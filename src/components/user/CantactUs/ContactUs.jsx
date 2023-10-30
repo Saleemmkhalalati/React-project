@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import Button from "../../utilities/Button";
-import { Input, Textarea } from "../../utilities/Inputs";
+import { FInput, Textarea } from "../../utilities/Inputs";
 import Typography from "../../utilities/Typography";
 // assets
 import characterImage from "./img/Intersect.svg";
@@ -64,7 +64,7 @@ export default function ContactUs() {
                 onSubmit={formik.handleSubmit}
                 className="flex flex-col gap-y-9"
               >
-                <Input
+                <FInput
                   icon={personIcon}
                   type="text"
                   label="Full Name"
@@ -78,7 +78,7 @@ export default function ContactUs() {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                 />
-                <Input
+                <FInput
                   icon={emailIcon}
                   type="email"
                   label="Email Address"
