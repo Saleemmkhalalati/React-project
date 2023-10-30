@@ -10,7 +10,7 @@ export default function Typography({ component, children, className }) {
                     ? "font-normal text-xs text-myGray-500"
                     : component === "gradient-text"
                     ? "font-bold text-xl bg-gradient-to-b from-primary from-15% to-secondary to-85% transform rotate-15 bg-clip-text text-transparent"
-                    : "font-normal text-base text-myGray-600"
+                    : "font-normal text-base text-myGray-600" // p
             }`}
         >
             {children}
