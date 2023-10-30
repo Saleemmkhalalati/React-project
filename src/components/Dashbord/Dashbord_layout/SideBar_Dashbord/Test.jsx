@@ -1,131 +1,136 @@
-// import React from 'react'
-// import { NavLink, useLocation, useRoutes } from "react-router-dom";
-// import SubMenu from "./SubMenu"
+import React, { useState } from 'react';
+// import {
+//   MdOutlineDashboard,
+//   MdAccountCircle,
+//   MdAnalytics,
+//   MdOutlineSettings,
+//   MdLogout,
+// } from 'react-icons/md';
+// import {
+//   BsChevronDown,
+//   BsChatLeftText,
+//   BsCalendarCheck,
+//   BsFiles,
+//   BsServer,
+// } from 'react-icons/bs';
+
+const Menus = [
+  { title: 'Dashboard', src: 'Chart_fill', icon :null },
+  { title: 'Inbox', src: 'Chat', icon: null },
+  { title: 'Accounts', src: 'User', gap: true, icon: null },
+  { title: 'Schedule ', src: 'Calendar', icon: null},
+  {
+    title: 'Services',
+    src: 'Services',
+    icon: null,
+    subMenus: [
+      {
+        title: 'Service 1',
+        src: '/services/services1',
+
+        cName: 'sub-nav',
+      },
+      {
+        title: 'Service 2',
+        src: '/services/services2',
+
+        cName: 'sub-nav',
+      },
+      {
+        title: 'Service 3',
+        src: '/services/services3',
+      },
+    ],
+  },
+  { title: 'Analytics', src: 'Chart', icon: null },
+  { title: 'Files ', src: 'Folder', gap: true, icon: null },
+  { title: 'Setting', src: 'Setting', icon: null },
+  { title: 'Logout', src: 'Logout', icon: null },
+]
 
 
 const Test = () => {
+  console.log("tes")
   
-//     const subMenusList = [
-//         {
-//           name: "build",
-//         //   icon: RiBuilding3Line,
-//           menus: ["auth", "app settings", "stroage", "hosting"],
-//         },
-//         {
-//           name: "analytics",
-//         //   icon: TbReportAnalytics,
-//           menus: ["dashboard", "realtime", "events"],
-//         },
-//       ];
+  const [open, setOpen] = useState(true);
+  const [subMenuOpen, setSubMenuOpen] = useState(false);
+  const toggleSidebar = () => {
+    setOpen(!open);
+  }
+
   return (
 
-    <div>
+    <div className=" h-screen flex items-end justify-end red ">
+      {/* for md and sm screen */}
+    <button
+      className="fixed lg:hidden z-90 bottom-10 right-8 bg-teal-800 w-10 h-10 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-teal-800   duration-300"
+      onClick={toggleSidebar}
+    >
+      <span class="text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          class="w-6 m-auto"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"
+          />
+        </svg>
+      </span>
+    </button>
+
     <div
-   onClick={() => setOpen(false)}
-//       className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${
-//         open ? "block" : "hidden"
-//       } `}
-//     ></div>
-//     <div
-//     //   ref={sidebarRef}
-      
-    
-//       animate={open ? "open" : "closed"}
-//       className=" bg-white text-gray shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
-//           overflow-hidden md:relative fixed
-//        h-screen "
-//     >
-//       <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
-//         <img
-//           // src="https://img.icons8.com/color/512/firebase.png"
-//           width={45}
-//           alt=""
-//         />
-//         <span className="text-xl whitespace-pre">Fireball</span>
-//       </div>
-
-//       <div className="flex flex-col  h-full">
-//         <ul className="whitespace-pre px-2.5 text-[0.9rem] py-5 flex flex-col gap-1  font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100   md:h-[68%] h-[70%]">
-//           <li>
-//             <NavLink to={"/"} className="link">
-//               {/* <AiOutlineAppstore size={23} className="min-w-max" /> */}
-//               All Apps
-//             </NavLink>
-//           </li>
-//           <li>
-//             <NavLink to={"/authentication"} className="link">
-//               {/* <BsPerson size={23} className="min-w-max" /> */}
-//               Authentication
-//             </NavLink>
-//           </li>
-//           <li>
-//             <NavLink to={"/stroage"} className="link">
-//               {/* <HiOutlineDatabase size={23} className="min-w-max" /> */}
-//               Stroage
-//             </NavLink>
-//           </li>
-
-//           { (
-//             <div className="border-y py-5 border-slate-300 ">
-//               <small className="pl-3 text-slate-500 inline-block mb-2">
-//                 Product categories
-//               </small>
-//               {subMenusList?.map((menu) => (
-//                 <div key={menu.name} className="flex flex-col gap-1">
-//                   <SubMenu data={menu} />
-//                 </div>
-//               ))}
-//             </div>
-//           )}
-//           <li>
-//             <NavLink to={"/settings"} className="link">
-//               {/* <SlSettings size={23} className="min-w-max" /> */}
-//               Settings
-//             </NavLink>
-//           </li>
-//         </ul>
-//         {open && (
-//           <div className="flex-1 text-sm z-50  max-h-48 my-auto  whitespace-pre   w-full  font-medium  ">
-//             <div className="flex border-y border-slate-300 p-4 items-center justify-between">
-//               <div>
-//                 <p>Spark</p>
-//                 <small>No-cost $0/month</small>
-//               </div>
-//               <p className="text-teal-500 py-1.5 px-3 text-xs bg-teal-50 rounded-xl">
-//                 Upgrade
-//               </p>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//       <div
-//         onClick={() => {
-//           setOpen(!open);
-//         }}
-//         animate={
-//           open
-//             ? {
-//                 x: 0,
-//                 y: 0,
-//                 rotate: 0,
-//               }
-//             : {
-//                 x: -10,
-//                 y: -200,
-//                 rotate: 180,
-//               }
-//         }
-//         transition={{ duration: 0 }}
-//         className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer"
-//       >
-//         {/* <IoIosArrowBack size={25} /> */}
-//       </div>
-//     </div>
-//     <div className="m-3 md:hidden  " onClick={() => setOpen(true)}>
-//       {/* <MdMenu size={25} /> */}
-//     </div>
-//   </div>
-  )
-}
-
+      className={` ${
+        open ? 'w-48 px-2 ' : 'w-0 '
+      } lg:w-72 bg-teal-800 h-screen   relative duration-500`}
+    >
+      <div className=" justify-center mt-3">
+        <h1
+          className={`text-white  font-medium text-2xl text-center duration-200 ${
+            !open && 'invisible'
+          }`}
+        >
+          LOGO
+        </h1>
+      </div>
+      <ul className="pt-6">
+        {Menus.map((Menu, index) => (
+          <>
+            <li
+              key={index}
+              className={`flex  rounded-md p-2 cursor-pointer hover:bg-teal-400 text-white text-sm items-center gap-x-4 
+            ${Menu.gap ? 'mt-9' : 'mt-2'}  `}
+            >
+              {Menu.icon ? Menu.icon : null}
+              <span className="flex-1">{Menu.title}</span>
+              {Menu.subMenus!=null && (
+                <img
+                src='./SideBar_Dashbord_images/Vector.svg'
+                  onClick={() => {setSubMenuOpen(!subMenuOpen); console.log("sssssssss")}}
+                  className={`${subMenuOpen && 'rotate-180 w-[100px] h-[100px] red bg-black'}`}
+                />
+              )}
+            </li>
+            {Menu.subMenus && subMenuOpen && open && (
+              <ul>
+                {Menu.subMenus.map((subMenuItem, idx) => (
+                  <li
+                    key={idx}
+                    className=" red flex px-5 cursor-pointer text-center text-sm text-gray-200 py-1"
+                  >
+                    {subMenuItem.title}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+                }
+            
 export default Test

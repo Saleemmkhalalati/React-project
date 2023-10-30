@@ -14,7 +14,8 @@ const DashbordLayout = () => {
         
        <div className="  flex">
       {/* <SideBardashbord/> */}
-      <Test/>
+    
+    <Test/>
 
        
         <div style={{width:"80%"}} className='bg-myGray-100'>
