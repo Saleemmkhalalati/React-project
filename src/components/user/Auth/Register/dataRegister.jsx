@@ -32,11 +32,6 @@ export const RegisterData = (showPassword,showRePass) => {
         placeHolder: t("register.inputFields.confirmPassword"),
         name: "repassword"
       },
-      {
-        inputType: "submit",
-        placeHolder: t("register.inputFields.submit"),
-        name :"submit"
-      }
     ],
     provider: [
       {
@@ -102,11 +97,6 @@ export const RegisterData = (showPassword,showRePass) => {
           }
         ]
       },
-      {
-        inputType: "submit",
-        name :"submit",
-        placeHolder: t("register.inputFields.submit")
-      }
     ],
   };
 };

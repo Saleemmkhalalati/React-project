@@ -22,7 +22,7 @@ const ConfirmEmail = () => {
           </div>
         </div>
         {/* Link to go back */}
-        <p className='text-secondary hover:text-success cursor-pointer  text-[16px] font-normal leading-[25.14px]'>{t("confirmEmail.back")}</p>
+        <Link className='text-secondary hover:text-success cursor-pointer  text-[16px] font-normal leading-[25.14px]'>{t("confirmEmail.back")}</Link>
       </div>
       <div className='w-[90%] lg:w-[45%]'>
         {/* Display a container with an image for confirmation */}
