@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { RegisterData } from './dataRegister';
-import BackPolygon from '../../../utilities/BackPolygon/BackPolygon';
+import BackPolygon from '../../../utilities/BackPolygon';
 import docImg from "./RegisterImage/Intersect.svg";
 import ContainerImg from '../ContainerImage/ContainerImg';
 import { useTranslation } from 'react-i18next';
-import "./Register.css"
 import {easeInOut, motion} from 'framer-motion'
 import Typography from '../../../utilities/Typography';
 import { Link } from 'react-router-dom';
@@ -22,18 +21,13 @@ const Register = () => {
   const [showBankDetails, setShowBankDetails] = useState(false); // Shows/hides bank details
   const [showPassword, setShowPassword] = useState(false); // Shows/hides password
   const [showRePass, setReShowPass] = useState(false); // Shows/hides re-entered password
-
   // Language translation
-  const { t } = useTranslation("global");
-
+  const { t, i18n} = useTranslation("global");
+  const currentLanguage = i18n.language;
   // Function to toggle between "patient" and "Service Provider"
   const changeUserType = () => {
     userType === "patient" ? setUserType("Service Provider") : setUserType("patient");
   };
-
-  const { i18n } = useTranslation();
-  const currentLanguage = i18n.language;
-
   // Handle the selection of the service type
   const handleServiceType = (event) => {
     const selectedService = event.target.textContent;
@@ -42,10 +36,8 @@ const Register = () => {
       ...formData,
       serviceSelected: selectedService,
     });
-
     setShowDrop(false);
   };
-
   // Handle form input changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -53,29 +45,24 @@ const Register = () => {
       ...formData,
       [name]: value,
     });
-
     // Check if the field is empty
     setIsEmpty({
       ...isEmpty,
       [name]: value === '' ? true : false,
     });
   };
-
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsFormSubmitted(true);
-
     // Check if the passwords match
     if (formData.password !== formData.repassword) {
       setIsPasswordMatch(false);
       console.log("Passwords do not match");
     } else {
       setIsPasswordMatch(true);
-
       const requiredFields = ["email", "password", "repassword", "number", "business", "serviceSelected"];
       const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
-
       if (hasEmptyFields) {
         console.log("Some required fields are empty.");
       } else {
@@ -83,13 +70,11 @@ const Register = () => {
       }
     }
   };
-
   // Send form data to the server
   const sendFormDataToServer = () => {
     console.log("Sending data to the server...");
     console.log(formData);
   };
-
   // Handle input field focus
   const handleFocus = (event) => {
     const { name } = event.target;
@@ -98,7 +83,6 @@ const Register = () => {
       [name]: true,
     });
   };
-
   // Handle input field blur
   const handleBlur = (event) => {
     const { name } = event.target;
@@ -107,31 +91,26 @@ const Register = () => {
       [name]: false,
     });
   };
-
   // Handle show/hide password
   const handleShowPass = (event) => {
     event.target.alt === "password" ? setShowPassword(!showPassword) : event.target.alt === "repassword" ? setReShowPass(!showRePass) : null;
   };
-
   // Replace this function with your own implementation
   const registerData = RegisterData(showPassword, showRePass);
   const userData = userType === "patient" ? registerData.patient : registerData.provider;
-
   return (
     <>
       <div className={`relative py-[70px] flex justify-between flex-col ${currentLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"} items-center lg:items-start gap-[45px] overflow-hidden`}>
         <div className='w-[90%] lg:w-[50%] p-[25px] md:p-[70px] pr-0 flex flex-col gap-[56px]'>
           <div className='flex flex-col gap-[32px] text-center lg:text-start'>
-            <Typography component="h1" className='leading-[51.99px]'>{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</Typography>
-            <div className='leading-[25.14px] flex justify-center lg:justify-start gap-[8px]'>
-              <Typography component="h4" className='text-mtGray-600'>{t("register.loginQuest")}</Typography>
-              <Link to="/login" className='text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</Link>
-            </div>
+            <Typography component="h1">{userType === "patient" ? t("register.headPatient") : t("register.headProvider")}</Typography>
+            <Typography component="h4" >{t("register.loginQuest")}
+              <Link to="/login" className='ms-1 text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</Link>
+            </Typography>
           </div>
           <form className='flex flex-col gap-[32px]' onSubmit={handleSubmit}>
             {userData.map((data, index) => {
               const isFieldEmpty = isEmpty[data.name];
-
               return (
                 <div key={index}>
                   {data.name !== 'submit' && data.name !== "serviceType" && data.name !== "bank" ? (
@@ -163,7 +142,7 @@ const Register = () => {
                       data.name !== "bank" ? (
                         <>
                           <div name="serviceType" value={serviceSelected}>
-                            <div className={`flex justify-between items-center custom-select flex bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
+                            <div className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
                               <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
                               {(serviceSelected !== "") && 
                               <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
@@ -232,5 +211,4 @@ const Register = () => {
     </>
   );
 };
-
 export default Register;

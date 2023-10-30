@@ -25,8 +25,9 @@ import DashbordLayout from "./components/Dashbord/Dashbord_layout/DashbordLayout
 //     );
 
 import Login from "./components/user/Auth/Login/Login";
+import AboutUs from "./components/user/AboutUs/AboutUS";
 import Register from "./components/user/Auth/Register/Register";
-import ConfirmEnail from './components/user/Auth/ConfirmEmail/ConfirmEmail'
+import ConfirmEmail from "./components/user/Auth/ConfirmEmail/ConfirmEmail";
 function App() {
   return (
     <div className="font-alegreya">
@@ -34,13 +35,12 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/confirm-email" element={<ConfirmEnail />} />
+          <Route path="/confirm-email" element={<ConfirmEmail />} />
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Landing />} />
             <Route path="/services" element={<></>} />
-            <Route path="/about-us" element={<></>} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
-
           </Route>
         <Route path="/dashbord" element={<DashbordLayout/>} />
 
