@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import {easeInOut, motion} from 'framer-motion'
 import Typography from '../../../utilities/Typography';
 import { Link } from 'react-router-dom';
+import Button from '../../../utilities/Button';
 
 const Register = () => {
   // State variables
@@ -27,6 +28,9 @@ const Register = () => {
   // Function to toggle between "patient" and "Service Provider"
   const changeUserType = () => {
     userType === "patient" ? setUserType("Service Provider") : setUserType("patient");
+    setFormData({})
+    setIsEmpty({})
+    setIsFormSubmitted(false)
   };
   // Handle the selection of the service type
   const handleServiceType = (event) => {
@@ -61,7 +65,7 @@ const Register = () => {
       console.log("Passwords do not match");
     } else {
       setIsPasswordMatch(true);
-      const requiredFields = ["email", "password", "repassword", "number", "business", "serviceSelected"];
+      const requiredFields = userType=== "Service Provider" ? ["email", "password", "repassword", "number", "business", "serviceSelected"] : ["email","password","repassword"];
       const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
       if (hasEmptyFields) {
         console.log("Some required fields are empty.");
@@ -97,7 +101,6 @@ const Register = () => {
   };
   // Replace this function with your own implementation
   const registerData = RegisterData(showPassword, showRePass);
-  const userData = userType === "patient" ? registerData.patient : registerData.provider;
   return (
     <>
       <div className={`relative py-[70px] flex justify-between flex-col ${currentLanguage === "ar" ? "lg:flex-row-reverse" : "lg:flex-row"} items-center lg:items-start gap-[45px] overflow-hidden`}>
@@ -108,14 +111,56 @@ const Register = () => {
               <Link to="/login" className='ms-1 text-success hover:text-secondary border-b-solid border-b-success hover:border-secondary border-b-[1px] cursor-pointer'>{t("register.loginLink")}</Link>
             </Typography>
           </div>
-          <form className='flex flex-col gap-[32px]' onSubmit={handleSubmit}>
-            {userData.map((data, index) => {
+          {userType === "patient" && 
+            <form  className='flex flex-col gap-[32px]' onSubmit={handleSubmit}>
+              {registerData.patient.map((data,key)=>{
               const isFieldEmpty = isEmpty[data.name];
-              return (
-                <div key={index}>
-                  {data.name !== 'submit' && data.name !== "serviceType" && data.name !== "bank" ? (
+                return(
+                  <div key={key}> 
                     <>
-                      <div className={`flex bg-[#FFFFFF] relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) ? 'border-error' : ''} ${isFocus[data.name] ? "border-primary" : "border-myGray-400"}`}>
+                    <div className={`flex bg-[#FFFFFF] relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] border-myGray-400 ${isFormSubmitted && (isFieldEmpty || isFieldEmpty=== undefined) ? 'border-error' : ""} ${isFocus[data.name] ? "border-primary" : ""}`}>
+                      <input
+                        className='w-full border-none outline-none  placeholder:text-mySlate'
+                        name={data.name}
+                        type={data.name === "password" && showPassword ? "text" : data.name === "repassword" && showRePass ? "text" : data.inputType}
+                        placeholder={isFocus[data.name] ? '' : data.placeHolder}
+                        onChange={handleInputChange}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                      />
+                      {(isFocus[data.name] || formData[data.name]) &&
+                      <motion.div className='w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                        <label>{data.placeHolder}</label>
+                        <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
+                      </motion.div>}
+                      <img src={data.inputIcon} alt={data.name} onClick={handleShowPass} className='w-[17px] h-[17px] m-auto cursor-pointer f' />
+                    </div>
+                    {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+                    {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.passwordMatch")}</motion.div>}
+                  </>
+                  </div>
+                )
+              })}
+              <Button
+                  type="submit"
+                  
+                >
+                  Register as apatient
+              </Button>
+              <div onClick={changeUserType} className='text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
+            </form>
+          }
+          {userType === "Service Provider" && 
+          <form  className='flex flex-col gap-[32px]' onSubmit={handleSubmit}>
+            {registerData.provider.map((data,key)=>{
+              const isFieldEmpty = isEmpty[data.name];
+              return(
+                <>
+                  {(data.inputType !== "select" && data.name !=="bank") &&
+                
+                  <div key={key}> 
+                      <>
+                      <div key={key} className={`flex bg-[#FFFFFF] relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) ? 'border-error' : ''} ${isFocus[data.name] ? "border-primary" : "border-myGray-400"}`}>
                         <input
                           className='w-full border-none outline-none  placeholder:text-mySlate'
                           name={data.name}
@@ -126,7 +171,7 @@ const Register = () => {
                           onBlur={handleBlur}
                         />
                         {(isFocus[data.name] || formData[data.name]) &&
-                          <motion.div className='w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                        <motion.div className='w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
                           <label>{data.placeHolder}</label>
                           <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
                         </motion.div>}
@@ -135,68 +180,74 @@ const Register = () => {
                       {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
                       {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x:-100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.passwordMatch")}</motion.div>}
                     </>
-                  ) : (
-                    data.inputType !== "select" && data.name !== "bank" ? (
-                      <input className='w-full hover:opacity-80 cursor-pointer py-[8px] text-center rounded-[6px] text-[#FFFFFF] font-normal text-[16px] leading-[25.14px] bg-linear' type={data.inputType} name={data.inputType} value={data.placeHolder} />
-                    ) : (
-                      data.name !== "bank" ? (
-                        <>
-                          <div name="serviceType" value={serviceSelected}>
-                            <div className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
-                              <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
-                              {(serviceSelected !== "") && 
-                              <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
-                                  <label>{data.placeHolder}</label>
-                                  <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
-                              </motion.div>}
-                              <img src={data.inputIcon} alt="dropdown" className='w-[18px] h-[18px]' />
-                            </div>
-                            {showDrop && (
-                              <ul className='bg-[#FFFFFF] opacity-100 flex flex-col gap-[1px] shadow-lg rounded-[8px]'>
-                                {data.options.map((opt, index) => (
-                                  <li key={index} className={`text-[12px] text-myGray-600 px-[8px] py-[1px] cursor-pointer w-full selectService ${opt === serviceSelected ? 'select' : ''}`} onClick={handleServiceType}>
-                                    {opt}
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                          {isFormSubmitted && (serviceSelected === "") && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
-                          
-                        </>
-                      ) : (
-                        <div className='flex flex-col gap-[32px]'>
-                          <div className='flex gap-[5px] cursor-pointer transition-500' onClick={() => setShowBankDetails(prev => !prev)}>
-                            <label className='cursor-pointer'>{data.placeHolder}</label>
-                            <img src={data.inputIcon} alt="bank-details" className='w-[15px] h-[15px]' />
-                          </div>
-                          {showBankDetails && data.details.map((inp, index) => (
-                            <div key={index} className={`flex bg-[#FFFFFF] relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFocus[inp.name] ? "border-primary" : "border-myGray-400"}`}>
-                              <input
-                                className='w-full outline-none bg-transparent placeholder:text-mySlate'
-                                name={inp.name}
-                                placeholder={isFocus[inp.name] ? '' : inp.placeHolder}
-                                onChange={handleInputChange}
-                                onFocus={handleFocus}
-                                onBlur={handleBlur}
-                              />
-                              {(isFocus[inp.name] || formData[inp.name]) &&
-                                <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
-                                  <label>{inp.placeHolder}</label>
-                                  <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
-                                </motion.div>}
-                              <img src={inp.inputIcon} alt={inp.inputType} className='w-[17px] h-[17px]'/>
-                            </div>
+                  </div>}
+                  {data.inputType === "select" &&
+                  <>
+                    <div name="serviceType" value={serviceSelected}>
+                      <div className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
+                        <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
+                        {(serviceSelected !== "") && 
+                        <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                            <label>{data.placeHolder}</label>
+                            <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
+                        </motion.div>}
+                        <img src={data.inputIcon} alt="dropdown" className='w-[18px] h-[18px]' />
+                      </div>
+                      {showDrop && (
+                        <ul className='bg-[#FFFFFF] opacity-100 flex flex-col gap-[1px] shadow-lg rounded-[8px]'>
+                          {data.options.map((opt, index) => (
+                            <li key={index} className={`text-[12px] text-myGray-600 px-[8px] py-[1px] cursor-pointer w-full selectService ${opt === serviceSelected ? 'select' : ''}`} onClick={handleServiceType}>
+                              {opt}
+                            </li>
                           ))}
-                        </div>
-                      )
-                    )
-                  )}
+                        </ul>
+                      )}
+                    {isFormSubmitted && (serviceSelected === "") && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+
+                    </div>
+                          
+                  </>}
+                  {data.name == "bank" &&
+                  <div className='flex flex-col gap-[32px]'>
+                  <div className='flex gap-[5px] cursor-pointer transition-500' onClick={() => setShowBankDetails(prev => !prev)}>
+                    <label className='cursor-pointer'>{data.placeHolder}</label>
+                    <img src={data.inputIcon} alt="bank-details" className='w-[15px] h-[15px]' />
+                  </div>
+                  {showBankDetails && data.details.map((inp, index) => (
+                    <div key={index} className={`flex bg-[#FFFFFF] relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFocus[inp.name] ? "border-primary" : "border-myGray-400"}`}>
+                      <input
+                        className='w-full outline-none bg-transparent placeholder:text-mySlate'
+                        name={inp.name}
+                        placeholder={isFocus[inp.name] ? '' : inp.placeHolder}
+                        onChange={handleInputChange}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                      />
+                      {(isFocus[inp.name] || formData[inp.name]) &&
+                        <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                          <label>{inp.placeHolder}</label>
+                          <div className='h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] '></div>
+                        </motion.div>}
+                      <img src={inp.inputIcon} alt={inp.inputType} className='w-[17px] h-[17px]'/>
+                    </div>
+                  ))}
                 </div>
-              );
+                  }
+                  
+                </>
+              )
             })}
-            <div onClick={changeUserType} className='text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
+            <Button
+                  type="submit"
+                  
+                >
+                  Register as a Sevice Provider
+              </Button>
+              <div onClick={changeUserType} className='text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
+            
           </form>
+          }
+          
         </div>
         <div className='w-[90%] lg:w-[45%] shrink-0 lg:ml-auto'>
           <ContainerImg docImg={docImg} action={t('register.action')} />
