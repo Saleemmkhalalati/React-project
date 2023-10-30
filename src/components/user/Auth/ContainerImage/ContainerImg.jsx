@@ -17,10 +17,7 @@ const ContainerImg = ({ docImg, action }) => {
             </div>
             <div className="w-[90%] lg:w-[74%] flex gap-[24px] flex-col ml-auto pr-[22px]">
                 {/* Heading for the container */}
-                <Typography
-                    component={"gradient-text"}
-                    className="leading-[20.82px]"
-                >
+                <Typography component={"gradient-text"}>
                     {action} ...
                 </Typography>
                 {/* Text content */}
