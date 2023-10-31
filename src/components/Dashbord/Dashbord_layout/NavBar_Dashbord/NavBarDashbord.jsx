@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from "../../../utilities/Logo";
 import searchIcon from "./NavBar_Dashbord_images/Search.svg"
 import Avtar from "./NavBar_Dashbord_images/Avtar.png"
 import Notification from "./NavBar_Dashbord_images/Notification.svg"
@@ -11,13 +10,10 @@ import MultiLangDropdown from "../../../utilities/MultiLangDropdown";
 
 const NavBarDashbord = () => {
   return (
-    <div className='py-5 px-10  flex  justify-between'>
-      
-  
-
+    <div className='py-5 px-10  flex  md:justify-between justify-end'>
       
         {/* input serch  */}
-        <div className='relative w-1/2 '>
+        <div className='relative w-1/2 hidden md:block '>
           
            
                     <input
