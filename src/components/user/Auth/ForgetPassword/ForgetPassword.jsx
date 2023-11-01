@@ -24,7 +24,6 @@ export default function ForgetPassword() {
 
     // regex for email validation 
     const regx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-
     const handleSubmit = (e) => {
         e.preventDefault()
         if (email.match(regx)) {
@@ -44,7 +43,6 @@ export default function ForgetPassword() {
                 <div className='relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]'>
                     <h1 className='text-4xl text-primary font-bold'>{Forget.title}</h1>
                     <p>{Forget.p}</p>
-
                     <form onSubmit={handleSubmit} className='relative space-y-5'>
                         <div className='relative'>
                             <input onChange={(e) => setEmail(e.target.value)} className={`w-full border border-gray focus:outline-none p-2 ${err ? 'border-error outline-none' : ''}`} placeholder={Forget.placeholder} type="text" required />
