@@ -7,6 +7,7 @@ export function FInput({
     onChange,
     icon,
     errorMsg,
+    type,
 }) {
     console.log(errorMsg);
     return (
@@ -30,6 +31,7 @@ export function FInput({
                         value={value}
                         onBlur={onBlur}
                         onChange={onChange}
+                        type={type}
                     />
                     <span className="absolute start-0 -top-[1.40rem] px-1 text-mySlate text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mySlate peer-placeholder-shown:top-0 peer-focus:-top-[1.40rem] peer-focus:text-mySlate peer-focus:text-sm rounded-md bg-gradient-to-b from-transparent from-65% to-white to-35%">
                         {label}
@@ -108,6 +110,7 @@ Textarea.propTypes = {
     errorMsg: PropTypes.string.isRequired,
     rows: PropTypes.number,
 };
+import { easeInOut, motion } from "framer-motion";
 export function Input({
     label,
     name,
@@ -115,16 +118,19 @@ export function Input({
     onBlur,
     onChange,
     icon,
+    iconOnClick,
     errorMsg,
+    type,
 }) {
+    console.log(errorMsg);
     return (
-        <div className="relative">
+        <>
             <div
-                className={`flex flex-row py-2 px-3 border-[1px] ${
-                    errorMsg !== ""
+                className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${
+                    errorMsg
                         ? "border-error "
                         : "border-myGray-400 focus-within:border-primary "
-                } bg-white rounded-lg transition-all duration-100 ease-in-out`}
+                } `}
             >
                 <label
                     htmlFor={name}
@@ -132,8 +138,8 @@ export function Input({
                 >
                     <input
                         className="peer w-full placeholder-transparent text-mySlate outline-0 focus:outline-none"
-                        placeholder="placeholder"
-                        id={name}
+                        placeholder="p"
+                        type={type}
                         name={name}
                         value={value}
                         onBlur={onBlur}
@@ -143,14 +149,24 @@ export function Input({
                         {label}
                     </span>
                 </label>
-                <img src={icon} width={12} height={12} alt="icon" />
+                <img
+                    src={icon}
+                    alt="icon"
+                    onClick={iconOnClick}
+                    className={`w-4 h-w-4 ${
+                        iconOnClick ? "cursor-pointer" : ""
+                    }`}
+                />
             </div>
-            {errorMsg !== "" && (
-                <p className="ps-1 pt-2 text-error font-normal text-xs">
-                    {errorMsg}
-                </p>
-            )}
-        </div>
+            <motion.div
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, type: easeInOut }}
+                className="text-xs text-error"
+            >
+                {errorMsg}
+            </motion.div>
+        </>
     );
 }
 Input.propTypes = {
@@ -162,5 +178,6 @@ Input.propTypes = {
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     icon: PropTypes.string.isRequired,
+    iconOnClick: PropTypes.func,
     errorMsg: PropTypes.string.isRequired,
 };
