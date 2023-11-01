@@ -2,13 +2,13 @@ import { useState } from "react";
 import { RegisterData } from "./dataRegister";
 import BackPolygon from "../../../utilities/BackPolygon";
 import docImg from "./RegisterImage/Intersect.svg";
-import ContainerImg from '../ContainerImage/ContainerImg';
-import { useTranslation } from 'react-i18next';
-import { easeInOut, motion } from 'framer-motion'
-import Typography from '../../../utilities/Typography';
-import { Link } from 'react-router-dom';
-import Button from '../../../utilities/Button';
-
+import ContainerImg from "../ContainerImage/ContainerImg";
+import { useTranslation } from "react-i18next";
+import { easeInOut, motion } from "framer-motion";
+import Typography from "../../../utilities/Typography";
+import { Link } from "react-router-dom";
+import Button from "../../../utilities/Button";
+import { Input } from "../../../utilities/Inputs";
 const Register = () => {
   // State variables
   const [userType, setUserType] = useState("patient"); // User type, defaults to "patient"
@@ -35,7 +35,7 @@ const Register = () => {
     setIsEmpty({});
     setIsFormSubmitted(false);
   };
-  console.log(isEmpty)
+  console.log(isEmpty);
   // Handle the selection of the service type
   const handleServiceType = (event) => {
     const selectedService = event.target.textContent;
@@ -46,27 +46,46 @@ const Register = () => {
     });
     setShowDrop(false);
   };
-  const handleSetErrors=(name,msgError)=>{
-    console.log(name)
+  const handleSetErrors = (name, msgError) => {
+    console.log(name);
     setErrors({
       ...errors,
       [name]: msgError,
     });
-  }
+  };
   // Handle form input changes
   const handleInputChange = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
     });
-    // Check if the field is empty
-    setIsEmpty({
-      ...isEmpty,
-      [event.target.name]: event.target.value === '' ? true : false,
-    });
+    if (event.target.value === "") {
+      setIsValid(false);
+      console.log(isValid);
+      handleSetErrors([event.target.name], "this Field is req");
+      console.log("this Field is req");
+    }
+    if (
+      event.target.name === "repassword" &&
+      formData.password !== formData.repassword
+    ) {
+      setIsValid(false);
+      console.log(isValid);
+      handleSetErrors([event.target.name], "Passwords do not match");
+      console.log("Passwords do not match");
+    } else if (Object.keys(errors).length === 0) {
+      setIsValid(true);
+      console.log("vfd");
+    }
+
+    // // Check if the field is empty
+    // setIsEmpty({
+    //   ...isEmpty,
+    //   [event.target.name]: event.target.value === '' ? true : false,
+    // });
   };
   // Handle form submission
-  console.log(errors)
+  console.log(errors);
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsSubmitting(true);
@@ -76,12 +95,25 @@ const Register = () => {
       console.log("Passwords do not match");
     } else {
       setIsPasswordMatch(true);
-      const requiredFields = userType === "Service Provider" ? ["email", "password", "repassword", "number", "business", "serviceSelected"] : ["email", "password", "repassword"];
-      const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
+      const requiredFields =
+        userType === "Service Provider"
+          ? [
+              "email",
+              "password",
+              "repassword",
+              "number",
+              "business",
+              "serviceSelected",
+            ]
+          : ["email", "password", "repassword"];
+      const hasEmptyFields = requiredFields.some(
+        (fieldName) => !formData[fieldName]
+      );
       if (!hasEmptyFields) {
+        setIsValid(true);
         sendFormDataToServer();
-      }
-      else {
+      } else {
+        setIsValid(false);
         console.log("Some required fields are empty.");
       }
     }
@@ -139,79 +171,53 @@ const Register = () => {
               </Link>
             </Typography>
           </div>
-          {userType === "patient" &&
-            <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
-              {registerData.patient.map((data, key) => {
+          {userType === "patient" && (
+            <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+              <Input
+                label={"email"}
+                name="email"
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                type="email"
+                errorMsg={errors.email ? "lrevl" : ""}
+                icon={email}
+              />
+              {/* {registerData.patient.map((data, key) => {
                 const isFieldEmpty = isEmpty[data.name];
                 return (
                   <div key={key}>
-                    <div
-                      className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${
-                        isFormSubmitted &&
-                        (isFieldEmpty || isFieldEmpty === undefined)
-                          ? "border-error "
-                          : "border-myGray-400 focus-within:border-primary "
-                      } `}
-                    >
+                    <div className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) ? 'border-error ' : "border-myGray-400 focus-within:border-primary "} `}>
                       <label
                         htmlFor={data.name}
-                        className="relative z-[0] w-full me-1 transition-all duration-100 ease-in"
-                      >
+                        className="relative z-[0] w-full me-1 transition-all duration-100 ease-in">
                         <input
-                          className="peer w-full placeholder-transparent text-mySlate outline-0 focus:outline-none"
+                          className='peer w-full placeholder-transparent text-mySlate outline-0 focus:outline-none'
                           placeholder="p"
                           name={data.name}
-                          type={
-                            data.name === "password" && showPassword
-                              ? "text"
-                              : data.name === "repassword" && showRePass
-                              ? "text"
-                              : data.inputType
-                          }
+                          type={data.name === "password" && showPassword ? "text" : data.name === "repassword" && showRePass ? "text" : data.inputType}
                           onChange={handleInputChange}
                           onBlur={handleBlur}
                         />
-                        <span className="absolute start-0 -top-[1.40rem] px-1 text-mySlate text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mySlate peer-placeholder-shown:top-0 peer-focus:-top-[1.40rem] peer-focus:text-mySlate peer-focus:text-sm rounded-md bg-gradient-to-b from-transparent from-65% to-white to-35%">
-                          {data.placeHolder}
-                        </span>
+                        <span className='absolute start-0 -top-[1.40rem] px-1 text-mySlate text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mySlate peer-placeholder-shown:top-0 peer-focus:-top-[1.40rem] peer-focus:text-mySlate peer-focus:text-sm rounded-md bg-gradient-to-b from-transparent from-65% to-white to-35%'>{data.placeHolder}</span>
                       </label>
-                      <img
-                        src={data.inputIcon}
-                        alt={data.name}
-                        onClick={handleShowPass}
-                        className="w-4 h-w-4 cursor-pointer"
-                      />
+                      <img src={data.inputIcon} alt={data.name} onClick={handleShowPass} className='w-4 h-w-4 cursor-pointer' />
                     </div>
-                    {isFormSubmitted &&
-                      (isFieldEmpty || isFieldEmpty === undefined) && (
-                        <motion.div
-                          initial={{ opacity: 0, x: -100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, type: easeInOut }}
-                          className="text-[12px] text-error"
-                        >
-                          {t("register.fieldRequier")}
-                        </motion.div>
-                      )}
-                    {!isPasswordMatch &&
-                      !(isFieldEmpty || isFieldEmpty === undefined) &&
-                      data.name === "repassword" && (
-                        <motion.div
-                          initial={{ opacity: 0, x: -100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, type: easeInOut }}
-                          className="text-xs text-error"
-                        >
-                          {t("register.passwordMatch")}
-                        </motion.div>
-                      )}
+                    {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+                    {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-xs text-error'>{t("register.passwordMatch")}</motion.div>}
                   </div>
                 )
-              })}
-              <Button type="submit">
+              })} */}
+              <Button type="submit" disabled={isSubmitting || !isValid}>
                 Register as apatient
               </Button>
-              <div onClick={changeUserType} className='text-base cursor-pointer font-normal w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
+              <div
+                onClick={changeUserType}
+                className="text-base cursor-pointer font-normal w-full text-center text-secondary hover:text-success"
+              >
+                {userType === "patient"
+                  ? t("register.toggleToProvider")
+                  : t("register.toggleToPatient")}
+              </div>
             </form>
           )}
           {userType === "Service Provider" && (
@@ -223,7 +229,19 @@ const Register = () => {
                     {data.inputType !== "select" && data.name !== "bank" && (
                       <div key={key}>
                         <>
-                          <div key={key} className={`flex bg-white relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) ? 'border-error' : ''} ${isFocus[data.name] ? "border-primary" : "border-myGray-400"}`}>
+                          <div
+                            key={key}
+                            className={`flex bg-white relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${
+                              isSubmitting &&
+                              (isFieldEmpty || isFieldEmpty === undefined)
+                                ? "border-error"
+                                : ""
+                            } ${
+                              isFocus[data.name]
+                                ? "border-primary"
+                                : "border-myGray-400"
+                            }`}
+                          >
                             <input
                               className="w-full border-none outline-none  placeholder:text-mySlate"
                               name={data.name}
@@ -259,18 +277,55 @@ const Register = () => {
                               className="w-[17px] h-[17px] m-auto cursor-pointer f"
                             />
                           </div>
-                          {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
-                          {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.passwordMatch")}</motion.div>}
+                          {isSubmitting &&
+                            (isFieldEmpty || isFieldEmpty === undefined) && (
+                              <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, type: easeInOut }}
+                                className="text-[12px] text-error"
+                              >
+                                {t("register.fieldRequier")}
+                              </motion.div>
+                            )}
+                          {!isPasswordMatch &&
+                            !(isFieldEmpty || isFieldEmpty === undefined) &&
+                            data.name === "repassword" && (
+                              <motion.div
+                                initial={{ opacity: 0, x: -100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, type: easeInOut }}
+                                className="text-[12px] text-error"
+                              >
+                                {t("register.passwordMatch")}
+                              </motion.div>
+                            )}
                         </>
                       </div>
                     )}
                     {data.inputType === "select" && (
                       <>
                         <div name="serviceType" value={serviceSelected}>
-                          <div className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
-                            <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
-                            {(serviceSelected !== "") &&
-                              <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
+                          <div
+                            className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${
+                              isSubmitting && serviceSelected === ""
+                                ? "border-error"
+                                : "border-myGray-400"
+                            }`}
+                            onClick={() => setShowDrop(!showDrop)}
+                          >
+                            <p>
+                              {serviceSelected === ""
+                                ? t("register.inputFields.serviceType")
+                                : `${serviceSelected}`}
+                            </p>
+                            {serviceSelected !== "" && (
+                              <motion.div
+                                className="place w-fit top-[-15px] text-mySlate z-[3] absolute"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, type: easeInOut }}
+                              >
                                 <label>{data.placeHolder}</label>
                                 <div className="h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] "></div>
                               </motion.div>
@@ -296,7 +351,16 @@ const Register = () => {
                               ))}
                             </ul>
                           )}
-                          {isFormSubmitted && (serviceSelected === "") && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+                          {isSubmitting && serviceSelected === "" && (
+                            <motion.div
+                              initial={{ opacity: 0, x: -100 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, type: easeInOut }}
+                              className="text-[12px] text-error"
+                            >
+                              {t("register.fieldRequier")}
+                            </motion.div>
+                          )}
                         </div>
                       </>
                     )}
@@ -387,3 +451,14 @@ const Register = () => {
   );
 };
 export default Register;
+import email from "./RegisterImage/Email.svg";
+import phone from "./RegisterImage/Phone.svg";
+import buisness from "./RegisterImage/Business.svg";
+import drop from "./RegisterImage/Dropdown.png";
+import bank from "./RegisterImage/Bank.svg";
+import card from "./RegisterImage/Card.svg";
+import code from "./RegisterImage/Code.svg";
+import showPass from "./RegisterImage/Vector.svg";
+import hidePassword from "./RegisterImage/icons8-eye-26.png";
+import { key, keys } from "localforage";
+import { object } from "yup";
