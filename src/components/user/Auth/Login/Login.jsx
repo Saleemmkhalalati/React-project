@@ -9,22 +9,16 @@ import { useState } from "react";
 
 export default function Login() {
   const [email, SetEmail] = useState("");
-  const [password, SetPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [accept, setAccept] = useState("");
-  const [showpass, Setshowpass] = useState(false);
+  const [showpass, setshowpass] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [isFilledPass, setIsFilledPass] = useState(false);
 
-  //show password or
+  //show password
   function ShowPassword() {
-    Setshowpass(!showpass);
+    setshowpass(!showpass);
   }
-
-  //check if email and password has a value
-  const checkEmailAndPass = () => {
-    email.length === "" ? setIsFilled(false) : setIsFilled(true);
-    password === "" ? setIsFilledPass(false) : setIsFilledPass(true);
-  };
 
   async function submit(e) {
     e.preventDefault();
@@ -43,14 +37,12 @@ export default function Login() {
           <div className="min-w-[300px]">
             <p className="text-mySlate text-md">
               Don’t have an account with us?
-              {
-                <Link
-                  className="text-success text-xs md:text-base border-b-[1px] border-success hover:text-secondary hover:border-secondary"
-                  to={"/register"}
-                >
-                  Create account
-                </Link>
-              }
+              <Link
+                className="text-success text-xs md:text-base border-b-[1px] border-success hover:text-secondary hover:border-secondary"
+                to={"/register"}
+              >
+                Create account
+              </Link>
             </p>
           </div>
         </div>
@@ -59,23 +51,26 @@ export default function Login() {
             <input
               type="email"
               value={email}
+              onFocus={() => setIsFilled(true)}
               onChange={(e) => {
                 SetEmail(e.target.value);
-                checkEmailAndPass();
+                setIsFilled(e.target.value !== "");
               }}
-              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${accept && email === "" ? "border-error" : ""
-                }`}
+              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${
+                accept && email === "" ? "border-error" : ""
+              }`}
             />
             <label
-              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${isFilled
-                ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
-                : "top-3"
-                }`}
+              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${
+                isFilled
+                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                  : "top-3"
+              }`}
             >
               Email Address
             </label>
             <div className="absolute end-4 top-[16px]">
-              <img className="" src={iconEmail} alt="" />
+              <img className="" src={iconEmail} alt="img" />
             </div>
             {accept && email === "" && (
               <p className="text-sm text-error">This field is required</p>
@@ -86,18 +81,21 @@ export default function Login() {
             <input
               type={showpass ? "text" : "password"}
               value={password}
+              onFocus={() => setIsFilledPass(true)}
               onChange={(e) => {
-                SetPassword(e.target.value);
-                checkEmailAndPass();
+                setPassword(e.target.value);
+                setIsFilledPass(e.target.value !== "");
               }}
-              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${accept && password === "" ? "border-error" : ""
-                }`}
+              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${
+                accept && password === "" ? "border-error" : ""
+              }`}
             />
             <label
-              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${isFilledPass
-                ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
-                : "top-3"
-                }`}
+              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${
+                isFilledPass
+                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                  : "top-3"
+              }`}
             >
               Password
             </label>
