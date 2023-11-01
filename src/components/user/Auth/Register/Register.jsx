@@ -2,19 +2,21 @@ import { useState } from "react";
 import { RegisterData } from "./dataRegister";
 import BackPolygon from "../../../utilities/BackPolygon";
 import docImg from "./RegisterImage/Intersect.svg";
-import ContainerImg from "../ContainerImage/ContainerImg";
-import { useTranslation } from "react-i18next";
-import { easeInOut, motion } from "framer-motion";
-import Typography from "../../../utilities/Typography";
-import { Link } from "react-router-dom";
-import Button from "../../../utilities/Button";
+import ContainerImg from '../ContainerImage/ContainerImg';
+import { useTranslation } from 'react-i18next';
+import { easeInOut, motion } from 'framer-motion'
+import Typography from '../../../utilities/Typography';
+import { Link } from 'react-router-dom';
+import Button from '../../../utilities/Button';
 
 const Register = () => {
   // State variables
   const [userType, setUserType] = useState("patient"); // User type, defaults to "patient"
   const [formData, setFormData] = useState({}); // Form data
+  const [errors, setErrors] = useState({}); // Form data
   const [isEmpty, setIsEmpty] = useState({}); // Checks if form fields are empty
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false); // Indicates if the form is submitted
+  const [isSubmitting, setIsSubmitting] = useState(false); // Indicates if the form is submitted
+  const [isValid, setIsValid] = useState(true); // Indicates if the form is Valid
   const [isPasswordMatch, setIsPasswordMatch] = useState(true); // Checks if passwords match
   const [isFocus, setIsFocus] = useState({}); // Tracks input field focus
   const [showDrop, setShowDrop] = useState(false); // Shows/hides a dropdown
@@ -33,6 +35,7 @@ const Register = () => {
     setIsEmpty({});
     setIsFormSubmitted(false);
   };
+  console.log(isEmpty)
   // Handle the selection of the service type
   const handleServiceType = (event) => {
     const selectedService = event.target.textContent;
@@ -43,6 +46,13 @@ const Register = () => {
     });
     setShowDrop(false);
   };
+  const handleSetErrors=(name,msgError)=>{
+    console.log(name)
+    setErrors({
+      ...errors,
+      [name]: msgError,
+    });
+  }
   // Handle form input changes
   const handleInputChange = (event) => {
     setFormData({
@@ -52,36 +62,26 @@ const Register = () => {
     // Check if the field is empty
     setIsEmpty({
       ...isEmpty,
-      [event.target.name]: event.target.value === "" ? true : false,
+      [event.target.name]: event.target.value === '' ? true : false,
     });
   };
   // Handle form submission
+  console.log(errors)
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsFormSubmitted(true);
+    setIsSubmitting(true);
     // Check if the passwords match
     if (formData.password !== formData.repassword) {
       setIsPasswordMatch(false);
       console.log("Passwords do not match");
     } else {
       setIsPasswordMatch(true);
-      const requiredFields =
-        userType === "Service Provider"
-          ? [
-              "email",
-              "password",
-              "repassword",
-              "number",
-              "business",
-              "serviceSelected",
-            ]
-          : ["email", "password", "repassword"];
-      const hasEmptyFields = requiredFields.some(
-        (fieldName) => !formData[fieldName]
-      );
+      const requiredFields = userType === "Service Provider" ? ["email", "password", "repassword", "number", "business", "serviceSelected"] : ["email", "password", "repassword"];
+      const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
       if (!hasEmptyFields) {
         sendFormDataToServer();
-      } else {
+      }
+      else {
         console.log("Some required fields are empty.");
       }
     }
@@ -139,8 +139,8 @@ const Register = () => {
               </Link>
             </Typography>
           </div>
-          {userType === "patient" && (
-            <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+          {userType === "patient" &&
+            <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
               {registerData.patient.map((data, key) => {
                 const isFieldEmpty = isEmpty[data.name];
                 return (
@@ -206,17 +206,12 @@ const Register = () => {
                         </motion.div>
                       )}
                   </div>
-                );
+                )
               })}
-              <Button type="submit">Register as apatient</Button>
-              <div
-                onClick={changeUserType}
-                className="text-base cursor-pointer font-normal w-full text-center text-secondary hover:text-success"
-              >
-                {userType === "patient"
-                  ? t("register.toggleToProvider")
-                  : t("register.toggleToPatient")}
-              </div>
+              <Button type="submit">
+                Register as apatient
+              </Button>
+              <div onClick={changeUserType} className='text-base cursor-pointer font-normal w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
             </form>
           )}
           {userType === "Service Provider" && (
@@ -228,19 +223,7 @@ const Register = () => {
                     {data.inputType !== "select" && data.name !== "bank" && (
                       <div key={key}>
                         <>
-                          <div
-                            key={key}
-                            className={`flex bg-white relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${
-                              isFormSubmitted &&
-                              (isFieldEmpty || isFieldEmpty === undefined)
-                                ? "border-error"
-                                : ""
-                            } ${
-                              isFocus[data.name]
-                                ? "border-primary"
-                                : "border-myGray-400"
-                            }`}
-                          >
+                          <div key={key} className={`flex bg-white relative border-solid text-mySlate border-[1px] rounded-[8px] px-[16px] py-[8px] ${isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) ? 'border-error' : ''} ${isFocus[data.name] ? "border-primary" : "border-myGray-400"}`}>
                             <input
                               className="w-full border-none outline-none  placeholder:text-mySlate"
                               name={data.name}
@@ -276,55 +259,18 @@ const Register = () => {
                               className="w-[17px] h-[17px] m-auto cursor-pointer f"
                             />
                           </div>
-                          {isFormSubmitted &&
-                            (isFieldEmpty || isFieldEmpty === undefined) && (
-                              <motion.div
-                                initial={{ opacity: 0, x: -100 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5, type: easeInOut }}
-                                className="text-[12px] text-error"
-                              >
-                                {t("register.fieldRequier")}
-                              </motion.div>
-                            )}
-                          {!isPasswordMatch &&
-                            !(isFieldEmpty || isFieldEmpty === undefined) &&
-                            data.name === "repassword" && (
-                              <motion.div
-                                initial={{ opacity: 0, x: -100 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.5, type: easeInOut }}
-                                className="text-[12px] text-error"
-                              >
-                                {t("register.passwordMatch")}
-                              </motion.div>
-                            )}
+                          {isFormSubmitted && (isFieldEmpty || isFieldEmpty === undefined) && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
+                          {!isPasswordMatch && !(isFieldEmpty || isFieldEmpty === undefined) && data.name === 'repassword' && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.passwordMatch")}</motion.div>}
                         </>
                       </div>
                     )}
                     {data.inputType === "select" && (
                       <>
                         <div name="serviceType" value={serviceSelected}>
-                          <div
-                            className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${
-                              isFormSubmitted && serviceSelected === ""
-                                ? "border-error"
-                                : "border-myGray-400"
-                            }`}
-                            onClick={() => setShowDrop(!showDrop)}
-                          >
-                            <p>
-                              {serviceSelected === ""
-                                ? t("register.inputFields.serviceType")
-                                : `${serviceSelected}`}
-                            </p>
-                            {serviceSelected !== "" && (
-                              <motion.div
-                                className="place w-fit top-[-15px] text-mySlate z-[3] absolute"
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, type: easeInOut }}
-                              >
+                          <div className={`flex justify-between items-center custom-select bg-[#FFFFFF] w-full relative text-mySlate px-[16px] py-[8px] border-myGray-400 border-[1px] outline-none rounded-[8px] ${isFormSubmitted && (serviceSelected === "") ? 'border-error' : 'border-myGray-400'}`} onClick={() => setShowDrop(!showDrop)}>
+                            <p >{serviceSelected === '' ? t("register.inputFields.serviceType") : `${serviceSelected}`}</p>
+                            {(serviceSelected !== "") &&
+                              <motion.div className='place w-fit top-[-15px] text-mySlate z-[3] absolute' initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, type: easeInOut }}>
                                 <label>{data.placeHolder}</label>
                                 <div className="h-[2px] w-[110%] bg-[#FFFFFF] mt-[-11px] ml-[-5%] z-[2] "></div>
                               </motion.div>
@@ -350,16 +296,7 @@ const Register = () => {
                               ))}
                             </ul>
                           )}
-                          {isFormSubmitted && serviceSelected === "" && (
-                            <motion.div
-                              initial={{ opacity: 0, x: -100 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.5, type: easeInOut }}
-                              className="text-[12px] text-error"
-                            >
-                              {t("register.fieldRequier")}
-                            </motion.div>
-                          )}
+                          {isFormSubmitted && (serviceSelected === "") && <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, type: easeInOut }} className='text-[12px] text-error'>{t("register.fieldRequier")}</motion.div>}
                         </div>
                       </>
                     )}
