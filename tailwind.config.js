@@ -21,7 +21,11 @@ export default {
             },
             backgroundImage: {
                 linear: "linear-gradient(154.83deg, #2BC2F7 21.91%, #5A81FD 72.02%)",
+                gradientInput : "linear-gradient(0deg, #F8FAFB, #F8FAFB),linear-gradient(0deg, #EEEEEE, #EEEEEE)"
             },
+            boxShadow : {
+                verfictionShadow: "0px 0.5px 6px 0px rgba(43, 194, 247, 0.24)"
+            }
         },
     },
     plugins: [],

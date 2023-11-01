@@ -68,5 +68,10 @@
         "resendQuest": "We’re send a password recover, So please chick your email inbox and click on the provided link to reset your password. If you don’t receive email, OR",
         "back": "Back To Login...",
         "action": "Confirm Email"
+    },
+    "verfictionCode": {
+        "head" : "Verification Code",
+        "label" : "Enter the verification code, We just sent you on your email address.",
+        "resendLink" : "Resend Code ?"
     }
 }

@@ -18,6 +18,7 @@ import Register from "./components/user/Auth/Register/Register";
 import ConfirmEmail from "./components/user/Auth/ConfirmEmail/ConfirmEmail";
 import ForgetPassword from "./components/user/Auth/ForgetPassword/ForgetPassword";
 import ResettPassword from "./components/user/Auth/Reset Password/ResetPassword";
+import VerfictionCode from "./components/user/Auth/VerfictionCode/VerfictionCode";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/confirm-email" element={<ConfirmEmail />} />
+                    <Route path="/verfiction-code" element={<VerfictionCode />} />
                     <Route path="/forget-password" element={<ForgetPassword />} />
                     <Route path="/reset-password" element={<ResettPassword />} />
                     <Route path="/" element={<UserLayout />}>
@@ -46,9 +48,6 @@ function App() {
                      <Route path="notifications " element={<Notifications  />} />
                      <Route path="settings" element={<Settings />} />
                      <Route path="signOut" element={<SignOut  />} />
-
-
-
                      </Route>
 
                 </Routes>
