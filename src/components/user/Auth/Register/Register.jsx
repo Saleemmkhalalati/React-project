@@ -88,11 +88,6 @@ const Register = () => {
     event.preventDefault();
     setIsSubmitting(true);
     // Check if the passwords match
-    if (formData.password !== formData.repassword) {
-      setIsPasswordMatch(false);
-      console.log("Passwords do not match");
-    } else {
-      setIsPasswordMatch(true);
       const requiredFields = userType === "Service Provider" ? ["email", "password", "repassword", "number", "business", "serviceSelected"] : ["email", "password", "repassword"];
       const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
       if (!hasEmptyFields ) {
@@ -103,7 +98,6 @@ const Register = () => {
         setIsValid(false);
         console.log("Some required fields are empty.");
       }
-    }
   };
   // Send form data to the server
   const sendFormDataToServer = () => {
