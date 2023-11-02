@@ -17,6 +17,7 @@ import Report from "./components/Dashbord/Report/Report ";
 import Notifications from "./components/Dashbord/Notifications/Notifications";
 import Settings from "./components/Dashbord/Settings/Settings";
 import SignOut from "./components/Dashbord/Sign Out/SignOut";
+import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
 
 function App() {
     return (
@@ -33,7 +34,7 @@ function App() {
                     />
                     <Route
                         path="/verification-code"
-                        element={<VerificationCode />}
+                        element={<VerfictionCode />}
                     />
                     <Route
                         path="/reset-password"
