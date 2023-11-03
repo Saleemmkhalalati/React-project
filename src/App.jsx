@@ -48,14 +48,18 @@ function App() {
                     </Route>
                     <Route path="/dashboard" element={<DashboardLayout />}>
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="users" element={<Users />} />
+                        <Route path="users" element={<Users />} >
+                        <Route path="service_Providers" element={<Dashboard />} />
+                        <Route path="patient_Users" element={<Dashboard />} />
+                        <Route path="Admin_Users" element={<Dashboard />} />
+
+                           
+
+                        </Route>
                         <Route path="services" element={<Services />} />
                         <Route path="requests" element={<Requests />} />
                         <Route path="report" element={<Report />} />
-                        <Route
-                            path="notifications "
-                            element={<Notifications />}
-                        />
+                        <Route path="notifications" element={<Notifications />} />
                         <Route path="settings" element={<Settings />} />
                         <Route path="signOut" element={<SignOut />} />
                     </Route>

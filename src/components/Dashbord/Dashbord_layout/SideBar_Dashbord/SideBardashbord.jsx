@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Logo from "../../../utilities/Logo";
+
+import { Link, NavLink } from 'react-router-dom'
+
 import vector from "./SideBar_Dashbord_images/Vector.svg";
 import person from "./SideBar_Dashbord_images/Person.svg";
 import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
@@ -16,24 +19,24 @@ const Menus = [
         Data: [
             {
                 title: "All Users",
-                src: "Chart_fill",
+                src: "/dashboard/users",
                 icon: person,
                 subMenus: [
                     {
                         title: "Service Providers",
-                        src: "/all_users/Service_Providers",
+                        src: "service_Providers",
 
                         cName: "sub-nav",
                     },
                     {
                         title: "Patient Users ",
-                        src: "/all_users/Patient_Users ",
+                        src: "patient_Users",
 
                         cName: "sub-nav",
                     },
                     {
                         title: "Admin Users  ",
-                        src: "/all_users/Admin_Users ",
+                        src: "Admin_Users",
 
                         cName: "sub-nav",
                     },
@@ -42,7 +45,7 @@ const Menus = [
 
             {
                 title: "Services",
-                src: "Services",
+                src: "/dashboard/services",
                 icon: Services,
                 // subMenus: [
                 //   {
@@ -63,9 +66,9 @@ const Menus = [
                 //   },
                 // ],
             },
-            { title: "Requests ", src: "Chart", icon: person_pluse },
-            { title: "Report  ", src: "Folder", gap: true, icon: Graph },
-            { title: "Notifications", src: "Setting", icon: Notification },
+            { title: "Requests ", src: "/dashboard/requests", icon: person_pluse },
+            { title: "Report  ", src: "/dashboard/report", gap: true, icon: Graph },
+            { title: "Notifications", src: "/dashboard/notifications", icon: Notification },
         ],
     },
     {
@@ -73,13 +76,13 @@ const Menus = [
         Data: [
             {
                 title: "Settings",
-                src: "Chart_fill",
+                src: "/dashboard/settings",
                 icon: setting,
             },
 
             {
                 title: "Sign Out",
-                src: "Services",
+                src: "/dashboard/signOut",
                 icon: logout,
             },
         ],
@@ -125,31 +128,38 @@ const SideBardashbord = () => {
                     <Logo />
                 </div>
                 {/* Dashbord  */}
-                <div className="flex px-5 py-2 items-center gap-5 grident rounded-[8px] w-full ">
-                    <img src={vector} alt="" />
-                    <p className="text-white">Dashboard</p>
+                <div className="flex px-5 py-2 items-center gap-5 lg:grident rounded-[8px] w-full ">
+                    <img src={vector} alt=""  className="red bg-red-500"/>
+                    <p className="text-white hidden lg:block">Dashboard</p>
                 </div>
 
                 {Menus.map((Menu, index) => {
                     return (
                         <div className=" w-full " key={index}>
-                            <p className="text-[16px] font-normal text-myGray-500 mb-4">
+                            <p className="text-[16px] font-normal text-myGray-500 mb-4 hidden lg:block">
                                 {Menu.main_title}
                             </p>
+                            <span className="w-6 h-5 inline-block border-b-2 border-myGray-100 lg:hidden "></span>
                             <ul className="   w-full">
                                 {Menu.Data.map((data, index) => (
                                     <>
                                         <li
+                                           
                                             key={index}
-                                            className={`flex  rounded-md  cursor-pointer mb-5  p-2 text-sm items-center gap-x-5 ${
-                                                subMenuOpen
-                                                    ? "grident text-white"
-                                                    : ""
-                                            } 
+                                            className={`flex menue_li rounded-md  cursor-pointer mb-5 text-w text-sm items-center gap-x-5 red
           ${data.gap ? "mt-9" : "mt-2"}  `}
+          onClick={() =>{document.querySelectorAll(".menue_li").forEach((m,i)=>{m.classList.remove("grident")})
+            document.querySelectorAll(".menue_li")[index].classList.add("grident");
+            document.querySelectorAll(".menue_li")[index].classList.add("text-white")
+        }
+        }
                                         >
-                                            <img src={data.icon} alt="" />
-                                            <span className="flex-1">
+                                            <NavLink  to={`${data.src}`} className='flex justify-between gap-5   p-2 w-full h-full red'>
+                                            
+                                            <img src={data.icon} style={{backgroundImage:`url(${data.i})`}} alt="" className="fill-blue-500 " >
+                                           
+                                            </img>
+                                            <span className="flex-1 hidden lg:inline-block">
                                                 {data.title}
                                             </span>
                                             {data.subMenus && (
@@ -162,10 +172,11 @@ const SideBardashbord = () => {
                                                     }}
                                                     className={`${
                                                         subMenuOpen &&
-                                                        "rotate-180  "
-                                                    } `}
+                                                        "rotate-90 "
+                                                    } hidden lg:inline-block`}
                                                 />
                                             )}
+                                            </NavLink>
                                         </li>
                                         {data.subMenus &&
                                             subMenuOpen &&
@@ -177,9 +188,11 @@ const SideBardashbord = () => {
                                                                 key={idx}
                                                                 className="  flex px-5 cursor-pointer  text-center text-[15px] text-myGray-600 py-5 hover:text-primary duration-75"
                                                             >
+                                                                <NavLink  to={`${data.src}/${subMenuItem.src}`} className='flex justify-between gap-5'>
                                                                 {
                                                                     subMenuItem.title
                                                                 }
+                                                                </NavLink>
                                                             </li>
                                                         )
                                                     )}
@@ -193,7 +206,7 @@ const SideBardashbord = () => {
                 })}
             </div>
 
-            <p className="text-myGray-500 text-[12px]">
+            <p className="text-myGray-500 text-[12px] hidden lg:block">
                 We hope that our website will be useful to you and we are happy
                 for you to <span>contact us</span>.
             </p>
