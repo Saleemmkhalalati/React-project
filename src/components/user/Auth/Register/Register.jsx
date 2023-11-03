@@ -142,7 +142,7 @@ const Register = () => {
                 onChange={handleInputChange}
                 onBlur={handleBlur}
                 type='email'
-                errorMsg={errors.email ? "lrevl" : ""}
+                errorMsg={errors.email || (!isValid && errors.email === "") ? "lrevl" : ""}
                 icon={email}
               />
               {/* {registerData.patient.map((data, key) => {
@@ -264,7 +264,6 @@ const Register = () => {
               </Button>
               <div onClick={changeUserType} className='text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary hover:text-success'>{userType === "patient" ? t("register.toggleToProvider") : t("register.toggleToPatient")}</div>
             </form>
-
           }
         </div>
         <div className='w-[90%] lg:w-[45%] shrink-0 lg:ml-auto'>
