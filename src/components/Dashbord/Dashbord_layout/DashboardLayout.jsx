@@ -7,10 +7,10 @@ const DashboardLayout = () => {
         <>
             <div className="flex ">
                 <SideBardashbord />
-                <div className="w-[80%]">
+                <div className="w-[80%] h-screen ">
                     <NavBarDashbord />
-                    <div className="bg-myGray-100 h-screen">
-                        <Outlet />
+                    <div className="bg-myGray-100 h-screen ">
+                        <Outlet className="h-screen"/>
                     </div>
                 </div>
             </div>

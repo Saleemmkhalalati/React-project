@@ -5,10 +5,14 @@ import Notification from "./NavBar_Dashbord_images/Notification.svg"
 import Setting from "./NavBar_Dashbord_images/Setting.svg"
 import MultiLangDropdown from "../../../utilities/MultiLangDropdown";
 
+import { useTranslation } from "react-i18next";
+
 
 
 
 const NavBarDashbord = () => {
+  const { t } = useTranslation("global");
+
   return (
     <div className='py-5 px-10  flex  md:justify-between justify-end'>
       
@@ -23,7 +27,7 @@ const NavBarDashbord = () => {
                         />
                  
              
-                <img src={searchIcon} width={12} height={12} alt="icon"  className='absolute right-4 top-3'/>
+                <img src={searchIcon} width={12} height={12} alt="icon"  className='absolute right-4 top-3  rtl:right-[96%]'/>
             
         </div>
         {/* icon +profile photo  */}
@@ -31,7 +35,7 @@ const NavBarDashbord = () => {
         <div className='flex justify-between items-center gap-4 '>
           <div className=' relative p-2 '>
             <img src={Notification} alt="" className='w-5 h-5' />
-            <div className='w-2 h-2 absolute bg-red-600 rounded-full top-0 right-1'></div>
+            <div className='w-2 h-2 absolute bg-red-600 rounded-full top-0 right-1' ></div>
           </div>
           <img src={Setting} alt="" className='w-5 h-5' />
           <MultiLangDropdown/>
