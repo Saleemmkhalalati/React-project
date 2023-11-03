@@ -146,7 +146,7 @@ const SideBardashbord = () => {
                                         <li
                                            
                                             key={index}
-                                            className={`flex menue_li rounded-md  cursor-pointer mb-5 text-w text-sm items-center gap-x-5 red
+                                            className={`flex menue_li rounded-md  cursor-pointer mb-5  text-sm items-center gap-x-5 red
           ${data.gap ? "mt-9" : "mt-2"}  `}
           onClick={() =>{document.querySelectorAll(".menue_li").forEach((m,i)=>{m.classList.remove("grident")})
             document.querySelectorAll(".menue_li")[index].classList.add("grident");

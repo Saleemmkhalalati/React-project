@@ -90,6 +90,7 @@ const Register = () => {
     event.preventDefault();
     setIsSubmitting(true);
     // Check if the passwords match
+
     if (formData.password !== formData.repassword) {
       setIsPasswordMatch(false);
       console.log("Passwords do not match");
@@ -110,13 +111,17 @@ const Register = () => {
         (fieldName) => !formData[fieldName]
       );
       if (!hasEmptyFields) {
+
+      const requiredFields = userType === "Service Provider" ? ["email", "password", "repassword", "number", "business", "serviceSelected"] : ["email", "password", "repassword"];
+      const hasEmptyFields = requiredFields.some((fieldName) => !formData[fieldName]);
+      if (!hasEmptyFields ) {
+
         setIsValid(true);
         sendFormDataToServer();
       } else {
         setIsValid(false);
         console.log("Some required fields are empty.");
       }
-    }
   };
   // Send form data to the server
   const sendFormDataToServer = () => {
@@ -178,8 +183,13 @@ const Register = () => {
                 name="email"
                 onChange={handleInputChange}
                 onBlur={handleBlur}
+
                 type="email"
                 errorMsg={errors.email ? "lrevl" : ""}
+
+                type='email'
+                errorMsg={errors.email || (!isValid && errors.email === "") ? "lrevl" : ""}
+
                 icon={email}
               />
               {/* {registerData.patient.map((data, key) => {
@@ -435,7 +445,11 @@ const Register = () => {
                   : t("register.toggleToPatient")}
               </div>
             </form>
+
           )}
+
+          }
+
         </div>
         <div className="w-[90%] lg:w-[45%] shrink-0 lg:ml-auto">
           <ContainerImg docImg={docImg} action={t("register.action")} />

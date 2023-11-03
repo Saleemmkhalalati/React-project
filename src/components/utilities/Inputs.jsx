@@ -124,7 +124,7 @@ export function Input({
 }) {
     console.log(errorMsg);
     return (
-        <>
+        <div className="flex flex-col gap-1">
             <div
                 className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${
                     errorMsg
@@ -166,7 +166,7 @@ export function Input({
             >
                 {errorMsg}
             </motion.div>
-        </>
+        </div>
     );
 }
 Input.propTypes = {
