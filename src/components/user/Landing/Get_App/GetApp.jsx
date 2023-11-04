@@ -2,8 +2,12 @@ import React from 'react'
 import { styles } from '../Stayles'
 import DocterImage from './Get_App_images/Intersect.png'
 import Typography from "../../../utilities/Typography"
+import { useTranslation } from "react-i18next";
+
 
 const GetApp = () => {
+  const { t } = useTranslation("global");
+
   return (
     <section className={`GetApp_section   overflow-hidden ${styles.padding} relative   flex justify-end `}>
       {/* border graident */}
@@ -33,9 +37,9 @@ const GetApp = () => {
 
         <div className='content  flex flex-col  relative p-10  lg:w-[1127px] lg:h-[360px]   bg-[#2bc1f70d]     justify-center items-center text-center      '>
 
-          <Typography component={"h1"} className={` z-10 opacity-100 mb-5   `}>Let ‘s Strive For a More happy Life With Med - Sal </Typography>
-          <Typography component={"p"}  >This is achieved through access to your treatment and service faster and smoother than before.</Typography>
-          <button className='rounded-[5px] grident w-[177px] h-[31px] py-[3px] px-[8px] opacity-[.8px] text-white mt-5 '>So, Let’s Started</button>
+          <Typography component={"h1"} className={` z-10 opacity-100 mb-5   `}>{t("get_app.main_title")} </Typography>
+          <Typography component={"p"}  >{t("get_app.descrption")}</Typography>
+          <button className='rounded-[5px] grident w-[177px] h-[31px] py-[3px] px-[8px] opacity-[.8px] text-white mt-5 '>{t("get_app.button")}</button>
 
           <div className=" absolute start-44 top-10  left-28 rtl:right-[90%]   hidden lg:block">
             <div className="absolute w-[40px] h-[40px] bg-gradient-to-b from-primary to-secondary rounded-md  ltr:rotate-45 rtl:-rotate-45"></div>

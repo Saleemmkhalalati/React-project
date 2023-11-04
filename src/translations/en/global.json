@@ -88,5 +88,35 @@
         "desc": "We filtered all services close to the patient and vice versa"
       }
     ]
-  }
+  },
+  "Services":{
+    "main-title":"Our Services",
+    "discrption":"We seek the best ways for your comfort, so we tried to put in your hands our best services in a smooth and comfortable manner",
+    "services":["Dental","Neurology","See more services"]
+
+  },
+  "testimonals":{
+    "main_title":"What Our Clients Say",
+    "testimonal":"I've been using this site since it came out! I really like how simple and quick the services are, and I would love to have a discussion with you to explain why and how we provide the service. Thank you for the great work you do!"
+    
+
+  },
+  "get_app":{
+    "main_title":"Let ‘s Strive For a More happy Life With Med - Sal",
+    "descrption":"This is achieved through access to your treatment and service faster and smoother than before.",
+    "button":"So, Let’s Started"
+
+  },
+  "NavBar_Dashbord":{
+    "search":"search"
+  },
+  "sideBar_Dashbord": {
+    "main_title":["dashboard"],
+    "dashboard_menu": ["About Users","About dashboard"],
+    "about_users_menu" :["All Users ", "Services", "Requests ","Report ","Notifications"],
+     "all_users_menu": [ " Service Providers"," Patient Users"," Admin Users" ],
+     "about_dashboard_menu" :["Settings","Sign Out"]
+    
+    
+     }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from "react-i18next";
 import BackPolygon from '../../../utilities/BackPolygon';
 import Typography from "../../../utilities/Typography"
 import testmonal_2 from './Testimonals_images/Testaimonals _1.png'
@@ -10,6 +11,8 @@ import testmonal_1 from './Testimonals_images/Testaimonals_4.png'
 
 const Testimonals = () => {
     const [pactive, setpactive] = useState(1)
+    const { t } = useTranslation("global");
+
 
 
 
@@ -26,7 +29,7 @@ const Testimonals = () => {
 
 
 
-            <div className="flex flex-col lg:flex-row justify-around items-center  py-10 ">
+            <div className="flex flex-col lg:flex-row justify-around items-center py-10 ">
                 <div className="testimonals_images  mt-20   ">
                     <div className='mt-10 '>
                         {/* testimonals 2 +4 */}
@@ -69,7 +72,7 @@ const Testimonals = () => {
                                 <div className="  opacity-[100%] w-full h-full relative overflow-hidden">
                                     <img src={`${testmonal_1}`} alt="" className='rotate-[-140deg]  md:w-[500p] md:h-[380px] absolute md:bottom-[-50px] md:left-12 bottom-0 left-5 ' />
                                     < p className=' z-20 text-white rotate-[-135deg] w-full  text-[12px] md:w-[80%] absolute  text-center lg:left-[30%] lg:bottom-[60%] md:left-[50px] md:bottom-24   left-1 bottom-10 md:text-[16px]'>One of the pioneers of the site</p>
-                                    <span className='rotate-[-135deg]  absolute z-20 font-[700] md:text-[20px] lg:bottom-[60%] lg:right-6 text-[12px] right-[-12px] bottom-[70px] red text-center  w-full'>Vanessa Bond</span>
+                                    <span className='rotate-[-135deg]  absolute z-20 font-[700] md:text-[20px] lg:bottom-[60%] lg:right-[5px] text-[12px] right-[-25px] bottom-[60px] md:right-[-2px]  md:bottom-20 text-center  w-full'>Vanessa Bond</span>
 
                                 </div>
                             </div>
@@ -87,19 +90,21 @@ const Testimonals = () => {
                     </div>
 
                 </div>
-                <div className="testimonals_content md:mt-10  w-full flex flex-col text-left lg:w-1/2  ">
+                <div className="testimonals_content md:mt-10 mt-0 w-full flex flex-col text-left lg:w-1/2  ">
 
 
                     <Typography component={"h1"} className="mb-10" >
-                        What Our Clients Say
+                    {t("testimonals.main_title")}
                     </Typography>
 
 
 
-                    <Typography component={"p"} id="testimonal1" className={`${pactive === 1 ? "block" : "hidden"} testmonal   `}> I've been using this site since it came out! I really like how simple and quick the services are, and I would love to have a discussion with you to explain why and how we provide the service. Thank you for the great work you do!</Typography>
-                    <Typography component={"p"} id="testimonal2" className={` ${pactive === 2 ? "block" : "hidden"} testmonal   `}>I've been using this site since it came out! I really like how simple and quick the services are, and I would love to have a discussion with you to explain why and how we provide the service. Thank you for the great work you do!</Typography>
-                    <Typography component={"p"} id="testimonal3" className={` ${pactive === 3 ? "block" : "hidden"} testmonal   `}>I've beenes are, and I would love to have a discussion with you to explain why and how we provide the service. Thank you for the great work you do!</Typography>
-                    <Typography component={"p"} id="testimonal4" className={`${pactive === 4 ? "block" : "hidden"} testmonal  } `}>I've been using this site since it came out! I really like how simple and quick the services are, and I would love to have a discussion with you to explain why and how we provide the service. Thank you for the great work you do!</Typography>
+                    
+                    
+                    <Typography component={"p"} id="testimonal1" className={`${pactive === 1 ? "block" : "hidden"} testmonal   `}>  {t("testimonals.testimonal")}</Typography>
+                    <Typography component={"p"} id="testimonal2" className={` ${pactive === 2 ? "block" : "hidden"} testmonal   `}>{t("testimonals.testimonal")}</Typography>
+                    <Typography component={"p"} id="testimonal3" className={` ${pactive === 3 ? "block" : "hidden"} testmonal   `}>{t("testimonals.testimonal")}</Typography>
+                    <Typography component={"p"} id="testimonal4" className={`${pactive === 4 ? "block" : "hidden"} testmonal  } `}>{t("testimonals.testimonal")}</Typography>
                     <span className=' text-right text-[#FAA209] font-bold text-[16px]'>Vanessa Bond</span>
                 </div>
 
