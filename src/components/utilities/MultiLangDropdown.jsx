@@ -32,7 +32,7 @@ export default function MultiLangDropdown() {
         <div className="relative" ref={dropdownRef}>
             <button
                 className="flex items-center whitespace-nowrap bg-transparent uppercase leading-normal transition duration-150 ease-in-out"
-                onClick={() => {setIsOpen(!isOpen);}}
+                onClick={() => { setIsOpen(!isOpen); }}
             >
                 {selectedItem}
                 <img src={arrowIcon} alt="icon" />

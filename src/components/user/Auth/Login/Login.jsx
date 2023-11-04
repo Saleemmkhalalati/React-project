@@ -27,7 +27,7 @@ export default function Login() {
 
   return (
     <div className="login grid grid-cols-1 lg:grid-cols-2  h-screen overflow-hidden ">
-      <div className="relative lg:grid-cols-7  pt-20 m-3  sm:pt-20 sm-ps-0 md:pt-40 md:ps-14">
+      <div className="relative lg:grid-cols-7 pt-20 m-3 sm:pt-20 sm-ps-0 md:pt-40 md:ps-14">
         <div className="absolute rotate-45 w-80 h-80  top-10 sm:top-24 bg-sky-50 rounded-3xl -start-14"></div>
         <div className="fixed rotate-45 w-80 h-80 top-96 sm:top-[29rem] start-28  bg-sky-50 rounded-3xl"></div>
         <div className="relative text-center sm:text-start">
@@ -56,16 +56,14 @@ export default function Login() {
                 SetEmail(e.target.value);
                 setIsFilled(e.target.value !== "");
               }}
-              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${
-                accept && email === "" ? "border-error" : ""
-              }`}
+              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary mb-2 rounded-lg relative ${accept && email === "" ? "border-error" : ""
+                }`}
             />
             <label
-              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${
-                isFilled
-                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
-                  : "top-3"
-              }`}
+              className={`placeholder px-1 absolute  start-3 text-sm text-gray-500 ${isFilled
+                ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                : "top-3"
+                }`}
             >
               Email Address
             </label>
@@ -86,16 +84,14 @@ export default function Login() {
                 setPassword(e.target.value);
                 setIsFilledPass(e.target.value !== "");
               }}
-              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${
-                accept && password === "" ? "border-error" : ""
-              }`}
+              className={`input p-2 w-full outline-none border-solid border-[1px] border-myGray-300 focus:border-secondary rounded-lg  relative ${accept && password === "" ? "border-error" : ""
+                }`}
             />
             <label
-              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${
-                isFilledPass
-                  ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
-                  : "top-3"
-              }`}
+              className={`placeholder px-1 bg-transparent absolute  start-3 text-sm text-gray-500 ${isFilledPass
+                ? "-top-[13px] bg-gradient-to-b from-transparent from-65% to-white to-35%"
+                : "top-3"
+                }`}
             >
               Password
             </label>
