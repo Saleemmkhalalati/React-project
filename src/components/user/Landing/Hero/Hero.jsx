@@ -1,6 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
-
+import React, { useEffect, useState } from "react";
+import { motion, useCycle } from "framer-motion";
 import "./Hero.css";
 import vector from "./Hero_images/Vector.svg";
 import DocterImage from "./Hero_images/Doctor_Image.png";
@@ -9,16 +8,10 @@ import Button from "../../../utilities/Button";
 import BackPolygon from "../../../utilities/BackPolygon";
 
 const Hero = () => {
-  const movment = {
-    hiddin: {
-      x: 100,
-      visible: {
-        x: 0,
-        transition: {
-          duration: 0.5,
-        },
-      },
-    },
+  const [isMoved, setIsMoved] = useState(false);
+
+  const handleClick = () => {
+    setIsMoved(!isMoved);
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
@@ -39,19 +32,23 @@ const Hero = () => {
           services, and get your most up-to-date health information form in over
           155,000 compatible and clinically verified medical journals.
         </p>
-        <div className="relative text-center sm:text-start  ">
-          <Button className="Button">So, Let’s Started</Button>
+        <div className="relative text-center sm:text-start">
           <motion.div
-            variants={movment}
-            inherit="hiddin"
-            animate="visible"
-            className="rotate absolute w-32 h-full border-solid border-[1px] -z-10 border-secondary rounded top-1 start-1 hidden sm:block "
+            animate={{
+              rotate: isMoved ? [0, 10, -10] : "",
+            }}
+            transition={{ duration: 0.5, repeat: 1, repeatType: "reverse" }}
+            className="absolute border-solid border-secondary border-[1px] rounded-md top-1 start-1 w-32 h-8"
           ></motion.div>
+          <Button onClick={handleClick}>So, Let’s Started</Button>
         </div>
       </div>
       <div className="relative grid-col-6">
         <div className="absolute top-24 start-60">
           <BackPolygon></BackPolygon>
+        </div>
+        <div className="absolute hidden  w-1/3 h-10 bg-white  xl:flex items-center justify-center top-44 start-[25rem] z-20 rounded-lg shadow-md">
+          <p className="text-success">High-Quality Dental Care</p>
         </div>
         <div className="relative top-32 start-44">
           <div className="absolute h-60 w-60 rounded-xl bg-gradient-to-r from-primary to-secondary ltr:rotate-45 rtl:-rotate-45"></div>
