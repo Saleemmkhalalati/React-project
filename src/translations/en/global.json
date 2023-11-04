@@ -1,61 +1,67 @@
 {
-  "navbar": {
-    "links": ["Home", "Services", "About us", "Contact us", "Get Started"]
-  },
-  "forget": {
-    "title": "Forget Password",
-    "p": "We are here to help you, So enter the email for reset password.",
-    "placeholder": "Email address",
-    "erremail": "This field is required",
-    "button": "Send Verification Code",
-    "resetTitle": "Reset password for Med - Sal ...",
-    "resetPar": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
-  },
-  "reset": {
-    "title": "Reset Password",
-    "p": "We are here to  help you, So enter new password then confirm it. ",
-    "placeholder1": "New Password",
-    "placeholder2": "Confirm Password",
-    "err": "password must be more than 4",
-    "errcunfirm": "please match the password",
-    "button": "Change Password",
-    "resetTitle": "Reset password for Med - Sal ...",
-    "resetPar": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
-  },
-  "register": {
-    "headPatient": "Register as a Patient in Med - Sal",
-    "headProvider": "Register as a Service Provider in Med - Sal",
-    "loginLink": "Login",
-    "loginQuest": "Already have a Med - Sal account?",
-    "toggleToProvider": "Register as a Service Provider",
-    "toggleToPatient": "Register as a Patient",
-    "action": "Create Account in Med - Sal",
-    "fieldRequier": "This field is requiered",
-    "passwordMatch": " The password not matched",
-    "inputFields": {
-      "email": "Email Address",
-      "password": "password",
-      "confirmPassword": "Confirm Password",
-      "submit": "Login in med - sal",
-      "number": "Contact Number",
-      "buisness": "Buisness Name",
-      "bank": "Bank Name",
-      "iban": "IBAN Number",
-      "swift": "Swift Code",
-      "serviceType": "Service Type",
-      "bankDetailes": "Information for Bank Detailes"
+    "navbar": {
+        "links": [
+            "Home",
+            "Services",
+            "About us",
+            "Contact us",
+            "Get Started"
+        ]
     },
-    "services": {
-      "doctor": "Doctor",
-      "pharmacy": "Pharmacy",
-      "hospital": "Hospital",
-      "lab": "Lab",
-      "clinic": "Clinic"
+    "forget": {
+        "title": "Forget Password",
+        "p": "We are here to help you, So enter the email for reset password.",
+        "placeholder": "Email address",
+        "erremail": "This field is required",
+        "button": "Send Verification Code",
+        "resetTitle": "Reset password for Med - Sal ...",
+        "resetPar": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
     },
-    "ImageContainer": {
-      "aboutUs": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
-    }
-  },
+    "reset": {
+        "title": "Reset Password",
+        "p": "We are here to  help you, So enter new password then confirm it. ",
+        "placeholder1": "New Password",
+        "placeholder2": "Confirm Password",
+        "err": "password must be more than 4",
+        "errcunfirm": "please match the password",
+        "button": "Change Password",
+        "resetTitle": "Reset password for Med - Sal ...",
+        "resetPar": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
+    },
+    "register": {
+        "headPatient": "Register as a Patient in Med - Sal",
+        "headProvider": "Register as a Service Provider in Med - Sal",
+        "loginLink": "Login",
+        "loginQuest": "Already have a Med - Sal account?",
+        "toggleToProvider": "Register as a Service Provider",
+        "toggleToPatient": "Register as a Patient",
+        "action": "Create Account in Med - Sal",
+        "fieldRequier": "This field is requiered",
+        "passwordMatch": " The password not matched",
+        "inputFields": {
+            "email": "Email Address",
+            "password": "password",
+            "confirmPassword": "Confirm Password",
+            "submit": "Login in med - sal",
+            "number": "Contact Number",
+            "buisness": "Buisness Name",
+            "bank": "Bank Name",
+            "iban": "IBAN Number",
+            "swift": "Swift Code",
+            "serviceType": "Service Type",
+            "bankDetailes": "Information for Bank Detailes"
+        },
+        "services": {
+            "doctor": "Doctor",
+            "pharmacy": "Pharmacy",
+            "hospital": "Hospital",
+            "lab": "Lab",
+            "clinic": "Clinic"
+        },
+        "ImageContainer": {
+            "aboutUs": "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates."
+        }
+    },
   "confirmEmail": {
     "head": "Confirm Email",
     "resendLink": "Click here to resend",
@@ -82,5 +88,35 @@
         "desc": "We filtered all services close to the patient and vice versa"
       }
     ]
-  }
+  },
+  "Services":{
+    "main-title":"Our Services",
+    "discrption":"We seek the best ways for your comfort, so we tried to put in your hands our best services in a smooth and comfortable manner",
+    "services":["Dental","Neurology","See more services"]
+
+  },
+  "testimonals":{
+    "main_title":"What Our Clients Say",
+    "testimonal":"I've been using this site since it came out! I really like how simple and quick the services are, and I would love to have a discussion with you to explain why and how we provide the service. Thank you for the great work you do!"
+    
+
+  },
+  "get_app":{
+    "main_title":"Let ‘s Strive For a More happy Life With Med - Sal",
+    "descrption":"This is achieved through access to your treatment and service faster and smoother than before.",
+    "button":"So, Let’s Started"
+
+  },
+  "NavBar_Dashbord":{
+    "search":"search"
+  },
+  "sideBar_Dashbord": {
+    "main_title":["dashboard"],
+    "dashboard_menu": ["About Users","About dashboard"],
+    "about_users_menu" :["All Users ", "Services", "Requests ","Report ","Notifications"],
+     "all_users_menu": [ " Service Providers"," Patient Users"," Admin Users" ],
+     "about_dashboard_menu" :["Settings","Sign Out"]
+    
+    
+     }
 }

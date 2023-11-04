@@ -1,0 +1,20 @@
+
+.red{
+    border:1px solid red
+}
+.grident{
+    background-image:linear-gradient(154.83deg, #2BC2F7 21.91%, #5A81FD 72.02%);
+
+    
+
+}
+.color-grdient{
+ border-color:linear-gradient(154.83deg, #2BC2F7 21.91%, #5A81FD 72.02%);
+
+}
+.clip
+{
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+
