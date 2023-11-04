@@ -69,14 +69,17 @@
       "We are a platform that seeks to connect clinical patients with doctors in various medical specialties and pharmacies all over the Emirates, So it has the following features:"
     ],
     "info": [
-      "Locate the patient to the nearest delivery service.",
-      "Contain Cloud payments.",
-      " Filter depending on the current location.",
-
       {
-        "desc": "We can determine the patient's location and determine the nearest service to him, so that it is easy and convenient for him to access the service",
-        "desc1": "We have developed an electronic payment feature that makes it easier for the patient to pay money for the services provided to him via the Internet.",
-        "desc2": "We filtered all services close to the patient and vice versa"
+        "title": "Locate the patient to the nearest delivery service.",
+        "desc": "We can determine the patient's location and determine the nearest service to him, so that it is easy and convenient for him to access the service"
+      },
+      {
+        "title": "Contain Cloud payments.",
+        "desc": "We have developed an electronic payment feature that makes it easier for the patient to pay money for the services provided to him via the Internet."
+      },
+      {
+        "title": "Filter depending on the current location.",
+        "desc": "We filtered all services close to the patient and vice versa"
       }
     ]
   }
