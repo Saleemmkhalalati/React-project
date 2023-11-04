@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserLayout from "./components/user/layout/UserLayout";
 import Login from "./components/user/Auth/Login/Login";
-import Register from "./components/user/Auth/Register/Register";
 import ConfirmEmail from "./components/user/Auth/ConfirmEmail/ConfirmEmail";
 import ForgetPassword from "./components/user/Auth/ForgetPassword/ForgetPassword";
 import ResettPassword from "./components/user/Auth/Reset Password/ResetPassword";
@@ -18,14 +17,17 @@ import Notifications from "./components/Dashbord/Notifications/Notifications";
 import Settings from "./components/Dashbord/Settings/Settings";
 import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
-
+import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
+import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
 function App() {
     return (
         <div className="font-alegreya">
             <BrowserRouter>
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
+                    <Route path="/register" element={<RegisterPatient />} />
+                    <Route path="/register-provider" element={<RegisterProvider />} />
+
                     <Route path="/confirm-email" element={<ConfirmEmail />} />
 
                     <Route
