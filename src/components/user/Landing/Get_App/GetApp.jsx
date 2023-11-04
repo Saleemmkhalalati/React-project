@@ -7,7 +7,7 @@ const GetApp = () => {
   return (
     <section className={`GetApp_section   overflow-hidden ${styles.padding} relative   flex justify-end `}>
       {/* border graident */}
-      <div className="relative start-64  top-3 z-10  left-[130px] hidden lg:block   rtl:lg:right-36 rtl:lg:rotate-[90deg]">
+      <div className="relative start-64  top-3 z-10  lg:left-[130px] hidden lg:block   rtl:lg:right-36 rtl:lg:rotate-[90deg]">
         <div className=" relative w-[350px] h-[350px] bg-gray-100 origin-center  ltr:rotate-45 rtl:-rotate-45 rounded-xl ">
           <img
             className=" w-[25rem] h-[25rem] ltr:-start-10  translate-x-7 translate-y-[-20px]  rotate-[-45deg]  hidden lg:block"
@@ -18,7 +18,7 @@ const GetApp = () => {
       </div>
 
       {/* rectangle image */}
-      <div className=" absolute start-44 top-16  left-[0px]  hidden lg:block rtl:lg:right-0">
+      <div className=" absolute start-44 top-16  lg:left-[0px]  hidden lg:block rtl:lg:right-0 ">
         <div className="absolute w-[300px] h-[300px] bg-gradient-to-b from-primary to-secondary rounded-2xl  ltr:rotate-45 rtl:-rotate-45"></div>
         <div className="absolute w-[290px] h-[290px] bg-white start-[4px] top-[4px] rounded-xl ltr:rotate-45 rtl:-rotate-45"></div>
       </div>
@@ -42,7 +42,7 @@ const GetApp = () => {
             <div className="absolute w-[30px] h-[30px] bg-white start-[4px] top-[4px] rounded-md ltr:rotate-45 rtl:-rotate-45"></div>
           </div>
 
-          <div className=" absolute start-44 bottom-20  left-[90%]  hidden lg:block">
+          <div className=" absolute start-44 bottom-20  lg:left-[90%]   hidden lg:block">
             <div className="absolute w-[40px] h-[40px] bg-gradient-to-b from-primary to-secondary rounded-md  ltr:rotate-45 rtl:-rotate-45"></div>
             <div className="absolute w-[30px] h-[30px] bg-white start-[4px] top-[4px] rounded-md ltr:rotate-45 rtl:-rotate-45"></div>
           </div>
@@ -54,6 +54,8 @@ const GetApp = () => {
     </section>
   )
 }
+
+
 
 
 
