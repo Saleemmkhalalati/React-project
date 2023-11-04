@@ -32,9 +32,9 @@ const ConfirmEmail = () => {
         <ContainerImg docImg={docImg} action={t("confirmEmail.action")} />
       </div>
       <div className='translate-x-[-145px] translate-y-[-39px] absolute z-[-100] '>
-        <BackPolygon />
+        <BackPolygon  />
       </div>
-      <div className='translate-x-[-30px] translate-y-[400px] absolute z-[-100]'>
+      <div className='translate-x-[-30px] translate-y-[400px] absolute z-[-100] '>
         <BackPolygon />
       </div>
     </div>

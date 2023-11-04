@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import Typography from "../../../utilities/Typography";
-const ContainerImg = ({ docImg, action }) => {
+const   ContainerImg = ({ docImg, action }) => {
     // Initialize the i18n translation hook
     const { t } = useTranslation("global");
     return (

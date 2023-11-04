@@ -68,23 +68,6 @@
         "resendQuest": "We’re send a password recover, So please chick your email inbox and click on the provided link to reset your password. If you don’t receive email, OR",
         "back": "Back To Login...",
         "action": "Confirm Email"
-    },
-    "NavBar_Dashbord":{
-       "search":"Search"
-    },
-    "sideBar_Dashbord": {
-        "main_title":["Dashboard"],
-        "dashboard_menu": ["About users","About dashbord"],
-        "about_users_menu" :["All users", "Services", "Requests","Report","Notifications"],
-         "all_users_menu": [ "service_Providers","Patient Users","Admin Users"],
-        "about_dashboard_menu" :["Settings","Sign Out"]
-
-
-        
-
-            
-         }
-
-    
+    }
     
 }
