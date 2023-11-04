@@ -12,7 +12,7 @@ const About = () => {
         <div className="relative top-20 ltr:start-32 rtl:start-32 xl:ltr:start-52">
           <div className="absolute  w-64 h-64 bg-gray-100 origin-center  ltr:rotate-45 rtl:-rotate-45 rounded-2xl"></div>
           <img
-            className="absolute w-[18rem] h-[18rem] top-1 rtl:-start-10 "
+            className="absolute w-64 top-1 rtl:-start-10 "
             src={DocterImage}
             alt="img"
           />

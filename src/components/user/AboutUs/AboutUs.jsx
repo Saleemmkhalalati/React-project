@@ -1,10 +1,13 @@
 import doctor from "./AboutUs-Image/Intersect.svg";
 import { AboutUsContent } from "./AboutUsContent";
+import BackPolygon from "../../utilities/BackPolygon";
 export default function AboutUs() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
       <div className="relative grid-cols-6">
-        <div className="absolute rotate-45 w-72 h-72  top-44  bg-sky-50 rounded-3xl -start-20 sm:w-96 sm:h-96 sm:-start-28 -z-30"></div>
+        <div className="absolute  top-24 -start-20 sm:w-96 sm:h-96 sm:-start-28">
+          <BackPolygon></BackPolygon>
+        </div>
         <AboutUsContent
           className={"pt-10 lg:pt-32 ps-5 md:ps-20 pb-0 sm:pb-32"}
         />
