@@ -1,12 +1,6 @@
 {
   "navbar": {
-    "links": [
-      "Home",
-      "Services",
-      "About us",
-      "Contact us",
-      "Get Started"
-    ]
+    "links": ["Home", "Services", "About us", "Contact us", "Get Started"]
   },
   "login": {
     "title": "Login in Med - Sal",
@@ -112,11 +106,7 @@
   "Services": {
     "main-title": "Our Services",
     "discrption": "We seek the best ways for your comfort, so we tried to put in your hands our best services in a smooth and comfortable manner",
-    "services": [
-      "Dental",
-      "Neurology",
-      "See more services"
-    ]
+    "services": ["Dental", "Neurology", "See more services"]
   },
   "testimonals": {
     "main_title": "What Our Clients Say",
@@ -131,13 +121,8 @@
     "search": "search"
   },
   "sideBar_Dashbord": {
-    "main_title": [
-      "dashboard"
-    ],
-    "dashboard_menu": [
-      "About Users",
-      "About dashboard"
-    ],
+    "main_title": ["dashboard"],
+    "dashboard_menu": ["About Users", "About dashboard"],
     "about_users_menu": [
       "All Users ",
       "Services",
@@ -145,14 +130,24 @@
       "Report ",
       "Notifications"
     ],
-    "all_users_menu": [
-      " Service Providers",
-      " Patient Users",
-      " Admin Users"
-    ],
-    "about_dashboard_menu": [
-      "Settings",
-      "Sign Out"
-    ]
-  }
+    "all_users_menu": [" Service Providers", " Patient Users", " Admin Users"],
+    "about_dashboard_menu": ["Settings", "Sign Out"]
+  },
+  "Hero": [
+    "Welcome to Med - sal",
+    "Get The Best Health Care Services For a More Comfortable Life.",
+    " Don't let illness or ill health sneak up on you. So, get our health services, and get your most up-to-date health information form in over 155,000 compatible and clinically verified medical journals.",
+    "So, Let’s Started",
+    "High-Quality Dental Care"
+  ],
+  "error4": [
+    "Page Not Found !",
+    "Sorry, We couldn’t the find page you looking for.",
+    "Back To Page"
+  ],
+  "error3": [
+    "Access Denied !",
+    "Sorry, But you don’t have permission to access this page.",
+    "Back To Page"
+  ]
 }
