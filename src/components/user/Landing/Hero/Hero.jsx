@@ -34,11 +34,8 @@ const Hero = () => {
         </p>
         <div className="relative text-center sm:text-start">
           <motion.div
-            animate={{
-              rotate: isMoved ? [0, 10, -10] : "",
-            }}
             transition={{ duration: 0.5, repeat: 1, repeatType: "reverse" }}
-            className="absolute border-solid border-secondary border-[1px] rounded-md top-1 start-1 w-32 h-8"
+            className="absolute border-solid border-secondary border-[1px] rounded top-1 start-1 w-32 h-8"
           ></motion.div>
           <Button onClick={handleClick}>So, Let’s Started</Button>
         </div>
@@ -47,7 +44,7 @@ const Hero = () => {
         <div className="absolute top-24 start-60">
           <BackPolygon></BackPolygon>
         </div>
-        <div className="absolute hidden  w-1/3 h-10 bg-white  xl:flex items-center justify-center top-44 start-[25rem] z-20 rounded-lg shadow-md">
+        <div className="absolute hidden text-center xl:w-1/3 xl:h-10  bg-white  lg:flex lg:items-center lg:justify-center top-44 start-[25rem] z-20 rounded-lg shadow-md">
           <p className="text-success">High-Quality Dental Care</p>
         </div>
         <div className="relative top-32 start-44">
