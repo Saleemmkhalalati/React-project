@@ -10,7 +10,7 @@ export default function AboutUs() {
         />
       </div>
       <div className="relative grid-cols-6 hidden md:block ">
-        <div className="absolute hidden xl:block end-5 top-8 w-40 h-40 bg-gradient-to-b from-secondary to-primary ltr:rotate-45 rtl:-rotate-45 rounded-2xl"></div>
+        <div className="absolute hidden xl:block end-5 top-8 w-40 h-40 bg-gradient-to-b from-secondary to-primary ltr:rotate-45 rtl:-rotate-45 rounded-2xl shadow-md"></div>
         <div className="relative start-64  top-36 z-10 ">
           <div className="absolute  w-72 h-72 bg-gray-100 origin-center  ltr:rotate-45 rtl:-rotate-45 rounded-xl"></div>
           <img

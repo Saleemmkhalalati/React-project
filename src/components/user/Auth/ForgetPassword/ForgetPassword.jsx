@@ -11,17 +11,8 @@ import vector from './imgs/Vector (3).svg'
 
 
 export default function ForgetPassword() {
-
+    // translation ..
     const { t } = useTranslation("global");
-    const Forget = {
-        title: t("forget.title"),
-        p: t("forget.p"),
-        placeholder: t("forget.placeholder"),
-        errEmail: t("forget.erremail"),
-        button: t("forget.button"),
-        resetTitle: t("forget.resetTitle"),
-        resetPar: t("forget.resetPar")
-    }
 
     // state variants ..
     const [email, setEmail] = useState('')
@@ -32,7 +23,7 @@ export default function ForgetPassword() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!email.match(regx)) {
-            seterr(Forget.errEmail)
+            seterr(t("forget.erremail"))
         } else {
             seterr('')
         }
@@ -40,16 +31,16 @@ export default function ForgetPassword() {
     }
 
     return (
-        <div className='max-w-[1750px] max-[1750px]:overflow-hidden h-screen max-[1100px]:overflow-y-auto mx-auto my-0'>
+        <div className='max-w-[1750px] mx-auto my-0 h-screen max-[1100px]:overflow-y-auto max-[1750px]:overflow-hidden'>
             <div className='relative  ltr:left-0  rtl:right-0 z-[-1]'>
                 <div className="absolute rotate-45 w-80 h-80 top-10 sm:top-24 bg-sky-50 rounded-3xl -start-14"></div>
                 <div className="absolute rotate-45 w-80 h-80 top-96 sm:top-[29rem] bg-sky-50 rounded-3xl start-28"></div>
                 <div></div>
             </div>
-            <div className='max-w-[1750px] mx-auto my-0 flex  justify-between flex-wrap '>
+            <div className='max-w-[1750px] mx-auto my-0 flex justify-between flex-wrap'>
                 <div className='relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]'>
-                    <Typography component={'h1'}>{Forget.title}</Typography>
-                    <Typography component={'h4'}>{Forget.p}</Typography>
+                    <Typography component={'h1'}>{t("forget.title")}</Typography>
+                    <Typography component={'h4'}>{t("forget.p")}</Typography>
                     <form onSubmit={handleSubmit} className='relative space-y-5'>
                         <div className='relative'>
                             <Input onChange={(e) => setEmail(e.target.value)}
@@ -57,12 +48,12 @@ export default function ForgetPassword() {
                                 errorMsg={err}
                                 icon={vector}
                                 iconOnClick
-                                label='Email Address' />
+                                label={t("forget.placeholder")} />
                         </div>
-                        <Button fullWidth>{Forget.button}</Button>
+                        <Button fullWidth>{t("forget.button")}</Button>
                     </form>
                 </div>
-                <AuthDesign img={Doc} title={Forget.resetTitle} paragraph={Forget.resetPar} />
+                <AuthDesign img={Doc} title={t("forget.resetTitle")} paragraph={t("ImageContainer.aboutUs")} />
             </div>
         </div>
     )

@@ -13,11 +13,10 @@ export function FInput({
     return (
         <div className="relative">
             <div
-                className={`flex flex-row py-2 px-3 border-[1px] ${
-                    errorMsg !== ""
+                className={`flex flex-row py-2 px-3 border-[1px] ${errorMsg !== ""
                         ? "border-error "
                         : "border-myGray-400 focus-within:border-primary "
-                } bg-white rounded-lg transition-all duration-100 ease-in-out`}
+                    } bg-white rounded-lg transition-all duration-100 ease-in-out`}
             >
                 <label
                     htmlFor={name}
@@ -73,11 +72,10 @@ export function Textarea({
                 <textarea
                     className={`peer py-2 px-3 resize-none w-full h-52 rounded-md border-[1px]
                     bg-transparent placeholder-transparent  text-mySlate outline-0 focus:outline-none
-                    ${
-                        errorMsg !== ""
+                    ${errorMsg !== ""
                             ? "border-error"
                             : "border-myGray-400 focus-within:border-primary"
-                    } text-mySlate placeholder-mySlate bg-white outline-0 placeholder:focus:opacity-0`}
+                        } text-mySlate placeholder-mySlate bg-white outline-0 placeholder:focus:opacity-0`}
                     placeholder="placeholder"
                     rows={rows}
                     id={name}
@@ -124,13 +122,12 @@ export function Input({
 }) {
     console.log(errorMsg);
     return (
-        <>
+        <div className="flex  flex-col gap-1">
             <div
-                className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${
-                    errorMsg
+                className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${errorMsg
                         ? "border-error "
                         : "border-myGray-400 focus-within:border-primary "
-                } `}
+                    } `}
             >
                 <label
                     htmlFor={name}
@@ -151,11 +148,10 @@ export function Input({
                 </label>
                 <img
                     src={icon}
-                    alt="icon"
+                    alt={name}
                     onClick={iconOnClick}
-                    className={`w-4 h-w-4 ${
-                        iconOnClick ? "cursor-pointer" : ""
-                    }`}
+                    className={`w-4 h-w-4 ${iconOnClick ? "cursor-pointer" : ""
+                        }`}
                 />
             </div>
             <motion.div
@@ -166,7 +162,7 @@ export function Input({
             >
                 {errorMsg}
             </motion.div>
-        </>
+        </div>
     );
 }
 Input.propTypes = {

@@ -11,18 +11,8 @@ import AuthDesign from '../AuthDesign/AuthDesign'
 import { useState } from 'react'
 
 export default function ResettPassword() {
+    // translation ..
     const { t } = useTranslation("global");
-    const reset = {
-        title: t("reset.title"),
-        p: t("reset.p"),
-        placeholder1: t("reset.placeholder1"),
-        placeholder2: t("reset.placeholder2"),
-        err: t('reset.err'),
-        errcunfirm: t('reset.errcunfirm'),
-        button: t("reset.button"),
-        resetTitle: t("reset.resetTitle"),
-        resetPar: t("reset.resetPar")
-    }
     // state variants
     const [pwd1, setPwd1] = useState('')
     const [pwd2, setPwd2] = useState('')
@@ -33,8 +23,8 @@ export default function ResettPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        (pwd1.length < 5) ? seterr1(reset.err) : seterr1('');
-        (pwd1 != pwd2) ? seterr2(reset.errcunfirm) : seterr2('');
+        (pwd1.length < 5) ? seterr1(t("reset.err")) : seterr1('');
+        (pwd1 != pwd2) ? seterr2(t("reset.errcunfirm")) : seterr2('');
     }
 
     const showpassword = (e) => {
@@ -49,8 +39,8 @@ export default function ResettPassword() {
                     <div></div>
                 </div>
                 <div className='relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]'>
-                    <Typography component={'h1'} >{reset.title}</Typography>
-                    <Typography component={'h4'}>{reset.p}</Typography>
+                    <Typography component={'h1'} >{t("reset.title")}</Typography>
+                    <Typography component={'h4'}>{t("reset.p")}</Typography>
                     <form onSubmit={handleSubmit} className='relative space-y-5'>
                         <div className='relative'>
                             <Input onChange={(e) => setPwd1(e.target.value)}
@@ -58,7 +48,7 @@ export default function ResettPassword() {
                                 errorMsg={err1}
                                 icon={view}
                                 iconOnClick={() => showpassword(1)}
-                                label={reset.placeholder1} />
+                                label={t("reset.placeholder1")} />
                         </div>
                         <div className='relative'>
                             <Input onChange={(e) => setPwd2(e.target.value)}
@@ -66,12 +56,12 @@ export default function ResettPassword() {
                                 errorMsg={err2}
                                 icon={view}
                                 iconOnClick={() => showpassword(0)}
-                                label={reset.placeholder2} />
+                                label={t("reset.placeholder2")} />
                         </div>
-                        <Button fullWidth>{reset.button}</Button>
+                        <Button fullWidth>{t("reset.button")}</Button>
                     </form>
                 </div>
-                <AuthDesign img={doc} title={reset.resetTitle} paragraph={reset.resetPar} />
+                <AuthDesign img={doc} title={t("reset.resetTitle")} paragraph={t("ImageContainer.aboutUs")} />
             </div>
         </div>
     )
