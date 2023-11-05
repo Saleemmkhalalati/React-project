@@ -1,164 +1,114 @@
+import "./Login.css";
 import loginImage from "../Login/logain-image/Intersect.svg";
-import emailIcon from "../../../../assets/icons/Email.svg";
-import ViewIcon from "../../../../assets/icons/View.svg";
-import eyepassIcon from "../../../../assets/icons/eyepass.svg";
+import iconEmail from "../Login/logain-image/Email.svg";
+import iconShow from "../Login/logain-image/View.svg";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import AuthDesign from "../AuthDesign/AuthDesign";
 import Typography from "../../../utilities/Typography";
 import { Input } from "../../../utilities/Inputs";
 import Button from "../../../utilities/Button";
-import Polygon from "../../../utilities/Polygon";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
-  const [formData, setFormData] = useState({}); // Form data
-  const [errors, setErrors] = useState({}); // Form data
-  const [isSubmitting, setIsSubmitting] = useState(false); // Indicates if the form is submitted
-  const [isValid, setIsValid] = useState(true); // Indicates if the form is Valid
-  const [showpass, setShowpass] = useState(false);
-  // send error msg
-  const handleSetErrors = (name, msgError) => {
-    console.log(name);
-    setErrors({
-      ...errors,
-      [name]: msgError,
-    });
-  };
-  // Handle form input changes
-  const handleChange = async (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-    if (event.target.value === "") {
-      setIsValid(false);
-      handleSetErrors([event.target.name], "This field is required");
-    }
-    if (
-      event.target.name === "email" &&
-      !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
-        event.target.value
-      )
-    ) {
-      setIsValid(false);
-      handleSetErrors([event.target.name], "Invalid email address");
-    } else if (
-      event.target.name === "password" &&
-      event.target.value.length < 6
-    ) {
-      setIsValid(false);
-      handleSetErrors(
-        [event.target.name],
-        "The minimum number of characters is six."
-      );
+  const { t } = useTranslation("global");
+  const [email, SetEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [ErrM, setErrM] = useState("");
+  const [ErrP, setErrP] = useState("");
+  const [accept, setAccept] = useState("");
+  const [showpass, setshowpass] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+  const [isFilledPass, setIsFilledPass] = useState(false);
+
+  //show password
+  function ShowPassword() {
+    setshowpass(!showpass);
+  }
+
+  async function submit(e) {
+    e.preventDefault();
+    setAccept(true);
+    if (!(accept && email)) {
+      setErrM(t("login.err"))
     } else {
-      await handleSetErrors([event.target.name], "");
-      if (errors.email === "" && errors.password === "") setIsValid(true);
+      setErrM("")
     }
-  };
-  // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const hasEmptyFields = ["email", "password"].some(
-      (fieldName) => !formData[fieldName]
-    );
-    if (!hasEmptyFields) {
-      setIsSubmitting(true);
-      setIsSubmitting(false);
+    if (!(accept && password)) {
+      setErrP(t("login.err"))
     } else {
-      setIsValid(false);
-      console.log("Some required fields are empty.");
+      setErrP("")
     }
-  };
+  }
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 h-screen overflow-clip">
-      <div className="relative lg:grid-cols-7 pt-20 m-3 sm:pt-20 sm-ps-0 md:pt-40 md:ps-14">
-        <Polygon color={"primary"} className={"top-0 sm:top-24 -start-14"} />
-        <Polygon
-          color={"primary"}
-          className={"top-96 sm:top-[29rem] start-28"}
-        />
-        <div className="flex flex-col gap-y-10 w-full text-center sm:text-start">
-          <Typography component={"h1"}>Login in Med - Sal</Typography>
-          <div className="flex flex-row gap-x-1">
-            <Typography component={"p"}>
-              Don’t have an account with us?
-            </Typography>
-            <Link to={"/register"}>
-              <Typography component={"success-text"}>Create account</Typography>
-            </Link>
-          </div>
-        </div>
-        <form onSubmit={handleSubmit} className="relative mt-10">
-          <div className="flex flex-col gap-y-9">
-            <Input
-              name="email"
-              type="email"
-              label="Email Address"
-              icon={emailIcon}
-              onChange={handleChange}
-              errorMsg={
-                !isValid && errors.email === undefined
-                  ? "This field is required"
-                  : errors.email
-              }
-            />
-            <Input
-              name="password"
-              type={showpass ? "text" : "password"}
-              label="Password"
-              icon={showpass ? eyepassIcon : ViewIcon}
-              iconOnClick={() => {
-                setShowpass(!showpass);
-              }}
-              onChange={handleChange}
-              errorMsg={
-                !isValid && errors.password === undefined
-                  ? "This field is required"
-                  : errors.password
-              }
-            />
-          </div>
-          <div className="text-end mb-9">
-            <Link
-              className="text-sm texe-mySlate hover:text-secondary transition hover:animate-bounce"
-              to={"/forget-password"}
-            >
-              Forget password ?
-            </Link>
-          </div>
-          <Button fullWidth type="submit" disabled={isSubmitting || !isValid}>
-            Login in Med - Sal
-          </Button>
-        </form>
+    <div className="max-w-[1750px] mx-auto my-0 h-screen max-[1100px]:overflow-y-auto max-[1750px]:overflow-hidden">
+      <div className='relative  ltr:left-0  rtl:right-0 z-[-1]'>
+        <div className="absolute rotate-45 w-80 h-80 top-10 sm:top-24 bg-sky-50 rounded-3xl -start-14"></div>
+        <div className="absolute rotate-45 w-80 h-80 top-96 sm:top-[29rem] bg-sky-50 rounded-3xl start-28"></div>
+        <div></div>
       </div>
-      <div className=" lg:grid-cols-5 flex flex-col justify-between ">
-        <div className=" hidden lg:block">
-          <div className=" relative start-[15rem] top-[6rem] xl:top-[9.5rem] origin-center ltr:rotate-45 rtl:-rotate-45 ">
-            <div className="absolute w-[346px] h-[346px] xl:w-[370px]  xl:h-[370px] rounded-2xl bg-gradient-to-r from-primary to-secondary">
-              <div className="absolute z-10 w-[340px] h-[340px] xl:w-[364px]  xl:h-[364px] rounded-2xl top-[3px] start-[3px] bg-white"></div>
-            </div>
+      <div className="max-w-[1750px] mx-auto my-0 flex justify-between flex-wrap">
+        <div className="relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]">
+          <Typography component={'h1'}>
+            {t("login.title")}
+          </Typography>
+          <div className="min-w-[300px]">
+            <Typography component={'h4'}>
+              {t("login.p")}
+              <Link
+                className="text-success text-xs md:text-base border-b-[1px] border-success hover:text-secondary hover:border-secondary"
+                to={"/register"}
+              >
+                {t("login.create")}
+              </Link>
+            </Typography>
           </div>
-          <div className=" relative start-[24rem] xl:start-[27rem] top-16 origin-center ltr:rotate-45 rtl:-rotate-45">
-            <div className="absolute  w-[400px] h-[400px] xl:w-[500px]  xl:h-[500px]  rounded-2xl bg-myGray-100 shadow-md overflow-hidden">
-              <img
-                src={loginImage}
-                alt="img"
-                className="absolute start-12 rtl:start-20  top-24  z-10 w-[400px] h-[400px] xl:w-[500px] xl:h-[500px] ltr:-rotate-45 rtl:rotate-45 "
+          <form onSubmit={submit} className='relative space-y-5'>
+            <div>
+              <Input type="email"
+                value={email}
+                onChange={(e) => {
+                  SetEmail(e.target.value);
+                  setIsFilled(e.target.value !== "");
+                }}
+                label={t("login.inputFields.email")}
+                icon={iconEmail}
+                errorMsg={ErrM}
+                iconOnClick
               />
             </div>
-          </div>
+            <div>
+              <Input
+                type={showpass ? "text" : "password"}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setIsFilledPass(e.target.value !== "");
+                }}
+                label={t("login.inputFields.password")}
+                icon={iconShow}
+                errorMsg={ErrP}
+                iconOnClick={ShowPassword}
+              />
+              <div className="text-end mb-[-5px]">
+                <Link
+                  className="text-sm texe-mySlate hover:text-secondary transition hover:animate-bounce"
+                  to={"/forget-password"}
+                >
+                  {t("login.forget")}
+                </Link>
+              </div>
+            </div>
+            <Button fullWidth>
+              {t("login.button")}
+            </Button>
+          </form>
         </div>
-        <div className="relative pb-0 md:pb-10 ms-5 md:ms-16 lg:ms-40 lg:me-5">
-          <Typography component={"gradient-text"}>
-            Welcome back to Med - Sal ...
-          </Typography>
-          <Typography component={"p"}>
-            We are a platform that seeks to connect clinical patients with
-            doctors in various medical specialties and pharmacies all over the
-            Emirates.
-          </Typography>
-        </div>
+        <AuthDesign img={loginImage}
+          title={t("login.TitleImg")}
+          paragraph={t("login.resetPar")} />
       </div>
     </div>
   );
