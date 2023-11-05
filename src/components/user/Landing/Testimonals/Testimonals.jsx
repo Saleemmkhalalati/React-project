@@ -24,12 +24,12 @@ const Testimonals = () => {
 
     }
     return (
-        <section className={`testimonals_section overflow-hidden  relative   sm:px-16 px-6 sm:py-36 py-10 red `}>
-            <div className="flex flex-col xl:flex-row   md:bg-black justify-between items-center red py-10 gap-5 h-full ">
+        <section className={`testimonals_section overflow-hidden  relative   sm:px-16 px-6 sm:py-36 py-10  `}>
+            <div className="flex flex-col xl:flex-row    justify-between items-center  py-10 gap-5 h-full ">
                 {/* testimonals images */}
-                <div className="testimonals_images flex  items-center justify-around relative  red  h-[30rem] w-[50%]">
+                <div className="testimonals_images flex  items-center justify-around relative    h-[30rem] w-[50%]">
                     {/* 2 + 4 */}
-                    <div className={`flex  row-image justify- red sm:gap-24  gap-[3rem] items-center  cursor-pointer  `}>
+                    <div className={`flex  row-image justify-  sm:gap-24  gap-[3rem] items-center  cursor-pointer  `}>
 
                         {/* t4 */}
                         {/* <div onClick={() => { showInfo(4) }} className={` z-10 rotate-[46deg] red   bg-myGray-100 w-[100px] h-[100px]  md:w-[200px] md:h-[200px]  lg:w-[200px] lg:h-[200px] rounded-[5px]  ${pactive !== 4 ? "opacity-[25%]  grident" : " scale-110 grident !opacity-[80%]"} `}>
@@ -47,7 +47,7 @@ const Testimonals = () => {
                      <Polygon color={"gray"} className={"w-[100%] h-[100%] ltr:rotate-[90deg] overflow-hidden"}>
                      <img src={`${testmonal_4}`} alt="" className={` w-[100%] h-full rotate-[-130deg] absolute top-[-15%] lg:left-[10%]  `} />
                      <Polygon color={"gradient"} className={`w-[100%] h-[100%] ltr:rotate-[90deg] overflow-hidden opacity-[25%] ${pactive !== 4 ? "  " : "!opacity-[75%]"}`}>
-                    < p className=' z-20 text-white rotate-[138deg] w-full text-center red font-bold leading-9  text-[16px] md:w-[60%] absolute lg:left-0 lg:-bottom-[-70%] md:left-[50%]    left-1 bottom-10 md:text-[16px]'>Eleanor Pena</p>
+                    < p className=' z-20 text-white rotate-[138deg] w-full text-center  font-bold leading-9  text-[16px] md:w-[60%] absolute lg:left-0 lg:-bottom-[-70%] md:left-[50%]    left-1 bottom-10 md:text-[16px]'>Eleanor Pena</p>
 
                      </Polygon>
                       </Polygon>
@@ -61,7 +61,7 @@ const Testimonals = () => {
                      <Polygon color={"gray"} className={"w-[100%] h-[100%] ltr:rotate-[90deg] overflow-hidden"}>
                      <img src={`${testmonal_2}`} alt="" className={` w-[100%] h-full rotate-[-130deg] absolute top-[-15%] lg:left-[10%]     `} />
                      <Polygon color={"gradient"} className={`w-[100%] h-[100%] ltr:rotate-[90deg] overflow-hidden opacity-[25%] ${pactive !== 2? "  " : "!opacity-[75%]"}`}>
-                    < p className=' z-20 text-white rotate-[138deg] w-full text-center red font-bold leading-9  text-[16px] md:w-[60%] absolute lg:left-0 lg:-bottom-[-60%] md:left-[50%]    left-1 bottom-10 md:text-[16px]'>Jackie Prankline</p>
+                    < p className=' z-20 text-white rotate-[138deg] w-full text-center  font-bold leading-9  text-[16px] md:w-[60%] absolute lg:left-0 lg:-bottom-[-60%] md:left-[50%]    left-1 bottom-10 md:text-[16px]'>Jackie Prankline</p>
 
                      </Polygon>
 </Polygon>
@@ -94,7 +94,7 @@ kkkkk
                         </div> */}
                     </div>
                     {/* 1 +3 */}
-                    <div className={`flex col-iamge  red    rotate-[90deg] sm:gap-24 gap-[3rem] absolute md:start-[1%] xl:start-[13%]    cursor-pointer  rtl:translate-y-[-200px] rtl:translate-x-[-2px] rtl:md:translate-x-[-10px] rtl:md:gap-24`}>
+                    <div className={`flex col-iamge      rotate-[90deg] sm:gap-24 gap-[3rem] absolute md:start-[1%] xl:start-[13%]    cursor-pointer  rtl:translate-y-[-200px] rtl:translate-x-[-2px] rtl:md:translate-x-[-10px] rtl:md:gap-24`}>
                         {/* t1 */}
                       
                            <div onClick={() => { showInfo(1) }} className={`relative sm:w-[13rem] sm:h-[13rem] w-[7rem] h-[7rem]  ${pactive !== 1 ? "  " : " scale-110 !z-50"}`}>
@@ -137,7 +137,7 @@ kkkkk
 
 
                 {/* testimonals content */}
-                <div className="testimonals_content md:mt-10 mt-0 w-full flex flex-col text-left lg:w-[40%]   red ">
+                <div className="testimonals_content md:mt-10 mt-0 w-full flex flex-col text-left lg:w-[40%]    ">
 
 
                     <Typography component={"h1"} className="mb-5" >
