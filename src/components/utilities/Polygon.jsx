@@ -7,10 +7,12 @@ export default function Polygon({ color, className,children }) {
                     : color === "gradient" 
                     ? "absolute bg-gradient-to-b from-secondary to-primary rounded-2xl shadow-md ltr:rotate-45 rtl:-rotate-45"
                     :  color === "white" 
-                    ?"absolute bg-white rounded-xl "
-                    :color === "gray"
-                    ?"bg-gray-100 origin-center ltr:rotate-45 rtl:-rotate-45 rounded-xl"
-                    :""
+                    ? "absolute bg-white rounded-xl "
+                    : color === "gray"
+                    ? "bg-gray-200 origin-center ltr:rotate-45 rtl:-rotate-45 rounded-xl"
+                     : color === "y"
+                    ?" bg-error origin-center ltr:rotate-45 rtl:-rotate-45 rounded-xl"
+                    : ""
             }`}
         >
             {children}
@@ -21,7 +23,7 @@ export default function Polygon({ color, className,children }) {
 import PropTypes from "prop-types";
 Polygon.propTypes = {
     children: PropTypes.string,
-    color: PropTypes.oneOf(["primary", "gradient","white","gray"]).isRequired,
+    color: PropTypes.oneOf(["primary", "gradient","white","gray","y"]).isRequired,
     className: PropTypes.string,
 };
 
