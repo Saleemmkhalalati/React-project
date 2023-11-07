@@ -1,4 +1,4 @@
-import docImg from "./ConfirmImage/Intersect.svg";
+import docImg from "../AuthDesign/Imgs/Doctor.svg";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import AuthDesign from '../AuthDesign/AuthDesign';
