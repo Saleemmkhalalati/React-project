@@ -19,6 +19,7 @@ import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
 import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
+import DoctorServices from "./components/Dashbord/Service/DoctorsServices";
 
 function App() {
   return (
@@ -47,7 +48,10 @@ function App() {
               <Route path="patient_Users" element={<Dashboard />} />
               <Route path="Admin_Users" element={<Dashboard />} />
             </Route>
-            <Route path="services" element={<Services />} />
+
+            <Route path="services" element={<Services />}>
+              <Route path="Doctors_Services" element={<DoctorServices />} />
+            </Route>
             <Route path="requests" element={<Requests />} />
             <Route path="report" element={<Report />} />
             <Route path="notifications" element={<Notifications />} />
