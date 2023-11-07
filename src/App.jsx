@@ -19,6 +19,7 @@ import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
 import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
+import DoctorServices from "./components/Dashbord/Service/DoctorsServices";
 
 function App() {
   return (
