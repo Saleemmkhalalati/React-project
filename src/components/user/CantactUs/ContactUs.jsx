@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Button from "../../utilities/Button";
 import { FInput, Textarea } from "../../utilities/Inputs";
 import Typography from "../../utilities/Typography";
+import Polygon from "../../utilities/Polygon";
 // assets
 import characterImage from "./img/Intersect.svg";
 import personIcon from "../../../assets/icons/Person.svg";
@@ -37,19 +38,28 @@ export default function ContactUs() {
     <div className="p-5 min-h-[100vh] overflow-x-clip">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16">
         <div className="hidden lg:block lg:grid-cols-7 lg:mt-72 xl:mt-80">
-          <div className="relative start-16 origin-center ltr:rotate-45 rtl:-rotate-45">
-            <div className="absolute w-[20.3rem] h-[20.3rem] rounded-2xl bg-gradient-to-r from-primary to-secondary">
-              <div className="absolute z-10 w-80 h-80 rounded-2xl top-[2px] start-[2px] bg-white"></div>
-            </div>
+          <div className="relative -start-7 -top-40">
+            <Polygon
+              color="gradient"
+              className={"absolute w-[22rem] h-[22rem]"}
+            >
+              <Polygon
+                color="white"
+                className={"absolute w-[21.5rem] h-[21.5rem] top-1 start-1"}
+              ></Polygon>
+            </Polygon>
           </div>
-          <div className="relative lg:start-40 xl:start-48 -top-8 origin-center ltr:rotate-45 rtl:-rotate-45">
-            <div className="absolute w-[400px] h-[400px] rounded-2xl bg-myGray-100 shadow-md overflow-hidden">
+          <div className="relative start-20 -top-36 xl:-top-44">
+            <Polygon
+              color="gray"
+              className={"absolute xl:w-96 xl:h-96 lg:w-80 lg:h-80 "}
+            >
               <img
                 src={characterImage}
                 alt="img"
-                className="absolute z-10 w-[400px] h-[400px] ltr:-rotate-45 rtl:rotate-45 ltr:top-9 ltr:start-16 rtl:top-16 rtl:start-9"
+                className="absolute z-10 w-[400px] h-[400px]ltr:top-9 ltr:start-16  rtl:start-3 rtl:top-10 ltr:-rotate-45 rtl:rotate-45"
               />
-            </div>
+            </Polygon>
           </div>
         </div>
         <div className="lg:grid-cols-7">
