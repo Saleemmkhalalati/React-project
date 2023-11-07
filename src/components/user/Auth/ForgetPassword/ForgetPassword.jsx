@@ -26,6 +26,8 @@ export default function ForgetPassword() {
             seterr(t("forget.erremail"))
         } else {
             seterr('')
+            window.location.href = '/verification-code';
+
         }
         console.log(email)
     }
