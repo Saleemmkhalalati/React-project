@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useState} from 'react'
 import { styles } from '../Stayles'
 import { useTranslation } from "react-i18next";
 import Dental from './Services_images/Dental.svg'
@@ -6,69 +6,93 @@ import Neurology from './Services_images/Neurology.svg'
 import serviceImage from './Services_images/Doctor_services.png'
 import BackPolygon from "../../../utilities/BackPolygon"
 import Typography from '../../../utilities/Typography'
+import Polygon from '../../../utilities/Polygon';
 
 
 const Services = () => {
     const { t } = useTranslation("global");
+    const [active,setactive] =useState(0);
 
     return (
-        <section className={`services_section relative overflow-hidden    sm:px-16 px-6 sm:py-16 py-16   `}>
+        <section className={`services_section relative   overflow-hidden sm:px-16 px-6 sm:py-16 py-10   `}>
         
           
 
             
-               <div className='absolute   left-[-100px]  lg:top-[20%] md:top-[60%] md:right-[60%] top-[20%] rtl:lg:right-[-50px]  hidden lg:block'>
+               <div className='absolute   left-[-100px]  lg:top-[20%] md:top-[60%] md:right-[60%] top-[20%] rtl:lg:right-[-50px]  hidden xl:block'>
                 <BackPolygon />
             </div>
             {/* services content + services image */}
-            <div className={`flex flex-col lg:flex-row ${styles.padding} text-left  items-center   mt-10 justify-between gap-10`}>
+            <div className={`flex flex-col lg:flex-row justify-between sm:px-16 px-6 sm:py-16 py-16 text-left  items-center  lg:h-[26rem] md:h-[30rem] h-[35rem]  gap-10`}>
                 <div className="services_content lg:w-[30%] rtl:text-right ">
                     <Typography component={"h1"} className={`mb-5`}>{t("Services.main-title")}</Typography>
                     <Typography component={"p"} >{t("Services.discrption")}</Typography>
                 </div>
-                <div className="services_images  relative h-full   lg:w-[60%] flex flex-wrap mt-10 md:flex-row items-center gap-7">
-                    {/* service 1 */}
 
+                <div className="services_images  relative h-full lg:w-[60%] w-full  flex  flex-col xl:flex-row md:items-center flex-wrap   lg:gap-7 md:gap-[3rem] sm:gap-[2rem] sm:mt-5 gap-[-10rem]">
+                    {/* service 1 */}
+      <div onClick={() => { setactive(1);console.log(active) }} className={`relative xl:top-[-40%] xl:start-0 lg:top-[20%] lg:start-[-50%] md:top-[25%] md:start-[-50%] sm:top-[10%] sm:start-0 cursor-pointer ${active !==1 ? "":""}`}>
+      <Polygon color={"gradient"} className={"xl:w-[14rem] xl:h-[14rem] lg:w-[12rem] lg:h-[12rem] md:w-[12rem] md:h-[12rem] sm:w-[10rem] sm:h-[10rem] w-[8rem] h-[8rem] "}>
+        <Polygon color={"gray"} className={"absolute xl:w-[13.5rem] xl:h-[13.5rem] lg:w-[11.5rem] md:w-[11.5rem] md:h-[11.5rem] sm:w-[9.5rem] sm:h-[9.5rem] w-[7.6rem] h-[7.6rem] top-[2%] start-[2%] ltr:rotate-90 rtl:rotate-180"} >
+            <img src={Dental} alt="" className='  z-10 w-[70px] h-[80px]    lg:w-[100px] lg:h-[100px] rotate-[-135deg]  flex items-center justify-center absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] ' />
+            <Typography component={"gradient-text"} className=' lg:text-[20px] font-bold absolute sm:top-[20%] sm:start-[60%] top-4 start-16  translate-x-[50% rotate-[-135deg]  text-[14px] rtl:sm:top-[20%] rtl:sm:start-[20%]  rtl:top-[13%] rtl:start-[2%] '>{t("Services.services.0")}</Typography>
+            
+        </Polygon>
+        <Polygon color={"gradient"} className={`w-[100%] h-[100%] ltr:rotate-[90deg] rtl:rotate-0 overflow-hidden  opacity-[1%] ${active!== 1 ?  "" : "visible !opacity-[25%] "}`}/>
+
+
+
+
+</Polygon>
+
+
+      </div>
+
+
+      <div onClick={() => {setactive(2)}} className='relative bg-gray-300 xl:top-[-40%]  xl:start-[30%] lg:top-[10%] lg:start-[-14%] md:top-[2%] md:start-[-20%] sm:top-[0%] sm:start-[40%] start-[50%] cursor-pointer'>
+      <Polygon color={"gradient"} className={"xl:w-[14rem] xl:h-[14rem] lg:w-[12rem] lg:h-[12rem] md:w-[12rem] md:h-[12rem] sm:w-[10rem] sm:h-[10rem] w-[8rem] h-[8rem]"}>
+      <Polygon color={"gray"} className={"absolute xl:w-[13.5rem] xl:h-[13.5rem] lg:w-[11.5rem]  md:w-[11.5rem] md:h-[11.5rem] sm:w-[9.5rem] sm:h-[9.5rem] w-[7.6rem] h-[7.6rem] top-[2%] start-[2%] ltr:rotate-90 rtl:rotate-180"} >
+      <img src={Neurology} alt="" className='  z-10 w-[70px] h-[80px]    lg:w-[100px] lg:h-[100px] rotate-[-135deg]  flex items-center justify-center absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] ' />
+      <Typography component={"gradient-text"} className=' sm:text-[20px] font-bold absolute sm:top-[20%] sm:start-[50%] start-[30%] top-[10%]  translate-x-[50% rotate-[-135deg] rtl:sm:top-[20%] rtl:sm:start-[20%]  rtl:top-[10%] rtl:start-[-5%] text-[12px]'>{t("Services.services.1")}</Typography>
+
+      </Polygon>
+      <Polygon color={"gradient"} className={`w-[100%] h-[100%] ltr:rotate-[90deg] rtl:rotate-0 overflow-hidden  opacity-[1%] ${active!== 2 ?  "" : "visible !opacity-[25%] "}`}/>
+
+
+
+</Polygon>
+      </div>
+
+      <div onClick={() => { setactive(3) }} className={`relative bg-gray-300 xl:top-[-40%]   xl:start-[60%] lg:top-[2%] lg:start-[20%] md:top-[-20%] md:start-[10%] sm:top-[-10%] sm:start-[80%] top-[60%]  cursor-pointer ${active !==3 ?"":"border-solid border-spacing-28 border-indigo-600"} `}>
+       
+       
+        <Polygon color={"gradient"} className={"xl:w-[14rem] xl:h-[14rem] lg:w-[12rem] lg:h-[12rem] md:w-[12rem] md:h-[12rem] sm:w-[10rem] sm:h-[10rem] w-[8rem] h-[8rem] overflow-hidden "}>
+        
+      <Polygon color={"gray"} className={"absolute xl:w-[13.8rem] xl:h-[13.8rem] lg:w-[11.5rem]  md:w-[11.5rem] md:h-[11.5rem] sm:w-[9.5rem] sm:h-[9.5rem] w-[7.8rem] h-[7.8rem] top-[2%] start-[2%] ltr:rotate-90 rtl:rotate-180"} >
+
+      <img src={serviceImage} alt="" className='  z-10    w-full h-full rotate-[-130deg]  flex items-center justify-center absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] ' />
+      <Polygon color={"gradient"} className={`w-[101%] h-[101%] ltr:rotate-[90deg] rtl:rotate-0 overflow-hidden opacity-[75%] z-20`}>
+      <Typography component={"p"} className='text-white z-30 font-extrabold rotate-[135deg] md:text-[16px] lg:text-[20px]  absolute sm:top-16  top-10  rtl:rotate-[-135deg]'>{t("Services.services.2")}</Typography>
+                     </Polygon>
+  
+      </Polygon>
+      
+</Polygon>
+
+
+       
+ 
+
+      </div>
+
+
+      
 
                 
 
 
 
-                    <div className={`rotate-45   grident  p-[3px]   w-[120px] h-[120px] md:w-[180px] md:h-[180px]  lg:w-[220px] lg:h-[220px] rounded-[16px] relative lg:top-1/2 `}>
-                        <div  className="bg-myGray-100  relative  w-full h-full">
-                            <div style={{backgroundImage:`url(${Dental})`}} className='bg-no-repeat bg-center z-10 w-[70px] h-[80px]    lg:w-[100px] lg:h-[100px] rotate-[-45deg]  flex items-center justify-center absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] '>
-                            <Typography component={"gradient-text"} className=' lg:text-[20px] font-bold absolute lg:bottom-[-30px] bottom-[-25px]  text-[16px]'>{t("Services.services.0")}</Typography>
-                            </div>
-                           
-
-                        </div>
-                    </div>
-                    {/* rservice 2*/}
-                    <div className={` grident inline-block  grident p-[3px] rotate-45   md:mt-10  w-[120px] h-[120px]  md:w-[180px] md:h-[180px]  lg:w-[220px] lg:h-[220px] rounded-[16px] relative lg:top-1/2 top-[20%]  `}>
-                        <div className="bg-myGray-100 relative w-full h-full">
-                        <div style={{backgroundImage:`url(${Neurology})`}} className='bg-no-repeat bg-center z-10 lg:w-[100px] lg:h-[100px] w-[70px] h-[70px]    rotate-[-45deg]  flex items-center justify-center absolute top-[40%] left-[40%] md:top-1/2 md:left-1/2 translate-y-[-50%] translate-x-[-50%] '>
-                        <Typography component={"gradient-text"}className=' lg:text-[20px] font-bold absolute lg:bottom-[-30px] bottom-[-25px]  text-[16px] '>{t("Services.services.1")}</Typography>
-</div>
-
-                        </div>
-                    </div>
-                    {/* service 3 */}
-   
-                    <div className={`p-[2px] grident inline-block  grident  rotate-45    w-[120px] h-[120px]  md:w-[180px] md:h-[180px]  lg:w-[220px] lg:h-[220px] rounded-[16px] relative lg:top-1/2  top-[20%] overflow-hidden `}>
-                       
-                       
-                       
-                        <div className="grident  opacity-[70%] w-full  h-full relative   ">
-                        <div style={{backgroundImage:`url(${serviceImage})`}} className={` rotate-[-45deg] absolute right-2   lg:right-8 lg:bottom-[-20px]  img-landing-page bg-no-repeat bg-cover bg-center lg:w-[150px] lg:h-[250px] md:w-[150px] md:h-[230px] w-[100px] h-[150px]  `} >
-                        <Typography component={"p"} className='text-white z-30 font-extrabold  text-[16px]  absolute lg:bottom-10  lg:left-[50px] bottom-4  left-[30px] font-bold md:bottom-12'>{t("Services.services.2")}</Typography>
-      </div>
-                           
-                     
-                        
-
-
-                        </div>
-                    </div>
+                  
                 </div>
 
 
