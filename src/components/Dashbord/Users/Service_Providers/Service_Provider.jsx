@@ -12,11 +12,7 @@ const Service_Provider = () => {
 
     const options = [
 
-        { id:1, value: 'Docter' },
-
-        { id:2, value: 'voo' },
-
-        { id:3, value: '' },
+  "docter","hh","ll"
 
     ];
 
@@ -45,7 +41,7 @@ const Service_Provider = () => {
         <Content path={`${location.pathname}`}>
             {/* // must be as a commponent  */}
             <TabsFillter>
-            <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%] rounded-[5px] font-semibold text-myGray-500'>0 record</span>
+            <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500'>0 record</span>
 
 
 
