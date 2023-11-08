@@ -45,7 +45,7 @@ const Hero = () => {
           <Button onClick={handleClick}>{t("Hero.3")}</Button>
         </div>
       </div>
-      <div className="relative grid-col-6">
+      <div className="relative grid-col-6 hidden md:block">
         <div className="absolute top-24 start-60">
           <BackPolygon></BackPolygon>
         </div>
