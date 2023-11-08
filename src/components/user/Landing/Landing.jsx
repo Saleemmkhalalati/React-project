@@ -1,22 +1,23 @@
-import React from 'react'
-import Hero from './Hero/Hero'
-import About from './About/About'
-import Services from './Services/Services'
-import GetApp from './Get_App/GetApp'
-import Testimonals from './Testimonals/Testimonals'
+import React from "react";
+import Hero from "./Hero/Hero";
+import About from "./About/About";
+import Services from "./Services/Services";
+import GetApp from "./Get_App/GetApp";
+import Testimonals from "./Testimonals/Testimonals";
+import Container from "../../utilities/Container";
 
 const landing = () => {
   return (
     <>
-    <Hero />
-    <About/>
-    <Services/>
-    <Testimonals/>
-    <GetApp/>
-    
-      
+      <Container className={" max-[1750px]:overflow-hidden"}>
+        <Hero />
+        <About />
+        <Services />
+        <Testimonals />
+        <GetApp />
+      </Container>
     </>
-  )
-}
+  );
+};
 
-export default landing
+export default landing;

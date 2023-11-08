@@ -23,7 +23,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 ">
       <div className="relative grid-col-6 pt-28 pb-52 px-5 sm:px-0 sm:ps-10  flex flex-col gap-5">
         <div className="flex">
           <div className="text-primary">{t("Hero.0")}</div>
@@ -45,7 +45,7 @@ const Hero = () => {
           <Button onClick={handleClick}>{t("Hero.3")}</Button>
         </div>
       </div>
-      <div className="relative grid-col-6">
+      <div className="relative grid-col-6 hidden md:block">
         <div className="absolute top-24 start-60">
           <BackPolygon></BackPolygon>
         </div>

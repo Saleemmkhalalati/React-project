@@ -21,6 +21,8 @@ import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
 import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
+import DoctorServices from "./components/Dashbord/Service/DoctorsServices";
+
 function App() {
   return (
     <div className="font-alegreya">
@@ -43,13 +45,19 @@ function App() {
           </Route>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path="users" element={<Dashboard />}/>
               <Route path="users/service_Providers" element= {<Service_Provider/>} />
               <Route path="users/patient_Users" element={<Patient_Users />} />
               <Route path="users/Admin_Users" element={<Admin_Users />} />
            
 
-            <Route path="services" element={<Dashboard />} />
+
+
+            <Route path="services" element={<Services />}>
+              <Route path="Doctors_Services" element={<DoctorServices />} />
+            </Route>
+
             <Route path="requests" element={<Requests />} />
             <Route path="report" element={<Report />} />
             <Route path="notifications" element={<Notifications />} />

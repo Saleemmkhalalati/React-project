@@ -22,12 +22,12 @@ export const AboutUsContent = ({ className }) => {
       <Typography component={"h1"}>{t("AboutUs.main.0")}</Typography>
       <Typography component={"h2"}>{t("AboutUs.main.1")}</Typography>
 
-      <ul className="relative flex flex-col gap-3 ps-7 after:content-[''] after:w-[2px] after:h-full after:bg-secondary after:absolute after:top-0 after:start-[0.4rem]">
+      <ul className="relative flex flex-col gap-3 ps-7 after:content-[''] after:w-[2px] after:h-full after:bg-secondary after:absolute after:top-0 after:start-[0.4rem] after:-z-[2]">
         {AboutUs.map((item, index) => (
           <div className="flex flex-col gap-3" key={index}>
             <Typography
               component={"h4"}
-              className="relative before:content-[''] before:absolute before:w-4 before:h-4 before:rotate-45 before:bg-primary before:rounded-sm before:border-solid before:border-[1px] before:border-secondary before:-start-[1.8rem] before:z-10 "
+              className="relative before:content-[''] before:absolute before:w-4 before:h-4 before:rotate-45 before:bg-primary before:rounded-sm before:border-solid before:border-[1px] before:border-secondary before:-start-[1.8rem]  "
             >
               {item.title}
             </Typography>
