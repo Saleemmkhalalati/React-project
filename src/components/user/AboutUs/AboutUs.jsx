@@ -23,7 +23,7 @@ export default function AboutUs() {
             ></Polygon>
           </div>
 
-          <div className="relative start-64 top-32 z-10 ">
+          <div className="relative start-64 top-32 z-[2] ">
             <Polygon color="gray" className={"absolute w-72 h-72"}></Polygon>
             <img
               className="absolute w-[21rem] h-[21rem] ltr:-start-10 top-2 hidden lg:block"
