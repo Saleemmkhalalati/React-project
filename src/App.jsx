@@ -9,7 +9,9 @@ import AboutUs from "./components/user/AboutUs/AboutUS";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
-import Users from "./components/Dashbord/Users/Users";
+import Service_Provider from "./components/Dashbord/Users/Service_Providers/Service_Provider"
+import Patient_Users from "./components/Dashbord/Users/Patient_Users/Patient_Users"
+import Admin_Users from "./components/Dashbord/Users/Admin_Users/Admin_Users"
 import Services from "./components/Dashbord/Service/Services";
 import Requests from "./components/Dashbord/Requests/Requests ";
 import Report from "./components/Dashbord/Report/Report ";
@@ -43,11 +45,14 @@ function App() {
           </Route>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="users" element={<Users />}>
-              <Route path="service_Providers" element={<Dashboard />} />
-              <Route path="patient_Users" element={<Dashboard />} />
-              <Route path="Admin_Users" element={<Dashboard />} />
-            </Route>
+
+            <Route path="users" element={<Dashboard />}/>
+              <Route path="users/service_Providers" element= {<Service_Provider/>} />
+              <Route path="users/patient_Users" element={<Patient_Users />} />
+              <Route path="users/Admin_Users" element={<Admin_Users />} />
+           
+
+
 
             <Route path="services" element={<Services />}>
               <Route
