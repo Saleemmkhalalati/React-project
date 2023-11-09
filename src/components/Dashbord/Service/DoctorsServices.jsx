@@ -1,107 +1,66 @@
-import Typography from "../../utilities/Typography";
-import ref from "./Services_img/Refrech.svg";
-import share from "./Services_img/Export.svg";
-import { useState } from "react";
-import "./DoctorsServices.css";
+import React from "react";
+import { useLocation } from "react-router-dom";
+import Content from "../Dashbord_layout/Content/Content";
+import { useTranslation } from "react-i18next";
+import Dropdown from "../../utilities/Dropdown";
+import Checkbox from "../../utilities/Checkbox";
+import TabsFillter from "../../utilities/TabsFillter";
+import NoData from "../Dashbord_layout/NoData/NoData";
 export default function DoctorServices() {
-  const [selectedValue, setSelectedValue] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
-  const array = [
+  const { t } = useTranslation("global");
+
+  const myOptions = [
     "Dental",
-    " Optics",
+    "Optics",
     "Nutritionist",
     "Home Care",
     "Plastic Surgery",
-    "Radiologis",
+    "Radiologist",
     "Aesthetics",
   ];
 
+  const [value, setValue] = React.useState("fruit");
+
   const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+    setValue(event.target.value);
   };
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-    // هنا يمكنك تنفيذ الدالة التي تريدها
-    console.log(`الخيار المحدد هو: ${event.target.value}`);
-  };
+  const [Allusers, setAllusers] = React.useState(false);
+  const [Lastusers, setLastusers] = React.useState(false);
 
+  const handleChange_allServices = () => {
+    setAllusers(!Allusers);
+  };
+  const handleChange_lastServices = () => {
+    setLastusers(!Lastusers);
+  };
   return (
-    <div className="bg-myGray-200 h-screen">
-      <div className="flex justify-between px-5 pt-4 pb-4">
-        <div className="flex  items-center gap-1 ">
-          <span className="text-secondary">Dashboard / </span>
-          <Typography component={"p"}>Services /</Typography>
-          <Typography component={"p"}>Doctors Services</Typography>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 ">
-            <img src={ref} alt="icon" />
-            <botton className="text-myGray-500 text-sm cursor-pointer hover:text-myGray-600">
-              Refresh
-            </botton>
-          </div>
-          <div className="flex items-center gap-1 ">
-            <img src={share} alt="icon" />
-            <botton className="text-myGray-500 text-sm cursor-pointer hover:text-myGray-600">
-              Export Table
-            </botton>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white min-h-screen mx-5 rounded-md  ">
-        <div className=" flex items-center gap-5  px-5 py-5 border-b">
-          <div>
-            <span className=" border-solid border-[1px] border-myGray-100 px-5 py-2 rounded-lg text-myGray-500 text-sm">
-              <span className="text-sm text-myGray-500 ">3</span> record
-            </span>
-          </div>
+    <>
+      <Content path={"sss"}>
+        {/* // must be as a commponent  */}
+        <TabsFillter>
+          <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
+            0 record
+          </span>
 
-          <div>
-            <select
-              className="custom-dropdown border-solid border-[1px] border-myGray-100 ps-1 pe-14 text-sm text-myGray-500 py-2  rounded-lg cursor-pointer outline-none focus:border-primary"
-              value={selectedValue}
-              onChange={handleChange}
-            >
-              {array.map((value, index) => (
-                <option
-                  className="text-sm text-myGray-600  bg-myGray-200 border-solid border-[1px] border-myGray-100"
-                  key={index}
-                  value={value}
-                >
-                  {value}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Dropdown options={myOptions} value={value} onChange={handleChange} />
 
-          <div className="flex items-center gap-5">
-            <label className="text-sm text-myGray-500 cursor-pointer">
-              <input
-                className="me-2"
-                type="radio"
-                value="option1"
-                checked={selectedOption === "option1"}
-                onChange={handleOptionChange}
-              />
-              All services
-            </label>
+          <Checkbox
+            label="All services"
+            value={Allusers}
+            onChange={handleChange_allServices}
+          />
 
-            <div>
-              <label className="text-sm text-myGray-500 cursor-pointer">
-                <input
-                  className="me-2"
-                  type="radio"
-                  value="option2"
-                  checked={selectedOption === "option2"}
-                  onChange={handleOptionChange}
-                />
-                Last services
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Checkbox
+            label="Last services"
+            value={Lastusers}
+            onChange={handleChange_lastServices}
+          />
+        </TabsFillter>
+
+        <div className="">jjjjjjj</div>
+      </Content>
+      <NoData children={t("nodata")}></NoData>
+    </>
   );
 }

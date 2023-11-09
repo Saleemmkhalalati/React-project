@@ -156,5 +156,6 @@
     "Access Denied !",
     "Sorry, But you don’t have permission to access this page.",
     "Back To Page"
-  ]
+  ],
+  "nodata": "No Data Found"
 }

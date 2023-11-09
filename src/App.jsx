@@ -9,10 +9,9 @@ import AboutUs from "./components/user/AboutUs/AboutUS";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
-import Service_Provider from "./components/Dashbord/Users/Service_Providers/Service_Provider"
-import Patient_Users from "./components/Dashbord/Users/Patient_Users/Patient_Users"
-import Admin_Users from "./components/Dashbord/Users/Admin_Users/Admin_Users"
-import Services from "./components/Dashbord/Service/Services";
+import Service_Provider from "./components/Dashbord/Users/Service_Providers/Service_Provider";
+import Patient_Users from "./components/Dashbord/Users/Patient_Users/Patient_Users";
+import Admin_Users from "./components/Dashbord/Users/Admin_Users/Admin_Users";
 import Requests from "./components/Dashbord/Requests/Requests ";
 import Report from "./components/Dashbord/Report/Report ";
 import Notifications from "./components/Dashbord/Notifications/Notifications";
@@ -46,20 +45,19 @@ function App() {
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
-            <Route path="users" element={<Dashboard />}/>
-              <Route path="users/service_Providers" element= {<Service_Provider/>} />
-              <Route path="users/patient_Users" element={<Patient_Users />} />
-              <Route path="users/Admin_Users" element={<Admin_Users />} />
-           
+            <Route path="users" element={<Dashboard />} />
+            <Route
+              path="users/service_Providers"
+              element={<Service_Provider />}
+            />
+            <Route path="users/patient_Users" element={<Patient_Users />} />
+            <Route path="users/Admin_Users" element={<Admin_Users />} />
 
-
-
-            <Route path="services" element={<Services />}>
-              <Route
-                path="services/Doctors_Services"
-                element={<DoctorServices />}
-              />
-            </Route>
+            <Route path="services" element={<Dashboard />} />
+            <Route
+              path="services/Doctors_Services"
+              element={<DoctorServices />}
+            />
 
             <Route path="requests" element={<Requests />} />
             <Route path="report" element={<Report />} />
