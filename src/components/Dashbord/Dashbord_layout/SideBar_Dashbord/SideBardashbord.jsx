@@ -55,19 +55,27 @@ const SideBardashbord = () => {
           icon: Services,
           subMenus: [
             {
-              title: "Doctors Services",
+              title: t("sideBar_Dashbord.Services.0"),
               src: "Doctors_Services",
 
               cName: "sub-nav",
             },
             {
-              title: "Hospital Services",
+              title: t("sideBar_Dashbord.Services.1"),
               src: "/services/services2",
 
               cName: "sub-nav",
             },
             {
-              title: "Clinic Services",
+              title: t("sideBar_Dashbord.Services.2"),
+              src: "/services/services3",
+            },
+            {
+              title: t("sideBar_Dashbord.Services.3"),
+              src: "/services/services3",
+            },
+            {
+              title: t("sideBar_Dashbord.Services.4"),
               src: "/services/services3",
             },
           ],

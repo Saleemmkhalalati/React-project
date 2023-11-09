@@ -136,6 +136,13 @@
       "المستخدمين المرضى",
       "المستخدمين المسؤولين"
     ],
+    "Services": [
+      "حدمات الطبيب",
+      "خدمات المستشفى",
+      "Pharmacy Services",
+      "Clinic Services",
+      "Lab Services"
+    ],
     "about_dashboard_menu": ["الاعدادات", "تسجيل خروج"]
   },
   "Hero": [
