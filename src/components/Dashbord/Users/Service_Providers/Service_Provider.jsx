@@ -31,7 +31,11 @@ const Service_Provider = () => {
         setValueDtopdown(event.target.value);
     }
     const handleRefrech=() => {
-        console.log(refrech)
+        console.log("refrech")
+      
+    }
+    const handleExport=() => {
+        console.log("export")
       
     }
     
@@ -43,7 +47,7 @@ const Service_Provider = () => {
 
 
     return (
-        <Content path="/All Uers/Service Provider" RefrechFun={handleRefrech} >
+        <Content path="/All Uers/Service Provider" RefrechFun={handleRefrech} ExportFunc={handleExport} >
             {/* // must be as a commponent  */}
             <TabsFillter>
                 <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500'>0 record</span>
