@@ -21,6 +21,7 @@ import VerfictionCode from "./components/user/Auth/VerificationCode/Verification
 import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
 import DoctorServices from "./components/Dashbord/Service/DoctorsServices";
+import HospitalServices from "./components/Dashbord/Service/HospitalServices";
 
 function App() {
   return (
@@ -57,6 +58,10 @@ function App() {
             <Route
               path="services/Doctors_Services"
               element={<DoctorServices />}
+            />
+            <Route
+              path="services/Hospital_Services"
+              element={<HospitalServices />}
             />
 
             <Route path="requests" element={<Requests />} />

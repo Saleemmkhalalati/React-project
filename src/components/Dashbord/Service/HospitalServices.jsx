@@ -7,7 +7,7 @@ import Checkbox from "../../utilities/Checkbox";
 import TabsFillter from "../../utilities/TabsFillter";
 import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
-export default function DoctorServices() {
+export default function HospitalServices() {
   const myOptions = [
     "Dental",
     "Optics",

@@ -24,7 +24,7 @@ const Content = ({ children, path }) => {
           </div>
         </div>
       </div>
-      <div className="bg-white h-[90%] rounded-lg">{children}</div>
+      <div className="bg-white rounded-lg">{children}</div>
       <p>Copyright @ 2023, All Right Resaved By Remostart </p>
     </div>
   );

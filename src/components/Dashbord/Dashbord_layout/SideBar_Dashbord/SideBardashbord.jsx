@@ -52,7 +52,7 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_users_menu.1"),
           src: "/dashboard/services",
-          icon: Services ,
+          icon: Services,
           subMenus: [
             {
               title: t("sideBar_Dashbord.Services.0"),
@@ -62,7 +62,7 @@ const SideBardashbord = () => {
             },
             {
               title: t("sideBar_Dashbord.Services.1"),
-              src: "",
+              src: "Hospital_Services",
 
               cName: "sub-nav",
             },
