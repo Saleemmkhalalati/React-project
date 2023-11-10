@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import arrowIcon from "../../../assets/icons/arrowDropdown.svg";
 
 import Content from "../Dashbord_layout/Content/Content";
 
@@ -17,11 +18,19 @@ export default function DoctorServices() {
     "Radiologist",
     "Aesthetics",
   ];
+  const [refrech, setrefrech] = useState(false);
+  const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChangeDropdown = (event) => {
+    setValueDtopdown(event.target.value);
+  };
+  const handleRefrech = () => {
+    setrefrech(!refrech);
+  };
+  const handleExport = () => {
+    setexport(!Export);
   };
 
   const radioItems = [
@@ -75,12 +84,6 @@ export default function DoctorServices() {
     { name: "View service", url: "http://example.com/2" },
     { name: "Delete service", url: "http://example.com/3" },
   ];
-  const handleRefrech = () => {
-    console.log("refrech");
-  };
-  const handleExport = () => {
-    console.log("export");
-  };
 
   return (
     <>
@@ -88,6 +91,8 @@ export default function DoctorServices() {
         path={" Services / Doctors Services"}
         RefrechFun={handleRefrech}
         ExportFunc={handleExport}
+        refrech={refrech}
+        Export={Export}
       >
         {/* // must be as a commponent  */}
         <TabsFillter>
@@ -98,7 +103,11 @@ export default function DoctorServices() {
           <Dropdown
             options={myOptions}
             value={valueDropdown}
-            onChange={handleChange}
+            onChange={handleChangeDropdown}
+            className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
+            icon={arrowIcon}
+            showSlected={true}
+            ulClassname={"w-full "}
           />
 
           <Radio
