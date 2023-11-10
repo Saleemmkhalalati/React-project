@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Content from "../Dashbord_layout/Content/Content";
 
 import Dropdown from "../../utilities/Dropdown";
-import Checkbox from "../../utilities/Checkbox";
+
 import TabsFillter from "../../utilities/TabsFillter";
 import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
@@ -92,12 +92,6 @@ export default function HospitalServices() {
           </span>
 
           <Dropdown options={myOptions} value={value} onChange={handleChange} />
-
-          <Checkbox
-            label="All services"
-            value={allServices}
-            onChange={handleChange_allServices}
-          />
 
           <Checkbox
             label="Last services"

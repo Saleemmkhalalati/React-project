@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Content from "../Dashbord_layout/Content/Content";
 
 import Dropdown from "../../utilities/Dropdown";
-import Checkbox from "../../utilities/Checkbox";
+import Radio from "../../utilities/Radio";
 import TabsFillter from "../../utilities/TabsFillter";
 import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
@@ -17,22 +17,17 @@ export default function DoctorServices() {
     "Radiologist",
     "Aesthetics",
   ];
-
-  const [value, setValue] = React.useState("fruit");
+  const [valueDropdown, setValueDtopdown] = useState(null);
+  const [valueRadio, setValueRadio] = useState(null);
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const [allServices, setAllServices] = React.useState(false);
-  const [LastServices, setLastServices] = React.useState(false);
-
-  const handleChange_allServices = () => {
-    setAllServices(!allServices);
-  };
-  const handleChange_lastServices = () => {
-    setLastServices(!LastServices);
-  };
+  const radioItems = [
+    { value: "All Services", label: "All Services" },
+    { value: "Last Services", label: "Last Services" },
+  ];
 
   const columns = [
     "ID",
@@ -80,29 +75,37 @@ export default function DoctorServices() {
     { name: "View service", url: "http://example.com/2" },
     { name: "Delete service", url: "http://example.com/3" },
   ];
-  console.log(rows.length);
+  const handleRefrech = () => {
+    console.log("refrech");
+  };
+  const handleExport = () => {
+    console.log("export");
+  };
 
   return (
     <>
-      <Content path={" Services / Doctors Services"}>
+      <Content
+        path={" Services / Doctors Services"}
+        RefrechFun={handleRefrech}
+        ExportFunc={handleExport}
+      >
         {/* // must be as a commponent  */}
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
             0 record
           </span>
 
-          <Dropdown options={myOptions} value={value} onChange={handleChange} />
-
-          <Checkbox
-            label="All services"
-            value={allServices}
-            onChange={handleChange_allServices}
+          <Dropdown
+            options={myOptions}
+            value={valueDropdown}
+            onChange={handleChange}
           />
 
-          <Checkbox
-            label="Last services"
-            value={LastServices}
-            onChange={handleChange_lastServices}
+          <Radio
+            name="Services"
+            items={radioItems}
+            value={valueRadio}
+            onChange={setValueRadio}
           />
         </TabsFillter>
         {rows.length >= 1 ? (
