@@ -5,6 +5,8 @@ import Content from "../../Dashbord_layout/Content/Content"
 import Dropdown from '../../../utilities/Dropdown'
 import Radio from '../../../utilities/Radio'
 import TabsFillter from '../../../utilities/TabsFillter'
+import arrowIcon from "../../../../assets/icons/arrowDropdown.svg";
+
 
 
 
@@ -12,6 +14,8 @@ import TabsFillter from '../../../utilities/TabsFillter'
 
 
 const Service_Provider = () => {
+const [refrech,setrefrech]=useState(false)
+const [Export ,setexport]=useState(false)
 
 
 
@@ -36,14 +40,14 @@ const Service_Provider = () => {
 
  
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChangeDropdown = (event) => {
+    setValueDtopdown(event.target.value);
   };
   const handleRefrech=() => {
-    console.log("refrech")
+    setrefrech(!refrech)
   }
   const handleExport=() => {
-    console.log("export")
+    setexport(!Export)
   }
 
 
@@ -57,7 +61,7 @@ const Service_Provider = () => {
 
 
     return (
-        <Content path="/All Uers/Service Provider" RefrechFun={handleRefrech} ExportFunc={handleExport} >
+        <Content path="/All Uers/Service Provider" RefrechFun={handleRefrech} ExportFunc={handleExport} refrech={refrech} Export={Export}  >
             {/* // must be as a commponent  */}
             <TabsFillter>
                 <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500'>0 record</span>
@@ -67,7 +71,12 @@ const Service_Provider = () => {
                 <Dropdown
                     options={optionsDropdown}
                     value={valueDropdown}
-                    onChange={handleChange} />
+                    onChange={handleChangeDropdown}
+                    className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
+                    icon={arrowIcon}
+                    showSlected={true}
+                    ulClassname={"w-full "}
+                    />
 
 
                 <Radio

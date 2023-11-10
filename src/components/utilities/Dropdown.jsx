@@ -1,7 +1,6 @@
 import { useState } from "react";
-import arrowIcon from "../../assets/icons/arrowDropdown.svg";
 
-export default function Dropdown({ value, options, onChange }) {
+export default function Dropdown({ value, options, onChange,className,icon,showSlected,ulClassname }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(options[0]);
   const handleSelect = (selected) => {
@@ -16,18 +15,18 @@ export default function Dropdown({ value, options, onChange }) {
 
 
   return (
-    <div className="relative sm:w-[12rem] w-[7rem] flex flex-col  border-[1px] rounded-lg border-myGray-100 active:border-primary focus-within:border-primary duration-150 ease-in-out text-myGray-500 ">
+    <div className={` ${className ? className : ""} relative  flex flex-col   text-myGray-500 `}>
       <button
         onClick={() => {
           setIsOpen(!isOpen);
         }}
         className="  flex  items-center p-2 justify-between tracking-wider border-myGray-100 active:border-primary duration-150 ease-in-out"
       >
-        {selectedItem}
-        <img src={arrowIcon} alt="" />
+        {showSlected ? selectedItem :""}
+        <img src={icon} alt="" />
       </button>
       {isOpen && (
-        <ul className="absolute shadow-md top-[100%] w-full mt-[4px]">
+        <ul className={`${ulClassname ? ulClassname : ""} absolute shadow-md top-[100%]    mt-[4px]`}>
           {options.map((option, index) => (
             <li
               className={`block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary `}
@@ -57,6 +56,10 @@ export default function Dropdown({ value, options, onChange }) {
 }
 import PropTypes from "prop-types";
 Dropdown.propTypes = {
+  showSlected:PropTypes.bool,
+  icon: PropTypes.string,
+  className: PropTypes.string,
+  ulClassname:PropTypes.string,
   value: PropTypes.string,
   options: PropTypes.string,
   onChange: PropTypes.func,
