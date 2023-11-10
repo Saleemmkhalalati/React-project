@@ -1,78 +1,76 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Content from "../../Dashbord_layout/Content/Content"
 
 import Dropdown from '../../../utilities/Dropdown'
-import Checkbox from '../../../utilities/Checkbox'
+import Radio from '../../../utilities/Radio'
 import TabsFillter from '../../../utilities/TabsFillter'
-import { useLocation } from "react-router-dom"
+
 
 const Service_Provider = () => {
-    const location = useLocation()
 
 
-    const options = [
 
-  "docter","hh","ll"
+    const optionsDropdown = [
+
+        "docter", "jj", "ll"
 
     ];
+    // for radio commponenet
+    const radioItems = [
+        { value: 'All Users', label: "All users" },
+        { value: 'Last Users', label: "Last users" },
 
-    const [value, setValue] = React.useState('fruit');
+    ]
+
+
+    const [valueDropdown, setValueDtopdown] = React.useState(null);
+    const [valueRadio,setValueRadio] =useState(null)
 
     const handleChange = (event) => {
 
-        setValue(event.target.value);
+        setValueDtopdown(event.target.value);
     }
 
-    const [Allusers, setAllusers] = React.useState(false);
-    const [Lastusers, setLastusers] = React.useState(false);
 
 
-    const handleChange_Allusers = () => {
-        setAllusers(!Allusers);
-    };
-    const handleChange_Lastusers = () => {
-        setLastusers(!Lastusers);
-      };
 
 
 
 
     return (
-        <Content path={`${location.pathname}`}>
+        <Content path="/All Uers/Service Provider" >
             {/* // must be as a commponent  */}
             <TabsFillter>
-            <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500'>0 record</span>
+                <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500'>0 record</span>
 
 
 
-<Dropdown
-    options={options}
-    value={value}
-    onChange={handleChange}   />
+                <Dropdown
+                    options={optionsDropdown}
+                    value={valueDropdown}
+                    onChange={handleChange} />
 
 
-<Checkbox
-label="All users"
-value={Allusers}
-onChange={handleChange_Allusers}
-/>
-
-<Checkbox
-label="Last users"
-value={Lastusers}
-onChange={handleChange_Lastusers}
-/>
+                <Radio
+                    name="users"
+                    items={radioItems}
+                    value={valueRadio}
+                    onChange={setValueRadio}
 
 
-                
+                />
+
+
+
             </TabsFillter>
 
-       
-            <div className=' h-[92%]'>
-                jjjjjjj
+
+            <div className=' w-full '>
+                jjj
+
             </div>
         </Content>
-    
+
     )
 }
 
