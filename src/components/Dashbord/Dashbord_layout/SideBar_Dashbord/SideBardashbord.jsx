@@ -6,7 +6,11 @@ import "./SideBardashbord.css";
 import { useTranslation } from "react-i18next";
 
 import vector from "./SideBar_Dashbord_images/Vector.svg";
+
 import person from "./SideBar_Dashbord_images/Person.svg";
+import  Person_white from "./SideBar_Dashbord_images/Person_white.svg"
+
+
 import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
 import Services from "./SideBar_Dashbord_images/Services.svg";
 import person_pluse from "./SideBar_Dashbord_images/Person_Plus.svg";
@@ -117,6 +121,7 @@ const SideBardashbord = () => {
   ];
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
+  const [menueClicked,setMenueClicked] =useState(false)
   const toggleSidebar = () => {
     setOpen(!open);
   };
@@ -126,19 +131,25 @@ const SideBardashbord = () => {
 
     allMenue.forEach((item) => {
       item.addEventListener("click", () => {
+      
+
+        
         allMenue.forEach((li) => li.classList.remove("menue_active"));
 
         item.classList.add("menue_active");
+
+
       });
+
     });
   };
 
   return (
-    <div className=" h-screen  flex justify-center flex-wrap  py-5 px-10 w-[20%]  ">
+    <div className=" h-full  flex justify-center flex-wrap  py-5     px-10 w-[20%]  ">
       <div
         className={` ${
           open ? "w-48 px-2 " : "w-0 "
-        } lg:w-72  h-screen   relative duration-500 flex flex-col gap-8  items-start  `}
+        } lg:w-72     relative duration-500 flex flex-col gap-8  items-start  `}
       >
         {/* logo */}
         <div className=" justify-center  hidden lg:flex ">
@@ -156,7 +167,7 @@ const SideBardashbord = () => {
 
         {Menus.map((Menu, index) => {
           return (
-            <div className=" w-full " key={index}>
+            <div className=" w-full  " key={index}>
               <p className="text-[16px] font-normal text-myGray-500 mb-4 hidden lg:block">
                 {Menu.main_title}
               </p>
@@ -176,11 +187,14 @@ const SideBardashbord = () => {
                         to={`${data.src}`}
                         className="flex justify-between gap-5   p-2 w-full h-full "
                       >
+                        
+                        
                         <div
-                          style={{ backgroundImage: `url(${data.icon})` }}
+                          style={{ backgroundImage: `url(${data.icon}) ` } }
                           alt=""
-                          className="w-5 h-5 icon-menue bg-no-repeat bg-cover bg-center"
+                          className={`w-5 h-5 icon-menue bg-no-repeat bg-cover bg-center `}
                         ></div>
+                          
 
                         <span className="flex-1 hidden  lg:inline-block">
                           {data.title}
@@ -193,11 +207,12 @@ const SideBardashbord = () => {
                             }}
                             className={`${
                               subMenuOpen && "rotate-90 "
-                            } hidden lg:inline-block `}
+                            } hidden lg:inline-block   `}
                           />
                         )}
                       </NavLink>
                     </li>
+                    {console.log(data.subMenus)}
                     {data.subMenus && subMenuOpen && open && (
                       <ul className=" hidden lg:block">
                         {data.subMenus.map((subMenuItem, idx) => (

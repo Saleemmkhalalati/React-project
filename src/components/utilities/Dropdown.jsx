@@ -9,8 +9,14 @@ export default function Dropdown({ value, options, onChange }) {
     setIsOpen(false);
   };
 
+
+
+
+
+
+
   return (
-    <div className="relative sm:w-[12rem] w-[7rem] flex flex-col  border-[1px] rounded-lg border-myGray-100 active:border-primary duration-150 ease-in-out text-myGray-500 ">
+    <div className="relative sm:w-[12rem] w-[7rem] flex flex-col  border-[1px] rounded-lg border-myGray-100 active:border-primary focus-within:border-primary duration-150 ease-in-out text-myGray-500 ">
       <button
         onClick={() => {
           setIsOpen(!isOpen);
@@ -35,18 +41,19 @@ export default function Dropdown({ value, options, onChange }) {
       )}
     </div>
 
-    //       <div className="curser-pointer   border-2 border-solid border-myGray-200 flex focus:border-primary   justify-between  " >
-    //             <select value={value} onChange={onChange} className="sm:px-2 sm:py-1  sm:w-[12rem] w-[8rem]  bg-transparent uppercase leading-normal transition duration-150 ease-in-out  ">
 
-    //    {options.map((option) => (
+       
+     
+          
+     
+ 
 
-    //      <option value={option.value} className="text-left hover:bg-myGray-100   active:bg-myGray-100 hover:text-secondary active:text-secondary">{option.value}</option>
 
-    //    ))}
 
-    //  </select>
-    //       </div>
-  );
+     
+       
+      );
+
 }
 import PropTypes from "prop-types";
 Dropdown.propTypes = {

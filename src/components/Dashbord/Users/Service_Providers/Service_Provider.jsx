@@ -1,58 +1,102 @@
-import React from "react";
-import Content from "../../Dashbord_layout/Content/Content";
 
-import Dropdown from "../../../utilities/Dropdown";
-import Checkbox from "../../../utilities/Checkbox";
-import TabsFillter from "../../../utilities/TabsFillter";
-import { useLocation } from "react-router-dom";
+import React, { useState } from 'react'
+import Content from "../../Dashbord_layout/Content/Content"
+
+import Dropdown from '../../../utilities/Dropdown'
+import Radio from '../../../utilities/Radio'
+import TabsFillter from '../../../utilities/TabsFillter'
+
+
+
+
+
 
 const Service_Provider = () => {
-  const location = useLocation();
 
-  const options = ["docter", "hh", "ll"];
 
-  const [value, setValue] = React.useState("fruit");
+
+ 
+
+
+    const optionsDropdown = [
+
+        "docter", "jj", "ll"
+
+    ];
+    // for radio commponenet
+    const radioItems = [
+        { value: 'All Users', label: "All users" },
+        { value: 'Last Users', label: "Last users" },
+
+    ]
+
+
+    const [valueDropdown, setValueDtopdown] = React.useState(null);
+    const [valueRadio,setValueRadio] =useState(null)
+
+ 
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+  const handleRefrech=() => {
+    console.log("refrech")
+  }
+  const handleExport=() => {
+    console.log("export")
+  }
 
-  const [Allusers, setAllusers] = React.useState(false);
-  const [Lastusers, setLastusers] = React.useState(false);
 
-  const handleChange_Allusers = () => {
-    setAllusers(!Allusers);
-  };
-  const handleChange_Lastusers = () => {
-    setLastusers(!Lastusers);
-  };
 
-  return (
-    <Content path={`${location.pathname}`}>
-      {/* // must be as a commponent  */}
-      <TabsFillter>
-        <span className="px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500">
-          0 record
-        </span>
 
-        <Dropdown options={options} value={value} onChange={handleChange} />
 
-        <Checkbox
-          label="All users"
-          value={Allusers}
-          onChange={handleChange_Allusers}
-        />
 
-        <Checkbox
-          label="Last users"
-          value={Lastusers}
-          onChange={handleChange_Lastusers}
-        />
-      </TabsFillter>
 
-      <div className=" h-[92%]">jjjjjjj</div>
-    </Content>
-  );
-};
+
+
+
+
+    return (
+        <Content path="/All Uers/Service Provider" RefrechFun={handleRefrech} ExportFunc={handleExport} >
+            {/* // must be as a commponent  */}
+            <TabsFillter>
+                <span className='px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500'>0 record</span>
+
+
+
+                <Dropdown
+                    options={optionsDropdown}
+                    value={valueDropdown}
+                    onChange={handleChange} />
+
+
+                <Radio
+                    name="users"
+                    items={radioItems}
+                    value={valueRadio}
+                    onChange={setValueRadio}
+
+
+                />
+
+
+
+            </TabsFillter>
+
+
+            <div className=' w-full '>
+                jjj
+
+            </div>
+        </Content>
+
+    )
+}
+
+
+
+
+;
 
 export default Service_Provider;
+
