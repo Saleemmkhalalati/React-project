@@ -131,7 +131,14 @@
       "Notifications"
     ],
     "all_users_menu": [" Service Providers", " Patient Users", " Admin Users"],
-    "about_dashboard_menu": ["Settings", "Sign Out"]
+    "about_dashboard_menu": ["Settings", "Sign Out"],
+    "Services": [
+      "Doctors Services",
+      "Hospital Services",
+      "Pharmacy Services",
+      "Clinic Services",
+      "Lab Services"
+    ]
   },
   "Hero": [
     "Welcome to Med - sal",
@@ -149,5 +156,6 @@
     "Access Denied !",
     "Sorry, But you don’t have permission to access this page.",
     "Back To Page"
-  ]
+  ],
+  "nodata": "No Data Found"
 }

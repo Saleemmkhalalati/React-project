@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import Content from "../../Dashbord_layout/Content/Content"
 
@@ -6,8 +7,15 @@ import Radio from '../../../utilities/Radio'
 import TabsFillter from '../../../utilities/TabsFillter'
 
 
+
+
+
+
 const Service_Provider = () => {
 
+
+
+ 
 
 
     const optionsDropdown = [
@@ -26,19 +34,21 @@ const Service_Provider = () => {
     const [valueDropdown, setValueDtopdown] = React.useState(null);
     const [valueRadio,setValueRadio] =useState(null)
 
-    const handleChange = (event) => {
+ 
 
-        setValueDtopdown(event.target.value);
-    }
-    const handleRefrech=() => {
-        console.log("refrech")
-      
-    }
-    const handleExport=() => {
-        console.log("export")
-      
-    }
-    
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  const handleRefrech=() => {
+    console.log("refrech")
+  }
+  const handleExport=() => {
+    console.log("export")
+  }
+
+
+
+
 
 
 
@@ -83,4 +93,10 @@ const Service_Provider = () => {
     )
 }
 
-export default Service_Provider
+
+
+
+;
+
+export default Service_Provider;
+

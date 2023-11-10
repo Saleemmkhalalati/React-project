@@ -56,23 +56,31 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_users_menu.1"),
           src: "/dashboard/services",
-          icon: Services,
+          icon: Services ,
           subMenus: [
             {
-              title: "Doctors Services",
+              title: t("sideBar_Dashbord.Services.0"),
               src: "Doctors_Services",
 
               cName: "sub-nav",
             },
             {
-              title: "Hospital Services",
-              src: "/services/services2",
+              title: t("sideBar_Dashbord.Services.1"),
+              src: "",
 
               cName: "sub-nav",
             },
             {
-              title: "Clinic Services",
-              src: "/services/services3",
+              title: t("sideBar_Dashbord.Services.2"),
+              src: "",
+            },
+            {
+              title: t("sideBar_Dashbord.Services.3"),
+              src: "",
+            },
+            {
+              title: t("sideBar_Dashbord.Services.4"),
+              src: "",
             },
           ],
         },
