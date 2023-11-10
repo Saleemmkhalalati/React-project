@@ -4,8 +4,12 @@ import Content from "../../Dashbord_layout/Content/Content";
 import Dropdown from "../../../utilities/Dropdown";
 import Radio from "../../../utilities/Radio";
 import TabsFillter from "../../../utilities/TabsFillter";
+import arrowIcon from "../../../../assets/icons/arrowDropdown.svg";
 
 const Service_Provider = () => {
+  const [refrech, setrefrech] = useState(false);
+  const [Export, setexport] = useState(false);
+
   const optionsDropdown = ["docter", "jj", "ll"];
   // for radio commponenet
   const radioItems = [
@@ -16,14 +20,14 @@ const Service_Provider = () => {
   const [valueDropdown, setValueDtopdown] = React.useState(null);
   const [valueRadio, setValueRadio] = useState(null);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChangeDropdown = (event) => {
+    setValueDtopdown(event.target.value);
   };
   const handleRefrech = () => {
-    console.log("refrech");
+    setrefrech(!refrech);
   };
   const handleExport = () => {
-    console.log("export");
+    setexport(!Export);
   };
 
   return (
@@ -31,6 +35,8 @@ const Service_Provider = () => {
       path="/All Uers/Service Provider"
       RefrechFun={handleRefrech}
       ExportFunc={handleExport}
+      refrech={refrech}
+      Export={Export}
     >
       {/* // must be as a commponent  */}
       <TabsFillter>
@@ -41,7 +47,11 @@ const Service_Provider = () => {
         <Dropdown
           options={optionsDropdown}
           value={valueDropdown}
-          onChange={handleChange}
+          onChange={handleChangeDropdown}
+          className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
+          icon={arrowIcon}
+          showSlected={true}
+          ulClassname={"w-full "}
         />
 
         <Radio

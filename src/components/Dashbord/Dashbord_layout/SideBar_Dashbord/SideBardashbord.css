@@ -1,13 +1,13 @@
-li.menue_active{
+.sidebar_dashboard li.menue_active{
     background-image:linear-gradient(154.83deg, #2BC2F7 21.91%, #5A81FD 72.02%);
 
 
 
 }
-li.menue_active span{
+.sidebar_dashboard li.menue_active span{
     color: white !important;
 
 }
-li.menue_active .icon-menue path{
+.sidebar_dashboard li.menue_active .icon-menue path{
     fill: white;
 }

@@ -8,8 +8,7 @@ import { useTranslation } from "react-i18next";
 import vector from "./SideBar_Dashbord_images/Vector.svg";
 
 import person from "./SideBar_Dashbord_images/Person.svg";
-import  Person_white from "./SideBar_Dashbord_images/Person_white.svg"
-
+import Person_white from "./SideBar_Dashbord_images/Person_white.svg";
 
 import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
 import Services from "./SideBar_Dashbord_images/Services.svg";
@@ -31,6 +30,7 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_users_menu.0"),
           src: "/dashboard/users",
           icon: person,
+          white_icon: Arrow_Dropdown,
           subMenus: [
             {
               title: t("sideBar_Dashbord.all_users_menu.0"),
@@ -57,6 +57,8 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_users_menu.1"),
           src: "/dashboard/services",
           icon: Services,
+          white_icon: Arrow_Dropdown,
+
           subMenus: [
             {
               title: t("sideBar_Dashbord.Services.0"),
@@ -66,7 +68,7 @@ const SideBardashbord = () => {
             },
             {
               title: t("sideBar_Dashbord.Services.1"),
-              src: "Hospital_Services",
+              src: "",
 
               cName: "sub-nav",
             },
@@ -88,17 +90,20 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_users_menu.2"),
           src: "/dashboard/requests",
           icon: person_pluse,
+          white_icon: Arrow_Dropdown,
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.3"),
           src: "/dashboard/report",
           gap: true,
           icon: Graph,
+          white_icon: Arrow_Dropdown,
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.4"),
           src: "/dashboard/notifications",
           icon: Notification,
+          white_icon: Arrow_Dropdown,
         },
       ],
     },
@@ -109,43 +114,42 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
           src: "/dashboard/settings",
           icon: setting,
+          white_icon: Arrow_Dropdown,
         },
 
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
           src: "/dashboard/signOut",
           icon: logout,
+          white_icon: Arrow_Dropdown,
         },
       ],
     },
   ];
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const [menueClicked,setMenueClicked] =useState(false)
+  const [menueClicked, setMenueClicked] = useState(false);
   const toggleSidebar = () => {
     setOpen(!open);
   };
-  const handleMenueClick = (e) => {
+  const handleMenueClick = (white_icon) => {
+    console.log(white_icon);
+    setMenueClicked(true);
     const allMenue = document.querySelectorAll(".menue_li");
     const allspanMenue = document.querySelectorAll(".menue_li span");
 
     allMenue.forEach((item) => {
       item.addEventListener("click", () => {
-      
-
-        
         allMenue.forEach((li) => li.classList.remove("menue_active"));
 
         item.classList.add("menue_active");
-
-
       });
-
     });
+    document.querySelector(".menue_active .icon-menue").style.src = white_icon;
   };
 
   return (
-    <div className=" h-full  flex justify-center flex-wrap  py-5     px-10 w-[20%]  ">
+    <div className=" sidebar_dashboard h-full  flex justify-center flex-wrap  py-5     px-10 w-[20%]  ">
       <div
         className={` ${
           open ? "w-48 px-2 " : "w-0 "
@@ -180,21 +184,18 @@ const SideBardashbord = () => {
                       className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-5 rounded-md text-sm items-center gap-x-5 
           ${data.gap ? "mt-9" : "mt-2"}  `}
                       onClick={() => {
-                        handleMenueClick();
+                        handleMenueClick(data.white_icon);
                       }}
                     >
                       <NavLink
                         to={`${data.src}`}
                         className="flex justify-between gap-5   p-2 w-full h-full "
                       >
-                        
-                        
-                        <div
-                          style={{ backgroundImage: `url(${data.icon}) ` } }
+                        <img
+                          src={data.icon}
                           alt=""
-                          className={`w-5 h-5 icon-menue bg-no-repeat bg-cover bg-center `}
-                        ></div>
-                          
+                          className={`w-5 h-5 icon-menue bg-no-repeat bg-cover bg-center  `}
+                        ></img>
 
                         <span className="flex-1 hidden  lg:inline-block">
                           {data.title}
@@ -212,13 +213,13 @@ const SideBardashbord = () => {
                         )}
                       </NavLink>
                     </li>
-                    {console.log(data.subMenus)}
+                    {/* {console.log(data)} */}
                     {data.subMenus && subMenuOpen && open && (
                       <ul className=" hidden lg:block">
                         {data.subMenus.map((subMenuItem, idx) => (
                           <li
                             key={idx}
-                            className="  flex px-5 cursor-pointer   text-center text-[15px] text-myGray-600 py-5 hover:text-primary duration-75"
+                            className="  flex px-5 cursor-pointer    text-center text-[15px] text-myGray-600 py-5 hover:text-primary duration-75"
                           >
                             <NavLink
                               to={`${data.src}/${subMenuItem.src}`}
@@ -231,7 +232,7 @@ const SideBardashbord = () => {
                       </ul>
                     )}
                     {/*  submenues in md and sm screen  */}
-                    {data.subMenus && (
+                    {/* {data.subMenus && (
                       <ul className="  block lg:hidden">
                         {data.subMenus.map((subMenuItem, idx) => (
                           <li
@@ -247,7 +248,7 @@ const SideBardashbord = () => {
                           </li>
                         ))}
                       </ul>
-                    )}
+                    )} */}
                   </>
                 ))}
               </ul>
