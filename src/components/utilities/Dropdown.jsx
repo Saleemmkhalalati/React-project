@@ -15,7 +15,7 @@ export default function Dropdown({ value, options, onChange,className,icon,showS
 
 
   return (
-    <div className={` ${className ? className : ""} relative  flex flex-col   text-myGray-500 `}>
+    <div className={` ${className ? className : ""} relative  flex flex-col   z-10 text-myGray-500 `}>
       <button
         onClick={() => {
           setIsOpen(!isOpen);
