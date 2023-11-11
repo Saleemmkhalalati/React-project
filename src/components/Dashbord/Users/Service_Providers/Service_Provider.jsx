@@ -13,9 +13,12 @@ const Service_Provider = () => {
   const [Export, setexport] = useState(false);
 
   const optionsDropdown =  [
-    { name: "Docter", url: "http://example.com/1", type: "view" },
-    { name: "aa", url: "http://example.com/2" , type:"view" },
-    { name: "aa", url: "http://example.com/3" ,type:"view" },
+    { name: "Docter",  type: "view" },
+    { name: "Pharmacy", type:"view" },
+    { name: "Hospital" ,type:"view" },
+    { name: "Lab" ,type:"view" },
+    { name: "Clinic" ,type:"view" },
+
   ];
   // for radio commponenet
   const radioItems = [
@@ -24,52 +27,49 @@ const Service_Provider = () => {
   ];
   const columns = [
     "ID",
-    "Name",
-    "Description",
-    "Location",
-    "price",
-    "Type",
+    "Business Name",
+    "Email Address ",
+    "Register Date",
+    "Contact Number",
+    " Services Type",
     "Status",
-    "Discount",
-    " ",
+    "PDF",
+    
   ];
   const rows = [
-    [
-      "Orthodontist",
-      "Arrange the shape of the teeth",
-      "Mazah",
-      "200.000",
-      "Dental",
-      "Active",
-      "-",
-    ],
-    [
-      "Eye exam",
-      "Normal check",
-      "Mazah",
-      "15.000",
-      "OPtics",
-      "Not Active",
-      "-",
-    ],
-
-    [
-      "Bridge installation",
-      "Installing a dental bridge",
-      "Zahera",
-      "100.000",
-      "Dental",
-      "Disable",
-      "60.000",
-    ],
-  
-
-
+    {
+      Business_Name: "Omer Ahmad",
+      Email_Address: "Omer@gmail.com",
+      Register_Date: "27.10.2023 11:34",
+      Contact_Number: "+963 944 259 864",
+      Services_Type: "Doctor",
+      status: "Active",
+      pdf: "pdf",
+    },
+    {
+      Business_Name: "Omer Ahmad",
+      Email_Address: "Omer@gmail.com",
+      Register_Date: "27.10.2023 11:34",
+      Contact_Number: "+963 944 259 864",
+      Services_Type: "Doctor",
+      status: "Active",
+      pdf: "pdf",
+    },
+    {
+      Business_Name: "Omer Ahmad",
+      Email_Address: "Omer@gmail.com",
+      Register_Date: "27.10.2023 11:34",
+      Contact_Number: "+963 944 259 864",
+      Services_Type: "Doctor",
+      status: "Active",
+      pdf: "pdf",
+    },
   ];
+
   const points = [
-    { name: "Edit service", url: "http://example.com/1", type: "edit" },
-    { name: "View service", url: "http://example.com/2" , type:"view" },
-    { name: "Delete service", url: "http://example.com/3" ,type:"delete" },
+    { name: "Edit service", type: "edit" },
+    { name: "View service", type: "viwe" },
+    { name: "Delete service", type: "delete" },
   ];
 
 
@@ -89,16 +89,16 @@ console.log(valueDropdown)
 
   return (
     <Content
-      path="/All Uers/Service Provider"
+      path="All Uers/Service Provider"
       RefrechFun={handleRefrech}
       ExportFunc={handleExport}
       refrech={refrech}
       Export={Export}
     >
-      {/* // must be as a commponent  */}
+  
       <TabsFillter>
         <span className="px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500">
-          0 record
+        {rows.length} record
         </span>
 
         <Dropdown

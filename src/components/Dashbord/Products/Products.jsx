@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Content from "../../Dashbord_layout/Content/Content";
+import Content from "../Dashbord_layout/Content/Content";
 
-import Dropdown from "../../../utilities/Dropdown";
-import Radio from "../../../utilities/Radio";
-import TabsFillter from "../../../utilities/TabsFillter";
-import arrowIcon from "../../../../assets/icons/arrowDropdown.svg";
-import Table from "../../Dashbord_layout/TableLayout";
-import NoData from "../../Dashbord_layout/NoData/NoData";
+import Dropdown from "../../utilities/Dropdown";
+import Radio from "../../utilities/Radio";
+import TabsFillter from "../../utilities/TabsFillter";
+import arrowIcon from "../../../assets/icons/arrowDropdown.svg";
+import Table from "../Dashbord_layout/TableLayout";
+import NoData from "../Dashbord_layout/NoData/NoData";
 
 
   
 
-const Patient_Users = () => {
+const Products= () => {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
 
@@ -23,30 +23,53 @@ const Patient_Users = () => {
   ];
   const columns = [
     "ID",
-    "Email Address ",
-    "Register Date",
+    " Name",
+    "Description",
+    "Location ",
+    "price",
+    " Type",
     "Status",
+    "Discount"
+    
     
     
   ];
   const rows = [
     {
      
-      Email_Address: "Omer@gmail.com",
-      Register_Date: "27.10.2023 11:34",
-      status: "Not Active",
+        Name: "Artificial foot",
+        Description: "Artificial feet for people with special needs",
+        Location: "Mazah",
+        price: "200.000",
+        Type: "Dental",
+        Status: "Not Active",
+        Discount: "180.000",
+
+
     },
     {
      
-      Email_Address: "Omer@gmail.com",
-      Register_Date: "27.10.2023 11:34",
-      status: "Active",
+        Name: "Artificial foot",
+        Description: "Artificial feet for people with special needs",
+        Location: "Mazah",
+        price: "200.000",
+        Type: "Dental",
+        Status: "Not Active",
+        Discount: "180.000",
+
+
     },
     {
      
-      Email_Address: "Omer@gmail.com",
-      Register_Date: "27.10.2023 11:34",
-      status: "Active",
+        Name: "Artificial foot",
+        Description: "Artificial feet for people with special needs",
+        Location: "Mazah",
+        price: "200.000",
+        Type: "Dental",
+        Status: "Not Active",
+        Discount: "180.000",
+
+
     },
   ];
 
@@ -69,7 +92,7 @@ const Patient_Users = () => {
   };
   return (
     <Content
-    path="All Uers/Patient Users"
+    path="Product"
     RefrechFun={handleRefrech}
     ExportFunc={handleExport}
     refrech={refrech}
@@ -101,4 +124,4 @@ const Patient_Users = () => {
   )
 }
 
-export default Patient_Users
+export default Products
