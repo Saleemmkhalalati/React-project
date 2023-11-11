@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
 const Table = ({ columns, rows, points }) => {
   const [activeRow, setActiveRow] = useState(null);
@@ -9,8 +10,8 @@ const Table = ({ columns, rows, points }) => {
         <thead className="">
           <tr>
             {columns.map((column, index) => (
-              <th key={index} className="px-4 py-6 text-myGray-500">
-                {column}
+              <th key={index} className="px-4 py-6 text-myGray-500 text-sm">
+                {column["title"]}
               </th>
             ))}
           </tr>
@@ -26,23 +27,21 @@ const Table = ({ columns, rows, points }) => {
               <td className="py-8 px-5 text-sm text-gray-500 flex justify-center ">
                 {(rowIndex + 1).toString().padStart(2, "0")}
               </td>
-              {row.map((cell, cellIndex) => (
-                <>
-                  <td
-                    key={cellIndex}
-                    className={`text-center py-8 text-sm ${
-                      cell === "Active"
-                        ? "text-success"
-                        : cell === "Not Active"
-                        ? "text-error"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    {cell}
-                  </td>
-                </>
+              {Object.values(row).map((cell, cellIndex) => (
+                <td
+                  key={cellIndex}
+                  className={`text-center py-8 text-sm ${
+                    cell === "Active"
+                      ? "text-success"
+                      : cell === "Not Active"
+                      ? "text-error"
+                      : "text-gray-500"
+                  }`}
+                >
+                  {cell}
+                </td>
               ))}
-              <td className="flex justify-center">
+              <td className="flex justify-center items-center">
                 <img
                   onBlur={() => setActiveRow(null)}
                   tabIndex={0}
@@ -57,19 +56,18 @@ const Table = ({ columns, rows, points }) => {
                       {points.map((element, index) => (
                         <>
                           <li
-                            className="text-center rounded-md  hover:bg-myGray-100 cursor-pointer w-32  py-1"
+                            className="block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary "
                             key={index}
                           >
                             <a
                               className={`
                       ${
-                        (rowIndex + 1).toString().padStart(2, "0") &&
+                        (rowIndex + 1).toString().padStart() &&
                         index === points.length - 1
                           ? "text-error"
                           : ""
                       } 
                       `}
-                              href={element.url}
                             >
                               {element.name}
                             </a>
