@@ -44,7 +44,7 @@ export default function DoctorServices() {
     "Description",
     "Location",
     "price",
-    " Type",
+    "Type",
     "Status",
     "Discount",
     " ",
@@ -78,12 +78,16 @@ export default function DoctorServices() {
       "Disable",
       "60.000",
     ],
+  
+
+
   ];
   const points = [
-    { name: "Edit service", url: "http://example.com/1" },
-    { name: "View service", url: "http://example.com/2" },
-    { name: "Delete service", url: "http://example.com/3" },
+    { name: "Edit service", url: "http://example.com/1", type: "edit" },
+    { name: "View service", url: "http://example.com/2" , type:"view" },
+    { name: "Delete service", url: "http://example.com/3" ,type:"delete" },
   ];
+
 
   return (
     <>

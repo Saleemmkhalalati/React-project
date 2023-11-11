@@ -3,7 +3,12 @@ import mini_menu from "../../assets/icons/mini-menu.svg";
 import Dropdown from "./Dropdown";
 
 export default function TabsFillter({ children }) {
-  const sorts = ["Sort by name", "Sort by active", "Sort by non active"];
+  // const sorts = ["Sort by name", "Sort by active", "Sort by non active"];
+  const sorts = [    
+  { name: "Sort by name", url: "http://example.com/1", type: "view" },
+  { name: "Sort by active", url: "http://example.com/2" , type:"view" },
+  { name: "Sort by non active", url: "http://example.com/3" ,type:"view" },];
+
   const [valueDropdown, setValueDtopdown] = useState(null);
 
   const handleChangeDropdown = (event) => {

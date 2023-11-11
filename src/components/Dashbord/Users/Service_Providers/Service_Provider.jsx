@@ -10,7 +10,11 @@ const Service_Provider = () => {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
 
-  const optionsDropdown = ["docter", "jj", "ll"];
+  const optionsDropdown =  [
+    { name: "Docter", url: "http://example.com/1", type: "view" },
+    { name: "aa", url: "http://example.com/2" , type:"view" },
+    { name: "aa", url: "http://example.com/3" ,type:"view" },
+  ];
   // for radio commponenet
   const radioItems = [
     { value: "All Users", label: "All users" },

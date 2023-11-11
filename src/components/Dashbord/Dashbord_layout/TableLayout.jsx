@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
+import Dropdown from "../../utilities/Dropdown";
 const Table = ({ columns, rows, points }) => {
   const [activeRow, setActiveRow] = useState(null);
+  const [point, setPoint] = useState(null);
+  const handlepoint=(e) => {
+    setValueDtopdown(e.target.value);
+    
+  }
+  
+
 
   return (
     <div className="overflow-hidden px-7 min-h-screen overflow-x-auto ">
@@ -30,7 +38,7 @@ const Table = ({ columns, rows, points }) => {
                 <>
                   <td
                     key={cellIndex}
-                    className={`text-center py-8 text-sm ${
+                    className={`text-center py-8 text-sm  ${
                       cell === "Active"
                         ? "text-success"
                         : cell === "Not Active"
@@ -43,15 +51,15 @@ const Table = ({ columns, rows, points }) => {
                 </>
               ))}
               <td className="flex justify-center">
-                <img
+                {/* <img
                   onBlur={() => setActiveRow(null)}
                   tabIndex={0}
                   onClick={() => setActiveRow(rowIndex)}
                   className=" w-[3px] cursor-pointer "
                   src={mini_menu}
                   alt="*"
-                />
-                <div className="">
+                /> */}
+                {/* <div className="">
                   {activeRow === rowIndex ? (
                     <ul className="absolute rounded-md  end-8 top-10 bg-myGray-200 shadow-md w-32 z-10 ">
                       {points.map((element, index) => (
@@ -76,11 +84,20 @@ const Table = ({ columns, rows, points }) => {
                           </li>
                         </>
                       ))}
-                    </ul>
-                  ) : (
+                    </ul> */}
+                    <Dropdown
+                    options={points}
+                    value={point}
+                    onChange={handlepoint}
+                  
+                    icon={mini_menu}
+                    showSlected={false}
+                    ulClassname={" ltr:right-0 rtl:start-[-7rem]"}
+                  />
+                  {/* ) : (
                     ""
                   )}
-                </div>
+                </div> */}
               </td>
             </tr>
           ))}
