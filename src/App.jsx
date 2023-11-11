@@ -22,7 +22,9 @@ import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
 import DoctorServices from "./components/Dashbord/Service/DoctorsServices";
 import HospitalServices from "./components/Dashbord/Service/HospitalServices";
-
+import PharmacyServices from "./components/Dashbord/Service/PharmacyServices";
+import ClinicServices from "./components/Dashbord/Service/ClinicServices";
+import LabServices from "./components/Dashbord/Service/LabServices";
 function App() {
   return (
     <div className="font-alegreya">
@@ -63,6 +65,15 @@ function App() {
               path="services/Hospital_Services"
               element={<HospitalServices />}
             />
+            <Route
+              path="services/Pharmacy_Services"
+              element={<PharmacyServices />}
+            />
+            <Route
+              path="services/Clinic_Services"
+              element={<ClinicServices />}
+            />
+            <Route path="services/Lab_Services" element={<LabServices />} />
 
             <Route path="requests" element={<Requests />} />
             <Route path="report" element={<Report />} />

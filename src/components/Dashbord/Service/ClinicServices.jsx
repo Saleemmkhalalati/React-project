@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 import Content from "../Dashbord_layout/Content/Content";
 import Radio from "../../utilities/Radio";
-import TabsFillter from "../../utilities/TabsFillter";
 import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
-export default function HospitalServices() {
+import TabsFillter from "../../utilities/TabsFillter";
+import { useState } from "react";
+export default function ClinicServices() {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueRadio, setValueRadio] = useState(null);
@@ -27,38 +27,47 @@ export default function HospitalServices() {
     "Description",
     "Location",
     "price",
-    " Hospital Name",
+    "Clinic Name",
     "Status",
     "Discount",
     " ",
   ];
   const rows = [
     {
-      title: "X-ray imaging",
-      description: "Body x-ray",
+      title: "Orthopedic clinics",
+      description: "Examination, operations",
       clinic: "Mazah",
       price: "900.000",
-      HospitalName: "Razi",
+      ClinicName: "Red Crescent",
       status: "Active",
-      discount: "880.000",
+      discount: "-",
     },
     {
-      title: "Broke a bone",
-      description: "magnetic resonance",
+      title: "Eye Clinics",
+      description: "Examination, operations",
       clinic: "Zahera",
       price: "150.000",
-      HospitalName: "Moussa",
+      ClinicName: "Rama",
       status: "Not Active",
       discount: "-",
     },
     {
-      title: "MRI",
-      description: "Installing a dental bridge",
+      title: "Dental clinics",
+      description: "orthodontics",
       clinic: "Zahera",
       price: "100.000",
-      HospitalName: "Rashid",
+      ClinicName: "Shifaa",
       status: "Disable",
-      discount: "800.000",
+      discount: "-",
+    },
+    {
+      title: "Dental clinics",
+      description: "orthodontics",
+      clinic: "Zahera",
+      price: "100.000",
+      ClinicName: "Shifaa",
+      status: "Disable",
+      discount: "-",
     },
   ];
 
@@ -68,10 +77,11 @@ export default function HospitalServices() {
     { name: "Delete service", type: "delete" },
   ];
 
+
   return (
     <>
       <Content
-        path={" Services / Hospital Services"}
+        path={" Services / Clinic Services"}
         RefrechFun={handleRefrech}
         ExportFunc={handleExport}
         refrech={refrech}
