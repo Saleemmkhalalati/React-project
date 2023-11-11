@@ -117,6 +117,25 @@
     "descrption": "This is achieved through access to your treatment and service faster and smoother than before.",
     "button": "So, Let’s Started"
   },
+ 
+  "Hero": [
+    "Welcome to Med - sal",
+    "Get The Best Health Care Services For a More Comfortable Life.",
+    " Don't let illness or ill health sneak up on you. So, get our health services, and get your most up-to-date health information form in over 155,000 compatible and clinically verified medical journals.",
+    "So, Let’s Started",
+    "High-Quality Dental Care"
+  ],
+  "error4": [
+    "Page Not Found !",
+    "Sorry, We couldn’t the find page you looking for.",
+    "Back To Page"
+  ],
+  "error3": [
+    "Access Denied !",
+    "Sorry, But you don’t have permission to access this page.",
+    "Back To Page"
+  ],
+  "nodata": "No Data Found",
   "NavBar_Dashbord": {
     "search": "search"
   },
@@ -140,22 +159,8 @@
       "Lab Services"
     ]
   },
-  "Hero": [
-    "Welcome to Med - sal",
-    "Get The Best Health Care Services For a More Comfortable Life.",
-    " Don't let illness or ill health sneak up on you. So, get our health services, and get your most up-to-date health information form in over 155,000 compatible and clinically verified medical journals.",
-    "So, Let’s Started",
-    "High-Quality Dental Care"
-  ],
-  "error4": [
-    "Page Not Found !",
-    "Sorry, We couldn’t the find page you looking for.",
-    "Back To Page"
-  ],
-  "error3": [
-    "Access Denied !",
-    "Sorry, But you don’t have permission to access this page.",
-    "Back To Page"
-  ],
-  "nodata": "No Data Found"
+  "Med_sal_dashbord":{
+    "main_title":"med - Sal for  Admin - Dashboard ",
+    "descrption":"The control panel for the med-sal website, its users, and its services"
+  }
 }

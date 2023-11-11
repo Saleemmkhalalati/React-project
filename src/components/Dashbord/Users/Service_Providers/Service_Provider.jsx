@@ -5,6 +5,8 @@ import Dropdown from "../../../utilities/Dropdown";
 import Radio from "../../../utilities/Radio";
 import TabsFillter from "../../../utilities/TabsFillter";
 import arrowIcon from "../../../../assets/icons/arrowDropdown.svg";
+import Table from "../../Dashbord_layout/TableLayout";
+import NoData from "../../Dashbord_layout/NoData/NoData";
 
 const Service_Provider = () => {
   const [refrech, setrefrech] = useState(false);
@@ -20,10 +22,60 @@ const Service_Provider = () => {
     { value: "All Users", label: "All users" },
     { value: "Last Users", label: "Last users" },
   ];
+  const columns = [
+    "ID",
+    "Name",
+    "Description",
+    "Location",
+    "price",
+    "Type",
+    "Status",
+    "Discount",
+    " ",
+  ];
+  const rows = [
+    [
+      "Orthodontist",
+      "Arrange the shape of the teeth",
+      "Mazah",
+      "200.000",
+      "Dental",
+      "Active",
+      "-",
+    ],
+    [
+      "Eye exam",
+      "Normal check",
+      "Mazah",
+      "15.000",
+      "OPtics",
+      "Not Active",
+      "-",
+    ],
 
-  const [valueDropdown, setValueDtopdown] = React.useState(null);
+    [
+      "Bridge installation",
+      "Installing a dental bridge",
+      "Zahera",
+      "100.000",
+      "Dental",
+      "Disable",
+      "60.000",
+    ],
+  
+
+
+  ];
+  const points = [
+    { name: "Edit service", url: "http://example.com/1", type: "edit" },
+    { name: "View service", url: "http://example.com/2" , type:"view" },
+    { name: "Delete service", url: "http://example.com/3" ,type:"delete" },
+  ];
+
+
+  const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
-
+console.log(valueDropdown)
   const handleChangeDropdown = (event) => {
     setValueDtopdown(event.target.value);
   };
@@ -33,6 +85,7 @@ const Service_Provider = () => {
   const handleExport = () => {
     setexport(!Export);
   };
+
 
   return (
     <Content
@@ -65,8 +118,13 @@ const Service_Provider = () => {
           onChange={setValueRadio}
         />
       </TabsFillter>
+      {rows.length >= 1 ? (
+          <Table columns={columns} rows={rows} points={points} />
+        ) : (
+          <NoData></NoData>
+        )}
 
-      <div className=" w-full ">jjj</div>
+     
     </Content>
   );
 };

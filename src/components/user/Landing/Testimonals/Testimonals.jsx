@@ -48,7 +48,7 @@ const Testimonals = () => {
                   <img
                     src={`${testmonal_4}`}
                     alt=""
-                    className={` w-[100%] h-full rotate-[-130deg] absolute top-[-15%] lg:left-[10%]  `}
+                    className={` sm:w-[15rem] sm:h-[15rem] rotate-[-130deg] absolute top-[-15%] lg:left-[10%]  `}
                   />
                   <Polygon
                     color={"gradient"}
@@ -86,7 +86,7 @@ const Testimonals = () => {
                   <img
                     src={`${testmonal_2}`}
                     alt=""
-                    className={` w-[100%] h-full rotate-[-130deg] absolute top-[-15%] lg:left-[10%]     `}
+                    className={` sm:w-[14rem] sm:h-[14rem] rotate-[-130deg] absolute top-[-15%] lg:left-[10%]     `}
                   />
                   <Polygon
                     color={"gradient"}
@@ -129,7 +129,7 @@ const Testimonals = () => {
                   <img
                     src={`${testmonal_1}`}
                     alt=""
-                    className={` w-[100%] h-full rotate-[130deg] absolute top-[-15%] lg:right-[10%]     `}
+                    className={`sm:w-[14rem] sm:h-[14rem] rotate-[130deg] absolute top-[-18%] lg:right-[12%]     `}
                   />
                   <Polygon
                     color={"gradient"}
@@ -170,7 +170,7 @@ const Testimonals = () => {
                   <img
                     src={`${testmonal_3}`}
                     alt=""
-                    className={` w-[100%] h-full rotate-[140deg] absolute top-[-15%] lg:right-[10%]   `}
+                    className={` sm:w-[12rem] sm:h-[12rem] rotate-[140deg] absolute top-[-16%] lg:right-[10%]   `}
                   />
                   <Polygon
                     color={"gradient"}

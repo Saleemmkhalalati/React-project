@@ -138,7 +138,7 @@ const Services = () => {
                 <img
                   src={serviceImage}
                   alt=""
-                  className="  z-10    w-full h-full rotate-[-130deg]  flex items-center justify-center absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] "
+                  className="  z-10     h-full rotate-[-130deg]  flex items-center justify-center absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] "
                 />
                 <Polygon
                   color={"gradient"}
