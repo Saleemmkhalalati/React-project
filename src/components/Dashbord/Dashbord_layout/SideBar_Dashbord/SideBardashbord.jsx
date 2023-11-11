@@ -8,8 +8,7 @@ import { useTranslation } from "react-i18next";
 import vector from "./SideBar_Dashbord_images/Vector.svg";
 
 import person from "./SideBar_Dashbord_images/Person.svg";
-import  Person_white from "./SideBar_Dashbord_images/Person_white.svg"
-
+import Person_white from "./SideBar_Dashbord_images/Person_white.svg";
 
 import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
 import Services from "./SideBar_Dashbord_images/Services.svg";
@@ -31,7 +30,7 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_users_menu.0"),
           src: "/dashboard/users",
           icon: person,
-          white_icon:Arrow_Dropdown,
+          white_icon: Arrow_Dropdown,
           subMenus: [
             {
               title: t("sideBar_Dashbord.all_users_menu.0"),
@@ -57,8 +56,8 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_users_menu.1"),
           src: "/dashboard/services",
-          icon: Services ,
-          white_icon:Arrow_Dropdown,
+          icon: Services,
+          white_icon: Arrow_Dropdown,
 
           subMenus: [
             {
@@ -91,23 +90,20 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_users_menu.2"),
           src: "/dashboard/requests",
           icon: person_pluse,
-          white_icon:Arrow_Dropdown,
-
+          white_icon: Arrow_Dropdown,
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.3"),
           src: "/dashboard/report",
           gap: true,
           icon: Graph,
-          white_icon:Arrow_Dropdown,
-
+          white_icon: Arrow_Dropdown,
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.4"),
           src: "/dashboard/notifications",
           icon: Notification,
-          white_icon:Arrow_Dropdown,
-
+          white_icon: Arrow_Dropdown,
         },
       ],
     },
@@ -118,33 +114,30 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
           src: "/dashboard/settings",
           icon: setting,
-          white_icon:Arrow_Dropdown,
-
+          white_icon: Arrow_Dropdown,
         },
 
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
           src: "/dashboard/signOut",
           icon: logout,
-          white_icon:Arrow_Dropdown,
-
+          white_icon: Arrow_Dropdown,
         },
       ],
     },
   ];
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const [menueClicked,setMenueClicked] =useState(false)
+  const [menueClicked, setMenueClicked] = useState(false);
   const toggleSidebar = () => {
     setOpen(!open);
   };
+
   const handleMenueClick = (white_icon,black_icon) => {
     console.log(black_icon)
-    setMenueClicked(true)
+    setMenueClicked(true);
     const allMenue = document.querySelectorAll(".menue_li");
     const alliconMenue = document.querySelectorAll(".menue_li .icon-menue");
-
-
     allMenue.forEach((item) => {
     
       
@@ -173,9 +166,7 @@ const SideBardashbord = () => {
 
 
     });
-    console.log(document.querySelector(".menue_active .icon-menue").classList.contains('icon-menue'))
-    
-
+   
   };
 
   return (
@@ -200,7 +191,6 @@ const SideBardashbord = () => {
         </div>
 
         {Menus.map((Menu, index) => {
-         
           return (
             <div className=" w-full  " key={index}>
               <p className="text-[16px] font-normal text-myGray-500 mb-4 hidden lg:block">
@@ -208,7 +198,6 @@ const SideBardashbord = () => {
               </p>
               <span className="w-6 h-5 inline-block border-b-2 border-myGray-100 lg:hidden "></span>
               <ul className="   w-full">
-                
                 {Menu.Data.map((data, index) => (
                   <>
                     <li
@@ -223,15 +212,11 @@ const SideBardashbord = () => {
                         to={`${data.src}`}
                         className="flex justify-between gap-5   p-2 w-full h-full "
                       >
-                        
-                        
                         <img
-                        src={data.icon}
-                          
+                          src={data.icon}
                           alt=""
                           className={`w-5 h-5 icon-menue bg-no-repeat bg-cover bg-center  `}
                         ></img>
-                          
 
                         <span className="flex-1 hidden  lg:inline-block">
                           {data.title}
@@ -241,7 +226,6 @@ const SideBardashbord = () => {
                             src={Arrow_Dropdown}
                             onClick={(e) => {
                               setSubMenuOpen(!subMenuOpen);
-            
                             }}
                             className={`${
                               subMenuOpen && "rotate-90 "
@@ -250,9 +234,8 @@ const SideBardashbord = () => {
                         )}
                       </NavLink>
                     </li>
-                   {/* {console.log(data)} */}
+                    {/* {console.log(data)} */}
                     {data.subMenus && subMenuOpen && open && (
-                      
                       <ul className=" hidden lg:block">
                         {data.subMenus.map((subMenuItem, idx) => (
                           <li
@@ -266,8 +249,6 @@ const SideBardashbord = () => {
                               {subMenuItem.title}
                             </NavLink>
                           </li>
-
-                          
                         ))}
                       </ul>
                     )}

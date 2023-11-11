@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import arrowIcon from "../../../assets/icons/arrowDropdown.svg";
 
 import Content from "../Dashbord_layout/Content/Content";
 
 import Dropdown from "../../utilities/Dropdown";
-import Radio from "../../utilities/Radio";
+
 import TabsFillter from "../../utilities/TabsFillter";
 import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
-export default function DoctorServices() {
+export default function HospitalServices() {
   const myOptions = [
     "Dental",
     "Optics",
@@ -18,25 +17,22 @@ export default function DoctorServices() {
     "Radiologist",
     "Aesthetics",
   ];
-  const [refrech, setrefrech] = useState(false);
-  const [Export, setexport] = useState(false);
-  const [valueDropdown, setValueDtopdown] = useState(null);
-  const [valueRadio, setValueRadio] = useState(null);
 
-  const handleChangeDropdown = (event) => {
-    setValueDtopdown(event.target.value);
-  };
-  const handleRefrech = () => {
-    setrefrech(!refrech);
-  };
-  const handleExport = () => {
-    setexport(!Export);
+  const [value, setValue] = React.useState("fruit");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
-  const radioItems = [
-    { value: "All Services", label: "All Services" },
-    { value: "Last Services", label: "Last Services" },
-  ];
+  const [allServices, setAllServices] = React.useState(false);
+  const [LastServices, setLastServices] = React.useState(false);
+
+  const handleChange_allServices = () => {
+    setAllServices(!allServices);
+  };
+  const handleChange_lastServices = () => {
+    setLastServices(!LastServices);
+  };
 
   const columns = [
     "ID",
@@ -84,37 +80,23 @@ export default function DoctorServices() {
     { name: "View service", url: "http://example.com/2" },
     { name: "Delete service", url: "http://example.com/3" },
   ];
+  console.log(rows.length);
 
   return (
     <>
-      <Content
-        path={" Services / Doctors Services"}
-        RefrechFun={handleRefrech}
-        ExportFunc={handleExport}
-        refrech={refrech}
-        Export={Export}
-      >
+      <Content path={" Services / Doctors Services"}>
         {/* // must be as a commponent  */}
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
             0 record
           </span>
 
-          <Dropdown
-            options={myOptions}
-            value={valueDropdown}
-            onChange={handleChangeDropdown}
-            className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
-            icon={arrowIcon}
-            showSlected={true}
-            ulClassname={"w-full "}
-          />
+          <Dropdown options={myOptions} value={value} onChange={handleChange} />
 
-          <Radio
-            name="Services"
-            items={radioItems}
-            value={valueRadio}
-            onChange={setValueRadio}
+          <Checkbox
+            label="Last services"
+            value={LastServices}
+            onChange={handleChange_lastServices}
           />
         </TabsFillter>
         {rows.length >= 1 ? (
