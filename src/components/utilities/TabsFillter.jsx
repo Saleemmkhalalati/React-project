@@ -24,7 +24,7 @@ export default function TabsFillter({ children }) {
           <p className="  font-normal opacity-[70%] text-[13px] ">
             Edited 27.10.2023 10:34
           </p>
-          {/* <img src={mini_menu} alt="" className="w-[1rem] h-[1rem] opacity-[70%]" /> */}
+         
 
           <Dropdown
             options={sorts}

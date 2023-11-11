@@ -70,21 +70,21 @@ const SideBardashbord = () => {
             },
             {
               title: t("sideBar_Dashbord.Services.1"),
-              src: "",
+              src: "Hospital_Services",
 
               cName: "sub-nav",
             },
             {
               title: t("sideBar_Dashbord.Services.2"),
-              src: "",
+              src: "Pharmacy_Services",
             },
             {
               title: t("sideBar_Dashbord.Services.3"),
-              src: "",
+              src: "Clinic_Services",
             },
             {
               title: t("sideBar_Dashbord.Services.4"),
-              src: "",
+              src: "Lab_Services",
             },
           ],
         },
@@ -143,40 +143,23 @@ const SideBardashbord = () => {
     setOpen(!open);
   };
 
-  const handleMenueClick = (white_icon,black_icon) => {
-    console.log(black_icon)
+  const handleMenueClick = (white_icon, black_icon) => {
+    console.log(black_icon);
     setMenueClicked(true);
     const allMenue = document.querySelectorAll(".menue_li");
     const alliconMenue = document.querySelectorAll(".menue_li .icon-menue");
     allMenue.forEach((item) => {
-    
-      
       item.addEventListener("click", () => {
-      
-          
-        
         allMenue.forEach((li) => li.classList.remove("menue_active"));
 
         item.classList.add("menue_active");
 
         alliconMenue.forEach((icon) => {
-          icon.classList.remove("white_active")
-       
-
-
-
-          
-        
-        }
-        )
-    document.querySelector(".menue_active  .white_active").src = white_icon;
+          icon.classList.remove("white_active");
+        });
+        document.querySelector(".menue_active  .white_active").src = white_icon;
       });
-     
-
-
-
     });
-   
   };
 
   return (
@@ -218,7 +201,7 @@ const SideBardashbord = () => {
                       className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-5 rounded-md text-sm items-center gap-x-5 
                       ${data.gap ? "mt-9" : "mt-2"}  `}
                       onClick={() => {
-                        handleMenueClick(data.white_icon,data.icon);
+                        handleMenueClick(data.white_icon, data.icon);
                       }}
                     >
                       <NavLink

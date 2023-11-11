@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 import Content from "../Dashbord_layout/Content/Content";
 import Radio from "../../utilities/Radio";
-import TabsFillter from "../../utilities/TabsFillter";
 import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
-export default function HospitalServices() {
+import TabsFillter from "../../utilities/TabsFillter";
+import { useState } from "react";
+export default function PharmacyServices() {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueRadio, setValueRadio] = useState(null);
@@ -27,38 +27,38 @@ export default function HospitalServices() {
     "Description",
     "Location",
     "price",
-    " Hospital Name",
+    "Pharmacy Name",
     "Status",
     "Discount",
     " ",
   ];
   const rows = [
     {
-      title: "X-ray imaging",
-      description: "Body x-ray",
+      title: "Paracetamol",
+      description: "good",
       clinic: "Mazah",
       price: "900.000",
-      HospitalName: "Razi",
+      PharmacyName: "Ahmad",
       status: "Active",
-      discount: "880.000",
+      discount: "-",
     },
     {
-      title: "Broke a bone",
-      description: "magnetic resonance",
+      title: "Brofin",
+      description: "good",
       clinic: "Zahera",
       price: "150.000",
-      HospitalName: "Moussa",
+      PharmacyName: "Rama",
       status: "Not Active",
       discount: "-",
     },
     {
-      title: "MRI",
-      description: "Installing a dental bridge",
+      title: "Flagin",
+      description: "Stomach sedative",
       clinic: "Zahera",
       price: "100.000",
-      HospitalName: "Rashid",
+      PharmacyName: "Shifaa",
       status: "Disable",
-      discount: "800.000",
+      discount: "-",
     },
   ];
 
@@ -71,7 +71,7 @@ export default function HospitalServices() {
   return (
     <>
       <Content
-        path={" Services / Hospital Services"}
+        path={" Services / Pharmacy Services"}
         RefrechFun={handleRefrech}
         ExportFunc={handleExport}
         refrech={refrech}

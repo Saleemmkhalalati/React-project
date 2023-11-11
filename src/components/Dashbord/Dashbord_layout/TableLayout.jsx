@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import mini_menu from "../../../assets/icons/mini-menu.svg";
 import Dropdown from "../../utilities/Dropdown";
+import mini_menu from "../../../assets/icons/mini-menu.svg";
 const Table = ({ columns, rows, points }) => {
-  const [activeRow, setActiveRow] = useState(null);
   const [point, setPoint] = useState(null);
-  const handlepoint=(e) => {
-    setValueDtopdown(e.target.value);
-    
-  }
-  
-
-
+  console.log(point);
+  const handlepoint = (e) => {
+    setPoint(e.target.value);
+  };
+  console.log(point);
   return (
     <div className="overflow-hidden px-7 min-h-screen overflow-x-auto ">
       <table className="table-auto w-full overflow-x-auto">
         <thead className="">
           <tr>
             {columns.map((column, index) => (
-              <th key={index} className="px-4 py-6 text-myGray-500">
+              <th key={index} className="px-4 py-6 text-myGray-500 text-sm">
                 {column}
               </th>
             ))}
@@ -34,70 +31,31 @@ const Table = ({ columns, rows, points }) => {
               <td className="py-8 px-5 text-sm text-gray-500 flex justify-center ">
                 {(rowIndex + 1).toString().padStart(2, "0")}
               </td>
-              {row.map((cell, cellIndex) => (
-                <>
-                  <td
-                    key={cellIndex}
-                    className={`text-center py-8 text-sm  ${
-                      cell === "Active"
-                        ? "text-success"
-                        : cell === "Not Active"
-                        ? "text-error"
-                        : "text-gray-500"
-                    }`}
-                  >
-                    {cell}
-                  </td>
-                </>
+
+              {Object.values(row).map((cell, cellIndex) => (
+                <td
+                  key={cellIndex}
+                  className={`text-center py-8 text-sm ${
+                    cell === "Active"
+                      ? "text-success"
+                      : cell === "Not Active"
+                      ? "text-error"
+                      : "text-gray-500"
+                  }`}
+                >
+                  {cell}
+                </td>
               ))}
-              <td className="flex justify-center">
-                {/* <img
-                  onBlur={() => setActiveRow(null)}
-                  tabIndex={0}
-                  onClick={() => setActiveRow(rowIndex)}
-                  className=" w-[3px] cursor-pointer "
-                  src={mini_menu}
-                  alt="*"
-                /> */}
-                {/* <div className="">
-                  {activeRow === rowIndex ? (
-                    <ul className="absolute rounded-md  end-8 top-10 bg-myGray-200 shadow-md w-32 z-10 ">
-                      {points.map((element, index) => (
-                        <>
-                          <li
-                            className="text-center rounded-md  hover:bg-myGray-100 cursor-pointer w-32  py-1"
-                            key={index}
-                          >
-                            <a
-                              className={`
-                      ${
-                        (rowIndex + 1).toString().padStart(2, "0") &&
-                        index === points.length - 1
-                          ? "text-error"
-                          : ""
-                      } 
-                      `}
-                              href={element.url}
-                            >
-                              {element.name}
-                            </a>
-                          </li>
-                        </>
-                      ))}
-                    </ul> */}
-                    <Dropdown
-                    options={points}
-                    value={point}
-                    onChange={handlepoint}
-                  
-                    icon={mini_menu}
-                    showSlected={false}
-                    ulClassname={" ltr:right-0 rtl:start-[-7rem]"}
-                  />
-                  {/* ) : (
-                    ""
-                  )}
-                </div> */}
+              <td className="flex justify-center items-center">
+                <Dropdown
+                  className={"text-xl text-myGray-600 text-start p-0 "}
+                  options={points}
+                  value={point}
+                  onChange={handlepoint}
+                  icon={mini_menu}
+                  showSlected={false}
+                  ulClassname={" ltr:-start-28 -top-0 rtl:start-[-7rem]"}
+                />
               </td>
             </tr>
           ))}
