@@ -13,8 +13,9 @@ export default function Radio({  value, onChange,name,items, })
         id={name + item.value}
         checked={value=== item.value}
         onChange={e => onChange(e.target.value)}
+        className="cursor-pointer"
         />
-        <label htmlFor={name + item.value} className=" text-[13px] font-normal text-myGray-500 leading-[20px]">{item.label}</label>
+        <label htmlFor={name + item.value} className=" text-[13px] font-normal text-myGray-500 leading-[20px] cursor-pointer">{item.label}</label>
 
         </div>
     )

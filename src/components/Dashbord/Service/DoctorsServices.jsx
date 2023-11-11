@@ -39,51 +39,52 @@ export default function DoctorServices() {
   ];
 
   const columns = [
-    { title: "ID" },
-    { title: "Name" },
-    { title: "Description" },
-    { title: "Location" },
-    { title: "price" },
-    { title: "Type" },
-    { title: "Status" },
-    { title: "Discount" },
-    { " ": " " },
+    "ID",
+    "Name",
+    "Description",
+    "Location",
+    "price",
+    " Type",
+    "Status",
+    "Discount",
+    " ",
   ];
 
   const rows = [
-    {
-      title: "Orthodontist",
-      description: "Arrange the shape of the teeth",
-      clinic: "Mazah",
-      price: "200.000",
-      category: "Dental",
-      status: "Active",
-      discount: "-",
-    },
-    {
-      title: "Eye exam",
-      description: "Normal check",
-      clinic: "Mazah",
-      price: "15.000",
-      category: "OPtics",
-      status: "Not Active",
-      discount: "-",
-    },
-    {
-      title: "Bridge installation",
-      description: "Installing a dental bridge",
-      clinic: "Zahera",
-      price: "100.000",
-      category: "Dental",
-      status: "Disable",
-      discount: "60.000",
-    },
+    [
+      "Orthodontist",
+      "Arrange the shape of the teeth",
+      "Mazah",
+      "200.000",
+      "Dental",
+      "Active",
+      "-",
+    ],
+    [
+      "Eye exam",
+      "Normal check",
+      "Mazah",
+      "15.000",
+      "OPtics",
+      "Not Active",
+      "-",
+    ],
+
+    [
+      "Bridge installation",
+      "Installing a dental bridge",
+      "Zahera",
+      "100.000",
+      "Dental",
+      "Disable",
+      "60.000",
+    ],
   ];
 
   const points = [
-    { name: "Edit service" },
-    { name: "View service" },
-    { name: "Delete service" },
+    { name: "Edit service", url: "http://example.com/1" },
+    { name: "View service", url: "http://example.com/2" },
+    { name: "Delete service", url: "http://example.com/3" },
   ];
 
 

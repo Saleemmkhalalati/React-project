@@ -132,20 +132,41 @@ const SideBardashbord = () => {
   const toggleSidebar = () => {
     setOpen(!open);
   };
-  const handleMenueClick = (white_icon) => {
-    console.log(white_icon);
+
+  const handleMenueClick = (white_icon,black_icon) => {
+    console.log(black_icon)
     setMenueClicked(true);
     const allMenue = document.querySelectorAll(".menue_li");
-    const allspanMenue = document.querySelectorAll(".menue_li span");
-
+    const alliconMenue = document.querySelectorAll(".menue_li .icon-menue");
     allMenue.forEach((item) => {
+    
+      
       item.addEventListener("click", () => {
+      
+          
+        
         allMenue.forEach((li) => li.classList.remove("menue_active"));
 
         item.classList.add("menue_active");
+
+        alliconMenue.forEach((icon) => {
+          icon.classList.remove("white_active")
+       
+
+
+
+          
+        
+        }
+        )
+    document.querySelector(".menue_active  .white_active").src = white_icon;
       });
+     
+
+
+
     });
-    document.querySelector(".menue_active .icon-menue").style.src = white_icon;
+   
   };
 
   return (
@@ -184,7 +205,7 @@ const SideBardashbord = () => {
                       className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-5 rounded-md text-sm items-center gap-x-5 
           ${data.gap ? "mt-9" : "mt-2"}  `}
                       onClick={() => {
-                        handleMenueClick(data.white_icon);
+                        handleMenueClick(data.white_icon,data.icon);
                       }}
                     >
                       <NavLink

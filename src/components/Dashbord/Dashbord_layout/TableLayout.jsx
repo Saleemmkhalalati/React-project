@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
+import Dropdown from "../../utilities/Dropdown";
 const Table = ({ columns, rows, points }) => {
   const [activeRow, setActiveRow] = useState(null);
+  const [point, setPoint] = useState(null);
+  const handlepoint = (e) => {
+    setValueDtopdown(e.target.value);
+  };
 
   return (
     <div className="overflow-hidden px-7 min-h-screen overflow-x-auto ">
@@ -27,6 +32,7 @@ const Table = ({ columns, rows, points }) => {
               <td className="py-8 px-5 text-sm text-gray-500 flex justify-center ">
                 {(rowIndex + 1).toString().padStart(2, "0")}
               </td>
+
               {Object.values(row).map((cell, cellIndex) => (
                 <td
                   key={cellIndex}
@@ -49,8 +55,9 @@ const Table = ({ columns, rows, points }) => {
                   className=" w-[3px] cursor-pointer "
                   src={mini_menu}
                   alt="*"
-                />
-                <div className="">
+                />{" "}
+                */}
+                {/* <div className="">
                   {activeRow === rowIndex ? (
                     <ul className="absolute rounded-md  end-8 top-10 bg-myGray-200 shadow-md w-32 z-10 ">
                       {points.map((element, index) => (
@@ -74,11 +81,19 @@ const Table = ({ columns, rows, points }) => {
                           </li>
                         </>
                       ))}
-                    </ul>
-                  ) : (
+                    </ul> */}
+                <Dropdown
+                  options={points}
+                  value={point}
+                  onChange={handlepoint}
+                  icon={mini_menu}
+                  showSlected={false}
+                  ulClassname={" ltr:right-0 rtl:start-[-7rem]"}
+                />
+                {/* ) : (
                     ""
                   )}
-                </div>
+                </div> */}
               </td>
             </tr>
           ))}

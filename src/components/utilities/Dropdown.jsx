@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Dropdown({ value, options, onChange,className,icon,showSlected,ulClassname }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(options[0]);
+  const [selectedItem, setSelectedItem] = useState(options[0].name);
   const handleSelect = (selected) => {
     setSelectedItem(selected);
     setIsOpen(false);
@@ -15,7 +15,7 @@ export default function Dropdown({ value, options, onChange,className,icon,showS
 
 
   return (
-    <div className={` ${className ? className : ""} relative  flex flex-col   text-myGray-500 `}>
+    <div className={` ${className ? className : ""} relative  flex flex-col   z-10 text-myGray-500 `}>
       <button
         onClick={() => {
           setIsOpen(!isOpen);
@@ -26,14 +26,21 @@ export default function Dropdown({ value, options, onChange,className,icon,showS
         <img src={icon} alt="" />
       </button>
       {isOpen && (
-        <ul className={`${ulClassname ? ulClassname : ""} absolute shadow-md top-[100%]    mt-[4px]`}>
+        <ul className={`${ulClassname ? ulClassname : ""} absolute shadow-md top-[100%]  z-20  mt-[4px]`}>
           {options.map((option, index) => (
             <li
-              className={`block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary `}
+              className={`block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary ${option.type== "delete" ? " text-error" :""}  `}
               key={index}
               onClick={() => handleSelect(option)}
             >
-              {option}
+              {option.name}
+              {/* {option.type !== "delete" ? (
+                <NavLink className={"!text-myGray-500"}>
+                  {option.name}
+
+                </NavLink>
+              ): option.name } */}
+             
             </li>
           ))}
         </ul>
@@ -55,6 +62,7 @@ export default function Dropdown({ value, options, onChange,className,icon,showS
 
 }
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 Dropdown.propTypes = {
   showSlected:PropTypes.bool,
   icon: PropTypes.string,
