@@ -15,7 +15,7 @@ export default function Dropdown({
     setSelectedItem(selected);
     setIsOpen(false);
   };
-
+  console.log(selectedItem);
   return (
     <div
       className={` ${

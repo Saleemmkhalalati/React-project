@@ -8,14 +8,15 @@ import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
 export default function DoctorServices() {
   const myOptions = [
-    "Dental",
-    "Optics",
-    "Nutritionist",
-    "Home Care",
-    "Plastic Surgery",
-    "Radiologist",
-    "Aesthetics",
+    { name: "Dental" },
+    { name: "Optics" },
+    { name: "Nutritionist" },
+    { name: "Home Care" },
+    { name: "Plastic Surgery" },
+    { name: "Radiologist" },
+    { name: "Aesthetics" },
   ];
+
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
@@ -102,7 +103,7 @@ export default function DoctorServices() {
             options={myOptions}
             value={valueDropdown}
             onChange={handleChangeDropdown}
-            className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
+            className="sm:w-[12rem] border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary "
             icon={arrowIcon}
             showSlected={true}
             ulClassname={"w-full "}
