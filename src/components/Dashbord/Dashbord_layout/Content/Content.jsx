@@ -14,7 +14,7 @@ const Content = ({
   const [Remostartactive, setRemostartActive] = useState(false);
 
   return (
-    <div className="px-1 sm:px-5 py-4 flex flex-col justify-between   ">
+    <div className="px-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between   ">
       <div className="flex justify-between  flex-wrap gap-2">
         <p className="text-[16px] font-normal text-myGray-600">
           <span className="text-secondary">Dashboard /</span> {path}

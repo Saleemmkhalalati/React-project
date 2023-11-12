@@ -12,13 +12,13 @@ const GetApp = () => {
       className={`GetApp_section  sm:px-16 px-6 sm:py-16 py-10 relative   flex justify-end `}
     >
       {/* polygon image  */}
-      <div className="relative   start-[10%]  top-3 z-50 hidden lg:block">
+      <div className="relative   start-[10%]  top-3 z-50 hidden xl:block">
         <Polygon
           color={"gray"}
-          className={" w-[20rem] h-[20rem] rtl:rotate-45"}
+          className={" w-[19rem] h-[19rem] rtl:rotate-45"}
         >
           <img
-            className=" w-[23rem] h-[23rem] ltr:-start-10  translate-x-7 translate-y-[-18px]  rotate-[-45deg]  hidden lg:block"
+            className=" w-[20rem] h-[20rem] ltr:-start-10  translate-x-8   translate-y-[1px]  rotate-[-45deg]  hidden lg:block"
             src={DocterImage}
             alt="img"
           />
@@ -27,14 +27,14 @@ const GetApp = () => {
 
       {/* border graident */}
 
-      <div className="relative start-[-20%] hidden lg:block">
+      <div className="relative start-[-20%] hidden xl:block">
         <Polygon
           color={"gradient"}
-          className={"w-[20rem] h-[20rem] hidden lg:block"}
+          className={"w-[19rem] h-[19rem] hidden lg:block"}
         >
           <Polygon
             color={"white"}
-            className={"w-[19.5rem] h-[19.5rem] start-[4px] top-[5px] "}
+            className={"w-[18.5rem] h-[18.5rem] start-[4px] top-[5px] "}
           ></Polygon>
         </Polygon>
       </div>

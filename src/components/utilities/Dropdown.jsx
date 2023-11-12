@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Dropdown({
   value,
@@ -11,22 +11,21 @@ export default function Dropdown({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(options[0].name);
+  const dropdownRef = useRef(null);
   const handleSelect = (selected) => {
     setSelectedItem(selected);
     setIsOpen(false);
   };
-  console.log(selectedItem);
+
   return (
-    <div
-      className={` ${
-        className ? className : ""
-      } relative  flex flex-col   z-10 text-myGray-500 `}
-    >
+
+    <div className={` ${className ? className : ""} relative  flex flex-col   z-10 text-myGray-500 `} ref={dropdownRef}>
+
       <button
         onClick={() => {
           setIsOpen(!isOpen);
         }}
-        className="  flex  items-center p-2 justify-between tracking-wider border-myGray-100 active:border-primary duration-150 ease-in-out"
+        className="  flex  items-center p-2 justify-between z-10 tracking-wider border-myGray-100 active:border-primary duration-150 ease-in-out"
       >
         {showSlected ? selectedItem : ""}
         <img src={icon} alt="" />
@@ -43,7 +42,7 @@ export default function Dropdown({
                 option.type == "delete" ? " text-error" : ""
               }  `}
               key={index}
-              onClick={() => handleSelect(option)}
+              onClick={() => handleSelect(option.name)}
             >
               {option.name}
             </li>

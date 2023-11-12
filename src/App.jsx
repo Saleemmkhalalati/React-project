@@ -15,6 +15,7 @@ import Admin_Users from "./components/Dashbord/Users/Admin_Users/Admin_Users";
 import Requests from "./components/Dashbord/Requests/Requests ";
 import Report from "./components/Dashbord/Report/Report ";
 import Notifications from "./components/Dashbord/Notifications/Notifications";
+import Products from "./components/Dashbord/Products/Products";
 import Settings from "./components/Dashbord/Settings/Settings";
 import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
@@ -78,6 +79,7 @@ function App() {
             <Route path="requests" element={<Requests />} />
             <Route path="report" element={<Report />} />
             <Route path="notifications" element={<Notifications />} />
+            <Route path="products" element={<Products />} />
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
           </Route>
