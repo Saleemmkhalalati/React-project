@@ -143,11 +143,11 @@
     "main_title": ["dashboard"],
     "dashboard_menu": ["About Users", "About dashboard"],
     "about_users_menu": [
-      "All Users ",
+      "All Users",
       "Services",
-      "Requests ",
-      "Report ",
-      "Notifications"
+      "Requests",
+      "Report",
+      "Products"
     ],
     "all_users_menu": [" Service Providers", " Patient Users", " Admin Users"],
     "about_dashboard_menu": ["Settings", "Sign Out"],

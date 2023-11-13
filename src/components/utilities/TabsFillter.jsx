@@ -5,14 +5,14 @@ import Dropdown from "./Dropdown";
 export default function TabsFillter({ children }) {
   // const sorts = ["Sort by name", "Sort by active", "Sort by non active"];
   const sorts = [    
-  { name: "Sort by name", url: "http://example.com/1", type: "view" },
-  { name: "Sort by active", url: "http://example.com/2" , type:"view" },
-  { name: "Sort by non active", url: "http://example.com/3" ,type:"view" },];
+  { name: "Sort by name",  type: "view" },
+  { name: "Sort by active", type:"view" },
+  { name: "Sort by non active",type:"view" },];
 
-  const [valueDropdown, setValueDtopdown] = useState(null);
+  const [SortDropdown, setSortDtopdown] = useState(null);
 
-  const handleChangeDropdown = (event) => {
-    setValueDtopdown(event.target.value);
+  const handleChangeDropdown = (selcted) => {
+    setSortDtopdown(selcted);
   };
 
   return (
@@ -28,7 +28,7 @@ export default function TabsFillter({ children }) {
 
           <Dropdown
             options={sorts}
-            value={valueDropdown}
+            value={SortDropdown}
             onChange={handleChangeDropdown}
             className={""}
             icon={mini_menu}
