@@ -21,10 +21,6 @@ export default function DoctorServices() {
   const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
-  const [point, setPoint] = useState(null);
-  const handelPoints = (e) => {
-    setPoint(e.target.value);
-  };
 
   const handleChangeDropdown = (event) => {
     setValueDtopdown(event.target.value);
@@ -101,7 +97,7 @@ export default function DoctorServices() {
         {/* // must be as a commponent  */}
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
-            {rows.length} record
+            {rows.length} record 
           </span>
 
           <Dropdown
@@ -113,6 +109,8 @@ export default function DoctorServices() {
             showSlected={true}
             ulClassname={"w-full "}
           />
+
+
 
           <Radio
             name="Services"

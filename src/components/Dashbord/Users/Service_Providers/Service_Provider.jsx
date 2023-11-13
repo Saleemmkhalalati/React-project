@@ -72,12 +72,14 @@ const Service_Provider = () => {
     { name: "Delete service", type: "delete" },
   ];
 
-
-  const [valueDropdown, setValueDtopdown] = useState(null);
+  const [SeviceProvider_Dropdown, setSeviceProvider_Dropdownn] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
-console.log(valueDropdown)
-  const handleChangeDropdown = (event) => {
-    setValueDtopdown(event.target.value);
+
+
+  const handleChangeDropdown = (selected) => {
+    setSeviceProvider_Dropdownn(selected);
+
+
   };
   const handleRefrech = () => {
     setrefrech(!refrech);
@@ -103,7 +105,7 @@ console.log(valueDropdown)
 
         <Dropdown
           options={optionsDropdown}
-          value={valueDropdown}
+          value={SeviceProvider_Dropdown}
           onChange={handleChangeDropdown}
           className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
           icon={arrowIcon}

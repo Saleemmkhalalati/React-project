@@ -13,6 +13,7 @@ export default function Dropdown({
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
   const handleSelect = (selected) => {
+    onChange(selected)
     setSelectedItem(selected);
     setIsOpen(false);
   };
@@ -45,7 +46,8 @@ export default function Dropdown({
                 option.type == "delete" ? " text-error" : ""
               }  `}
               key={index}
-              onClick={() => handleSelect(option.name)}
+              onClick={() => {handleSelect(option.name); }}
+              
             >
               {option.name}
             </li>
