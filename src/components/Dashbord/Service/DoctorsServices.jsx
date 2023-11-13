@@ -8,19 +8,23 @@ import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
 export default function DoctorServices() {
   const myOptions = [
-    { name: "Dental" },
-    { name: "Optics" },
-    { name: "Nutritionist" },
-    { name: "Home Care" },
-    { name: "Plastic Surgery" },
-    { name: "Radiologist" },
-    { name: "Aesthetics" },
+    { name: "Dental", type: "view" },
+    { name: "Optics", type: "view" },
+    { name: "Nutritionist", type: "view" },
+    { name: "Home Care", type: "view" },
+    { name: "Plastic Surgery", type: "view" },
+    { name: "Radiologist", type: "view" },
+    { name: "Aesthetics", type: "view" },
   ];
 
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
+  const [point, setPoint] = useState(null);
+  const handelPoints = (e) => {
+    setPoint(e.target.value);
+  };
 
   const handleChangeDropdown = (event) => {
     setValueDtopdown(event.target.value);
@@ -32,6 +36,7 @@ export default function DoctorServices() {
     setexport(!Export);
   };
 
+  console.log(point);
   const radioItems = [
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
@@ -117,7 +122,13 @@ export default function DoctorServices() {
           />
         </TabsFillter>
         {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} />
+          <Table
+            value={point}
+            columns={columns}
+            rows={rows}
+            points={points}
+            onChange={handelPoints}
+          />
         ) : (
           <NoData></NoData>
         )}

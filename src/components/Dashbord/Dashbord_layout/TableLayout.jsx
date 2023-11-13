@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
-const Table = ({ columns, rows, points }) => {
+const Table = ({ columns, rows, points, onChange, value }) => {
   const [point, setPoint] = useState(null);
-  console.log(point);
+
   const handlepoint = (e) => {
     setPoint(e.target.value);
   };

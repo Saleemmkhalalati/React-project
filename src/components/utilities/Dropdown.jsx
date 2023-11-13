@@ -16,11 +16,14 @@ export default function Dropdown({
     setSelectedItem(selected);
     setIsOpen(false);
   };
-
+  console.log(selectedItem);
   return (
-
-    <div className={` ${className ? className : ""} relative  flex flex-col   z-10 text-myGray-500 `} ref={dropdownRef}>
-
+    <div
+      className={` ${
+        className ? className : ""
+      } relative  flex flex-col   z-10 text-myGray-500 `}
+      ref={dropdownRef}
+    >
       <button
         onClick={() => {
           setIsOpen(!isOpen);
