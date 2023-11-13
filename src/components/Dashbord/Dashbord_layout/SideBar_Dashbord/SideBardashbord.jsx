@@ -19,7 +19,7 @@ const SideBardashbord = () => {
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
   const [subMenuType, setSubMenuType] = useState("");
-
+console.log(subMenuOpen)
 
   const [menueClicked, setMenueClicked] = useState("");
 
