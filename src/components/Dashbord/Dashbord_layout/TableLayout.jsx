@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
-const Table = ({ columns, rows, points, onChange, value }) => {
-  const [point, setPoint] = useState(null);
-
-  const handlepoint = (e) => {
-    setPoint(e.target.value);
-  };
-  
+const Table = ({ columns, rows, points, handlepoint, point }) => {
   return (
     <div className="overflow-hidden px-7 min-h-screen overflow-x-auto ">
       <table className="table-auto w-full overflow-x-auto">

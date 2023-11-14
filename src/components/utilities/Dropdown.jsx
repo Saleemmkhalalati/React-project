@@ -17,14 +17,22 @@ export default function Dropdown({
     setSelectedItem(selected);
     setIsOpen(false);
   };
-  console.log(selectedItem);
+  const handleOutsideClick = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+    }
+};
+useEffect(() => {
+  document.addEventListener("mousedown", handleOutsideClick);
+  return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+  };
+}, []);
+
   return (
-    <div
-      className={` ${
-        className ? className : ""
-      } relative  flex flex-col   z-10 text-myGray-500 `}
-      ref={dropdownRef}
-    >
+
+    <div className={` ${className ? className : ""} relative  flex flex-col   z-10 text-myGray-500 `} ref={dropdownRef}>
+
       <button
         onClick={() => {
           setIsOpen(!isOpen);

@@ -21,23 +21,31 @@ export default function DoctorServices() {
   const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
+  const [point, setPoint] = useState(null);
 
-  const handleChangeDropdown = (event) => {
-    setValueDtopdown(event.target.value);
+  //for table drobdown
+  const handlepoint = (selected) => {
+    setPoint(selected);
   };
+
+  const handleChangeDropdown = (selected) => {
+    setValueDtopdown(selected);
+  };
+
   const handleRefrech = () => {
     setrefrech(!refrech);
   };
   const handleExport = () => {
     setexport(!Export);
   };
-
+  console.log(valueDropdown);
   console.log(point);
+
   const radioItems = [
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
   ];
-
+  console.log(point);
   const columns = [
     "ID",
     "Name",
@@ -97,7 +105,7 @@ export default function DoctorServices() {
         {/* // must be as a commponent  */}
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
-            {rows.length} record 
+            {rows.length} record
           </span>
 
           <Dropdown
@@ -110,8 +118,6 @@ export default function DoctorServices() {
             ulClassname={"w-full "}
           />
 
-
-
           <Radio
             name="Services"
             items={radioItems}
@@ -121,11 +127,11 @@ export default function DoctorServices() {
         </TabsFillter>
         {rows.length >= 1 ? (
           <Table
-            value={point}
             columns={columns}
             rows={rows}
             points={points}
-            onChange={handelPoints}
+            point={point}
+            handlepoint={handlepoint}
           />
         ) : (
           <NoData></NoData>
