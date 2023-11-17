@@ -83,7 +83,6 @@ const Service_Provider = () => {
     setexport(!Export);
   };
 
-
   return (
     <Content
       path="All Uers/Service Provider"

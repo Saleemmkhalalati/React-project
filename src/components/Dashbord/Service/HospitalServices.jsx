@@ -27,6 +27,7 @@ export default function HospitalServices() {
     { value: "Last Services", label: "Last Services" },
   ];
   console.log(point);
+
   const columns = [
     "ID",
     "Name",

@@ -42,8 +42,8 @@ const Requests = () => {
       Register_Date: "27.10.2023 11:34",
       Contact_Number: "+963 944 259 864",
       Services_Type: "Doctor",
-      status: "Mazh",
-      pdf: "pdf",
+      Location: "Mazh",
+      pdf: "/path/to/pdf1",
     },
     {
       Business_Name: "Omer Ahmad",
@@ -51,8 +51,8 @@ const Requests = () => {
       Register_Date: "27.10.2023 11:34",
       Contact_Number: "+963 944 259 864",
       Services_Type: "Lab",
-      status: "Mazh",
-      pdf: "pdf",
+      Location: "Mazh",
+      pdf: "/path/to/pdf2",
     },
     {
       Business_Name: "Omer Ahmad",
@@ -60,8 +60,8 @@ const Requests = () => {
       Register_Date: "27.10.2023 11:34",
       Contact_Number: "+963 944 259 864",
       Services_Type: "Doctor",
-      status: "Mazh",
-      pdf: "pdf",
+      Location: "Mazh",
+      pdf: "/path/to/pdf3",
     },
   ];
 
