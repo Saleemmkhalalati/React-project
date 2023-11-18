@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
-const Table = ({ columns, rows, points }) => {
-  const [point, setPoint] = useState(null);
-  console.log(point);
-  const handlepoint = (e) => {
-    setPoint(e.target.value);
-  };
-  
+import pdf from "../../../assets/icons/pdf.svg";
+const Table = ({ columns, rows, points, handlepoint, point }) => {
   return (
     <div className="overflow-hidden px-7 min-h-screen overflow-x-auto ">
       <table className="table-auto w-full overflow-x-auto">
@@ -31,21 +26,38 @@ const Table = ({ columns, rows, points }) => {
               <td className="py-8 px-5 text-sm text-gray-500 flex justify-center ">
                 {(rowIndex + 1).toString().padStart(2, "0")}
               </td>
-
-              {Object.values(row).map((cell, cellIndex) => (
+              {Object.entries(row).map(([key, value], cellIndex) => (
                 <td
                   key={cellIndex}
                   className={`text-center py-8 text-sm ${
-                    cell === "Active"
-                      ? "text-success"
-                      : cell === "Not Active"
-                      ? "text-error"
+                    key === "status"
+                      ? value === "Active"
+                        ? "text-success"
+                        : value === "Not Active"
+                        ? "text-error"
+                        : "text-gray-500"
                       : "text-gray-500"
                   }`}
                 >
-                  {cell}
+                  {key === "pdf" ? (
+                    <a
+                      href={value} // استخدام مسار الـ PDF من الباك إند
+                      target="_blank"
+                      className="text-error hover:underline"
+                    >
+                      <img
+                        src={pdf}
+                        alt="PDF Icon"
+                        className=" w-4 h-4 inline me-1"
+                      />
+                      PDF
+                    </a>
+                  ) : (
+                    value
+                  )}
                 </td>
               ))}
+
               <td className="flex justify-center items-center">
                 <Dropdown
                   className={"text-xl text-myGray-600 text-start p-0 "}

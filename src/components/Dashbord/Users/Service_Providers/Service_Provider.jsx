@@ -12,13 +12,12 @@ const Service_Provider = () => {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
 
-  const optionsDropdown =  [
-    { name: "Docter",  type: "view" },
-    { name: "Pharmacy", type:"view" },
-    { name: "Hospital" ,type:"view" },
-    { name: "Lab" ,type:"view" },
-    { name: "Clinic" ,type:"view" },
-
+  const optionsDropdown = [
+    { name: "Docter", type: "view" },
+    { name: "Pharmacy", type: "view" },
+    { name: "Hospital", type: "view" },
+    { name: "Lab", type: "view" },
+    { name: "Clinic", type: "view" },
   ];
   // for radio commponenet
   const radioItems = [
@@ -34,7 +33,7 @@ const Service_Provider = () => {
     " Services Type",
     "Status",
     "PDF",
-    
+    " "
   ];
   const rows = [
     {
@@ -45,6 +44,7 @@ const Service_Provider = () => {
       Services_Type: "Doctor",
       status: "Active",
       pdf: "pdf",
+      space:" "
     },
     {
       Business_Name: "Omer Ahmad",
@@ -54,6 +54,9 @@ const Service_Provider = () => {
       Services_Type: "Doctor",
       status: "Active",
       pdf: "pdf",
+      space:" "
+
+
     },
     {
       Business_Name: "Omer Ahmad",
@@ -63,23 +66,22 @@ const Service_Provider = () => {
       Services_Type: "Doctor",
       status: "Active",
       pdf: "pdf",
+      space:" "
+
     },
   ];
 
   const points = [
-    { name: "Edit service", type: "edit" },
-    { name: "View service", type: "viwe" },
-    { name: "Delete service", type: "delete" },
+    { name: "Edit User", type: "edit" },
+    { name: "View User", type: "viwe" },
+    { name: "Delete User", type: "delete" },
   ];
 
   const [SeviceProvider_Dropdown, setSeviceProvider_Dropdownn] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
 
-
   const handleChangeDropdown = (selected) => {
     setSeviceProvider_Dropdownn(selected);
-
-
   };
   const handleRefrech = () => {
     setrefrech(!refrech);
@@ -87,7 +89,6 @@ const Service_Provider = () => {
   const handleExport = () => {
     setexport(!Export);
   };
-
 
   return (
     <Content
@@ -97,10 +98,9 @@ const Service_Provider = () => {
       refrech={refrech}
       Export={Export}
     >
-  
       <TabsFillter>
         <span className="px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500">
-        {rows.length} record
+          {rows.length} record
         </span>
 
         <Dropdown
@@ -121,12 +121,10 @@ const Service_Provider = () => {
         />
       </TabsFillter>
       {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} />
-        ) : (
-          <NoData></NoData>
-        )}
-
-     
+        <Table columns={columns} rows={rows} points={points} />
+      ) : (
+        <NoData></NoData>
+      )}
     </Content>
   );
 };

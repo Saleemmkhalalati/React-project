@@ -1,25 +1,29 @@
 import { useState } from "react";
 import Logo from "../../../utilities/Logo";
 
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import "./SideBardashbord.css";
 import { useTranslation } from "react-i18next";
 
 import vector from "./SideBar_Dashbord_images/Vector.svg";
 
-
-import { Log_Out, Person_pluse, Settings,Graph,Notification,Person } from "../../../utilities/Icons";
-import  Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
+import {
+  Log_Out,
+  Person_pluse,
+  Settings,
+  Graph,
+  Notification,
+  Person,
+} from "../../../utilities/Icons";
+import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
 import logo from "../../../../assets/icons/Logo.svg";
-import { Services} from "../../../utilities/Icons"
+import { Services } from "../../../utilities/Icons";
 
 const SideBardashbord = () => {
-
   const { t } = useTranslation("global");
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
   const [subMenuType, setSubMenuType] = useState("");
-console.log(subMenuOpen)
 
   const [menueClicked, setMenueClicked] = useState("");
 
@@ -30,7 +34,7 @@ console.log(subMenuOpen)
         {
           title: t("sideBar_Dashbord.about_users_menu.0"),
           src: "/dashboard/users",
-          icon:  <Person  stoke="white"  name_menue ={menueClicked}  />,
+          icon: <Person stoke="white" name_menue={menueClicked} />,
           subMenus: [
             {
               title: t("sideBar_Dashbord.all_users_menu.0"),
@@ -56,10 +60,7 @@ console.log(subMenuOpen)
         {
           title: t("sideBar_Dashbord.about_users_menu.1"),
           src: "/dashboard/services",
-          icon:  <Services  stoke="white"  name_menue ={menueClicked}/>,
-
-          d_icon:"m288 144a110.94 110.94 0 0 0 -31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1 -56 56 55.4 55.4 0 0 1 -27-7.24 111.71 111.71 0 1 0 107-80.76zm284.52 97.4c-54.23-105.81-161.59-177.4-284.52-177.4s-230.32 71.64-284.52 177.41a32.35 32.35 0 0 0 0 29.19c54.23 105.81 161.59 177.4 284.52 177.4s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zm-284.52 158.6c-98.65 0-189.09-55-237.93-144 48.84-89 139.27-144 237.93-144s189.09 55 237.93 144c-48.83 89-139.27 144-237.93 144z",
-
+          icon: <Services stoke="white" name_menue={menueClicked} />,
 
           subMenus: [
             {
@@ -91,27 +92,22 @@ console.log(subMenuOpen)
         {
           title: t("sideBar_Dashbord.about_users_menu.2"),
           src: "/dashboard/requests",
-          icon:  <Person_pluse stoke="white"  name_menue ={menueClicked} />,
-
-          d_icon: "M4.5 4.5C5.04701 4.5 5.57161 4.2827 5.95841 3.89591C6.3452 3.50911 6.5625 2.98451 6.5625 2.4375C6.5625 1.89049 6.3452 1.36589 5.95841 0.979092C5.57161 0.592299 5.04701 0.375 4.5 0.375C3.95299 0.375 3.42839 0.592299 3.04159 0.979092C2.6548 1.36589 2.4375 1.89049 2.4375 2.4375C2.4375 2.98451 2.6548 3.50911 3.04159 3.89591C3.42839 4.2827 3.95299 4.5 4.5 4.5ZM5.875 2.4375C5.875 2.80217 5.73013 3.15191 5.47227 3.40977C5.21441 3.66763 4.86467 3.8125 4.5 3.8125C4.13533 3.8125 3.78559 3.66763 3.52773 3.40977C3.26987 3.15191 3.125 2.80217 3.125 2.4375C3.125 2.07283 3.26987 1.72309 3.52773 1.46523C3.78559 1.20737 4.13533 1.0625 4.5 1.0625C4.86467 1.0625 5.21441 1.20737 5.47227 1.46523C5.73013 1.72309 5.875 2.07283 5.875 2.4375ZM8.625 7.9375C8.625 8.625 7.9375 8.625 7.9375 8.625H1.0625C1.0625 8.625 0.375 8.625 0.375 7.9375C0.375 7.25 1.0625 5.1875 4.5 5.1875C7.9375 5.1875 8.625 7.25 8.625 7.9375ZM7.9375 7.93475C7.93681 7.76562 7.83162 7.25688 7.3655 6.79075C6.91725 6.3425 6.07369 5.875 4.5 5.875C2.92563 5.875 2.08275 6.3425 1.6345 6.79075C1.16838 7.25688 1.06388 7.76562 1.0625 7.93475H7.9375Z",
-
+          icon: <Person_pluse stoke="white" name_menue={menueClicked} />,
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.3"),
           src: "/dashboard/report",
           gap: true,
-          icon:  <Graph stoke="white"  name_menue ={menueClicked} />,
+          icon: <Graph stoke="white" name_menue={menueClicked} />,
 
-          d_icon: "M4.5 4.5C5.04701 4.5 5.57161 4.2827 5.95841 3.89591C6.3452 3.50911 6.5625 2.98451 6.5625 2.4375C6.5625 1.89049 6.3452 1.36589 5.95841 0.979092C5.57161 0.592299 5.04701 0.375 4.5 0.375C3.95299 0.375 3.42839 0.592299 3.04159 0.979092C2.6548 1.36589 2.4375 1.89049 2.4375 2.4375C2.4375 2.98451 2.6548 3.50911 3.04159 3.89591C3.42839 4.2827 3.95299 4.5 4.5 4.5ZM5.875 2.4375C5.875 2.80217 5.73013 3.15191 5.47227 3.40977C5.21441 3.66763 4.86467 3.8125 4.5 3.8125C4.13533 3.8125 3.78559 3.66763 3.52773 3.40977C3.26987 3.15191 3.125 2.80217 3.125 2.4375C3.125 2.07283 3.26987 1.72309 3.52773 1.46523C3.78559 1.20737 4.13533 1.0625 4.5 1.0625C4.86467 1.0625 5.21441 1.20737 5.47227 1.46523C5.73013 1.72309 5.875 2.07283 5.875 2.4375ZM8.625 7.9375C8.625 8.625 7.9375 8.625 7.9375 8.625H1.0625C1.0625 8.625 0.375 8.625 0.375 7.9375C0.375 7.25 1.0625 5.1875 4.5 5.1875C7.9375 5.1875 8.625 7.25 8.625 7.9375ZM7.9375 7.93475C7.93681 7.76562 7.83162 7.25688 7.3655 6.79075C6.91725 6.3425 6.07369 5.875 4.5 5.875C2.92563 5.875 2.08275 6.3425 1.6345 6.79075C1.16838 7.25688 1.06388 7.76562 1.0625 7.93475H7.9375Z",
-
+       
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.4"),
           src: "/dashboard/products",
-          icon:  <Notification stoke="white"  name_menue ={menueClicked}/>,
+          icon: <Notification stoke="white" name_menue={menueClicked} />,
 
-          d_icon: "M4.5 4.5C5.04701 4.5 5.57161 4.2827 5.95841 3.89591C6.3452 3.50911 6.5625 2.98451 6.5625 2.4375C6.5625 1.89049 6.3452 1.36589 5.95841 0.979092C5.57161 0.592299 5.04701 0.375 4.5 0.375C3.95299 0.375 3.42839 0.592299 3.04159 0.979092C2.6548 1.36589 2.4375 1.89049 2.4375 2.4375C2.4375 2.98451 2.6548 3.50911 3.04159 3.89591C3.42839 4.2827 3.95299 4.5 4.5 4.5ZM5.875 2.4375C5.875 2.80217 5.73013 3.15191 5.47227 3.40977C5.21441 3.66763 4.86467 3.8125 4.5 3.8125C4.13533 3.8125 3.78559 3.66763 3.52773 3.40977C3.26987 3.15191 3.125 2.80217 3.125 2.4375C3.125 2.07283 3.26987 1.72309 3.52773 1.46523C3.78559 1.20737 4.13533 1.0625 4.5 1.0625C4.86467 1.0625 5.21441 1.20737 5.47227 1.46523C5.73013 1.72309 5.875 2.07283 5.875 2.4375ZM8.625 7.9375C8.625 8.625 7.9375 8.625 7.9375 8.625H1.0625C1.0625 8.625 0.375 8.625 0.375 7.9375C0.375 7.25 1.0625 5.1875 4.5 5.1875C7.9375 5.1875 8.625 7.25 8.625 7.9375ZM7.9375 7.93475C7.93681 7.76562 7.83162 7.25688 7.3655 6.79075C6.91725 6.3425 6.07369 5.875 4.5 5.875C2.92563 5.875 2.08275 6.3425 1.6345 6.79075C1.16838 7.25688 1.06388 7.76562 1.0625 7.93475H7.9375Z",
-
+         
         },
       ],
     },
@@ -121,19 +117,17 @@ console.log(subMenuOpen)
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
           src: "/dashboard/settings",
-          icon:  <Settings stoke="white"  name_menue ={menueClicked} />,
+          icon: <Settings stoke="white" name_menue={menueClicked} />,
 
-          d_icon: "M4.5 4.5C5.04701 4.5 5.57161 4.2827 5.95841 3.89591C6.3452 3.50911 6.5625 2.98451 6.5625 2.4375C6.5625 1.89049 6.3452 1.36589 5.95841 0.979092C5.57161 0.592299 5.04701 0.375 4.5 0.375C3.95299 0.375 3.42839 0.592299 3.04159 0.979092C2.6548 1.36589 2.4375 1.89049 2.4375 2.4375C2.4375 2.98451 2.6548 3.50911 3.04159 3.89591C3.42839 4.2827 3.95299 4.5 4.5 4.5ZM5.875 2.4375C5.875 2.80217 5.73013 3.15191 5.47227 3.40977C5.21441 3.66763 4.86467 3.8125 4.5 3.8125C4.13533 3.8125 3.78559 3.66763 3.52773 3.40977C3.26987 3.15191 3.125 2.80217 3.125 2.4375C3.125 2.07283 3.26987 1.72309 3.52773 1.46523C3.78559 1.20737 4.13533 1.0625 4.5 1.0625C4.86467 1.0625 5.21441 1.20737 5.47227 1.46523C5.73013 1.72309 5.875 2.07283 5.875 2.4375ZM8.625 7.9375C8.625 8.625 7.9375 8.625 7.9375 8.625H1.0625C1.0625 8.625 0.375 8.625 0.375 7.9375C0.375 7.25 1.0625 5.1875 4.5 5.1875C7.9375 5.1875 8.625 7.25 8.625 7.9375ZM7.9375 7.93475C7.93681 7.76562 7.83162 7.25688 7.3655 6.79075C6.91725 6.3425 6.07369 5.875 4.5 5.875C2.92563 5.875 2.08275 6.3425 1.6345 6.79075C1.16838 7.25688 1.06388 7.76562 1.0625 7.93475H7.9375Z",
-
+ 
         },
 
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
           src: "/dashboard/signOut",
-          icon:  <Log_Out stoke="white"  name_menue ={menueClicked}/>,
+          icon: <Log_Out stoke="white" name_menue={menueClicked} />,
 
-          d_icon: "M4.5 4.5C5.04701 4.5 5.57161 4.2827 5.95841 3.89591C6.3452 3.50911 6.5625 2.98451 6.5625 2.4375C6.5625 1.89049 6.3452 1.36589 5.95841 0.979092C5.57161 0.592299 5.04701 0.375 4.5 0.375C3.95299 0.375 3.42839 0.592299 3.04159 0.979092C2.6548 1.36589 2.4375 1.89049 2.4375 2.4375C2.4375 2.98451 2.6548 3.50911 3.04159 3.89591C3.42839 4.2827 3.95299 4.5 4.5 4.5ZM5.875 2.4375C5.875 2.80217 5.73013 3.15191 5.47227 3.40977C5.21441 3.66763 4.86467 3.8125 4.5 3.8125C4.13533 3.8125 3.78559 3.66763 3.52773 3.40977C3.26987 3.15191 3.125 2.80217 3.125 2.4375C3.125 2.07283 3.26987 1.72309 3.52773 1.46523C3.78559 1.20737 4.13533 1.0625 4.5 1.0625C4.86467 1.0625 5.21441 1.20737 5.47227 1.46523C5.73013 1.72309 5.875 2.07283 5.875 2.4375ZM8.625 7.9375C8.625 8.625 7.9375 8.625 7.9375 8.625H1.0625C1.0625 8.625 0.375 8.625 0.375 7.9375C0.375 7.25 1.0625 5.1875 4.5 5.1875C7.9375 5.1875 8.625 7.25 8.625 7.9375ZM7.9375 7.93475C7.93681 7.76562 7.83162 7.25688 7.3655 6.79075C6.91725 6.3425 6.07369 5.875 4.5 5.875C2.92563 5.875 2.08275 6.3425 1.6345 6.79075C1.16838 7.25688 1.06388 7.76562 1.0625 7.93475H7.9375Z",
-
+      
         },
       ],
     },
@@ -143,7 +137,6 @@ console.log(subMenuOpen)
   };
 
   const handleMenueClick = (name_menue) => {
-    
     setMenueClicked(name_menue);
     const allMenue = document.querySelectorAll(".menue_li");
     allMenue.forEach((item) => {
@@ -151,15 +144,12 @@ console.log(subMenuOpen)
         allMenue.forEach((li) => li.classList.remove("menue_active"));
 
         item.classList.add("menue_active");
-
-       
       });
     });
   };
 
   return (
-    <div className=" sidebar_dashboard h-full  flex justify-center flex-wrap  py-5     px-10 w-[20%]  ">
- 
+    <div className=" sidebar_dashboard  flex justify-center flex-wrap  py-5  shadow-lg    px-10 w-[20%]  ">
       <div
         className={` ${
           open ? "w-48 px-2 " : "w-0 "
@@ -183,7 +173,7 @@ console.log(subMenuOpen)
           // Menue has main title and Data
           return (
             <div className=" w-full  " key={index}>
-              <p className="text-[16px] font-normal text-myGray-500 mb-4 hidden lg:block">
+              <p className="text-[16px] font-normal text-myGray-500 mb-3 hidden lg:block">
                 {Menu.main_title}
               </p>
               <span className="w-6 h-5 inline-block border-b-2 border-myGray-100 lg:hidden "></span>
@@ -193,7 +183,7 @@ console.log(subMenuOpen)
                   <>
                     <li
                       key={index}
-                      className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-5 rounded-md text-sm items-center gap-x-5 
+                      className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-4 rounded-md text-sm items-center gap-x-5 
                       ${data.gap ? "mt-9" : "mt-2"}  `}
                       onClick={() => {
                         handleMenueClick(data.title);
@@ -203,7 +193,7 @@ console.log(subMenuOpen)
                         to={`${data.src}`}
                         className="flex justify-between gap-5   p-2 w-full h-full "
                       >
-                       {data.icon}
+                        {data.icon}
                         {/* <img
                           src={data.icon}
                           alt=""
@@ -218,41 +208,37 @@ console.log(subMenuOpen)
                             src={Arrow_Dropdown}
                             onClick={(e) => {
                               setSubMenuOpen(!subMenuOpen);
-                              setSubMenuType(data.title)
-                              console.log(subMenuOpen)
+                              setSubMenuType(data.title);
+                              console.log(subMenuOpen);
                             }}
                             className={`${
                               subMenuOpen && "rotate-90 "
                             } hidden lg:inline-block   `}
                           />
                         )}
-                        
                       </NavLink>
-                      
                     </li>
-               
-                    {data.subMenus && subMenuType === data.title  && subMenuOpen && open && (
-                      <ul className=" hidden lg:block">
-                        {data.subMenus.map((subMenuItem, idx) => (
-                          <li
-                            key={idx}
-                            className="  flex px-5 cursor-pointer    text-center text-[15px] text-myGray-600 py-5 hover:text-primary duration-75"
-                          >
-                            <NavLink
-                              to={`${data.src}/${subMenuItem.src}`}
-                              className="flex justify-between gap-5 lg:block"
+
+                    {data.subMenus &&
+                      subMenuType === data.title &&
+                      subMenuOpen &&
+                      open && (
+                        <ul className=" hidden lg:block">
+                          {data.subMenus.map((subMenuItem, idx) => (
+                            <li
+                              key={idx}
+                              className="  flex px-5 cursor-pointer    text-center text-[15px] text-myGray-600 py-5 hover:text-primary duration-75"
                             >
-                              {subMenuItem.title}
-                            </NavLink>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
-
-
-
-
+                              <NavLink
+                                to={`${data.src}/${subMenuItem.src}`}
+                                className="flex justify-between gap-5 lg:block"
+                              >
+                                {subMenuItem.title}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
                     {/*  submenues in md and sm screen  */}
                     {/* {data.subMenus && (
@@ -284,20 +270,8 @@ console.log(subMenuOpen)
         We hope that our website will be useful to you and we are happy for you
         to <span className="text-success cursor-pointer">contact us</span>.
       </p>
-  
     </div>
   );
 };
 
 export default SideBardashbord;
-
-
-
-
-
-
-
-
-
-
-

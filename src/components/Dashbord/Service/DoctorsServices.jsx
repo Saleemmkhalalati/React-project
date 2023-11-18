@@ -8,34 +8,44 @@ import NoData from "../Dashbord_layout/NoData/NoData";
 import Table from "../Dashbord_layout/TableLayout";
 export default function DoctorServices() {
   const myOptions = [
-    "Dental",
-    "Optics",
-    "Nutritionist",
-    "Home Care",
-    "Plastic Surgery",
-    "Radiologist",
-    "Aesthetics",
+    { name: "Dental", type: "view" },
+    { name: "Optics", type: "view" },
+    { name: "Nutritionist", type: "view" },
+    { name: "Home Care", type: "view" },
+    { name: "Plastic Surgery", type: "view" },
+    { name: "Radiologist", type: "view" },
+    { name: "Aesthetics", type: "view" },
   ];
+
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
-console.log(valueDropdown);
-  const handleChangeDropdown = (event) => {
-    setValueDtopdown(event.target.value);
+  const [point, setPoint] = useState(null);
+
+  //for table drobdown
+  const handlepoint = (selected) => {
+    setPoint(selected);
   };
+
+  const handleChangeDropdown = (selected) => {
+    setValueDtopdown(selected);
+  };
+
   const handleRefrech = () => {
     setrefrech(!refrech);
   };
   const handleExport = () => {
     setexport(!Export);
   };
+  console.log(valueDropdown);
+  console.log(point);
 
   const radioItems = [
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
   ];
-
+  console.log(point);
   const columns = [
     "ID",
     "Name",
@@ -95,20 +105,18 @@ console.log(valueDropdown);
         {/* // must be as a commponent  */}
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
-            {rows.length} record 
+            {rows.length} record
           </span>
 
           <Dropdown
             options={myOptions}
             value={valueDropdown}
             onChange={handleChangeDropdown}
-            className="sm:w-[12rem] w-[7rem] ease-in-out  border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
+            className="sm:w-[12rem] border-[1px] rounded-lg  border-myGray-100 active:border-primary focus-within:border-primary "
             icon={arrowIcon}
             showSlected={true}
             ulClassname={"w-full "}
           />
-
-
 
           <Radio
             name="Services"
@@ -118,7 +126,13 @@ console.log(valueDropdown);
           />
         </TabsFillter>
         {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} />
+          <Table
+            columns={columns}
+            rows={rows}
+            points={points}
+            point={point}
+            handlepoint={handlepoint}
+          />
         ) : (
           <NoData></NoData>
         )}

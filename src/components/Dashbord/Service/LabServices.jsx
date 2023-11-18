@@ -8,6 +8,12 @@ export default function LabServices() {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueRadio, setValueRadio] = useState(null);
+  const [point, setPoint] = useState(null);
+
+  //for table drobdown
+  const handlepoint = (selected) => {
+    setPoint(selected);
+  };
 
   const handleRefrech = () => {
     setrefrech(!refrech);
@@ -15,7 +21,7 @@ export default function LabServices() {
   const handleExport = () => {
     setexport(!Export);
   };
-
+console.log(point)
   const radioItems = [
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
@@ -63,7 +69,13 @@ export default function LabServices() {
           />
         </TabsFillter>
         {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} />
+          <Table
+            columns={columns}
+            rows={rows}
+            points={points}
+            point={point}
+            handlepoint={handlepoint}
+          />
         ) : (
           <NoData></NoData>
         )}

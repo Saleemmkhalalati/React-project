@@ -8,6 +8,12 @@ export default function HospitalServices() {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [valueRadio, setValueRadio] = useState(null);
+  const [point, setPoint] = useState(null);
+
+  //for table drobdown
+  const handlepoint = (selected) => {
+    setPoint(selected);
+  };
 
   const handleRefrech = () => {
     setrefrech(!refrech);
@@ -20,6 +26,7 @@ export default function HospitalServices() {
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
   ];
+  console.log(point);
 
   const columns = [
     "ID",
@@ -91,7 +98,13 @@ export default function HospitalServices() {
           />
         </TabsFillter>
         {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} />
+          <Table
+            columns={columns}
+            rows={rows}
+            points={points}
+            point={point}
+            handlepoint={handlepoint}
+          />
         ) : (
           <NoData></NoData>
         )}
