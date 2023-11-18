@@ -13,26 +13,29 @@ export default function Dropdown({
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
   const handleSelect = (selected) => {
-    onChange(selected)
+    onChange(selected);
     setSelectedItem(selected);
     setIsOpen(false);
   };
   const handleOutsideClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsOpen(false);
+      setIsOpen(false);
     }
-};
-useEffect(() => {
-  document.addEventListener("mousedown", handleOutsideClick);
-  return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
   };
-}, []);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
-
-    <div className={` ${className ? className : ""} relative  flex flex-col   z-10 text-myGray-500 `} ref={dropdownRef}>
-
+    <div
+      className={` ${
+        className ? className : ""
+      } relative  flex flex-col   z-10 text-myGray-500 `}
+      ref={dropdownRef}
+    >
       <button
         onClick={() => {
           setIsOpen(!isOpen);
@@ -54,8 +57,9 @@ useEffect(() => {
                 option.type == "delete" ? " text-error" : ""
               }  `}
               key={index}
-              onClick={() => {handleSelect(option.name); }}
-              
+              onClick={() => {
+                handleSelect(option.name);
+              }}
             >
               {option.name}
             </li>

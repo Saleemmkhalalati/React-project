@@ -117,7 +117,7 @@
     "descrption": "This is achieved through access to your treatment and service faster and smoother than before.",
     "button": "So, Let’s Started"
   },
- 
+
   "Hero": [
     "Welcome to Med - sal",
     "Get The Best Health Care Services For a More Comfortable Life.",
@@ -159,8 +159,9 @@
       "Lab Services"
     ]
   },
-  "Med_sal_dashbord":{
-    "main_title":"med - Sal for  Admin - Dashboard ",
-    "descrption":"The control panel for the med-sal website, its users, and its services"
-  }
+  "Med_sal_dashbord": {
+    "main_title": "med - Sal for  Admin - Dashboard ",
+    "descrption": "The control panel for the med-sal website, its users, and its services"
+  },
+  "profile": "Edit Profile"
 }
