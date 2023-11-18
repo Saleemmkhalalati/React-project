@@ -25,7 +25,8 @@ export default function DoctorServices() {
 
   //for table drobdown
   const handlepoint = (selected) => {
-    setPoint(selected);
+    setPoint({ selected });
+    console.log(selected);
   };
 
   const handleChangeDropdown = (selected) => {
@@ -38,14 +39,12 @@ export default function DoctorServices() {
   const handleExport = () => {
     setexport(!Export);
   };
-  console.log(valueDropdown);
-  console.log(point);
 
   const radioItems = [
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
   ];
-  console.log(point);
+
   const columns = [
     "ID",
     "Name",
@@ -92,7 +91,7 @@ export default function DoctorServices() {
     { name: "View service", type: "viwe" },
     { name: "Delete service", type: "delete" },
   ];
-
+  console.log(points[0].type);
   return (
     <>
       <Content
