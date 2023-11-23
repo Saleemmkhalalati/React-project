@@ -60,7 +60,7 @@ const Content = ({
           </div>
         </div>
       </div>
-      <div className="bg-white ">{children}</div>
+      <div className="bg-whit ">{children}</div>
       <p className="">
         Copyright @ 2023, All Right Resaved By{" "}
         <span

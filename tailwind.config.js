@@ -15,6 +15,7 @@ export default {
                 "myGray-500": "#7B7B7B", // for textOther
                 "myGray-600": "#434343", // for textOther
                 mySlate: "#2F4050", // for titleTabel
+                white:"#FFFFFF" // for bg-box in dashborad 
             },
             fontFamily: {
                 alegreya: ["Alegreya", "sans-serif"],
@@ -30,3 +31,4 @@ export default {
     },
     plugins: [],
 };
+

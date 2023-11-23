@@ -14,8 +14,7 @@ import Patient_Users from "./components/Dashbord/Users/Patient_Users/Patient_Use
 import Admin_Users from "./components/Dashbord/Users/Admin_Users/Admin_Users";
 import Requests from "./components/Dashbord/Requests/Requests ";
 import Report from "./components/Dashbord/Report/Report ";
-import Notifications from "./components/Dashbord/Notifications/Notifications";
-// import Products from "./components/Dashbord/Products/Products";
+import Products from "./components/Dashbord/Products/Products";
 import Settings from "./components/Dashbord/Settings/Settings";
 import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
@@ -27,6 +26,7 @@ import PharmacyServices from "./components/Dashbord/Service/PharmacyServices";
 import ClinicServices from "./components/Dashbord/Service/ClinicServices";
 import LabServices from "./components/Dashbord/Service/LabServices";
 import Profile from "./components/Dashbord/profile/profile";
+import Allusers from "./components/Dashbord/Report/Allusers"
 function App() {
   return (
     <div className="font-alegreya">
@@ -78,9 +78,15 @@ function App() {
             <Route path="services/Lab_Services" element={<LabServices />} />
 
             <Route path="requests" element={<Requests />} />
-            <Route path="report" element={<Report />} />
-            <Route path="notifications" element={<Notifications />} />
-            {/* <Route path="products" element={<Products />} /> */}
+            <Route path="report" element={<Report />} > 
+            <Route path="all_users" element={<Allusers />} /> 
+            <Route path="all_services" element={<Allusers />} /> 
+            <Route path="all-product" element={<Allusers />} /> 
+
+
+            
+            </Route>
+            <Route path="products" element={<Products />} />
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
           </Route>

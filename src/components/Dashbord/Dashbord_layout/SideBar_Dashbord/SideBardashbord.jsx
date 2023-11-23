@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import Logo from "../../../utilities/Logo";
 
 import {  NavLink } from "react-router-dom";
@@ -6,6 +6,8 @@ import "./SideBardashbord.css";
 import { useTranslation } from "react-i18next";
 
 import vector from "./SideBar_Dashbord_images/Vector.svg";
+import mini_menu from "../../../../assets/icons/mini-menu.svg";
+
 
 import {
   Log_Out,
@@ -14,8 +16,10 @@ import {
   Graph,
   Notification,
   Person,
+  Arrow_dropdown
 } from "../../../utilities/Icons";
-import Arrow_Dropdown from "./SideBar_Dashbord_images/Arrow Dropdown.svg";
+import {Dropdown_whithout_icon} from "../../../utilities/Dropdown"
+
 import logo from "../../../../assets/icons/Logo.svg";
 import { Services } from "../../../utilities/Icons";
 
@@ -23,9 +27,16 @@ const SideBardashbord = () => {
   const { t } = useTranslation("global");
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
+  const [DropdownOpen, SetDropdownOpen] = useState(false);
+
+
   const [subMenuType, setSubMenuType] = useState("");
 
   const [menueClicked, setMenueClicked] = useState("");
+
+
+
+
 
   const Menus = [
     {
@@ -34,78 +45,80 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_users_menu.0"),
           src: "/dashboard/users",
-          icon: <Person stoke="white" name_menue={menueClicked} />,
+          icon: <Person stoke="white" menue={menueClicked} />,
           subMenus: [
             {
-              title: t("sideBar_Dashbord.all_users_menu.0"),
+              name: t("sideBar_Dashbord.all_users_menu.0"),
               src: "service_Providers",
 
               cName: "sub-nav",
             },
             {
-              title: t("sideBar_Dashbord.all_users_menu.1"),
+              name: t("sideBar_Dashbord.all_users_menu.1"),
               src: "patient_Users",
 
               cName: "sub-nav",
             },
             {
-              title: t("sideBar_Dashbord.all_users_menu.2"),
+              name: t("sideBar_Dashbord.all_users_menu.2"),
               src: "Admin_Users",
 
               cName: "sub-nav",
             },
           ],
+          cname:" top-[-4rem] rtl:start-[4rem]  ltr:left-16"
         },
 
         {
           title: t("sideBar_Dashbord.about_users_menu.1"),
           src: "/dashboard/services",
-          icon: <Services stoke="white" name_menue={menueClicked} />,
+          icon: <Services stoke="white" menue={menueClicked} />,
 
           subMenus: [
             {
-              title: t("sideBar_Dashbord.Services.0"),
+              name: t("sideBar_Dashbord.Services.0"),
               src: "Doctors_Services",
 
               cName: "sub-nav",
             },
             {
-              title: t("sideBar_Dashbord.Services.1"),
+              name: t("sideBar_Dashbord.Services.1"),
               src: "Hospital_Services",
 
               cName: "sub-nav",
             },
             {
-              title: t("sideBar_Dashbord.Services.2"),
+              name: t("sideBar_Dashbord.Services.2"),
               src: "Pharmacy_Services",
             },
             {
-              title: t("sideBar_Dashbord.Services.3"),
+              name: t("sideBar_Dashbord.Services.3"),
               src: "Clinic_Services",
             },
             {
-              title: t("sideBar_Dashbord.Services.4"),
+              name: t("sideBar_Dashbord.Services.4"),
               src: "Lab_Services",
             },
           ],
+          cname:"ltr:left-16 top-[-4rem] rtl:start-[4rem]"
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.2"),
           src: "/dashboard/requests",
-          icon: <Person_pluse stoke="white" name_menue={menueClicked} />,
+          icon: <Person_pluse stoke="white" menue={menueClicked} />,
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.3"),
           src: "/dashboard/report",
           gap: true,
-          icon: <Graph stoke="white" name_menue={menueClicked} />,
+          icon: <Graph stoke="white" menue={menueClicked} />,
 
        
         },
         {
           title: t("sideBar_Dashbord.about_users_menu.4"),
           src: "/dashboard/products",
-          icon: <Notification stoke="white" name_menue={menueClicked} />,
+          icon: <Notification stoke="white" menue={menueClicked} />,
 
          
         },
@@ -117,7 +130,7 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
           src: "/dashboard/settings",
-          icon: <Settings stoke="white" name_menue={menueClicked} />,
+          icon: <Settings stoke="white" menue={menueClicked} />,
 
  
         },
@@ -125,7 +138,7 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
           src: "/dashboard/signOut",
-          icon: <Log_Out stoke="white" name_menue={menueClicked} />,
+          icon: <Log_Out stoke="white" menue={menueClicked} />,
 
       
         },
@@ -148,12 +161,15 @@ const SideBardashbord = () => {
     });
   };
 
+
+
+  
+   
+
   return (
-    <div className=" sidebar_dashboard  flex justify-center flex-wrap  py-5  shadow-lg    px-10 w-[20%]  ">
+    // <div className={` sidebar_dashboard bg-red-200 flex justify-center flex-wrap  py-5  shadow-lg    px-10 w-[20%]  ${open ? "w-[20%]" :""} `}>
       <div
-        className={` ${
-          open ? "w-48 px-2 " : "w-0 "
-        } lg:w-72     relative duration-500 flex flex-col gap-8  items-start  `}
+        className={`lg:w-72   sidebar_dashboard   relative duration-500  flex flex-col gap-8 shadow-lg  items-start py-5  lg:px-12 px-5`}
       >
         {/* logo */}
         <div className=" justify-center  hidden lg:flex ">
@@ -162,7 +178,7 @@ const SideBardashbord = () => {
         <img src={logo} alt="" className="w-10 h-10 lg:hidden" />
 
         {/* Dashbord  */}
-        <div className="flex grident  px-5 py-2 items-center gap-5 bg-gradient-to-r from-primary to-secondary rounded-[8px] w-full ">
+        <div className="flex grident  px-5 py-2 items-center gap-5 bg-gradient-to-r from-primary to-secondary rounded-[8px] w-full " onClick={toggleSidebar}>
           <img src={vector} alt="" className="" />
           <p className="text-white hidden lg:block">
             {t("sideBar_Dashbord.main_title.0")}
@@ -186,7 +202,10 @@ const SideBardashbord = () => {
                       className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-4 rounded-md text-sm items-center gap-x-5 
                       ${data.gap ? "mt-9" : "mt-2"}  `}
                       onClick={() => {
-                        handleMenueClick(data.title);
+                        handleMenueClick(data);
+                        SetDropdownOpen(!DropdownOpen);
+                        setSubMenuType(data.title);
+                        
                       }}
                     >
                       <NavLink
@@ -194,36 +213,53 @@ const SideBardashbord = () => {
                         className="flex justify-between gap-5   p-2 w-full h-full "
                       >
                         {data.icon}
-                        {/* <img
-                          src={data.icon}
-                          alt=""
-                          className={`w-5 h-5 icon-menue bg-no-repeat bg-cover bg-center  `}
-                        ></img> */}
+                      
 
                         <span className="flex-1 hidden  lg:inline-block">
                           {data.title}
                         </span>
                         {data.subMenus && (
-                          <img
-                            src={Arrow_Dropdown}
-                            onClick={(e) => {
-                              setSubMenuOpen(!subMenuOpen);
-                              setSubMenuType(data.title);
-                              console.log(subMenuOpen);
-                            }}
-                            className={`${
-                              subMenuOpen && "rotate-90 "
-                            } hidden lg:inline-block   `}
+                          // <img
+                            // src={Arrow_Dropdown}
+                            // onClick={(e) => {
+                            //   setSubMenuOpen(!subMenuOpen);
+                            //   setSubMenuType(data.title);
+                            //   console.log(subMenuOpen);
+                            // }}
+                            // className={`${
+                            //   subMenuOpen && "rotate-90 "
+                            // } hidden lg:inline-block   `}
+                          // />
+                          <div    onClick={(e) => {
+                            setSubMenuOpen(!subMenuOpen);
+                            setSubMenuType(data.title);
+                           
+                          }}
+                          className={`${
+                            subMenuOpen && "rotate-90 "
+                          } hidden lg:inline-block   `}>
+                             <Arrow_dropdown  
+                             menue={menueClicked} 
+                             stoke="white"
+
+                       
+
+                          
                           />
+                         
+
+                          </div>
+                         
                         )}
+                        
                       </NavLink>
                     </li>
-
+     
                     {data.subMenus &&
                       subMenuType === data.title &&
                       subMenuOpen &&
                       open && (
-                        <ul className=" hidden lg:block">
+                        <ul className=" hidden lg:block ">
                           {data.subMenus.map((subMenuItem, idx) => (
                             <li
                               key={idx}
@@ -233,7 +269,7 @@ const SideBardashbord = () => {
                                 to={`${data.src}/${subMenuItem.src}`}
                                 className="flex justify-between gap-5 lg:block"
                               >
-                                {subMenuItem.title}
+                                {subMenuItem.name}
                               </NavLink>
                             </li>
                           ))}
@@ -241,34 +277,34 @@ const SideBardashbord = () => {
                       )}
 
                     {/*  submenues in md and sm screen  */}
-                    {/* {data.subMenus && (
-                      <ul className="  block lg:hidden">
-                        {data.subMenus.map((subMenuItem, idx) => (
-                          <li
-                            key={idx}
-                            className="  flex px-5 cursor-pointer   text-center text-[15px] text-myGray-600 py-5 hover:text-primary duration-75"
-                          >
-                            <NavLink
-                              to={`${data.src}/${subMenuItem.src}`}
-                              className="flex justify-between gap-5 lg:block"
-                            >
-                              *
-                            </NavLink>
-                          </li>
-                        ))}
-                      </ul>
-                    )} */}
+                    {data.subMenus &&   subMenuType === data.title &&  (
+                      //  <Dropdown  />
+                      <div className={` ${ DropdownOpen ===true ? " block" :"hidden"}  xl:hidden`}>
+                            <Dropdown_whithout_icon
+                      options={data.subMenus}
+                      dataSrc={data.src}
+                      SetDropdownOpen={SetDropdownOpen}
+                      className={""}
+                      icon={mini_menu}
+                      showSlected={false}
+                      ulClassname={`${data.cname}`}
+                    />
+                    
+                      </div>
+                    )}
+
+                    
                   </>
                 ))}
               </ul>
             </div>
           );
         })}
-      </div>
+      {/* </div> */}
 
       <p className="relative text-myGray-500 text-[14px] rounded-md hidden lg:block bg-myGray-200 px-4 py-5 font-semibold leading-[18px]">
-        We hope that our website will be useful to you and we are happy for you
-        to <span className="text-success cursor-pointer">contact us</span>.
+    {  t("sideBar_Dashbord.Contact_us_discrption")}
+       <span className="text-success cursor-pointer"> {  t("sideBar_Dashbord.contact_us")}</span>.
       </p>
     </div>
   );

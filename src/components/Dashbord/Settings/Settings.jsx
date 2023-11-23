@@ -1,9 +1,10 @@
 import React from 'react'
+import { Input } from '../../utilities/Inputs'
 
 const Settings = () => {
   return (
     <div>
-      Settings
+     setting
     </div>
   )
 }
