@@ -13,7 +13,7 @@ export default function Dropdown({
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
   const handleSelect = (selected) => {
-    onChange(selected);
+    onChange(selected)
     setSelectedItem(selected);
     setIsOpen(false);
   };
@@ -54,7 +54,7 @@ export default function Dropdown({
           {options.map((option, index) => (
             <li
               className={`block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary ${
-                option.type == "delete" ? " text-error" : ""
+                option.type == "delete" ? " text-error hover:text-error " : ""
               }  `}
               key={index}
               onClick={() => {

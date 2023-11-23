@@ -5,9 +5,9 @@ import SideBardashbord from "./SideBar_Dashbord/SideBardashbord";
 const DashboardLayout = () => {
     return (
         <>
-            <div className="flex ">
+            <div className="flex   shadow-lg">
                 <SideBardashbord />
-                <div className="w-[80%] h-screen  ">
+                <div className="w-[80%] h-full   ">
                     <NavBarDashbord />
                     <div className="bg-myGray-200 h-full bg-blak ">
                         

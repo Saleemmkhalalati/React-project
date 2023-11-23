@@ -33,6 +33,7 @@ const Service_Provider = () => {
     " Services Type",
     "Status",
     "PDF",
+    " "
   ];
   const rows = [
     {
@@ -43,6 +44,7 @@ const Service_Provider = () => {
       Services_Type: "Doctor",
       status: "Active",
       pdf: "pdf",
+      space:" "
     },
     {
       Business_Name: "Omer Ahmad",
@@ -52,6 +54,9 @@ const Service_Provider = () => {
       Services_Type: "Doctor",
       status: "Active",
       pdf: "pdf",
+      space:" "
+
+
     },
     {
       Business_Name: "Omer Ahmad",
@@ -61,13 +66,15 @@ const Service_Provider = () => {
       Services_Type: "Doctor",
       status: "Active",
       pdf: "pdf",
+      space:" "
+
     },
   ];
 
   const points = [
-    { name: "Edit service", type: "edit" },
-    { name: "View service", type: "viwe" },
-    { name: "Delete service", type: "delete" },
+    { name: "Edit User", type: "edit" },
+    { name: "View User", type: "viwe" },
+    { name: "Delete User", type: "delete" },
   ];
 
   const [SeviceProvider_Dropdown, setSeviceProvider_Dropdownn] = useState(null);
