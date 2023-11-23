@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import searchIcon from "./NavBar_Dashbord_images/Search.svg";
 import Avtar from "./NavBar_Dashbord_images/Avtar.png";
 import Notification from "./NavBar_Dashbord_images/Notification.svg";
 import Setting from "./NavBar_Dashbord_images/Setting.svg";
 import MultiLangDropdown from "../../../utilities/MultiLangDropdown";
-import Profile from "../../profile/profile";
-import { Link } from "react-router-dom";
+import Profile from "../Profile/Profile";
+import userImage from "../Profile/PeofileImages/Avtar.svg";
 
 import { useTranslation } from "react-i18next";
 
 const NavBarDashbord = () => {
   const { t } = useTranslation("global");
+  const [profile, setProfile] = useState(false);
+  const profileRef = useRef(null);
 
+  const handleOutsideClick = (e) => {
+    if (profileRef.current && !profileRef.current.contains(e.target)) {
+      setProfile(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  console.log(profile);
+  const adminInfo = [
+    {
+      image: userImage,
+      email: "rawanahd23@gmail.com",
+      role: "admin user",
+      reole: "admin user",
+    },
+  ];
+  const handleProfile = () => {
+    setProfile(!profile);
+  };
   return (
     <div className="py-5 px-10  flex  md:justify-between justify-end">
       {/* input serch  */}
@@ -39,9 +65,22 @@ const NavBarDashbord = () => {
         </div>
         <img src={Setting} alt="" className="w-5 h-5" />
         <MultiLangDropdown />
-        <Link to={"profile"}>
-          <img src={Avtar} alt="" />
-        </Link>
+        <img
+          className="cursor-pointer"
+          onClick={handleProfile}
+          src={Avtar}
+          alt=""
+        />
+        {profile ? (
+          <Profile
+            ref={profileRef}
+            email={adminInfo[0].email}
+            image={adminInfo[0].image}
+            role={adminInfo[0].role}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

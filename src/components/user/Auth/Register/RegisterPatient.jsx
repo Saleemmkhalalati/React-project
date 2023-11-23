@@ -1,5 +1,5 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next'
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import BackPolygon from "../../../utilities/BackPolygon";
 import docImg from "./RegisterImage/Intersect.svg";
@@ -8,96 +8,75 @@ import Typography from "../../../utilities/Typography";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../utilities/Button";
 import { Input } from "../../../utilities/Inputs";
-import email from './RegisterImage/Email.svg';
-import showPass from './RegisterImage/Vector.svg'
-import hidePassword from './RegisterImage/icons8-eye-26.png'
-import AuthDesign from '../AuthDesign/AuthDesign';
+import email from "./RegisterImage/Email.svg";
+import iconShow from "../Login/logain-image/View.svg";
+import eye from "../../../../assets/icons/eyepass.svg";
+
+import AuthDesign from "../AuthDesign/AuthDesign";
+import * as Yup from "yup";
+import { Formik, useFormik } from "formik";
+
+const registerSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid Email").required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password should be of minimum 8 characters length")
+    .matches(
+      /^(?=.*[a-zA-Z])(?=.*[0-9])/,
+      "Password should contain at least one letter and one number"
+    )
+    .required("Password is required"),
+  confirmPassword: Yup.string()
+    .required("Confirm Password is required")
+    .oneOf([Yup.ref("password")], "Passwords must match"),
+});
 const RegisterPatient = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validationSchema: registerSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnMount: false,
+    onSubmit: (values) => {
+      console.log("hhhhhhhhhhhhhhhh");
+    },
+  });
+
   const { t, i18n } = useTranslation("global");
   const [userType, setUserType] = useState("patient"); // User type, defaults to "patient"
-  const [formData, setFormData] = useState({}); // Form data
-  const [errors, setErrors] = useState({}); // Form data
-  const [isSubmitting, setIsSubmitting] = useState(false); // Indicates if the form is submitted
-  const [isValid, setIsValid] = useState(true); // Indicates if the form is Valid
-  const [showPassword, setShowPassword] = useState(false); // Shows/hides password
-  const [showRePass, setReShowPass] = useState(false); // Shows/hides re-entered password
-  const navigate = useNavigate()
+
+  const [showpass, setshowpass] = useState(false);
+  const [conpass, setconwpass] = useState(false);
+  const navigate = useNavigate();
   const changeUserType = () => {
     setUserType("provider");
-    navigate("/register-provider")
+    navigate("/register-provider");
   };
-  const handleSetErrors = (name, msgError) => {
-    console.log(name);
-    setErrors({
-      ...errors,
-      [name]: msgError,
-    });
-  };
-  const handleInputChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-    if (event.target.value === "") {
-      setIsValid(false);
-      console.log(isValid)
-      handleSetErrors([event.target.name], "this Field is req")
-    } else {
-      setIsValid(true);
-      handleSetErrors([event.target.name], "")
-    }
-    if ((event.target.name === "repassword") && event.target.value !== formData.password) {
 
-      setIsValid(false);
-      console.log(isValid)
-      handleSetErrors(["repassword"], "Passwords do not match")
-    }
-    else if (Object.keys(errors).length === 0) {
-      setIsValid(true);
-      handleSetErrors([event.target.name], "")
-    }
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    // Check if the passwords match
-    if (formData.password !== formData.repassword) {
-      setIsPasswordMatch(false);
-      console.log("Passwords do not match");
-    } else {
-      const requiredFields = ["email", "password", "repassword"];
-      const hasEmptyFields = requiredFields.some(
-        (fieldName) => !formData[fieldName]
-      );
-      if (!hasEmptyFields) {
-        setIsValid(true);
-        sendFormDataToServer();
-      } else {
-        setIsValid(false);
-        console.log("Some required fields are empty.");
-      }
-    };
+  //show password
+  function ShowPassword() {
+    setshowpass(!showpass);
   }
-  const sendFormDataToServer = () => {
-    console.log("Sending data to the server...");
-    console.log(formData);
-  };
-  const handleShowPass = (event) => {
-    event.target.alt === "password" ? setShowPassword(!showPassword) : event.target.alt === "repassword" ? setReShowPass(!showRePass) : null;
-  };
+  //show conpassword
+  function conPass() {
+    setconwpass(!conpass);
+  }
 
   return (
-    <div className={`relative max-w-[1750px] mx-auto my-0 flex flex-wrap justify-between max-[1750px]:overflow-hidden max-[1100px]:py-5`}>
-      <div className='relative  ltr:left-0  rtl:right-0 z-[-1]'>
+    <div
+      className={`relative max-w-[1750px] mx-auto my-0 flex flex-wrap justify-between max-[1750px]:overflow-hidden max-[1100px]:py-5`}
+    >
+      <div className="relative  ltr:left-0  rtl:right-0 z-[-1]">
         <div className="absolute rotate-45 w-80 h-80 top-10 sm:top-24 bg-sky-50 rounded-3xl -start-14"></div>
         <div className="absolute rotate-45 w-80 h-80 top-96 sm:top-[29rem] bg-sky-50 rounded-3xl start-28"></div>
         <div></div>
       </div>
       <div className={`relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]`}>
         <div className="flex flex-col gap-8 text-center lg:text-start">
-          <Typography component="h1">
-            {t("register.headPatient")}
-          </Typography>
+          <Typography component="h1">{t("register.headPatient")}</Typography>
           <Typography component="h4">
             {t("register.loginQuest")}
             <Link
@@ -108,39 +87,51 @@ const RegisterPatient = () => {
             </Link>
           </Typography>
         </div>
-        <form className='flex flex-col gap-8' onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-8" onSubmit={formik.handleSubmit}>
           <Input
             label={t("register.inputFields.email")}
             name="email"
-            onChange={(e) => handleInputChange(e)}
-            type="email"
-            errorMsg={errors["email"] ? errors["email"] : ""}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            type="text"
+            errorMsg={
+              formik.touched.email && formik.errors.email
+                ? formik.errors.email
+                : null
+            }
             icon={email}
-            value={formData[email]}
           />
           <Input
             label={t("register.inputFields.password")}
             name="password"
-            onChange={(e) => handleInputChange(e)}
-            type={showPassword ? "text" : "password"}
-            errorMsg={errors["password"] ? errors["password"] : ""}
-            icon={showPassword ? hidePassword : showPass}
-            value={formData["password"]}
-            iconOnClick={handleShowPass}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            type={showpass ? "text" : "password"}
+            errorMsg={
+              formik.touched.password && formik.errors.password
+                ? formik.errors.password
+                : null
+            }
+            value={formik.values.password}
+            icon={showpass ? eye : iconShow}
+            iconOnClick={ShowPassword}
           />
           <Input
             label={t("register.inputFields.confirmPassword")}
-            name="repassword"
-            onChange={(e) => handleInputChange(e)}
-            type={showRePass ? "text" : "password"}
-            errorMsg={errors["repassword"] ? errors["repassword"] : ""}
-            icon={showRePass ? hidePassword : showPass}
-            value={formData["repassword"]}
-            iconOnClick={handleShowPass}
+            name="confirmPassword"
+            onChange={formik.handleChange}
+            type={conpass ? "text" : "password"}
+            errorMsg={
+              formik.touched.confirmPassword && formik.errors.confirmPassword
+                ? formik.errors.confirmPassword
+                : null
+            }
+            value={formik.values.confirmPassword}
+            icon={conpass ? eye : iconShow}
+            iconOnClick={conPass}
           />
-          <Button type="submit">
-            {t("register.inputFields.submit")}
-          </Button>
+          <Button type="submit">{t("register.inputFields.submit")}</Button>
           <div
             onClick={changeUserType}
             className="text-[16px] cursor-pointer font-normal leading-[25.14px] w-full text-center text-secondary hover:text-success"
@@ -149,9 +140,13 @@ const RegisterPatient = () => {
           </div>
         </form>
       </div>
-      <AuthDesign img={docImg} title={t("register.action")} paragraph={t("ImageContainer.aboutUs")} />
+      <AuthDesign
+        img={docImg}
+        title={t("register.action")}
+        paragraph={t("ImageContainer.aboutUs")}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default RegisterPatient
+export default RegisterPatient;

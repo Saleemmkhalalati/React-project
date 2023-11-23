@@ -2,7 +2,9 @@ import "./Login.css";
 import loginImage from "../Login/logain-image/Intersect.svg";
 import iconEmail from "../Login/logain-image/Email.svg";
 import iconShow from "../Login/logain-image/View.svg";
-
+import eye from "../../../../assets/icons/eyepass.svg";
+import * as Yup from "yup";
+import { Formik, useFormik } from "formik";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import AuthDesign from "../AuthDesign/AuthDesign";
@@ -11,51 +13,47 @@ import { Input } from "../../../utilities/Inputs";
 import Button from "../../../utilities/Button";
 import { useTranslation } from "react-i18next";
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid Email").required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password Should be of minimum 8 characters length")
+    .required("Password is required"),
+});
 export default function Login() {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnMount: false,
+    onSubmit: (values) => {
+
+    },
+  });
   const { t } = useTranslation("global");
-  const [email, SetEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [ErrM, setErrM] = useState("");
-  const [ErrP, setErrP] = useState("");
-  const [accept, setAccept] = useState("");
+
   const [showpass, setshowpass] = useState(false);
-  const [isFilled, setIsFilled] = useState(false);
-  const [isFilledPass, setIsFilledPass] = useState(false);
 
   //show password
   function ShowPassword() {
     setshowpass(!showpass);
   }
 
-  async function submit(e) {
-    e.preventDefault();
-    setAccept(true);
-    if (!(accept && email)) {
-      setErrM(t("login.err"))
-    } else {
-      setErrM("")
-    }
-    if (!(accept && password)) {
-      setErrP(t("login.err"))
-    } else {
-      setErrP("")
-    }
-  }
-
   return (
     <div className="max-w-[1750px] mx-auto my-0 h-screen max-[1100px]:overflow-y-auto max-[1750px]:overflow-hidden">
-      <div className='relative  ltr:left-0  rtl:right-0 z-[-1]'>
+      <div className="relative  ltr:left-0  rtl:right-0 z-[-1]">
         <div className="absolute rotate-45 w-80 h-80 top-10 sm:top-24 bg-sky-50 rounded-3xl -start-14"></div>
         <div className="absolute rotate-45 w-80 h-80 top-96 sm:top-[29rem] bg-sky-50 rounded-3xl start-28"></div>
         <div></div>
       </div>
       <div className="max-w-[1750px] mx-auto my-0 flex justify-between flex-wrap">
         <div className="relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]">
-          <Typography component={'h1'}>
-            {t("login.title")}
-          </Typography>
+          <Typography component={"h1"}>{t("login.title")}</Typography>
           <div className="min-w-[300px]">
-            <Typography component={'h4'}>
+            <Typography component={"h4"}>
               {t("login.p")}
               <Link
                 className="text-success text-xs md:text-base border-b-[1px] border-success hover:text-secondary hover:border-secondary"
@@ -65,33 +63,40 @@ export default function Login() {
               </Link>
             </Typography>
           </div>
-          <form onSubmit={submit} className='relative space-y-5'>
+          <form onSubmit={formik.handleSubmit} className="relative space-y-5">
             <div>
-              <Input type="email"
-                value={email}
-                onChange={(e) => {
-                  SetEmail(e.target.value);
-                  setIsFilled(e.target.value !== "");
-                }}
+              <Input
+                type="text"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 label={t("login.inputFields.email")}
                 icon={iconEmail}
-                errorMsg={ErrM}
-                iconOnClick
+                errorMsg={
+                  formik.touched.email && formik.errors.email
+                    ? formik.errors.email
+                    : null
+                }
               />
             </div>
             <div>
               <Input
                 type={showpass ? "text" : "password"}
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setIsFilledPass(e.target.value !== "");
-                }}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 label={t("login.inputFields.password")}
-                icon={iconShow}
-                errorMsg={ErrP}
+                icon={showpass ? eye : iconShow}
                 iconOnClick={ShowPassword}
+                errorMsg={
+                  formik.touched.password && formik.errors.password
+                    ? formik.errors.password
+                    : null
+                }
               />
+
               <div className="text-end mb-[-5px]">
                 <Link
                   className="text-sm texe-mySlate hover:text-secondary transition hover:animate-bounce"
@@ -101,14 +106,16 @@ export default function Login() {
                 </Link>
               </div>
             </div>
-            <Button fullWidth>
+            <Button type="submit" fullWidth>
               {t("login.button")}
             </Button>
           </form>
         </div>
-        <AuthDesign img={loginImage}
+        <AuthDesign
+          img={loginImage}
           title={t("login.TitleImg")}
-          paragraph={t("login.resetPar")} />
+          paragraph={t("login.resetPar")}
+        />
       </div>
     </div>
   );

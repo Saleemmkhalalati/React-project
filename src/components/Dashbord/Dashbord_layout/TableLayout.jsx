@@ -4,7 +4,7 @@ import mini_menu from "../../../assets/icons/mini-menu.svg";
 import pdf from "../../../assets/icons/pdf.svg";
 const Table = ({ columns, rows, points, handlepoint, point }) => {
   return (
-    <div className="overflow-hidden px-7 min-h-screen overflow-x-auto ">
+    <div className="overflow-hidden px-7  overflow-x-auto ">
       <table className="table-auto w-full overflow-x-auto">
         <thead className="">
           <tr>

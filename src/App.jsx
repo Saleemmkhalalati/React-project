@@ -26,7 +26,7 @@ import HospitalServices from "./components/Dashbord/Service/HospitalServices";
 import PharmacyServices from "./components/Dashbord/Service/PharmacyServices";
 import ClinicServices from "./components/Dashbord/Service/ClinicServices";
 import LabServices from "./components/Dashbord/Service/LabServices";
-import Profile from "./components/Dashbord/profile/profile";
+
 function App() {
   return (
     <div className="font-alegreya">
@@ -49,7 +49,7 @@ function App() {
           </Route>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="profile" element={<Profile />} />
+
             <Route path="users" element={<Dashboard />} />
             <Route
               path="users/service_Providers"
