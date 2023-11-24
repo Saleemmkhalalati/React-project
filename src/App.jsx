@@ -21,7 +21,7 @@ import SignOut from "./components/Dashbord/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
 import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
-import DoctorServices from "./components/Dashbord/Service/DoctorsServices";
+import DoctorServices from "./components/Dashbord/Service/DoctorServices";
 import HospitalServices from "./components/Dashbord/Service/HospitalServices";
 import PharmacyServices from "./components/Dashbord/Service/PharmacyServices";
 import ClinicServices from "./components/Dashbord/Service/ClinicServices";
