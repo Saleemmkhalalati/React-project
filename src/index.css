@@ -18,3 +18,7 @@ a.active {
     background-color: theme("colors.myGray-100");
     color: theme("colors.secondary");
 }
+/* to change color svg  */
+.fill-white {
+    fill: white !important;
+}  

@@ -1,10 +1,9 @@
-import Content from "../Dashbord_layout/Content/Content";
-import Typography from "../../utilities/Typography";
+import React from 'react'
 
 const Settings = () => {
   return (
     <div>
-      <Content path={"Sitting"} />
+      Settings
     </div>
   );
 };

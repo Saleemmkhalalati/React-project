@@ -10,17 +10,20 @@ const Content = ({
   ExportFunc,
   refrech,
   Export,
+  classNameChildern,
+  hasExport,
+  hasRefrech
 }) => {
   const [Remostartactive, setRemostartActive] = useState(false);
 
   return (
-    <div className="px-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between   ">
+    <div className="px-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between    ">
       <div className="flex justify-between  flex-wrap gap-2">
         <p className="text-[16px] font-normal text-myGray-600">
           <span className="text-secondary">Dashboard /</span> {path}
         </p>
-        <div className="flex items-center gap-4 cursor-pointer mb-4">
-          <div className="flex gap-1 " onClick={RefrechFun}>
+        <div className="flex items-center gap-4 cursor-pointer mb-4  ">
+      {hasRefrech ?     <div className="flex gap-1 " onClick={RefrechFun}>
             <img
               src={Refrech}
               alt=""
@@ -38,8 +41,9 @@ const Content = ({
             >
               Refresh
             </span>
-          </div>
-          <div className="flex gap-1 " onClick={ExportFunc}>
+          </div>:""}
+
+       { hasExport ?    <div className="flex gap-1 " onClick={ExportFunc}>
             <img
               src={Export_img}
               alt=""
@@ -57,14 +61,19 @@ const Content = ({
             >
               Export Table
             </span>
-          </div>
+          </div>:""
+
+       }
         </div>
       </div>
-      <div className="bg-white h-screen ">{children}</div>
+
+  
+
+      <div className={`${classNameChildern ? classNameChildern :""}  h-scree     `}>{children}</div>
       <p className="">
         Copyright @ 2023, All Right Resaved By{" "}
         <span
-          className={`text-primary hover:text-success cursor-pointer ${
+          className={`text-primary hover:text-success cursor-pointer  ${
             Remostartactive ? "text-success" : ""
           }`}
           onClick={() => {

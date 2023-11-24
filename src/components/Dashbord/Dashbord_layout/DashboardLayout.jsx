@@ -5,13 +5,13 @@ import SideBardashbord from "./SideBar_Dashbord/SideBardashbord";
 const DashboardLayout = () => {
     return (
         <>
-            <div className="flex   shadow-lg">
+            <div className="flex  shadow-lg">
                 <SideBardashbord />
-                <div className="w-[80%] h-full   ">
+                <div className="xl:w-[80%] sm:w-[90%] w-scree h-full h-scree   ">
                     <NavBarDashbord />
-                    <div className="bg-myGray-200 h-full bg-blak ">
+                    <div className="bg-myGray-200 h-full  ">
                         
-                        <Outlet className="h-full "/>
+                        <Outlet className="h-full  "/>
                         
                     </div>
                 </div>

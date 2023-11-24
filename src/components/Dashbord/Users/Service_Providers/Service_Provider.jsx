@@ -97,6 +97,10 @@ const Service_Provider = () => {
       ExportFunc={handleExport}
       refrech={refrech}
       Export={Export}
+      classNameChildern="bg-white"
+      hasExport={true}
+      hasRefrech={true}
+
     >
       <TabsFillter>
         <span className="px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500">

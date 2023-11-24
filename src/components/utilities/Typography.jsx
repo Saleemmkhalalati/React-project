@@ -10,6 +10,8 @@ export default function Typography({ component, children, className }) {
                     className={`${className ? className : ""} ${
                         component === "h1"
                             ? "font-bold text-4xl text-primary "
+                            : component === "h3" 
+                            ? "font-bold text-xl text-myGray-500 leading-[25.14px] "
                             : component === "h4"
                             ? "font-normal text-base text-myGray-500"
                             : component === "h5"

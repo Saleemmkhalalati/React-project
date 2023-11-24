@@ -164,6 +164,8 @@
       "Clinic Services",
       "Lab Services"
     ],
+    "Contact_us_discrption":"نأمل أن يكون موقعنا مفيداً لكم ويسعدنا.",
+    "contact_us":"تواصلكم معنا",
     "about_dashboard_menu": ["الاعدادات", "تسجيل خروج"]
   },
   "nodata": "لاتوجد بيانات",

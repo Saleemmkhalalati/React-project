@@ -74,6 +74,10 @@ const Patient_Users = () => {
     ExportFunc={handleExport}
     refrech={refrech}
     Export={Export}
+    classNameChildern="bg-white"
+    hasExport={true}
+    hasRefrech={true}
+
   >
 
     <TabsFillter>

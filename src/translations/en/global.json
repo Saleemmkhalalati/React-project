@@ -160,7 +160,9 @@
       "Pharmacy Services",
       "Clinic Services",
       "Lab Services"
-    ]
+    ],
+    "Contact_us_discrption":"We hope that our website will be useful to you and we are happy for you to ",
+    "contact_us":" contact us"
   },
   "Med_sal_dashbord": {
     "main_title": "med - Sal for  Admin - Dashboard ",

@@ -89,6 +89,9 @@ console.log(valueDropdown)
       ExportFunc={handleExport}
       refrech={refrech}
       Export={Export}
+      classNameChildern="bg-white"
+      hasExport={true}
+      hasRefrech={true}
     >
   
       <TabsFillter>
