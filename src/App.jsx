@@ -25,8 +25,9 @@ import HospitalServices from "./components/Dashbord/Service/HospitalServices";
 import PharmacyServices from "./components/Dashbord/Service/PharmacyServices";
 import ClinicServices from "./components/Dashbord/Service/ClinicServices";
 import LabServices from "./components/Dashbord/Service/LabServices";
-import Profile from "./components/Dashbord/profile/profile";
-import Allusers from "./components/Dashbord/Report/Allusers"
+import Allusers from "./components/Dashbord/Report/Allusers.jsx";
+import Allservices from "./components/Dashbord/Report/Allservices.jsx";
+import Allproducts from "./components/Dashbord/Report/Allproducts.jsx"
 function App() {
   return (
     <div className="font-alegreya">
@@ -49,7 +50,7 @@ function App() {
           </Route>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="profile" element={<Profile />} />
+
             <Route path="users" element={<Dashboard />} />
             <Route
               path="users/service_Providers"
@@ -79,9 +80,9 @@ function App() {
 
             <Route path="requests" element={<Requests />} />
             <Route path="report" element={<Report />} > 
-            <Route path="all_users" element={<Allusers />} /> 
-            <Route path="all_services" element={<Allusers />} /> 
-            <Route path="all-product" element={<Allusers />} /> 
+            <Route index     element={<Allusers />} /> 
+            <Route path="all_services" element={<Allservices />} /> 
+            <Route path="all-product" element={<Allproducts />} /> 
 
 
             

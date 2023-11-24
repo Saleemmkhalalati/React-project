@@ -7,37 +7,17 @@ const Report  = () => {
   return (
     <Content
     path={" Report"}
+    
  
   >
-    {/* <div className="fex">
-    <div className='flex justify-between gap-10'>
-  <div className='flex gap-5'>
-  <Department  path="all_users"/>
-    <Department path="all_services"/>
-
-    <Department path="all-product"/>
-  </div>
-
   
 
+  <div className='flex flex-wrap flex-col lg:flex-row  xl:gap-1  lg:gap-4 justify-between items-center xl:items-start gap-2 mt-3 '>
+  <div className='flex flex-col flex-wrap md:flex-row xl:gap-5  lg:w-[68%] xl:w-[77%] sm:w-[100%]    gap-5 xl:justify-between lg:justify-around sm:justify-center sm:items-center  w-full xl:h-[10rem]'>
+  <Department  path="all_users" title="All Users - 100.000" descrption="All users (supper admin, admin, service provider, patient)"/>
+    <Department path="all_services" title="All Services - 190.000" descrption="All services from (doctor, hospital, lab, clinic, pharmacy)"  />
 
-   
-    
-   </div>
-
-    </div>
-   
-   <div className=' flex flex-wrap '>
-
-  <Outlet />
-  </div> */}
-
-  <div className='flex flex-wrap justify-between mt-5'>
-  <div className='flex gap-5 w-[75%] h-[10rem]'>
-  <Department  path="all_users"/>
-    <Department path="all_services"/>
-
-    <Department path="all-product"/>
+    <Department path="all-product" title="All Product - 250.000" descrption="All product (medical drugs, medical devices, cosmetic ointments)" />
   </div>
  
     <Outlet />

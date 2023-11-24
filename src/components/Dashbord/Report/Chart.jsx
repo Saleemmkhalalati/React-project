@@ -10,6 +10,7 @@ import {
   
 
 } from "recharts";
+import Typography from "../../utilities/Typography";
 
 
 
@@ -28,14 +29,17 @@ const containerStyle = {
 
 
 
+
 export default function Chart({ title, data, dataKey, grid,dec,yuserData }) {
 
   return (
-    <div className="chart  py-[4rem] px- flex items-center gap-12 w-[75%] justify-between bg-white rounded-md relative bottom-36">
-      <ResponsiveContainer width="100%" aspect={4 / 1} >
-        <LineChart data={data} width={400} height={400}>
+    <div className="chart  w-[100%]  lg:w-[100%] xl:w-[77%] sm:w-[100%]  py-[4rem] pe-3 flex  flex-wrap items-center   xl:justify-between gap-5  text-center  bg-white rounded-md relative xl:bottom-44">
+  <div className=" xl:w-[70%] md:w-[100%] w-full  ">
+  <ResponsiveContainer width="100%"  height="100%"aspect={4 / 1} >
+        <LineChart data={data} width={400} height={500}>
           <XAxis dataKey="name" stroke="#7B7B7B" />
-          <YAxis stroke="#7B7B7B" />
+          {/* <YAxis stroke="#7B7B7B"  /> */}
+          <YAxis axisLine={false} tickLine={false}  />
           
 
           <defs>
@@ -60,9 +64,10 @@ export default function Chart({ title, data, dataKey, grid,dec,yuserData }) {
           {grid && <CartesianGrid strokeDasharray="5 5" horizontal={true} vertical ={false} />}
         </LineChart>
       </ResponsiveContainer>
-      <div className="w-[30%]">
-      <h2 className='font-bold text-[20px] text-myGray-500 leading-[25.14px] mb-3'>{title}</h2>
-      <p  className='text-myGray-500  opacity-75'>{dec}</p>
+  </div>
+      <div className="xl:w-[25%] md:w-[100%] xl:ps-  ">
+      <Typography component="h3" className='font-bold text-[20px] text-myGray-500 leading-[25.14px] mb-3'>{title}</Typography>
+      <Typography component="p"  className='text-myGray-500  opacity-50'>{dec}</Typography>
       </div>
 
     </div>

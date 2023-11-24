@@ -56,6 +56,8 @@ console.log(point)
         ExportFunc={handleExport}
         refrech={refrech}
         Export={Export}
+        hasExport={true}
+        hasRefrech={true}
       >
         {/* // must be as a commponent  */}
         <TabsFillter>

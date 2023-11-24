@@ -2,8 +2,9 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, Cell,  RadialBar, RadialBarChart } from 'recharts';
 import {dataCircel} from "../../Report/ReportData"
+import Typography from '../../../utilities/Typography';
 
-const CircleChart = () => {
+const CircleChart = ({title}) => {
    
       const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -35,8 +36,8 @@ const CircleChart = () => {
 
 
   return (
-    <div className='w-[20%] bg-white px-2  py-2 flex  flex-col justify-center items-center rounded-md'>
-        <h2>All Users - 100.000</h2>
+    <div className='w-[13rem] bg-white px-2  py-2 pt-10 flex  flex-col justify-center items-center rounded-md'>
+        <Typography component="h3">{title}</Typography>
     <PieChart width={200}  height={250} margin={{top: 0, right: 0, bottom: 0, left: 10}} className=' '
     >
       <Pie

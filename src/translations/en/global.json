@@ -57,7 +57,10 @@
       "iban": "IBAN Number",
       "swift": "Swift Code",
       "serviceType": "Service Type",
-      "bankDetailes": "Information for Bank Detailes"
+      "bankDetailes": "Information for Bank Detailes",
+      "file": "Upload File",
+      "bankInfo": "Banking Information",
+      "UploadFile": "Upload File PDF"
     },
     "services": {
       "doctor": "Doctor",

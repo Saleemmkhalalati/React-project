@@ -12,7 +12,7 @@ import Table from '../Dashbord_layout/TableLayout'
 
  
 
-const Allusers = () => {
+const Allproducts = () => {
   const [point, setPoint] = useState(null);
 
   //for table drobdown
@@ -59,8 +59,8 @@ const Allusers = () => {
    
 
 
-   <CircleChart title="All Users - 100.000"  />
-   <Chart data={userData} yuserData={yuserData} title="All Users - 100.000" dec="All users as (supper admin, admin, service provider, patient) and in this website the users is increased. " grid dataKey="Active User" />
+   <CircleChart title="All Product - 250.000"  />
+   <Chart data={userData} yuserData={yuserData} title="All Product - 250.000" dec="All Product as (medical drugs, medical devices, cosmetic ointments) and in this website the users is increased.  " grid dataKey="Active User" />
    <div className=' w-full   lg:w-[100%] xl:w-[77%] sm:w-[100%]  h-[80%] mt-10 rounded-md relative xl:bottom-48 bg-white '>
    <Table
             columns={columns}
@@ -76,4 +76,4 @@ const Allusers = () => {
     
 )}
 
-export default Allusers
+export default Allproducts

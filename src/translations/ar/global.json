@@ -57,7 +57,10 @@
       "iban": "رقم البنك",
       "swift": "كود البنك",
       "serviceType": "نوع العمل ",
-      "bankDetailes": "التفاصيل البنكية"
+      "bankDetailes": "التفاصيل البنكية",
+      "file": "إختيار ملف",
+      "bankInfo": "معلومات البنك",
+      "UploadFile": "رفع ملف (PDF)"
     },
     "services": {
       "doctor": "طبيب",
