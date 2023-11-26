@@ -21,7 +21,7 @@ export default function LabServices() {
   const handleExport = () => {
     setexport(!Export);
   };
-console.log(point)
+  console.log(point);
   const radioItems = [
     { value: "All Services", label: "All Services" },
     { value: "Last Services", label: "Last Services" },
@@ -54,6 +54,9 @@ console.log(point)
         ExportFunc={handleExport}
         refrech={refrech}
         Export={Export}
+        classNameChildern="bg-white min-h-screen"
+        hasExport={true}
+        hasRefrech={true}
       >
         {/* // must be as a commponent  */}
         <TabsFillter>

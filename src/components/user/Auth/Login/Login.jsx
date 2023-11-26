@@ -30,7 +30,7 @@ export default function Login() {
     validateOnChange: true,
     validateOnMount: false,
     onSubmit: (values) => {
-
+      formik.handleReset();
     },
   });
   const { t } = useTranslation("global");
@@ -106,7 +106,7 @@ export default function Login() {
                 </Link>
               </div>
             </div>
-            <Button type="submit" fullWidth>
+            <Button type="submit" disabled={!formik.isValid} fullWidth>
               {t("login.button")}
             </Button>
           </form>

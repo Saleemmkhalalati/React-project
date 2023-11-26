@@ -91,6 +91,9 @@ export default function ClinicServices() {
         ExportFunc={handleExport}
         refrech={refrech}
         Export={Export}
+        classNameChildern="bg-white min-h-screen"
+        hasExport={true}
+        hasRefrech={true}
       >
         {/* // must be as a commponent  */}
         <TabsFillter>

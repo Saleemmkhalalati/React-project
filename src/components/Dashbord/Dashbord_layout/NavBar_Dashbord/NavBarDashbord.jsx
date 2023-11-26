@@ -26,7 +26,7 @@ const NavBarDashbord = () => {
     };
   }, []);
 
-  console.log(profile);
+
   const adminInfo = [
     {
       image: userImage,

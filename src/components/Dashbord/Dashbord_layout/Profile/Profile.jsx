@@ -17,12 +17,12 @@ const Profile = React.forwardRef(({ email, image, role }, ref) => {
   return (
     <div
       ref={ref}
-      className="absolute top-24 end-7 w-[24rem] bg-white p-5 z-20 rounded"
+      className="absolute top-24 end-2 sm:end-7 w-[15rem] sm:w-[24rem] bg-white p-5 z-20 rounded"
     >
       <div className=" flex flex-col gap-6">
         <div className=" relative flex items-center justify-center flex-col gap-2">
           <div className="relative ">
-            <img className="w-28 sm:w-32" src={image} alt={""} />
+            <img className="w-20 sm:w-32" src={image} alt={""} />
             <img
               className="absolute bottom-3 ltr:start-24 rtl:end-0 "
               src={camera}
@@ -30,33 +30,44 @@ const Profile = React.forwardRef(({ email, image, role }, ref) => {
             />
           </div>
           <div>
-            <Typography component={"p"}>{email}</Typography>
+            <Typography className={"text-xs sm:text-lg"} component={"p"}>
+              {email}
+            </Typography>
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <div className="flex justify-between items-center border-2 border-myGray-100 py-2 rounded-md">
-            <Typography className={"ps-3"} component={"h4"}>
+          <div className="flex justify-between items-center border-2 border-myGray-100 py-1 sm:py-2 rounded-md">
+            <Typography
+              className={"ps-1 sm:ps-3 text-xs sm:text-sm"}
+              component={"h4"}
+            >
               {role}
             </Typography>
-            <img className="pe-3 w-6" src={user} alt="" />
+            <img className="pe-3 w-5 sm:w-6" src={user} alt="" />
           </div>
-          <div className="flex justify-between items-center border-2  border-myGray-100 py-2 rounded-md">
-            <Typography className={"ps-3"} component={"h4"}>
+          <div className="flex justify-between items-center border-2  border-myGray-100 py-1 sm:py-2 rounded-md">
+            <Typography
+              className={"ps-1 sm:ps-3 text-xs sm:text-sm"}
+              component={"h4"}
+            >
               {email}
             </Typography>
-            <img className="pe-3 w-6" src={emailIcon} alt="img" />
+            <img className="pe-3 w-5 sm:w-6" src={emailIcon} alt="img" />
           </div>
-          <div className="flex justify-between items-center border-2 border-myGray-100 py-2 rounded-md">
-            <Typography className={"ps-3"} component={"h4"}>
+          <div className="flex justify-between items-center border-2 border-myGray-100 py-1 sm:py-2 rounded-md">
+            <Typography
+              className={"ps-1 sm:ps-3 text-xs sm:text-sm"}
+              component={"h4"}
+            >
               ********
             </Typography>
-            <img className="pe-3 w-6" src={view} alt="" />
+            <img className="pe-3 w-5 sm:w-6" src={view} alt="" />
           </div>
         </div>
       </div>
       <Link>
         <Typography
-          className={"ltr:text-end rtl:text-start pt-2"}
+          className={"ltr:text-end rtl:text-start pt-2 text-sm sm:text-lg"}
           component={"secondary-text"}
         >
           {t("profile")}

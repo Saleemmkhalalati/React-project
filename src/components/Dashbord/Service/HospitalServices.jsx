@@ -67,6 +67,123 @@ export default function HospitalServices() {
       status: "Disable",
       discount: "800.000",
     },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
+    {
+      title: "MRI",
+      description: "Installing a dental bridge",
+      clinic: "Zahera",
+      price: "100.000",
+      HospitalName: "Rashid",
+      status: "Disable",
+      discount: "800.000",
+    },
   ];
 
   const points = [
@@ -83,6 +200,9 @@ export default function HospitalServices() {
         ExportFunc={handleExport}
         refrech={refrech}
         Export={Export}
+        classNameChildern="bg-white min-h-screen"
+        hasExport={true}
+        hasRefrech={true}
       >
         {/* // must be as a commponent  */}
         <TabsFillter>

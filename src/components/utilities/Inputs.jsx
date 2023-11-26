@@ -231,3 +231,52 @@ Input.propTypes = {
   icon: PropTypes.string.isRequired,
   errorMsg: PropTypes.string.isRequired,
 };
+
+export function DashInput({
+  name,
+  value,
+  onBlur,
+  onChange,
+  icon,
+  errorMsg,
+  type,
+}) {
+  console.log(errorMsg);
+  return (
+    <div className="relative">
+      <div
+        className={`flex flex-row py-2 px-3 border-[1px] items-center justify-between ${
+          errorMsg !== ""
+            ? "border-error "
+            : "border-myGray-400 focus-within:border-primary "
+        } bg-white rounded-lg transition-all duration-100 ease-in-out`}
+      >
+        <input
+          className=" text-mySlate outline-0 focus:outline-none"
+          id={name}
+          name={name}
+          value={value}
+          onBlur={onBlur}
+          onChange={onChange}
+          type={type}
+        />
+
+        <img src={icon} width={12} height={12} alt="icon" />
+      </div>
+      {errorMsg !== "" && (
+        <p className="ps-1 pt-2 text-error font-normal text-xs">{errorMsg}</p>
+      )}
+    </div>
+  );
+}
+FInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  type: PropTypes.oneOf(["text", "password", "email", "number", "date"])
+    .isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  icon: PropTypes.string.isRequired,
+  errorMsg: PropTypes.string.isRequired,
+};
