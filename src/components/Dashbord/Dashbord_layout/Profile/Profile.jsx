@@ -33,8 +33,8 @@ const Profile = React.forwardRef(({ email, image, role }, ref) => {
             <Typography component={"p"}>{email}</Typography>
           </div>
         </div>
-        <div className="flex flex-col gap-3">
-          <div className="flex justify-between items-center border-2 border-myGray-100 py-2 rounded-md">
+        <div className="flex flex-col gap-3 ">
+          <div className="flex justify-between items-center  border-2 border-myGray-100 py-2 rounded-md">
             <Typography className={"ps-3"} component={"h4"}>
               {role}
             </Typography>

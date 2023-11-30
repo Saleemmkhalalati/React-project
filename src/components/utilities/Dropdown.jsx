@@ -13,9 +13,12 @@ export default function Dropdown({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
+ 
   const handleSelect = (selected) => {
-    onChange(selected)
-    setSelectedItem(selected);
+   
+    onChange(selected);
+   
+    setSelectedItem(selected.name);
     setIsOpen(false);
   };
   const handleOutsideClick = (e) => {
@@ -59,7 +62,7 @@ export default function Dropdown({
               }  `}
               key={index}
               onClick={() => {
-                handleSelect(option.name);
+                handleSelect(option);
               }}
             >
               {option.name}
@@ -71,7 +74,6 @@ export default function Dropdown({
   );
 }
 
-// ***************************************************************
 import PropTypes from "prop-types";
 
 Dropdown.propTypes = {
@@ -83,6 +85,7 @@ Dropdown.propTypes = {
   options: PropTypes.string,
   onChange: PropTypes.func,
 };
+// ***************************************************************
 
 
 export  function Dropdown_whithout_icon({
@@ -115,7 +118,7 @@ export  function Dropdown_whithout_icon({
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-  {console.log(options)}
+  // {console.log(options)}
   return (
     
     <div

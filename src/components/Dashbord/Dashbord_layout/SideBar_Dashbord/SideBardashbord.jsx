@@ -15,7 +15,7 @@ import {
   Settings,
   Graph,
   Notification,
-  Person,
+  Person_sidebar,
   Arrow_dropdown
 } from "../../../utilities/Icons";
 import {Dropdown_whithout_icon} from "../../../utilities/Dropdown"
@@ -45,7 +45,7 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.about_users_menu.0"),
           src: "/dashboard/users",
-          icon: <Person stoke="white" menue={menueClicked} />,
+          icon: <Person_sidebar stoke="white" menue={menueClicked} />,
           subMenus: [
             {
               name: t("sideBar_Dashbord.all_users_menu.0"),
@@ -219,17 +219,6 @@ const SideBardashbord = () => {
                           {data.title}
                         </span>
                         {data.subMenus && (
-                          // <img
-                            // src={Arrow_Dropdown}
-                            // onClick={(e) => {
-                            //   setSubMenuOpen(!subMenuOpen);
-                            //   setSubMenuType(data.title);
-                            //   console.log(subMenuOpen);
-                            // }}
-                            // className={`${
-                            //   subMenuOpen && "rotate-90 "
-                            // } hidden lg:inline-block   `}
-                          // />
                           <div    onClick={(e) => {
                             setSubMenuOpen(!subMenuOpen);
                             setSubMenuType(data.title);
