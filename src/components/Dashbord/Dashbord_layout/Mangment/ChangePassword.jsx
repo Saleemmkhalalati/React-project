@@ -153,8 +153,9 @@ const ChangePassword = React.forwardRef(({ open_change_password, set_open_change
 });
 import PropTypes from "prop-types";
 
-// ChangePassword.propTypes = {
-
-// };
+ChangePassword.propTypes = {
+  open_change_password: PropTypes.bool,
+  set_open_change_password: PropTypes.func,
+};
 export default ChangePassword
 

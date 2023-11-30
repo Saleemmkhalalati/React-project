@@ -1,4 +1,5 @@
 import { SVGProps } from "react";
+// start sitebar icons
 
 export const Person_sidebar=(props) => {
  
@@ -123,7 +124,9 @@ return (
 
 
   }
-  export const Phone=(props) => {
+  // end sitebar icons 
+
+  export const Phone=() => {
     return (
 <svg width={9} height={10} viewBox="0 0 9 10" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clipPath="url(#clip0_3202_40500)">
@@ -141,7 +144,7 @@ return (
     
     
       }
-   export const Email=(props) => {
+   export const Email=() => {
         return (
          <svg width={12} height={13} viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g opacity="0.7">

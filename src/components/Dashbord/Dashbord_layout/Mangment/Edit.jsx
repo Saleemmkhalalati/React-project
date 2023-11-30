@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { Formik, useFormik } from "formik";
-import * as Yup from "yup";
-
+import { useFormik } from "formik";
 import Typography from "../../../utilities/Typography";
-import { Input } from "../../../utilities/Inputs";
 import Button from "../../../utilities/Button";
 
 
 
-const Edit = React.forwardRef(({ Edit_content,initialValues,validation_schema,Edit_user , set_Edit_user,open_change_password, set_open_change_password }, ref) => {
+const Edit = React.forwardRef(({ Edit_content,validation_schema,Edit_user , set_Edit_user,open_change_password, set_open_change_password }, ref) => {
   const [showpass, setshowpass] = useState(false);
   const [EditDropdown, setEditDropdown] = useState(null);
   const formik = useFormik({
@@ -104,18 +101,6 @@ const Edit = React.forwardRef(({ Edit_content,initialValues,validation_schema,Ed
                   placeholder={input.text}      
                 className={`${ getInputClassName(index) } py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
               />}
-              {/* <input
-                   type={input.type}
-                   name={`inputs[${index}]`}
-                   value={input.value}
-                   onChange={(event) => handleInputChange(index, event)}
-                   onBlur={(event)=> hangdleInputBluer(index,event)}
-                  autoComplete="off"
-                id={input.name}
-                placeholder={input.text}
-                
-                className={`${ getInputClassName(index) } py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
-              /> */}
               
 
               <div className="relative end-5">
@@ -129,7 +114,7 @@ const Edit = React.forwardRef(({ Edit_content,initialValues,validation_schema,Ed
             <div  className="text-xs text-error">{formik.errors.inputs[index]}</div>
           )}
 
-            {input.des && (<Typography component={"h4"}>{input.des.text} <span className="cursor-pointer text-primary"onClick={() => {set_open_change_password(true) }
+            {input.des && (<Typography component={"h4"}>{input.des.text} <span className="cursor-pointer text-primary"onClick={() => {set_open_change_password(!open_change_password) }
             }>{input.des.click_here}</span></Typography>)}
           </>
         )
@@ -170,7 +155,14 @@ import PropTypes from "prop-types";
 import Dropdown from "../../../utilities/Dropdown";
 import ClickOutside from "../../../utilities/Click_Outsite";
 
-// Edit.propTypes = {
+Edit.propTypes = {
+  Edit_content: PropTypes.object.isRequired,
+  validation_schema: PropTypes.any,
+  Edit_user: PropTypes.bool,
+  set_Edit_user: PropTypes.fun,
+  open_change_password: PropTypes.bool,
+  set_open_change_password: PropTypes.func,
 
-// };
+
+};
 export default Edit

@@ -22,15 +22,11 @@ const Service_Provider = () => {
   const viewRef = useRef(null);
   const EditRef = useRef(null);
 
-  // useEffect(() => {
-  //   if(open_change_password){
-  //     set_Edit_user(false)
-  //   }
-  //   document.addEventListener("mousedown", handleOutsideClick);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleOutsideClick);
-  //   };
-  // }, [open_change_password,Edit_user]);
+  useEffect(() => {
+    if(open_change_password){
+      set_Edit_user(false)
+    }
+  }, [open_change_password,Edit_user]);
 
 
   const handlepoint_table = (value) => {
@@ -304,7 +300,7 @@ const Service_Provider = () => {
     >
       <div className=" relative">
 
-        {view_user ? <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user} /> : ""}
+        {view_user ? <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user}  /> : ""}
         {Edit_user ? <Edit ref={EditRef} Edit_content={Edit_content} initialValues={initialValues_Edit} validation_schema={service_provider_schema} Edit_user={Edit_user} set_Edit_user={set_Edit_user} open_change_password={open_change_password} set_open_change_password={set_open_change_password} /> : ""}
         {open_change_password ? <ChangePassword open_change_password={open_change_password} set_open_change_password={set_open_change_password}  /> : ""}
         <TabsFillter>

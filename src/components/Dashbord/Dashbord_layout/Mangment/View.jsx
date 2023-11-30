@@ -1,5 +1,9 @@
 
 import React from "react";
+import PropTypes from "prop-types";
+import Typography from "../../../utilities/Typography";
+import Button from "../../../utilities/Button";
+import ClickOutside from "../../../utilities/Click_Outsite";
 
 
 const View = React.forwardRef(({view_content,view_user, set_View_user  }, ref) => {
@@ -12,8 +16,7 @@ const View = React.forwardRef(({view_content,view_user, set_View_user  }, ref) =
       <ClickOutside 
         onClick={toggle_View_user}
       >
-        </ClickOutside>
-        {view_user && (
+                {view_user && (
         <div ref={ref}className="flex flex-col gap-3 absolute right-0 bg-white w-[40%] px-5 py-3 rounded-md shadow-md z-50">
         
                <Typography component={"h3"} >
@@ -53,15 +56,17 @@ const View = React.forwardRef(({view_content,view_user, set_View_user  }, ref) =
                  </Button>
              </div>
         )}
+
+        </ClickOutside>
+
      </div>
          );
   });
-import PropTypes from "prop-types";
-import Typography from "../../../utilities/Typography";
-import Button from "../../../utilities/Button";
-import ClickOutside from "../../../utilities/Click_Outsite";
+
 View.propTypes = {
-  
+  view_content: PropTypes.object.isRequired,
+  view_user: PropTypes.bool,
+  set_View_user:PropTypes.func
 };
 export default View
 
