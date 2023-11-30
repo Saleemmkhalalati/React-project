@@ -6,12 +6,13 @@ import Setting from "./NavBar_Dashbord_images/Setting.svg";
 import MultiLangDropdown from "../../../utilities/MultiLangDropdown";
 import Profile from "../Profile/Profile";
 import userImage from "../Profile/PeofileImages/Avtar.svg";
-
+import Notifications from "../Notifications/Notifications";
 import { useTranslation } from "react-i18next";
 
 const NavBarDashbord = () => {
   const { t } = useTranslation("global");
   const [profile, setProfile] = useState(false);
+  const [nots, setNots] = useState(false);
   const profileRef = useRef(null);
 
   const handleOutsideClick = (e) => {
@@ -26,7 +27,6 @@ const NavBarDashbord = () => {
     };
   }, []);
 
-  console.log(profile);
   const adminInfo = [
     {
       image: userImage,
@@ -38,8 +38,11 @@ const NavBarDashbord = () => {
   const handleProfile = () => {
     setProfile(!profile);
   };
+  const handleNots = () => {
+    setNots(!nots);
+  };
   return (
-    <div className="py-5 px-10 bg-white  flex  md:justify-between justify-end  ">
+    <div className="py-5 px-10 bg-white  flex  md:justify-between justify-end   w-full ">
       {/* input serch  */}
       <div className="relative w-1/2 hidden md:block ">
         <input
@@ -60,7 +63,12 @@ const NavBarDashbord = () => {
 
       <div className="flex justify-between items-center gap-4 ">
         <div className=" relative p-2 ">
-          <img src={Notification} alt="" className="w-5 h-5" />
+          <img
+            onClick={handleNots}
+            src={Notification}
+            alt=""
+            className="w-5 h-5 cursor-pointer"
+          />
           <div className="w-2 h-2 absolute bg-red-600 rounded-full top-0 right-1"></div>
         </div>
         <img src={Setting} alt="" className="w-5 h-5" />
@@ -81,8 +89,8 @@ const NavBarDashbord = () => {
         ) : (
           ""
         )}
-        
       </div>
+      {nots ? <Notifications /> : ""}
     </div>
   );
 };

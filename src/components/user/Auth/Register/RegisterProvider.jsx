@@ -333,9 +333,11 @@ const RegisterProvider = () => {
             {t("register.inputFields.UploadFile")}
           </Typography>
           <InputFile
+            className={"flex justify-between items-center px-5 py-2"}
             label={t("register.inputFields.file")}
             id={"file"}
             name={"file"}
+            value={formik.values.file}
             type={"file"}
             onChange={(e) => formik.setFieldValue("file", e.target.files[0])}
             onBlur={formik.handleBlur}
@@ -353,6 +355,7 @@ const RegisterProvider = () => {
                 ? formik.errors.file
                 : null
             }
+            classNameIcon={"w-4"}
           />
 
           <Button type="submit">{t("register.inputFields.submit")}</Button>

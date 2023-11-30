@@ -326,7 +326,7 @@ const Service_Provider = () => {
           />
         </TabsFillter>
         {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} handlepoint={handlepoint_table} />
+          <Table columns={columns} rows={rows} points={points} handlepoint={handlepoint_table} className="h-screen"/>
         ) : (
           <NoData></NoData>
         )}

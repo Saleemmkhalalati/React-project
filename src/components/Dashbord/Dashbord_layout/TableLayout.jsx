@@ -3,11 +3,11 @@ import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
 import pdf from "../../../assets/icons/pdf.svg";
 
-const Table = ({ columns, rows, points, handlepoint, point }) => {
+const Table = ({ columns, rows, points, handlepoint, point,className }) => {
 
   
   return (
-    <div className="overflow-hidden px-7  overflow-x-auto ">
+    <div className={` ${ className ? className : ""} overflow-hidden px-7  overflow-x-auto   `}>
       <table className="table-auto w-full overflow-x-auto">
         <thead className="">
           <tr>

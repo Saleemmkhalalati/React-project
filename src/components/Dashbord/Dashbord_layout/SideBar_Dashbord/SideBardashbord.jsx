@@ -36,7 +36,7 @@ const SideBardashbord = () => {
 
 
 
-
+console.log(menueClicked)
 
   const Menus = [
     {
@@ -149,17 +149,7 @@ const SideBardashbord = () => {
     setOpen(!open);
   };
 
-  const handleMenueClick = (name_menue) => {
-    setMenueClicked(name_menue);
-    const allMenue = document.querySelectorAll(".menue_li");
-    allMenue.forEach((item) => {
-      item.addEventListener("click", () => {
-        allMenue.forEach((li) => li.classList.remove("menue_active"));
 
-        item.classList.add("menue_active");
-      });
-    });
-  };
 
 
 
@@ -169,7 +159,7 @@ const SideBardashbord = () => {
   return (
     // <div className={` sidebar_dashboard bg-red-200 flex justify-center flex-wrap  py-5  shadow-lg    px-10 w-[20%]  ${open ? "w-[20%]" :""} `}>
       <div
-        className={`lg:w-72   sidebar_dashboard   relative duration-500  flex flex-col gap-8 shadow-lg  items-start py-5  lg:px-12 px-5`}
+        className={`lg:w-72    sidebar_dashboard   relative duration-500  flex flex-col gap-8 shadow-lg  items-start py-5  lg:px-12 px-5`}
       >
         {/* logo */}
         <div className=" justify-center  hidden lg:flex ">
@@ -199,10 +189,11 @@ const SideBardashbord = () => {
                   <>
                     <li
                       key={index}
-                      className={`flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-4 rounded-md text-sm items-center gap-x-5 
+                      className={`${menueClicked.title === data.title ? "bg-gradient-to-r from-primary to-secondary text-white" : ""} flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-4 rounded-md text-sm items-center gap-x-5 
                       ${data.gap ? "mt-9" : "mt-2"}  `}
                       onClick={() => {
-                        handleMenueClick(data);
+  
+                        setMenueClicked(data);
                         SetDropdownOpen(!DropdownOpen);
                         setSubMenuType(data.title);
                         
@@ -210,12 +201,12 @@ const SideBardashbord = () => {
                     >
                       <NavLink
                         to={`${data.src}`}
-                        className="flex justify-between gap-5   p-2 w-full h-full "
+                        className={` flex justify-between gap-5   p-2 w-full h-full `}
                       >
                         {data.icon}
                       
 
-                        <span className="flex-1 hidden  lg:inline-block">
+                        <span className={`${menueClicked.title === data.title ? " text-white" : ""} flex-1 hidden  lg:inline-block`}>
                           {data.title}
                         </span>
                         {data.subMenus && (
@@ -268,7 +259,7 @@ const SideBardashbord = () => {
                     {/*  submenues in md and sm screen  */}
                     {data.subMenus &&   subMenuType === data.title &&  (
                       //  <Dropdown  />
-                      <div className={` ${ DropdownOpen ===true ? " block" :"hidden"}  xl:hidden`}>
+                      <div className={` ${ DropdownOpen ===true ? " block" :"hidden"}  lg:hidden`}>
                             <Dropdown_whithout_icon
                       options={data.subMenus}
                       dataSrc={data.src}

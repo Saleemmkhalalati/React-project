@@ -177,22 +177,25 @@ Input.propTypes = {
 };
 
 export function InputFile({
+  className,
   label,
   name,
   onBlur,
   onChange,
+  value,
   icon,
   errorMsg,
-  type,
   id,
   hasValueTrue,
   isInvalidType,
+  classNameIcon,
 }) {
   console.log(errorMsg);
   return (
     <div>
       <label
-        className={`relative flex items-center justify-between cursor-pointer bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md 
+        className={`relative cursor-pointer bg-white  border-solid text-mySlate border-[1px] rounded-md 
+        ${className ? className : ""}
 
         ${
           hasValueTrue
@@ -207,20 +210,72 @@ export function InputFile({
       >
         {label}
         <input
+          type="file"
           className={"hidden "}
           id={id}
-          type={type}
           name={name}
           onBlur={onBlur}
           onChange={onChange}
         />
-        <img src={icon} alt={name} className={"w-4 h-w-4  "} />
+        <img
+          src={icon}
+          alt={name}
+          className={`  ${classNameIcon ? classNameIcon : ""}`}
+        />
       </label>
       <p className="ps-1 pt-2 text-error font-normal text-xs">{errorMsg}</p>
     </div>
   );
 }
 Input.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  type: PropTypes.oneOf(["text", "password", "email", "number", "date"])
+    .isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  icon: PropTypes.string.isRequired,
+  errorMsg: PropTypes.string.isRequired,
+};
+
+export function DashInput({
+  name,
+  value,
+  onBlur,
+  onChange,
+  icon,
+  errorMsg,
+  type,
+  isDisabled,
+}) {
+  return (
+    <div className="relative">
+      <div
+        className={`flex flex-row py-2 px-3 border-[1px] items-center justify-between focus-within:border-primary  ${
+          errorMsg !== "" && !isDisabled ? "border-error " : "border-myGray-400"
+        } bg-white rounded-lg transition-all duration-100 ease-in-out`}
+      >
+        <input
+          className=" text-sm text-myGray-500 outline-0 focus:outline-none bg-white"
+          id={name}
+          name={name}
+          value={value}
+          onBlur={onBlur}
+          onChange={onChange}
+          type={type}
+          disabled={isDisabled}
+        />
+        <img src={icon} width={12} height={12} alt="icon" />
+      </div>
+
+      {errorMsg !== "" && (
+        <p className="ps-1 pt-2 text-error font-normal text-xs">{errorMsg}</p>
+      )}
+    </div>
+  );
+}
+FInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
