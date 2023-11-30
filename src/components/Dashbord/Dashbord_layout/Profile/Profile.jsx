@@ -1,18 +1,54 @@
 import camera from "./PeofileImages/Camera.svg";
 
-import avater from "./PeofileImages/Avtar.svg";
+import { DashInput } from "../../../utilities/Inputs";
 
-import user from "../../../../assets/icons/Vector.svg";
+import Person from "../../../../assets/icons/Vector.svg";
 import emailIcon from "../../../../assets/icons/Email.svg";
 import Typography from "../../../utilities/Typography";
-import view from "../../../../assets/icons/View.svg";
+import pass from "../../../../assets/icons/View.svg";
 
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import React from "react";
-
+const validationSchema = Yup.object().shape({
+  admin: Yup.string(),
+  email: Yup.string().email("Invalid email address").required("Required"),
+  fakePass: Yup.string(),
+  img: Yup.mixed()
+    .nullable()
+    .test((value) => !value || (value && value.type.startsWith("image/"))),
+});
 const Profile = React.forwardRef(({ email, image, role }, ref) => {
   const { t } = useTranslation("global");
+  const adminUser = [{ role: "admin user ", email: "rawanahd23@gmail.com" }];
+  const formik = useFormik({
+    initialValues: {
+      admin: adminUser[0].role || "",
+      email: adminUser[0].email || "",
+      fakePass: "********",
+      img: "",
+    },
+    // enableReinitialize: true, // for Update Page
+    validationSchema: validationSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnMount: false,
+    onSubmit: (values) => {
+      console.log("Form submitted with values:", values.img.type);
+    },
+  });
+  useEffect(() => {
+    if (!formik.values.admin) {
+      formik.setValues({
+        ...formik.values,
+        admin: adminUser[0].role,
+        email: adminUser[0].email,
+      });
+    }
+  }, [formik.values.admin, formik.values.email, adminUser]);
 
   return (
     <div
@@ -36,33 +72,24 @@ const Profile = React.forwardRef(({ email, image, role }, ref) => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <div className="flex justify-between items-center border-2 border-myGray-100 py-1 sm:py-2 rounded-md">
-            <Typography
-              className={"ps-1 sm:ps-3 text-xs sm:text-sm"}
-              component={"h4"}
-            >
-              {role}
-            </Typography>
-            <img className="pe-3 w-5 sm:w-6" src={user} alt="" />
-          </div>
-          <div className="flex justify-between items-center border-2  border-myGray-100 py-1 sm:py-2 rounded-md">
-            <Typography
-              className={"ps-1 sm:ps-3 text-xs sm:text-sm"}
-              component={"h4"}
-            >
-              {email}
-            </Typography>
-            <img className="pe-3 w-5 sm:w-6" src={emailIcon} alt="img" />
-          </div>
-          <div className="flex justify-between items-center border-2 border-myGray-100 py-1 sm:py-2 rounded-md">
-            <Typography
-              className={"ps-1 sm:ps-3 text-xs sm:text-sm"}
-              component={"h4"}
-            >
-              ********
-            </Typography>
-            <img className="pe-3 w-5 sm:w-6" src={view} alt="" />
-          </div>
+          <DashInput
+            name={"admin"}
+            value={formik.values.admin}
+            icon={Person}
+            isDisabled={true}
+          />
+          <DashInput
+            name={"email"}
+            icon={emailIcon}
+            value={formik.values.email}
+            isDisabled={true}
+          />
+          <DashInput
+            name={"fakePass"}
+            value={formik.values.fakePass}
+            isDisabled={true}
+            icon={pass}
+          />
         </div>
       </div>
       <Link>
