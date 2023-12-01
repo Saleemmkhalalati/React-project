@@ -249,7 +249,6 @@ export function DashInput({
   type,
   isDisabled,
   className,
-  iconOnClick,
   placeholder
 }) {
   return (
@@ -260,7 +259,7 @@ export function DashInput({
         } bg-white rounded-lg transition-all duration-100 ease-in-out`}
       >
         <input
-          className={`${className ? className : ""}   text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
+          className={`${className ? className : ""} text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
           id={name}
           name={name}
           value={value}
@@ -269,11 +268,9 @@ export function DashInput({
           type={type}
           disabled={isDisabled}
           placeholder={placeholder}
-          
-         
          
         />
-        <img src={icon} width={12} height={12} alt="icon" onClick={iconOnClick}  className={` ${iconOnClick ? "cursor-pointer" : ""}`} />
+        <img src={icon} width={12} height={12} alt="icon" />
         {/* {icon} */}
        
       </div>

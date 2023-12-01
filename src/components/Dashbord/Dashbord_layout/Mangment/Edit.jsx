@@ -126,7 +126,7 @@ const Edit = React.forwardRef(({ Edit_content, validation_schema, Edit_user, set
                                 }
                                 className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
 
-                              // className={`${ getInputClassName(index) } py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
+                             
                               />
 
 
@@ -147,7 +147,7 @@ const Edit = React.forwardRef(({ Edit_content, validation_schema, Edit_user, set
 
                 {Edit_content.other && (
                   <div className="flex items-center gap-2">
-                    {Edit_content.other.img}
+                    <img src={Edit_content.other.img}alt="" />
                     <Typography className={"!text-error cursor-pointer"}>{Edit_content.other.des}</Typography>
                   </div>
                 )}

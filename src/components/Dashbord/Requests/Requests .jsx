@@ -63,6 +63,24 @@ const Requests = () => {
       Location: "Mazh",
       pdf: "/path/to/pdf3",
     },
+    {
+      Business_Name: "Omer Ahmad",
+      Email_Address: "Omer@gmail.com",
+      Register_Date: "27.10.2023 11:34",
+      Contact_Number: "+963 944 259 864",
+      Services_Type: "Doctor",
+      Location: "Mazh",
+      pdf: "/path/to/pdf3",
+    },
+    {
+      Business_Name: "Omer Ahmad",
+      Email_Address: "Omer@gmail.com",
+      Register_Date: "27.10.2023 11:34",
+      Contact_Number: "+963 944 259 864",
+      Services_Type: "Doctor",
+      Location: "Mazh",
+      pdf: "/path/to/pdf3",
+    },
   ];
 
   const points = [

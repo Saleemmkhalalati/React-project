@@ -1,7 +1,6 @@
 import "./Login.css";
 import loginImage from "../Login/logain-image/Intersect.svg";
-import iconEmail from "../Login/logain-image/Email.svg";
-import iconShow from "../Login/logain-image/View.svg";
+import { Email, View_Icon } from "../../../utilities/Icons";
 import eye from "../../../../assets/icons/eyepass.svg";
 import * as Yup from "yup";
 import { Formik, useFormik } from "formik";
@@ -72,7 +71,7 @@ export default function Login() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 label={t("login.inputFields.email")}
-                icon={iconEmail}
+                icon={<Email />}
                 errorMsg={
                   formik.touched.email && formik.errors.email
                     ? formik.errors.email
@@ -88,7 +87,7 @@ export default function Login() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 label={t("login.inputFields.password")}
-                icon={showpass ? eye : iconShow}
+                icon={showpass ? eye : <View_Icon />}
                 iconOnClick={ShowPassword}
                 errorMsg={
                   formik.touched.password && formik.errors.password

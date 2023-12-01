@@ -86,6 +86,13 @@
     "resend": "Resend Code ?",
     "button": "Send Code"
   },
+  "contact": [
+    "Contact US",
+    "Feel Free to contact us, If you need some help.",
+    "Full Name",
+    "Email Address",
+    "Message"
+  ],
   "AboutUs": {
     "main": [
       "About us",
@@ -173,8 +180,13 @@
   "sitting": [
     "Personal Information",
     "Update your photo and personal information here",
-    "If your want to change password Go  ot Here",
+    "If your want to change password Go  ot ",
+    "Here",
     "Click to upload your photo or drag",
-    "Edit My Profile"
-  ]
+    "Edit My Profile",
+    "Done"
+  ],
+
+  "noNotification": ["Notification", "Not Found Notification"],
+  "notification": ["Notification"]
 }
