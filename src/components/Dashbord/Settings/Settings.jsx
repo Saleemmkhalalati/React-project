@@ -3,6 +3,7 @@ import email from "../../../assets/icons/Email.svg";
 import Person from "../../../assets/icons/Vector.svg";
 import pass from "../../../assets/icons/View.svg";
 import upload from "./Sitting_image/Vector.svg";
+import done from "./Sitting_image/icons8-ok.svg";
 // import { Person } from "../../utilities/Icons";
 //
 import Content from "../Dashbord_layout/Content/Content";
@@ -92,7 +93,7 @@ const Settings = () => {
           <Typography component={"h5"}>
             {t("sitting.2")}
             <Link to={""} className="text-secondary hover:text-success  ">
-              Here
+              {t("sitting.3")}
             </Link>
           </Typography>
 
@@ -101,11 +102,23 @@ const Settings = () => {
             type={"file"}
             value={formik.values.img}
             onChange={(e) => formik.setFieldValue("img", e.target.files[0])}
-            label={<Typography component={"h5"}>{t("sitting.3")}</Typography>}
+            label={
+              typeof formik.values.img.type === "string" &&
+              formik.values.img.type.startsWith("image/") ? (
+                t("sitting.6")
+              ) : (
+                <Typography component={"h5"}>{t("sitting.4")}</Typography>
+              )
+            }
             className={
               "h-24 sm:h-48 flex flex-col-reverse items-center justify-center gap-4 "
             }
-            icon={upload}
+            icon={
+              typeof formik.values.img.type === "string" &&
+              formik.values.img.type.startsWith("image/")
+                ? done
+                : upload
+            }
             classNameIcon={"w-[3rem]"}
             id={"img"}
             errorMsg={formik.errors.img ? formik.errors.img : ""}
@@ -118,7 +131,7 @@ const Settings = () => {
             className=" text-secondary hover:text-success text-end text-sm"
             type="submit"
           >
-            {t("sitting.4")}
+            {t("sitting.5")}
           </button>
         </form>
       </div>

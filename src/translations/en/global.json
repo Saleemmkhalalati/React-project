@@ -173,8 +173,17 @@
   "sitting": [
     "Personal Information",
     "Update your photo and personal information here",
-    "If your want to change password Go  ot Here",
+    "If your want to change password Go  ot ",
+    "Here",
     "Click to upload your photo or drag",
-    "Edit My Profile"
+    "Edit My Profile",
+    "Done"
+  ],
+  "contactus": [
+    "Contact US",
+    "Feel Free to contact us, If you need some help.",
+    "Full Name",
+    "Email Address",
+    "Message"
   ]
 }
