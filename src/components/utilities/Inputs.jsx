@@ -248,7 +248,7 @@ export function DashInput({
   errorMsg,
   type,
   isDisabled,
-  className
+  className,
 }) {
   return (
     <div className="relative">
@@ -258,7 +258,9 @@ export function DashInput({
         } bg-white rounded-lg transition-all duration-100 ease-in-out`}
       >
         <input
-          className={`${className ? className : ""} text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
+          className={`${
+            className ? className : ""
+          } text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
           id={name}
           name={name}
           value={value}
@@ -266,11 +268,9 @@ export function DashInput({
           onChange={onChange}
           type={type}
           disabled={isDisabled}
-         
         />
-        <img src={icon} width={12} height={12} alt="icon" />
-        {/* {icon} */}
-       
+
+        {icon}
       </div>
 
       {errorMsg !== "" && (

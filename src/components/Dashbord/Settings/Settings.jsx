@@ -1,11 +1,10 @@
 //image
-import email from "../../../assets/icons/Email.svg";
-import Person from "../../../assets/icons/Vector.svg";
-import pass from "../../../assets/icons/View.svg";
+
 import upload from "./Sitting_image/Vector.svg";
 import done from "./Sitting_image/icons8-ok.svg";
 // import { Person } from "../../utilities/Icons";
 //
+import { Email, Person, View_Icon } from "../../utilities/Icons";
 import Content from "../Dashbord_layout/Content/Content";
 import Typography from "../../utilities/Typography";
 import { DashInput } from "../../utilities/Inputs";
@@ -68,12 +67,12 @@ const Settings = () => {
           <DashInput
             name={"admin"}
             value={formik.values.admin}
-            icon={Person}
+            icon={<Person />}
             isDisabled={true}
           />
           <DashInput
             name={"email"}
-            icon={email}
+            icon={<Email />}
             value={formik.values.email}
             onChange={formik.handleChange}
             errorMsg={
@@ -88,7 +87,7 @@ const Settings = () => {
             name={"fakePass"}
             value={formik.values.fakePass}
             isDisabled={true}
-            icon={pass}
+            icon={<View_Icon />}
           />
           <Typography component={"h5"}>
             {t("sitting.2")}

@@ -86,6 +86,13 @@
     "resend": "Resend Code ?",
     "button": "Send Code"
   },
+  "contact": [
+    "Contact US",
+    "Feel Free to contact us, If you need some help.",
+    "Full Name",
+    "Email Address",
+    "Message"
+  ],
   "AboutUs": {
     "main": [
       "About us",
@@ -179,11 +186,7 @@
     "Edit My Profile",
     "Done"
   ],
-  "contactus": [
-    "Contact US",
-    "Feel Free to contact us, If you need some help.",
-    "Full Name",
-    "Email Address",
-    "Message"
-  ]
+
+  "noNotification": ["Notification", "Not Found Notification"],
+  "notification": ["Notification"]
 }

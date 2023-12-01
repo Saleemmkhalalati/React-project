@@ -3,11 +3,13 @@ import Dropdown from "../../utilities/Dropdown";
 import mini_menu from "../../../assets/icons/mini-menu.svg";
 import pdf from "../../../assets/icons/pdf.svg";
 
-const Table = ({ columns, rows, points, handlepoint, point,className }) => {
-
-  
+const Table = ({ columns, rows, points, handlepoint, point, className }) => {
   return (
-    <div className={` ${ className ? className : ""} overflow-hidden px-7  overflow-x-auto   `}>
+    <div
+      className={` ${
+        className ? className : ""
+      } px-2 lg:px-7  overflow-x-auto overflow-hidden    `}
+    >
       <table className="table-auto w-full overflow-x-auto">
         <thead className="">
           <tr>
@@ -67,7 +69,6 @@ const Table = ({ columns, rows, points, handlepoint, point,className }) => {
                   options={points}
                   value={point}
                   onChange={handlepoint}
-                 
                   icon={mini_menu}
                   showSlected={false}
                   ulClassname={" ltr:-start-28 -top-0 rtl:start-[-7rem]"}

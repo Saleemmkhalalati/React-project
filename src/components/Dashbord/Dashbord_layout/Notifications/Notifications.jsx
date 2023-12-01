@@ -1,8 +1,10 @@
 import Typography from "../../../utilities/Typography";
 import noData from "../../Dashbord_layout/Notifications/Notification_image/No data found.svg";
+import { useTranslation } from "react-i18next";
 import "./Notification.css";
 
 const Notifications = () => {
+  const { t } = useTranslation("global");
   const notifications = [
     {
       dessc:
@@ -78,21 +80,23 @@ const Notifications = () => {
   return (
     <>
       {notifications.length > 0 ? (
-        <div className="absolute w-[26rem] max-h-[36.5rem] overflow-hidden overflow-y-auto hide-scrollbar end-8  z-20 top-24 shadow-sm">
-          <div className="bg-white py-4 rounded    ">
-            <div className="flex items-center  px-4 py-5 gap-1">
-              <p className="text-xl font-bold text-myGray-600">Notifications</p>
+        <div className="absolute w-[14rem] sm:w-[26rem] max-h-[24rem] sm:max-h-[36.5rem] overflow-hidden overflow-y-auto hide-scrollbar end-2 sm:end-8  z-20 top-24 shadow-sm">
+          <div className="bg-white py-0 sm:py-4 rounded    ">
+            <div className="flex items-center py-3 px-2 sm:px-4 sm:py-5 gap-1">
+              <p className="text-xl font-bold text-myGray-600">
+                {t("notification.0")}
+              </p>
               <span className="text-error text-sm">-</span>
               <span className="text-error text-sm">
                 {notifications.length + 1}
               </span>
             </div>
 
-            <ul className=" px-8">
+            <ul className="px-4 sm:px-8">
               {notifications.map((e, index) => (
                 <div
                   key={index}
-                  className="mb-10 pb-5 border-b relative before:absolute before:content-[''] before:w-[0.3rem] before:h-[0.3rem] before:bg-secondary before:rounded-full before:top-[0.40rem] before:-start-4  "
+                  className="mb-10 pb-5 border-b relative before:absolute before:content-[''] before:w-[0.3rem] before:h-[0.3rem] before:bg-secondary before:rounded-full before:top-[0.40rem] before:-start-2 sm:before:-start-4  "
                 >
                   <li className="mb-2 text-sm">{e.dessc}</li>
                   <span>
@@ -104,16 +108,18 @@ const Notifications = () => {
           </div>
         </div>
       ) : (
-        <div className="absolute z-20 end-8 top-24 shadow-sm">
-          <div className="bg-white w-[26rem] h-[30rem]  rounded flex flex-col gap-28  ">
+        <div className="absolute z-20 end-2 sm:end-8 top-24 shadow-sm">
+          <div className="bg-white w-[14rem] sm:w-[26rem] h-[30rem]  rounded flex flex-col gap-28  ">
             <div className="flex items-center  px-4 py-5 gap-1">
-              <p className="text-xl font-bold text-myGray-600">Notifications</p>
+              <p className="text-xl font-bold text-myGray-600">
+                {t("noNotification.0")}
+              </p>
               <span className="text-error text-sm">-</span>
               <span className="text-error text-sm">{notifications.length}</span>
             </div>
             <div className=" flex flex-col items-center justify-center ">
               <img src={noData} alt="" />
-              <Typography component={"h5"}>Not Found Notification</Typography>
+              <Typography component={"h5"}>{t("noNotification.1")}</Typography>
             </div>
           </div>
         </div>

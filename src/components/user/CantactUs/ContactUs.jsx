@@ -70,7 +70,7 @@ export default function ContactUs() {
             <div className="relative">
               <div className="absolute end-0 top-8 w-[400px] h-[400px] origin-center rounded-2xl ltr:rotate-45 rtl:-rotate-45 bg-primary opacity-5"></div>
               <div className="mt-8 flex flex-col gap-y-11 w-full sm:pe-20 lg:pe-10 xl:pe-20">
-                <Typography component={"h1"}>Contact US</Typography>
+                <Typography component={"h1"}>{t("contact.0")}</Typography>
                 <Typography component={"p"}>{t("contact.1")}</Typography>
                 <form
                   onSubmit={formik.handleSubmit}
@@ -79,7 +79,7 @@ export default function ContactUs() {
                   <FInput
                     icon={personIcon}
                     type="text"
-                    label="Full Name"
+                    label={t("contact.2")}
                     name={"fullname"}
                     value={formik.values.fullname}
                     errorMsg={
@@ -93,7 +93,7 @@ export default function ContactUs() {
                   <FInput
                     icon={emailIcon}
                     type="email"
-                    label="Email Address"
+                    label={t("contact.3")}
                     name={"email"}
                     value={formik.values.email}
                     errorMsg={
@@ -106,7 +106,7 @@ export default function ContactUs() {
                   />
                   <Textarea
                     rows={7}
-                    label="Message"
+                    label={t("contact.4")}
                     name={"msg"}
                     value={formik.values.msg}
                     errorMsg={formik.touched.msg ? formik.errors.msg : ""}
