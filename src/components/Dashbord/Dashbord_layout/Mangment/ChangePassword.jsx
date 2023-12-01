@@ -7,20 +7,36 @@ import { View_Icon } from "../../../utilities/Icons"
 import { Change_password_schema } from "../../../utilities/Validation"
 import ClickOutside from "../../../utilities/Click_Outsite"
 import { DashInput } from "../../../utilities/Inputs"
+import eye from "../../../../assets/icons/eyepass.svg"
+import iconShow from "../../../../assets/icons/View.svg"
+
 
 
 const ChangePassword = React.forwardRef(({ open_change_password, set_open_change_password }, ref) => {
   const [showpass, setshowpass] = useState(false);
+  // const [showNewpass, setshowNewpass] = useState(false);
+  // const [showConfirmpass, setshowConfirmpass] = useState(false);
+
   const [showNewpass, setshowNewpass] = useState(false);
   const [showConfirm_Password, setConfirm_Password] = useState(false);
 
 
-
-
+  //show password
+  function ShowPassword() {
+    setshowpass(!showpass);
+  }
+  let initial = {
+    password: "current password",
+    NewPassword: "New Password",
+    Confirm_Password: "Confirm Password",
+  }
 
   const formik = useFormik({
     initialValues: {
-      NewPassword: "",
+      NewPassword: initial.NewPassword,
+      password: initial.password,
+      Confirm_Password: initial.Confirm_Password
+
     },
     validationSchema: Change_password_schema,
     validateOnBlur: true,
@@ -64,16 +80,17 @@ const ChangePassword = React.forwardRef(({ open_change_password, set_open_change
                   <DashInput
                     type={`${showpass ? "text" : "password"}`}
                     name="password"
-                    // value should be from back end 
-                    value={formik.values}
+                    value={formik.values.password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     id={"password"}
-                    // placeholder={"Current Password "}
-                    icon={<View_Icon />}
+
+
+                    icon={showpass ? eye : iconShow}
+                    iconOnClick={()=>{setshowpass(!showpass)}}
                     errorMsg=""
                     className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
-                  // className={` py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
+
                   />
 
 
@@ -89,32 +106,31 @@ const ChangePassword = React.forwardRef(({ open_change_password, set_open_change
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     id={"New_Password"}
-                    // placeholder={"New Password "}
-                    icon={<View_Icon />}
+                    icon={showNewpass ? eye : iconShow}
+                    iconOnClick={() => { setshowNewpass(!showNewpass) }}
+
                     errorMsg={
                       formik.errors.NewPassword && formik.touched.NewPassword
                         ? formik.errors.NewPassword
                         : ""
                     }
                     className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
-                  // className={`${formik.errors.NewPassword && formik.touched.NewPassword && ("border-error")} py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
+
                   />
 
 
                 </div>
-                {/* {formik.errors.NewPassword && formik.touched.NewPassword && (
-                <div className="text-xs text-error">{formik.errors.NewPassword}</div>
-              )} */}
+
                 <div className="w-fu  ">
                   <DashInput
                     type={`${showConfirm_Password ? "text" : "password"}`}
                     name="Confirm_Password"
-                    //  value={input.value}
+                    value={formik.values.Confirm_Password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     id="Confirm_Password"
-                    // placeholder={"Confirm Password "}
-                    icon={<View_Icon />}
+                    icon={showConfirm_Password ? eye : iconShow}
+                    iconOnClick={() => { setConfirm_Password(!showConfirm_Password) }}
                     errorMsg=""
                     className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
 

@@ -9,8 +9,17 @@ import NoData from "../../Dashbord_layout/NoData/NoData";
 import View from "../../Dashbord_layout/Mangment/View";
 import Edit from "../../Dashbord_layout/Mangment/Edit"
 import { service_provider_schema } from "../../../utilities/Validation"
-import { Phone, Email, Person, Business, Wrench, View_Icon, Pdf, Card, Code, Bank } from "../../../utilities/Icons"
+import Wrench  from "../../../../assets/icons/Wrench.svg"
+import Email from "../../../../assets/icons/Email.svg"
+import View_Icon from "../../../../assets/icons/View.svg"
+import Phone from "../../../../assets/icons/Phone.svg"
+import Business from "../../../../assets/icons/Business.svg"
 import ChangePassword from "../../Dashbord_layout/Mangment/ChangePassword";
+import Person from "../../../../assets/icons/Person.svg"
+import pdf from "../../../../assets/icons/pdf.svg"
+import Card from "../../../../assets/icons/Card.svg"
+import Code from "../../../../assets/icons/Code.svg"
+import Bank from "../../../../assets/icons/Bank.svg"
 const Service_Provider = () => {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
@@ -112,15 +121,15 @@ const Service_Provider = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />
+        img: Wrench
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />
+        img:Email
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img: View_Icon,
         des: {
           text: "If your Forget password Click ",
           click_here: " Here"
@@ -129,22 +138,22 @@ const Service_Provider = () => {
       ,
       {
         text: "+963 944 812 264",
-        img: <Phone />
+        img: Phone,
       }
       ,
       {
         text: "Omer Ahmed",
-        img: <Business />
+        img: Business
       }
       ,
       {
         text: "Service Provider",
-        img: <Person />
+        img: Person
       }
     ],
     button_content: "Close View User",
     other: {
-      img: <Pdf />,
+      img: pdf,
       des: "Filename.pdf"
 
     }
@@ -157,50 +166,50 @@ const Service_Provider = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />
+        img: Wrench 
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />
+        img: Email
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img: View_Icon ,
         des: "If your Forget password Click Here "
       }
       ,
       {
         text: "+963 944 812 264",
-        img: <Phone />
+        img: Phone 
       }
       ,
       {
         text: "Omer Ahmed",
-        img: <Business />
+        img: Business 
       }
       ,
       {
         text: "Service Provider",
-        img: <Person />
+        img: Person
       },
       {
         text: "25648978r",
-        img: <Card />
+        img: Card
       }
       ,
       {
         text: "GB14WXYZ205623",
-        img: <Bank />
+        img: Bank
       }
       ,
       {
         text: "BOFAUS3N",
-        img: <Code />
+        img: Code
       }
     ],
     button_content: "Close View User",
     other: {
-      img: <Pdf />,
+      img: pdf,
       des: "Filename.pdf"
 
     }
@@ -224,7 +233,7 @@ const Service_Provider = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />,
+        img: Wrench,
         type: "text",
         name: "state",
         input_type: "dropdown"
@@ -232,14 +241,14 @@ const Service_Provider = () => {
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />,
+        img: Email,
         type: "email",
         name: "email"
 
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img:  View_Icon,
         type: "password",
         name: "password",
         des: {
@@ -250,28 +259,28 @@ const Service_Provider = () => {
       ,
       {
         text: "+963 944 812 264",
-        img: <Phone />,
+        img: Phone,
         type: "text",
         name: "Phone_number"
       }
       ,
       {
         text: "Omer Ahmed",
-        img: <Business />,
+        img: Business,
         type: "text",
         name: "name"
       }
       ,
       {
         text: "Service Provider",
-        img: <Person />,
+        img: Person ,
         type: "text",
         name: "type"
       }
     ],
     button_content: "Change Information",
     other: {
-      img: <Pdf />,
+      img: pdf,
       des: "Filename.pdf"
 
     }

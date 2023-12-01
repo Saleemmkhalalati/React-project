@@ -9,7 +9,9 @@ import Table from "../../Dashbord_layout/TableLayout";
 import View from "../../Dashbord_layout/Mangment/View";
 import Edit from "../../Dashbord_layout/Mangment/Edit"
 import { service_provider_schema } from "../../../utilities/Validation"
-import {  Email, Wrench, View_Icon } from "../../../utilities/Icons"
+import Wrench from "../../../../assets/icons/Wrench.svg"
+import Email from "../../../../assets/icons/Email.svg"
+import View_Icon from "../../../../assets/icons/View.svg"
 import ChangePassword from "../../Dashbord_layout/Mangment/ChangePassword";
 
 
@@ -87,15 +89,15 @@ const Patient_Users = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />
+        img: Wrench
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />
+        img: Email 
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img: View_Icon ,
         des: {
           text: "If your Forget password Click ",
           click_here: " Here"
@@ -126,7 +128,7 @@ const Patient_Users = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />,
+        img: Wrench,
         type: "text",
         name: "state",
         input_type: "dropdown"
@@ -134,14 +136,14 @@ const Patient_Users = () => {
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />,
+        img: Email ,
         type: "email",
         name: "email"
 
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img: View_Icon,
         type: "password",
         name: "password",
         des: {

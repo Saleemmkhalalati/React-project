@@ -5,6 +5,7 @@ import Typography from "../../../utilities/Typography";
 import Button from "../../../utilities/Button";
 import ClickOutside from "../../../utilities/Click_Outsite";
 import { DashInput } from "../../../utilities/Inputs"
+import { Formik } from "formik";
 
 
 const View = React.forwardRef(({ view_content, view_user, set_View_user, open_change_password, set_open_change_password }, ref) => {
@@ -31,13 +32,14 @@ const View = React.forwardRef(({ view_content, view_user, set_View_user, open_ch
                 <>
                   <div className="w-full">
                     <DashInput
-                      id={input.name}
+                      id={input.text}
                       icon={input.img}
                       isDisabled={true}
+                      value={input.text}
 
                       // placeholder={input.text}
                       errorMsg=""
-                      className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
+                      className={`placeholder:text-mySlate  w-full`}
 
                     />
 
