@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import Typography from "../../../utilities/Typography";
 import Button from "../../../utilities/Button";
+import {DashInput} from "../../../utilities/Inputs"
 
 
 
@@ -11,6 +12,13 @@ const Edit = React.forwardRef(({ Edit_content,validation_schema,Edit_user , set_
   const formik = useFormik({
     initialValues: {
       inputs: [''],
+      // inputs:
+     
+      //   {"inputs[0]":"q",
+      //   "inputs[1]":"qsssssss",
+      // }
+   
+      
     },  
     validationSchema: validation_schema,
     validateOnBlur: true,
@@ -20,6 +28,7 @@ const Edit = React.forwardRef(({ Edit_content,validation_schema,Edit_user , set_
       alert(JSON.stringify(values, null, 2));
     },
   });
+  console.log(formik.values.inputs[0])
   const optionsDropdown = [
     { name: "active", type: "" },
     { name: "Non Active", type: "" },
@@ -31,6 +40,7 @@ const Edit = React.forwardRef(({ Edit_content,validation_schema,Edit_user , set_
     formik.setFieldValue(`inputs[${index}]`, value);
    
   };
+  console.log(formik.initialValues)
   const hangdleInputBluer=(index,event) => {
   
     formik.setFieldTouched(`inputs[${index}]`, true);
@@ -57,7 +67,7 @@ const Edit = React.forwardRef(({ Edit_content,validation_schema,Edit_user , set_
       >
           {
         Edit_user && (
-    <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white min-w-[45%] px-5 py-3 rounded-md shadow-md z-50">
+    <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white min-w-[45%] px-5 py-3 rounded-md shadow-md z-50 min-h-full">
 
       <Typography component={"h3"} >
         {Edit_content.title}
@@ -78,43 +88,67 @@ const Edit = React.forwardRef(({ Edit_content,validation_schema,Edit_user , set_
             <div className="flex justify-between items-center ">
               {
               input.input_type==="dropdown" ?
+             <div className="w-full flex items-center justify-between   ease-in-out  border-[1px] rounded-md text-mySlate  border-myGray-400">
+              
               <Dropdown
               options={optionsDropdown}
               value={EditDropdown}
               onChange={handleChangeDropdown}
               // onBlur={formik.handleBlur("dropdownValue")}
-              className="w-full ease-in-out  border-[1px] rounded-md text-mySlate  border-myGray-100 active:border-primary focus-within:border-primary duration-150"
+              className=" active:border-primary focus-within:border-primary duration-150 w-full"
               // icon={arrowIcon}
               showSlected={true}
               ulClassname={"w-full "}
+
+              
             />
+                   <div className="relative end-4">
+                {input.img}
+              </div>
+             </div>
 
                
-               :     <input
+               :  
+                 <div className=" w-full"> 
+                <DashInput
                    type={input.type}
                    name={`inputs[${index}]`}
-                   value={input.value}
+                  //  value={input.value}
+                  value={formik.values.inputs[index]}
                    onChange={(event) => handleInputChange(index, event)}
                    onBlur={(event)=> hangdleInputBluer(index,event)}
                   autoComplete="off"
                   id={input.name}
-                  placeholder={input.text}      
-                className={`${ getInputClassName(index) } py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
-              />}
+                  icon={input.img}
+                  isDisabled={false}
+                
+                  // placeholder={input.text} 
+                  errorMsg={
+                    formik.errors.inputs && formik.errors.inputs[index] &&   formik.touched.inputs[index]
+                      ? formik.errors.inputs[index]
+                      : ""
+                  }
+                  className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
+                
+                // className={`${ getInputClassName(index) } py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
+              />
+                
+                
+                </div>}
               
 
-              <div className="relative end-5">
+              {/* <div className="relative end-5">
                 {input.img}
-              </div>
+              </div> */}
 
               {/* errors */}
          
             </div>
-            {formik.errors.inputs && formik.errors.inputs[index] &&   formik.touched.inputs[index] &&(
+            {/* {formik.errors.inputs && formik.errors.inputs[index] &&   formik.touched.inputs[index] &&(
             <div  className="text-xs text-error">{formik.errors.inputs[index]}</div>
-          )}
+          )} */}
 
-            {input.des && (<Typography component={"h4"}>{input.des.text} <span className="cursor-pointer text-primary"onClick={() => {set_open_change_password(!open_change_password) }
+            {input.des && (<Typography component={"h4"}>{input.des.text} <span className="cursor-pointer text-primary hover:text-success"onClick={() => {set_open_change_password(!open_change_password) }
             }>{input.des.click_here}</span></Typography>)}
           </>
         )

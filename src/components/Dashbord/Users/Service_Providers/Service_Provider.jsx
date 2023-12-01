@@ -25,6 +25,7 @@ const Service_Provider = () => {
   useEffect(() => {
     if(open_change_password){
       set_Edit_user(false)
+      set_View_user(false)
     }
   }, [open_change_password,Edit_user]);
 
@@ -120,7 +121,10 @@ const Service_Provider = () => {
       {
         text: "********",
         img: <View_Icon />,
-        des: "If your Forget password Click Here "
+        des: {
+          text: "If your Forget password Click ",
+          click_here: " Here"
+        }
       }
       ,
       {
@@ -239,8 +243,8 @@ const Service_Provider = () => {
         type: "password",
         name: "password",
         des: {
-          text: "If your Forget password  ",
-          click_here: "Click Here"
+          text: "If your Forget password Click ",
+          click_here: " Here"
         }
       }
       ,
@@ -300,7 +304,7 @@ const Service_Provider = () => {
     >
       <div className=" relative">
 
-        {view_user ? <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user}  /> : ""}
+        {view_user ? <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user}  open_change_password={open_change_password} set_open_change_password={set_open_change_password}/> : ""}
         {Edit_user ? <Edit ref={EditRef} Edit_content={Edit_content} initialValues={initialValues_Edit} validation_schema={service_provider_schema} Edit_user={Edit_user} set_Edit_user={set_Edit_user} open_change_password={open_change_password} set_open_change_password={set_open_change_password} /> : ""}
         {open_change_password ? <ChangePassword open_change_password={open_change_password} set_open_change_password={set_open_change_password}  /> : ""}
         <TabsFillter>

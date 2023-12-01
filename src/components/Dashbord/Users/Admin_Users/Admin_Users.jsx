@@ -7,28 +7,32 @@ import TabsFillter from "../../../utilities/TabsFillter";
 import arrowIcon from "../../../../assets/icons/arrowDropdown.svg";
 import Table from "../../Dashbord_layout/TableLayout";
 import NoData from "../../Dashbord_layout/NoData/NoData";
-import View from "../../Dashbord_layout/Mangment/View"
-import {Email,Wrench , View_Icon, } from "../../../utilities/Icons"
+import View from "../../Dashbord_layout/Mangment/View";
+import Edit from "../../Dashbord_layout/Mangment/Edit"
+import { service_provider_schema } from "../../../utilities/Validation"
+import {  Email, Wrench, View_Icon } from "../../../utilities/Icons"
+import ChangePassword from "../../Dashbord_layout/Mangment/ChangePassword";
 
 
 const Admin_Users = () => {
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
+  const [valueDropdown, setValueDtopdown] = useState(null);
+  const [valueRadio, setValueRadio] = useState(null);
   const [view_user, set_View_user] = useState(false);
   const [Edit_user, set_Edit_user] = useState(false);
+  const [open_change_password, set_open_change_password] = useState(false)
   const viewRef = useRef(null);
-  const handleOutsideClick = () => {
+  const EditRef = useRef(null);
 
-      set_View_user(false);
-  
-  };
+ 
+
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
-
+    if(open_change_password){
+      set_Edit_user(false)
+      set_View_user(false)
+    }
+  }, [open_change_password,Edit_user]);
 
   const optionsDropdown =  [
     { name: "Admin",  type: "view" },
@@ -84,34 +88,84 @@ const Admin_Users = () => {
     { name: "View User", type: "view" },
     { name: "Delete User", type: "delete" },
   ];
-  const view_content={
-    title:"View User",
-    descrption:"Register Date in: 27.10.2023 11:34, for this user",
-    inputs:[
+  const view_content = {
+    title: "View User",
+    descrption: "Register Date in: 27.10.2023 11:34, for this user",
+    inputs: [
       {
-      text:"Active",
-      img:<Wrench />  
-    },
-    {
-      text:"Omer@gmail.com",
-      img:<Email />   
-    },
-    {
-      text:"********",
-      img:<View_Icon />,
-      des:"If your Forget password Click Here "   
-    }
+        text: "Active",
+        img: <Wrench />
+      },
+      {
+        text: "Omer@gmail.com",
+        img: <Email />
+      },
+      {
+        text: "********",
+        img: <View_Icon />,
+        des: {
+          text: "If your Forget password Click ",
+          click_here: " Here"
+        }
+      }
+     
+     
+    ],
+    button_content: "Close View User",
+
+
+
+  }
+  const initialValues_Edit = {
+    state: 'Active',
+    email: 'Omer@gmail.com',
+    password: "********",
+    Phone_number: "+963 944 812 264",
+    name: "Omer Ahmed",
+    type: "Service Provider"
+
+
+    // Add more initial values for other fields
+  };
+  const Edit_content = {
+    title: "Edit User",
+    descrption: "Register Date in: 27.10.2023 11:34, for this user",
+    inputs: [
+      {
+        text: "Active",
+        img: <Wrench />,
+        type: "text",
+        name: "state",
+        input_type: "dropdown"
+
+      },
+      {
+        text: "Omer@gmail.com",
+        img: <Email />,
+        type: "email",
+        name: "email"
+
+      },
+      {
+        text: "********",
+        img: <View_Icon />,
+        type: "password",
+        name: "password",
+        des: {
+          text: "If your Forget password Click ",
+          click_here: " Here"
+        }
+      }
 
     ],
-    button_content:"Close View User",
+    button_content: "Change Information",
 
 
 
   }
 
 
-  const [valueDropdown, setValueDtopdown] = useState(null);
-  const [valueRadio, setValueRadio] = useState(null);
+
 
   const  handleChangeDropdown = (value) => {
     // setValueDtopdown(event.target.value);
@@ -147,7 +201,9 @@ const Admin_Users = () => {
       hasRefrech={true}
     >
   <div className=" relative">
-    {/* لازم تكون كمبوننت ل view edit */}
+  {view_user ? <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user}  open_change_password={open_change_password} set_open_change_password={set_open_change_password}/> : ""}
+        {Edit_user ? <Edit ref={EditRef} Edit_content={Edit_content} initialValues={initialValues_Edit} validation_schema={service_provider_schema} Edit_user={Edit_user} set_Edit_user={set_Edit_user} open_change_password={open_change_password} set_open_change_password={set_open_change_password} /> : ""}
+        {open_change_password ? <ChangePassword open_change_password={open_change_password} set_open_change_password={set_open_change_password}  /> : ""}
     
    { view_user ? <View ref={viewRef}  view_content={view_content}/>  : ""}
       <TabsFillter>
@@ -178,7 +234,7 @@ const Admin_Users = () => {
         />
       </TabsFillter>
       {rows.length >= 1 ? (
-          <Table columns={columns} rows={rows} points={points} handlepoint={handlepoint_table}  />
+          <Table columns={columns} rows={rows} points={points} handlepoint={handlepoint_table} className="h-screen"  />
         ) : (
           <NoData></NoData>
         )}

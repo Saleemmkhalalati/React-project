@@ -6,6 +6,7 @@ import Button from "../../../utilities/Button";
 import { View_Icon } from "../../../utilities/Icons"
 import { Change_password_schema } from "../../../utilities/Validation"
 import ClickOutside from "../../../utilities/Click_Outsite"
+import { DashInput } from "../../../utilities/Inputs"
 
 
 const ChangePassword = React.forwardRef(({ open_change_password, set_open_change_password }, ref) => {
@@ -45,100 +46,96 @@ const ChangePassword = React.forwardRef(({ open_change_password, set_open_change
 
         {/* If you click here inside this Nothing happens. */}
         {
-        open_change_password && (
-          <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white min-w-[40%] px-5 py-3 rounded-md shadow-md z-50">
+          open_change_password && (
+            <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white min-w-[40%] min-h-full px-5 py-3 rounded-md shadow-md z-50">
 
-            <Typography component={"h3"} >
-              Change Password
-            </Typography>
-            <Typography component={"h4"}>
-              Change your Password, If your Forget password Click Here
-            </Typography>
-            {/* inputs */}
-
-
-
-            <form onSubmit={formik.handleSubmit} className="relative space-y-5 ">
-              <div className="flex justify-between items-center  ">
-                <input
-                  type={`${showpass ? "text" : "password"}`}
-                  name="password"
-                  // value should be from back end 
-                  value={formik.values}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  id={"password"}
-                  placeholder={"Current Password "}
-                  className={` py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
-                />
-
-                <div className="relative end-5 cursor-pointer " onClick={() => {
-                  setshowpass(!showpass)
-                }
-                }>
-                  <View_Icon />
-                </div>
-
-              </div>
-
-
-              <div className="flex justify-between items-center  ">
-                <input
-                  type={`${showNewpass ? "text" : "password"}`}
-                  name="NewPassword"
-                  value={formik.values.NewPassword}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  id={"New_Password"}
-                  placeholder={"New Password "}
-                  className={`${formik.errors.NewPassword && formik.touched.NewPassword && ("border-error")} py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
-                />
-
-                <div className="relative end-5 cursor-pointer " onClick={() => {
-                  setshowNewpass(!showNewpass)
-                }
-                }>
-                  <View_Icon />
-                </div>
-
-              </div>
-              {formik.errors.NewPassword && formik.touched.NewPassword && (
-                <div className="text-xs text-error">{formik.errors.NewPassword}</div>
-              )}
-              <div className="flex justify-between items-center  ">
-                <input
-                  type={`${showConfirm_Password ? "text" : "password"}`}
-                  name="Confirm_Password"
-                  //  value={input.value}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  id="Confirm_Password"
-                  placeholder={"Confirm Password "}
-                  className={` py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
-                />
-
-                <div className="relative end-5 cursor-pointer " onClick={() => {
-                  setConfirm_Password(!showConfirm_Password)
-                }
-                }>
-                  <View_Icon />
-                </div>
-
-              </div>
-
-
-              <Button type="submit" fullWidth>
+              <Typography component={"h3"} >
                 Change Password
-              </Button>
+              </Typography>
+              <Typography component={"h4"}>
+                Change your Password, If your Forget password Click Here
+              </Typography>
+              {/* inputs */}
 
 
-            </form>
-          </div>
-        )
-      }
+
+              <form onSubmit={formik.handleSubmit} className="relative space-y-5 ">
+                <div className=" w-full ">
+                  <DashInput
+                    type={`${showpass ? "text" : "password"}`}
+                    name="password"
+                    // value should be from back end 
+                    value={formik.values}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    id={"password"}
+                    // placeholder={"Current Password "}
+                    icon={<View_Icon />}
+                    errorMsg=""
+                    className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
+                  // className={` py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
+                  />
+
+
+
+                </div>
+
+
+                <div className=" w-full">
+                  <DashInput
+                    type={`${showNewpass ? "text" : "password"}`}
+                    name="NewPassword"
+                    value={formik.values.NewPassword}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    id={"New_Password"}
+                    // placeholder={"New Password "}
+                    icon={<View_Icon />}
+                    errorMsg={
+                      formik.errors.NewPassword && formik.touched.NewPassword
+                        ? formik.errors.NewPassword
+                        : ""
+                    }
+                    className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
+                  // className={`${formik.errors.NewPassword && formik.touched.NewPassword && ("border-error")} py-[6px] px-[16px] w-full border-[1px]  focus-within:border-primary placeholder:text-mySlate  rounded-md transition-all duration-100 ease-in-out      rounded-s-md outline-0 placeholder:focus:opacity-0`}
+                  />
+
+
+                </div>
+                {/* {formik.errors.NewPassword && formik.touched.NewPassword && (
+                <div className="text-xs text-error">{formik.errors.NewPassword}</div>
+              )} */}
+                <div className="w-fu  ">
+                  <DashInput
+                    type={`${showConfirm_Password ? "text" : "password"}`}
+                    name="Confirm_Password"
+                    //  value={input.value}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    id="Confirm_Password"
+                    // placeholder={"Confirm Password "}
+                    icon={<View_Icon />}
+                    errorMsg=""
+                    className={`placeholder:text-mySlate placeholder:focus:opacity-0`}
+
+                  />
+
+
+                </div>
+
+
+                <Button type="submit" fullWidth>
+                  Change Password
+                </Button>
+
+
+              </form>
+            </div>
+          )
+        }
 
       </ClickOutside>
-   
+
 
 
 
