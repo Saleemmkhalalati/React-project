@@ -1,14 +1,15 @@
 //image
 import email from "../../../assets/icons/Email.svg";
-import user from "../../../assets/icons/Vector.svg";
+import Person from "../../../assets/icons/Vector.svg";
 import pass from "../../../assets/icons/View.svg";
 import upload from "./Sitting_image/Vector.svg";
-import { Person } from "../../utilities/Icons";
+// import { Person } from "../../utilities/Icons";
 //
 import Content from "../Dashbord_layout/Content/Content";
 import Typography from "../../utilities/Typography";
 import { DashInput } from "../../utilities/Inputs";
 import { InputFile } from "../../utilities/Inputs";
+import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useEffect } from "react";
@@ -24,6 +25,7 @@ const validationSchema = Yup.object().shape({
 import { Link } from "react-router-dom";
 
 const Settings = () => {
+  const { t } = useTranslation("global");
   const adminUser = [{ role: "admin user ", email: "rawanahd23@gmail.com" }];
   const formik = useFormik({
     initialValues: {
@@ -55,10 +57,8 @@ const Settings = () => {
     <Content path={"Setting"}>
       <div className="bg-white mt-3 px-7 pb-24 flex flex-col gap-10 ">
         <div className="flex flex-col gap-4 pt-10">
-          <Typography component={"h3"}>Personal Information</Typography>
-          <Typography component={"h5"}>
-            Update your photo and personal information here
-          </Typography>
+          <Typography component={"h3"}>{t("sitting.0")}</Typography>
+          <Typography component={"h5"}>{t("sitting.1")}</Typography>
         </div>
         <form
           className="flex flex-col gap-4 sm:w-3/4 text-center sm:ltr:text-left sm:rtl:text-right "
@@ -67,7 +67,6 @@ const Settings = () => {
           <DashInput
             name={"admin"}
             value={formik.values.admin}
-            onChange={formik.handleChange}
             icon={Person}
             isDisabled={true}
           />
@@ -87,12 +86,11 @@ const Settings = () => {
           <DashInput
             name={"fakePass"}
             value={formik.values.fakePass}
-            onChange={formik.values.handleChange}
             isDisabled={true}
             icon={pass}
           />
           <Typography component={"h5"}>
-            If your want to change password Go ot
+            {t("sitting.2")}
             <Link to={""} className="text-secondary hover:text-success  ">
               Here
             </Link>
@@ -103,11 +101,7 @@ const Settings = () => {
             type={"file"}
             value={formik.values.img}
             onChange={(e) => formik.setFieldValue("img", e.target.files[0])}
-            label={
-              <Typography component={"h5"}>
-                Click to upload your photo or drag
-              </Typography>
-            }
+            label={<Typography component={"h5"}>{t("sitting.3")}</Typography>}
             className={
               "h-24 sm:h-48 flex flex-col-reverse items-center justify-center gap-4 "
             }
@@ -124,7 +118,7 @@ const Settings = () => {
             className=" text-secondary hover:text-success text-end text-sm"
             type="submit"
           >
-            Edit My Profile
+            {t("sitting.4")}
           </button>
         </form>
       </div>

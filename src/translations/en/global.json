@@ -161,12 +161,20 @@
       "Clinic Services",
       "Lab Services"
     ],
-    "Contact_us_discrption":"We hope that our website will be useful to you and we are happy for you to ",
-    "contact_us":" contact us"
+    "Contact_us_discrption": "We hope that our website will be useful to you and we are happy for you to ",
+    "contact_us": " contact us"
   },
   "Med_sal_dashbord": {
     "main_title": "med - Sal for  Admin - Dashboard ",
     "descrption": "The control panel for the med-sal website, its users, and its services"
   },
-  "profile": "Edit Profile"
+  "profile": "Edit Profile",
+
+  "sitting": [
+    "Personal Information",
+    "Update your photo and personal information here",
+    "If your want to change password Go  ot Here",
+    "Click to upload your photo or drag",
+    "Edit My Profile"
+  ]
 }

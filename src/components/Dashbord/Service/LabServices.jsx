@@ -80,7 +80,7 @@ export default function LabServices() {
             handlepoint={handlepoint}
           />
         ) : (
-          <NoData></NoData>
+          <NoData/>
         )}
       </Content>
     </>

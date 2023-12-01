@@ -73,6 +73,8 @@ const Requests = () => {
 
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
+  const [point, setPoint] = useState(null);
+
   console.log(valueDropdown);
   const handleChangeDropdown = (event) => {
     setValueDtopdown(event.target.value);
@@ -83,6 +85,10 @@ const Requests = () => {
   const handleExport = () => {
     setexport(!Export);
   };
+  const handlepoint = (selected) => {
+    setPoint({ selected });
+    console.log(selected);
+  };
 
   return (
     <Content
@@ -91,6 +97,9 @@ const Requests = () => {
       ExportFunc={handleExport}
       refrech={refrech}
       Export={Export}
+      classNameChildern="bg-white min-h-screen"
+      hasExport={true}
+      hasRefrech={true}
     >
       <TabsFillter>
         <span className="px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500">
@@ -115,7 +124,13 @@ const Requests = () => {
         />
       </TabsFillter>
       {rows.length >= 1 ? (
-        <Table columns={columns} rows={rows} points={points} />
+        <Table
+          columns={columns}
+          rows={rows}
+          points={points}
+          point={point}
+          handlepoint={handlepoint}
+        />
       ) : (
         <NoData></NoData>
       )}
