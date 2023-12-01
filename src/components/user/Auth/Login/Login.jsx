@@ -52,7 +52,7 @@ export default function Login() {
       <div className="max-w-[1750px] mx-auto my-0 flex justify-between flex-wrap">
         <div className="relative flex flex-1 flex-col gap-8 py-[12%] p-[5%]">
           <Typography component={"h1"}>{t("login.title")}</Typography>
-          <div className="min-w-[300px]">
+          <div className="min-w-[300px] ">
             <Typography component={"h4"}>
               {t("login.p")}
               <Link
@@ -63,7 +63,7 @@ export default function Login() {
               </Link>
             </Typography>
           </div>
-          <form onSubmit={formik.handleSubmit} className="relative space-y-5">
+          <form onSubmit={formik.handleSubmit} className="relative space-y-5 ">
             <div>
               <Input
                 type="text"

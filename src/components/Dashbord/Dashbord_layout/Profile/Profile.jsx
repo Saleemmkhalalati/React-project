@@ -71,6 +71,7 @@ const Profile = React.forwardRef(({ email, image, role }, ref) => {
             </Typography>
           </div>
         </div>
+
         <div className="flex flex-col gap-3">
           <DashInput
             name={"admin"}

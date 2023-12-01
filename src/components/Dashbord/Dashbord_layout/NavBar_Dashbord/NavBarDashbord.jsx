@@ -42,13 +42,13 @@ const NavBarDashbord = () => {
     setNots(!nots);
   };
   return (
-    <div className="py-5 px-10 bg-white  flex  md:justify-between justify-end  ">
+    <div className="py-5 px-10 bg-white  flex  md:justify-between justify-end   w-full ">
       {/* input serch  */}
       <div className="relative w-1/2 hidden md:block ">
         <input
           id="search"
           placeholder="Search ..."
-          className=" py-[6px] px-[16px] w-full border-[1px] red border-myGray-400 focus-within:border-primary  rounded-md transition-all duration-100 ease-in-out  border-e-0  bg-myGray-200  rounded-s-md outline-0 placeholder:focus:opacity-0"
+          className=" py-[6px] px-[16px] w-full border-[1px] red border-myGray-400 focus-within:border-primary  rounded-md transition-all duration-100 ease-in-out    bg-myGray-200  rounded-s-md outline-0 placeholder:focus:opacity-0"
         />
 
         <img

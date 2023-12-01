@@ -3,6 +3,7 @@ import Typography from "../../../utilities/Typography";
 
 import Refrech from "../../../../assets/icons/Refrech.svg";
 import Export_img from "../../../../assets/icons/Export.svg";
+import {Export_icon} from "../../../utilities/Icons"
 
 const Content = ({
   children,
@@ -18,7 +19,7 @@ const Content = ({
   const [Remostartactive, setRemostartActive] = useState(false);
 
   return (
-    <div className="px-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between    ">
+    <div className="ltr:ps-1 rtl:pe-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between      ">
       <div className="flex justify-between  flex-wrap gap-2">
         <p className="text-[16px] font-normal text-myGray-600">
           <span className="text-secondary">Dashboard /</span> {path}
@@ -26,7 +27,7 @@ const Content = ({
         <div className="flex items-center gap-4 cursor-pointer mb-4  ">
           {hasRefrech ? (
             <div className="flex gap-1 " onClick={RefrechFun}>
-              <img
+              {/* <img
                 src={Refrech}
                 alt=""
                 className={`${refrech ? "hidden" : "inline-block"}`}
@@ -35,7 +36,7 @@ const Content = ({
                 src={Export_img}
                 alt=""
                 className={`${refrech ? "inline-block" : "hidden"}`}
-              />
+              /> */}
               <span
                 className={`font-normal text-[13px] leading-[20px] text-myGray-500 hover:text-primary ${
                   refrech ? "text-primary" : ""
@@ -49,8 +50,9 @@ const Content = ({
           )}
 
           {hasExport ? (
-            <div className="flex gap-1 " onClick={ExportFunc}>
-              <img
+            <div className="flex gap-1 items-center " onClick={ExportFunc}>
+              <Export_icon  />
+              {/* <img
                 src={Export_img}
                 alt=""
                 className={`${refrech ? "hidden" : "inline-block"}`}
@@ -59,7 +61,7 @@ const Content = ({
                 src=""
                 alt=""
                 className={`${Export ? "inline-block" : "hidden"}`}
-              />
+              /> */}
               <span
                 className={`font-normal text-[13px] leading-[20px] text-myGray-500 hover:text-primary ${
                   Export ? "text-primary" : ""
@@ -73,6 +75,7 @@ const Content = ({
           )}
         </div>
       </div>
+
 
       <div
         className={`${
