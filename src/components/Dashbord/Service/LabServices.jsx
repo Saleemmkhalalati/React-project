@@ -78,6 +78,7 @@ export default function LabServices() {
             points={points}
             point={point}
             handlepoint={handlepoint}
+            className="h-screen"
           />
         ) : (
           <NoData/>

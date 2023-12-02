@@ -10,7 +10,9 @@ import NoData from "../../Dashbord_layout/NoData/NoData";
 import View from "../../Dashbord_layout/Mangment/View";
 import Edit from "../../Dashbord_layout/Mangment/Edit"
 import { service_provider_schema } from "../../../utilities/Validation"
-import {  Email, Wrench, View_Icon } from "../../../utilities/Icons"
+import Wrench from "../../../../assets/icons/Wrench.svg"
+import Email from "../../../../assets/icons/Email.svg"
+import View_Icon from "../../../../assets/icons/View.svg"
 import ChangePassword from "../../Dashbord_layout/Mangment/ChangePassword";
 
 
@@ -94,15 +96,15 @@ const Admin_Users = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />
+        img: Wrench
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />
+        img: Email
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img: View_Icon,
         des: {
           text: "If your Forget password Click ",
           click_here: " Here"
@@ -133,7 +135,7 @@ const Admin_Users = () => {
     inputs: [
       {
         text: "Active",
-        img: <Wrench />,
+        img: Wrench ,
         type: "text",
         name: "state",
         input_type: "dropdown"
@@ -141,14 +143,14 @@ const Admin_Users = () => {
       },
       {
         text: "Omer@gmail.com",
-        img: <Email />,
+        img: Email ,
         type: "email",
         name: "email"
 
       },
       {
         text: "********",
-        img: <View_Icon />,
+        img: View_Icon ,
         type: "password",
         name: "password",
         des: {
