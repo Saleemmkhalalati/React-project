@@ -1,10 +1,16 @@
 import Typography from "../../../utilities/Typography";
 import noData from "../../Dashbord_layout/Notifications/Notification_image/No data found.svg";
 import { useTranslation } from "react-i18next";
+import ClickOutside from "../../../utilities/Click_Outsite";
 import "./Notification.css";
+import { useState } from "react";
 
 const Notifications = () => {
   const { t } = useTranslation("global");
+  const [notifi, setNotifi] = useState(false);
+  const handleNotifi = () => {
+    setNotifi(!notifi);
+  };
   const notifications = [
     {
       dessc:

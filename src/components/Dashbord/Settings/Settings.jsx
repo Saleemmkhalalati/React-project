@@ -26,6 +26,7 @@ import { Link } from "react-router-dom";
 
 const Settings = () => {
   const { t } = useTranslation("global");
+
   const adminUser = [{ role: "admin user ", email: "rawanahd23@gmail.com" }];
   const formik = useFormik({
     initialValues: {
@@ -40,7 +41,7 @@ const Settings = () => {
     validateOnChange: true,
     validateOnMount: false,
     onSubmit: (values) => {
-      console.log("Form submitted with values:", values.img.type);
+      console.log("Form submitted with values:", values);
     },
   });
   useEffect(() => {

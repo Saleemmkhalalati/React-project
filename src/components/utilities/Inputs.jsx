@@ -189,6 +189,8 @@ export function InputFile({
   hasValueTrue,
   isInvalidType,
   classNameIcon,
+  onDragOver,
+  onDrop,
 }) {
   console.log(errorMsg);
   return (
