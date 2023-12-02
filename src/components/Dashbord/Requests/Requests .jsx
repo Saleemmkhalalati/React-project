@@ -148,6 +148,7 @@ const Requests = () => {
           points={points}
           point={point}
           handlepoint={handlepoint}
+          className={"min-h-screen"}
         />
       ) : (
         <NoData></NoData>
