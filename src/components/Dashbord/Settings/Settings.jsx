@@ -13,20 +13,34 @@ import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useEffect } from "react";
+import { useDropzone } from "react-dropzone";
+import React, { useState, useCallback } from "react";
 const validationSchema = Yup.object().shape({
   admin: Yup.string(),
   email: Yup.string().email("Invalid email address").required("Required"),
   fakePass: Yup.string(),
-  img: Yup.mixed()
-    .nullable()
-    .test((value) => !value || (value && value.type.startsWith("image/"))),
+  img: Yup.mixed().test(
+    "isImage",
+    "الرجاء اختيار ملف صورة صالح (JPG، PNG، GIF)",
+    function (value) {
+      if (!value) {
+        return true; // لا مشكلة إذا لم يكن هناك ملف
+      }
+
+      const supportedFormats = ["image/jpeg", "image/png", "image/gif"];
+
+      if (!supportedFormats.includes(value.type)) {
+        throw new Yup.ValidationError("Invalid image", value, "img");
+      }
+      return true;
+    }
+  ),
 });
 
 import { Link } from "react-router-dom";
 
 const Settings = () => {
   const { t } = useTranslation("global");
-
   const adminUser = [{ role: "admin user ", email: "rawanahd23@gmail.com" }];
   const formik = useFormik({
     initialValues: {
@@ -54,6 +68,13 @@ const Settings = () => {
     }
   }, [formik.values.admin, formik.values.email, adminUser]);
 
+  const onDrop = useCallback((acceptedFiles) => {
+    formik.setFieldValue("img", acceptedFiles[0]);
+  }, []);
+
+  //for drag and drob img
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  console.log(formik.errors.img);
   return (
     <Content path={"Setting"}>
       <div className="bg-white mt-3 px-7 pb-24 flex flex-col gap-10 ">
@@ -103,8 +124,7 @@ const Settings = () => {
             value={formik.values.img}
             onChange={(e) => formik.setFieldValue("img", e.target.files[0])}
             label={
-              typeof formik.values.img.type === "string" &&
-              formik.values.img.type.startsWith("image/") ? (
+              formik.values.img && !formik.errors.img ? (
                 t("sitting.6")
               ) : (
                 <Typography component={"h5"}>{t("sitting.4")}</Typography>
@@ -113,19 +133,15 @@ const Settings = () => {
             className={
               "h-24 sm:h-48 flex flex-col-reverse items-center justify-center gap-4 "
             }
-            icon={
-              typeof formik.values.img.type === "string" &&
-              formik.values.img.type.startsWith("image/")
-                ? done
-                : upload
-            }
-            classNameIcon={"w-[3rem]"}
+            icon={formik.values.img && !formik.errors.img ? done : upload}
+            classNameIcon={"w-[3rem] "}
             id={"img"}
             errorMsg={formik.errors.img ? formik.errors.img : ""}
-            hasValueTrue={
-              typeof formik.values.img.type === "string" &&
-              formik.values.img.type.startsWith("image/")
-            }
+            hasValueTrue={formik.values.img && !formik.errors.img}
+            isInvalidType={formik.errors.img ? formik.errors.img : ""}
+            getRootProps={{ ...getRootProps() }}
+            getInputProps={{ ...getInputProps() }}
+            isDragActive={isDragActive}
           />
           <button
             className=" text-secondary hover:text-success text-end text-sm"
