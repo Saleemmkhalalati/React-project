@@ -6,6 +6,8 @@ import ForgetPassword from "./components/user/Auth/ForgetPassword/ForgetPassword
 import ResettPassword from "./components/user/Auth/Reset Password/ResetPassword";
 import Landing from "./components/user/Landing/Landing";
 import AboutUs from "./components/user/AboutUs/AboutUS";
+import Service from "./components/user/Services/Services";
+import TitleAndSideServices from "./components/utilities/TitleAndSideServices";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
@@ -27,7 +29,8 @@ import ClinicServices from "./components/Dashbord/Service/ClinicServices";
 import LabServices from "./components/Dashbord/Service/LabServices";
 import Allusers from "./components/Dashbord/Report/Allusers.jsx";
 import Allservices from "./components/Dashbord/Report/Allservices.jsx";
-import Allproducts from "./components/Dashbord/Report/Allproducts.jsx"
+import Allproducts from "./components/Dashbord/Report/Allproducts.jsx";
+
 function App() {
   return (
     <div className="font-alegreya">
@@ -44,7 +47,7 @@ function App() {
           <Route path="/reset-password" element={<ResettPassword />} />
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Landing />} />
-            <Route path="services" element={<></>} />
+            <Route path="services" element={<TitleAndSideServices />} />
             <Route path="about-us" element={<AboutUs />} />
             <Route path="contact-us" element={<ContactUs />} />
           </Route>
@@ -79,13 +82,10 @@ function App() {
             <Route path="services/Lab_Services" element={<LabServices />} />
 
             <Route path="requests" element={<Requests />} />
-            <Route path="report" element={<Report />} > 
-            <Route index     element={<Allusers />} /> 
-            <Route path="all_services" element={<Allservices />} /> 
-            <Route path="all-product" element={<Allproducts />} /> 
-
-
-            
+            <Route path="report" element={<Report />}>
+              <Route index element={<Allusers />} />
+              <Route path="all_services" element={<Allservices />} />
+              <Route path="all-product" element={<Allproducts />} />
             </Route>
             <Route path="products" element={<Products />} />
             <Route path="settings" element={<Settings />} />

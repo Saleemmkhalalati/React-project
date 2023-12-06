@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const Nonotification = ({ notNumber }) => {
   const { t } = useTranslation("global");
   return (
-    <div className="absolute z-20 end-2 sm:end-8 top-24 shadow-sm">
+    <div className="absolute -start-56 sm:end-8  z-20 top-20 shadow-sm">
       <div className="bg-white w-[14rem] sm:w-[26rem] h-[30rem]  rounded flex flex-col gap-28  ">
         <div className="flex items-center  px-4 py-5 gap-1">
           <p className="text-xl font-bold text-myGray-600">

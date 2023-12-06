@@ -10,26 +10,17 @@ import Notifications from "../Notifications/Notifications";
 import { useTranslation } from "react-i18next";
 import Dropdown from "../../../utilities/Dropdown";
 import { useNavigate } from "react-router-dom";
+import Click_Outsite from "../../../utilities/Click_Outsite";
 
 const NavBarDashbord = () => {
   const { t } = useTranslation("global");
   const [profile, setProfile] = useState(false);
-  const [nots, setNots] = useState(false);
+  const [viewNot, setViewNot] = useState(false);
   const profileRef = useRef(null);
+  const notifiRef = useRef(null);
+
   const [point, setPoint] = useState(null);
   const navigate = useNavigate();
-
-  const handleOutsideClick = (e) => {
-    if (profileRef.current && !profileRef.current.contains(e.target)) {
-      setProfile(false);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
 
   const adminInfo = [
     {
@@ -42,9 +33,11 @@ const NavBarDashbord = () => {
   const handleProfile = () => {
     setProfile(!profile);
   };
-  const handleNots = () => {
-    setNots(!nots);
+
+  const toggleViewNot = () => {
+    setViewNot(!viewNot);
   };
+
   const points = [
     { name: "Go to Settings", type: "sittings" },
     { name: "Contact us", type: "contact" },
@@ -65,6 +58,7 @@ const NavBarDashbord = () => {
   const handlepoint = (selected) => {
     setPoint(selected);
   };
+
   return (
     <div className="py-5 px-10 bg-white  flex  md:justify-between justify-end   w-full ">
       {/* input serch  */}
@@ -87,15 +81,25 @@ const NavBarDashbord = () => {
 
       <div className="flex justify-between items-center gap-4 ">
         <div className=" relative p-2 ">
-          <img
-            onClick={handleNots}
-            src={Notification}
-            alt=""
-            className="w-5 h-5 cursor-pointer"
-          />
-          <div className="w-2 h-2 absolute bg-red-600 rounded-full top-0 right-1"></div>
-          {nots ? <Notifications /> : ""}
+          <div>
+            <img
+              onClick={toggleViewNot}
+              src={Notification}
+              alt="img"
+              className="w-5 h-5 cursor-pointer"
+            />
+            <div className="w-2 h-2 absolute bg-red-600 rounded-full top-0 right-1"></div>
+            {viewNot ? (
+              <Notifications
+                ref={notifiRef}
+                handleNotification={toggleViewNot}
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
+
         <Dropdown
           className={"text-xl text-myGray-600 text-start p-0 "}
           options={points}
@@ -107,22 +111,26 @@ const NavBarDashbord = () => {
           ulClassname={" ltr:-start-20 -top-0 rtl:start-[-7rem]"}
         />
         <MultiLangDropdown />
-        <img
-          className="cursor-pointer"
-          onClick={handleProfile}
-          src={Avtar}
-          alt=""
-        />
-        {profile ? (
-          <Profile
-            ref={profileRef}
-            email={adminInfo[0].email}
-            image={adminInfo[0].image}
-            role={adminInfo[0].role}
+
+        <div>
+          <img
+            className="cursor-pointer"
+            onClick={handleProfile}
+            src={Avtar}
+            alt=""
           />
-        ) : (
-          ""
-        )}
+          {profile ? (
+            <Profile
+              ref={profileRef}
+              handleProfile={handleProfile}
+              email={adminInfo[0].email}
+              image={adminInfo[0].image}
+              role={adminInfo[0].role}
+            />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );

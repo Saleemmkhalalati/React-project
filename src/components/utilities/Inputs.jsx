@@ -234,7 +234,7 @@ export function InputFile({
   );
 }
 InputFile.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   type: PropTypes.oneOf(["file"]).isRequired,
