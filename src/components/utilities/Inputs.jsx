@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+
 export function FInput({
   label,
   name,
@@ -189,12 +190,15 @@ export function InputFile({
   hasValueTrue,
   isInvalidType,
   classNameIcon,
+  getInputProps,
+  getRootProps,
+  isDragActive,
 }) {
-  console.log(errorMsg);
   return (
-    <div>
-      <label
-        className={`relative cursor-pointer bg-white  border-solid text-mySlate border-[1px] rounded-md 
+    <>
+      <div {...getRootProps}>
+        <label
+          className={`relative cursor-pointer bg-white  border-solid text-mySlate border-[1px] rounded-md 
         ${className ? className : ""}
 
         ${
@@ -204,35 +208,36 @@ export function InputFile({
             ? "border-error"
             : "border-myGray-400"
         }
-        
+        ${isDragActive ? "border-primary shadow-lg" : ""}
         `}
-        htmlFor={name}
-      >
-        {label}
-        <input
-          type="file"
-          className={"hidden "}
-          id={id}
-          name={name}
-          onBlur={onBlur}
-          onChange={onChange}
-        />
-        <img
-          src={icon}
-          alt={name}
-          className={`  ${classNameIcon ? classNameIcon : ""}`}
-        />
-      </label>
-      <p className="ps-1 pt-2 text-error font-normal text-xs">{errorMsg}</p>
-    </div>
+          htmlFor={name}
+        >
+          {label}
+          <input
+            {...getInputProps}
+            type="file"
+            className={"hidden "}
+            id={id}
+            name={name}
+            onBlur={onBlur}
+            onChange={onChange}
+          />
+          <img
+            src={icon}
+            alt={name}
+            className={`${classNameIcon ? classNameIcon : ""}`}
+          />
+        </label>
+        <p className="ps-1 pt-2 text-error font-normal text-xs">{errorMsg}</p>
+      </div>
+    </>
   );
 }
-Input.propTypes = {
-  label: PropTypes.string.isRequired,
+InputFile.propTypes = {
+  label: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
-  type: PropTypes.oneOf(["text", "password", "email", "number", "date"])
-    .isRequired,
+  type: PropTypes.oneOf(["file"]).isRequired,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func,
   icon: PropTypes.string.isRequired,
@@ -249,7 +254,7 @@ export function DashInput({
   type,
   isDisabled,
   className,
-  placeholder
+  placeholder,
 }) {
   return (
     <div className="relative">
@@ -259,7 +264,9 @@ export function DashInput({
         } bg-white rounded-lg transition-all duration-100 ease-in-out`}
       >
         <input
-          className={`${className ? className : ""} text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
+          className={`${
+            className ? className : ""
+          } text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
           id={name}
           name={name}
           value={value}
@@ -268,11 +275,9 @@ export function DashInput({
           type={type}
           disabled={isDisabled}
           placeholder={placeholder}
-         
         />
         <img src={icon} width={12} height={12} alt="icon" />
         {/* {icon} */}
-       
       </div>
 
       {errorMsg !== "" && (

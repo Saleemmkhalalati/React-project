@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Dropdown({
   value,
@@ -9,15 +9,15 @@ export default function Dropdown({
   icon,
   showSlected,
   ulClassname,
+  classNameIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
- 
+
   const handleSelect = (selected) => {
-   
     onChange(selected);
-   
+
     setSelectedItem(selected.name);
     setIsOpen(false);
   };
@@ -47,7 +47,11 @@ export default function Dropdown({
         className="  flex  items-center p-2 justify-between z-10 tracking-wider border-myGray-100 active:border-primary duration-150 ease-in-out"
       >
         {showSlected ? selectedItem : ""}
-        <img src={icon} alt="" />
+        <img
+          className={` ${classNameIcon ? classNameIcon : ""} `}
+          src={icon}
+          alt=""
+        />
       </button>
       {isOpen && (
         <ul
@@ -87,8 +91,7 @@ Dropdown.propTypes = {
 };
 // ***************************************************************
 
-
-export  function Dropdown_whithout_icon({
+export function Dropdown_whithout_icon({
   value,
   options,
   onChange,
@@ -97,13 +100,13 @@ export  function Dropdown_whithout_icon({
   showSlected,
   ulClassname,
   dataSrc,
-  SetDropdownOpen
+  SetDropdownOpen,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
   const handleSelect = (selected) => {
-    onChange(selected)
+    onChange(selected);
     setSelectedItem(selected);
     setIsOpen(false);
   };
@@ -120,48 +123,41 @@ export  function Dropdown_whithout_icon({
   }, []);
   // {console.log(options)}
   return (
-    
     <div
       className={` ${
         className ? className : ""
       } relative  flex flex-col   z-10 text-myGray-500 `}
       ref={dropdownRef}
     >
-     
-        {showSlected ? selectedItem : ""}
-       
-     
-        <ul
-          className={`${
-            ulClassname ? ulClassname : ""
-          } absolute shadow-md top-[100%  z-20  mt-[4px]`}
-        >
-          {options.map((option, index) => (
-            <li
-              className={`block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary ${
-                option.type == "delete" ? " text-error hover:text-error " : ""
-              }  `}
-              key={index}
-              onClick={() => {
-                handleSelect(option.name);
-              }}
-            >
+      {showSlected ? selectedItem : ""}
 
-              
-                          <NavLink
-                                to={`${dataSrc}/${option.src}`}
-                                className="flex justify-between gap-5 lg:block"
-                              >
-                                {option.name}
-                              </NavLink>
-            </li>
-          ))}
-        </ul>
-     
+      <ul
+        className={`${
+          ulClassname ? ulClassname : ""
+        } absolute shadow-md top-[100%  z-20  mt-[4px]`}
+      >
+        {options.map((option, index) => (
+          <li
+            className={`block cursor-pointer w-full whitespace-nowrap bg-myGray-200 px-4 py-2 text-sm font-normal  hover:bg-myGray-100 active:bg-myGray-100 hover:text-secondary active:text-secondary ${
+              option.type == "delete" ? " text-error hover:text-error " : ""
+            }  `}
+            key={index}
+            onClick={() => {
+              handleSelect(option.name);
+            }}
+          >
+            <NavLink
+              to={`${dataSrc}/${option.src}`}
+              className="flex justify-between gap-5 lg:block"
+            >
+              {option.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
 
 Dropdown_whithout_icon.propTypes = {
   showSlected: PropTypes.bool,
@@ -171,7 +167,7 @@ Dropdown_whithout_icon.propTypes = {
   value: PropTypes.string,
   options: PropTypes.string,
   onChange: PropTypes.func,
-  dataSrc:PropTypes.string,
-  dropdownRef:PropTypes.string,
-  SetDropdownOpen:PropTypes.func,
+  dataSrc: PropTypes.string,
+  dropdownRef: PropTypes.string,
+  SetDropdownOpen: PropTypes.func,
 };
