@@ -160,17 +160,22 @@
       "التقرير",
       "المنتجات"
     ],
-    "all_users_menu": [
+    "AdminDashbord_all_users_menu": [
       "مقدمي الخدمة",
       "المستخدمين المرضى",
       "المستخدمين المسؤولين"
     ],
-    "Services": [
+    "Admin_dashboard_Services": [
       "حدمات الطبيب",
       "خدمات المستشفى",
       "Pharmacy Services",
       "Clinic Services",
       "Lab Services"
+    ],
+    "serviceProvider_dashboard_Services":[
+      "طلب الخدمات",
+      "جدول الخدمات"
+
     ],
     "Contact_us_discrption": "نأمل أن يكون موقعنا مفيداً لكم ويسعدنا.",
     "contact_us": "تواصلكم معنا",

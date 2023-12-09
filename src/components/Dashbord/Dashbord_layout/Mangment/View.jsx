@@ -17,9 +17,10 @@ const View = React.forwardRef(({ view_content, view_user, set_View_user, open_ch
     <div className=''>
       <ClickOutside
         onClick={toggle_View_user}
+       
       >
         {view_user && (
-          <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white w-[40%] px-5 py-3 rounded-md shadow-md z-50 min-h-full">
+          <div  className="flex flex-col gap-3 absolute right-0 bg-white w-[40%] px-5 py-3 rounded-md shadow-md z-50 min-h-full">
 
             <Typography component={"h3"} >
               {view_content.title}

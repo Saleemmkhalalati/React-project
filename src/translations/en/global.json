@@ -152,21 +152,33 @@
   "sideBar_Dashbord": {
     "main_title": ["dashboard"],
     "dashboard_menu": ["About Users", "About dashboard"],
-    "about_users_menu": [
+    "AdminDashboard_about_users_menu": [
       "All Users",
       "Services",
       "Requests",
       "Report",
       "Products"
     ],
-    "all_users_menu": [" Service Providers", " Patient Users", " Admin Users"],
+    "serviceProvider_about_users_menu": [
+      "Appointment ",
+      "Services",
+      "Products",
+      "Report"
+    
+    ],
+    "AdminDashbord_all_users_menu": [" Service Providers", " Patient Users", " Admin Users"],
     "about_dashboard_menu": ["Settings", "Sign Out"],
-    "Services": [
+    "Admin_dashboard_Services": [
       "Doctors Services",
       "Hospital Services",
       "Pharmacy Services",
       "Clinic Services",
       "Lab Services"
+    ],
+    "serviceProvider_dashboard_Services":[
+      "Request Services",
+      " Table Services"
+
     ],
     "Contact_us_discrption": "We hope that our website will be useful to you and we are happy for you to ",
     "contact_us": " contact us"

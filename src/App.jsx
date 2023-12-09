@@ -48,7 +48,7 @@ function App() {
             <Route path="about-us" element={<AboutUs />} />
             <Route path="contact-us" element={<ContactUs />} />
           </Route>
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardLayout  />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="users" element={<Dashboard />} />
@@ -90,6 +90,10 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
+          </Route>
+          <Route path="/dashboard_service_provider" element={<DashboardLayout />} >
+          {/* <Route path="/dashboard_service_provider" element={<Dashboard_service_provider />} /> */}
+
           </Route>
         </Routes>
       </BrowserRouter>

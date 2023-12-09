@@ -1,7 +1,7 @@
 import { useEffect, useState,useRef } from "react";
 import Logo from "../../../utilities/Logo";
 
-import {  NavLink } from "react-router-dom";
+import {  NavLink, useLocation } from "react-router-dom";
 import "./SideBardashbord.css";
 import { useTranslation } from "react-i18next";
 
@@ -28,23 +28,137 @@ const SideBardashbord = () => {
   const [open, setOpen] = useState(true);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
   const [DropdownOpen, SetDropdownOpen] = useState(false);
-
+const [Menus,setMenus] =useState([]);
 
   const [subMenuType, setSubMenuType] = useState("");
 
   const [menueClicked, setMenueClicked] = useState("");
+  const Role=useLocation().pathname.split("/")[1]
+  console.log(Role)
+useEffect(() => {
+  if(Role==="dashboard")
+ {setMenus(Menus_Admin_dashboard) }
+ else if(Role === "dashboard_service_provider"){
+  setMenus(Menus_Service_provider)
+ }
+}
+,)
 
 
-
-console.log(menueClicked)
-
-  const Menus = [
+  const Menus_Admin_dashboard = [
     {
       main_title: t("sideBar_Dashbord.dashboard_menu.0"),
       Data: [
         {
-          title: t("sideBar_Dashbord.about_users_menu.0"),
+          title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.0"),
           src: "/dashboard/users",
+          icon: <Person_sidebar stoke="white" menue={menueClicked} />,
+          subMenus: [
+            {
+              name: t("sideBar_Dashbord.AdminDashbord_all_users_menu.0"),
+              src: "service_Providers",
+
+              cName: "sub-nav",
+            },
+            {
+              name: t("sideBar_Dashbord.AdminDashbord_all_users_menu.1"),
+              src: "patient_Users",
+
+              cName: "sub-nav",
+            },
+            {
+              name: t("sideBar_Dashbord.AdminDashbord_all_users_menu.2"),
+              src: "Admin_Users",
+
+              cName: "sub-nav",
+            },
+          ],
+          cname:" top-[-4rem] rtl:start-[4rem]  ltr:left-16"
+        },
+
+        {
+          title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.1"),
+          src: "/dashboard/services",
+          icon: <Services stoke="white" menue={menueClicked} />,
+
+          subMenus: [
+            {
+              name: t("sideBar_Dashbord.Admin_dashboard_Services.0"),
+              src: "Doctors_Services",
+
+              cName: "sub-nav",
+            },
+            {
+              name: t("sideBar_Dashbord.Admin_dashboard_Services.1"),
+              src: "Hospital_Services",
+
+              cName: "sub-nav",
+            },
+            {
+              name: t("sideBar_Dashbord.Admin_dashboard_Services.2"),
+              src: "Pharmacy_Services",
+            },
+            {
+              name: t("sideBar_Dashbord.Admin_dashboard_Services.3"),
+              src: "Clinic_Services",
+            },
+            {
+              name: t("sideBar_Dashbord.Admin_dashboard_Services.4"),
+              src: "Lab_Services",
+            },
+          ],
+          cname:"ltr:left-16 top-[-4rem] rtl:start-[4rem]"
+        },
+        {
+          title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.2"),
+          src: "/dashboard/requests",
+          icon: <Person_pluse stoke="white" menue={menueClicked} />,
+        },
+        {
+          title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.3"),
+          src: "/dashboard/report",
+          gap: true,
+          icon: <Graph stoke="white" menue={menueClicked} />,
+
+       
+        },
+        {
+          title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.4"),
+          src: "/dashboard/products",
+          icon: <Notification stoke="white" menue={menueClicked} />,
+
+         
+        },
+      ],
+    },
+    {
+      main_title: t("sideBar_Dashbord.dashboard_menu.1"),
+      Data: [
+        {
+          title: t("sideBar_Dashbord.about_dashboard_menu.0"),
+          src: "/dashboard/settings",
+          icon: <Settings stoke="white" menue={menueClicked} />,
+
+ 
+        },
+
+        {
+          title: t("sideBar_Dashbord.about_dashboard_menu.1"),
+          src: "/dashboard/signOut",
+          icon: <Log_Out stoke="white" menue={menueClicked} />,
+
+      
+        },
+      ],
+    },
+  ];
+  const Menus_Service_provider= [
+    {
+      main_title: t("sideBar_Dashbord.dashboard_menu.0"),
+      Data: [
+        {
+          title: t("sideBar_Dashbord.serviceProvider_about_users_menu.0"),
+          src: "/dashboard_service_provider/users",
           icon: <Person_sidebar stoke="white" menue={menueClicked} />,
           subMenus: [
             {
@@ -70,8 +184,8 @@ console.log(menueClicked)
         },
 
         {
-          title: t("sideBar_Dashbord.about_users_menu.1"),
-          src: "/dashboard/services",
+          title: t("sideBar_Dashbord.serviceProvider_about_users_menu.1"),
+          src: "/dashboard_service_provider/services",
           icon: <Services stoke="white" menue={menueClicked} />,
 
           subMenus: [
@@ -103,25 +217,19 @@ console.log(menueClicked)
           cname:"ltr:left-16 top-[-4rem] rtl:start-[4rem]"
         },
         {
-          title: t("sideBar_Dashbord.about_users_menu.2"),
-          src: "/dashboard/requests",
-          icon: <Person_pluse stoke="white" menue={menueClicked} />,
+          title: t("sideBar_Dashbord.serviceProvider_about_users_menu.2"),
+          src: "/dashboard_service_provider/products",
+          icon: <Notification stoke="white" menue={menueClicked} />,
         },
         {
-          title: t("sideBar_Dashbord.about_users_menu.3"),
-          src: "/dashboard/report",
+          title: t("sideBar_Dashbord.serviceProvider_about_users_menu.3"),
+          src: "/dashboard_service_provider/report",
           gap: true,
           icon: <Graph stoke="white" menue={menueClicked} />,
 
        
         },
-        {
-          title: t("sideBar_Dashbord.about_users_menu.4"),
-          src: "/dashboard/products",
-          icon: <Notification stoke="white" menue={menueClicked} />,
-
-         
-        },
+    
       ],
     },
     {
@@ -129,7 +237,7 @@ console.log(menueClicked)
       Data: [
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
-          src: "/dashboard/settings",
+          src: "/dashboard_service_provider/settings",
           icon: <Settings stoke="white" menue={menueClicked} />,
 
  
@@ -137,7 +245,7 @@ console.log(menueClicked)
 
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
-          src: "/dashboard/signOut",
+          src: "/dashboard_service_provider/signOut",
           icon: <Log_Out stoke="white" menue={menueClicked} />,
 
       
