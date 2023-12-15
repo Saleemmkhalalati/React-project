@@ -32,6 +32,8 @@ import Allservices from "./components/Dashbord/Admin_Dashboard/Report/Allservice
 import Allproducts from "./components/Dashbord/Admin_Dashboard/Report/Allproducts.jsx";
 import Home from "./components/Dashbord/Dashbord_service_provider/Service_provider_home/Home.jsx"
 import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
+import Report_service_provider from "./components/Dashbord/Dashbord_service_provider/Reports/Report_service_provider .jsx"
+import AllPatient from "./components/Dashbord/Dashbord_service_provider/Reports/AllPatient.jsx"
 
 function App() {
   return (
@@ -97,6 +99,11 @@ function App() {
           </Route>
           <Route path="/dashboard_service_provider" element={<DashboardLayout />} >
           <Route path="/dashboard_service_provider" element={<Home />} />
+          <Route path="report" element={<Report_service_provider  />}>
+              <Route index element={<AllPatient />} />
+              <Route path="all_services" element={<Allservices />} />
+              <Route path="all-product" element={<Allproducts />} />
+            </Route>
           <Route path="settings" element={<Setting_service_provider  />} />
 
           </Route>
