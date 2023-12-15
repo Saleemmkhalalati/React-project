@@ -10,8 +10,13 @@ import eaghit from "./Services_img/eaghit.svg";
 import nghit from "./Services_img/nghit.svg";
 import tean from "./Services_img/tean.svg";
 import BackPolygon from "../../utilities/BackPolygon";
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { useServices } from "../../../context/Context";
+
 export default function Service() {
+  const { customServices } = useContext(useServices);
+  console.log("from services", customServices);
+
   const providers = [
     {
       id: 1,
@@ -125,8 +130,6 @@ export default function Service() {
     },
   ];
 
-  const { myCheckValue } = useParams();
-  console.log(myCheckValue);
   return (
     <div>
       <div className="  sm:pb-20 pt-6 lg:pt-36 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ps-5 md:ps-10 pe-5 gap-5">
