@@ -1,10 +1,13 @@
 import BackPolygon from "../../utilities/BackPolygon";
 import menu from "../../../assets/icons/menu.svg";
 import Typography from "../../utilities/Typography";
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Services.css";
 import Click_Outsite from "../../utilities/Click_Outsite";
+
+import { useServices } from "../../../context/Context";
+import { useContext, useRef, useState } from "react";
+
 export default function SideServices() {
   const [side, setSide] = useState(true);
   const [clickec, setClicked] = useState(false);
@@ -14,7 +17,6 @@ export default function SideServices() {
     setClicked(true);
   };
 
-  console.log(side);
   const services = [
     {
       Category_id: 1,
@@ -38,7 +40,7 @@ export default function SideServices() {
     },
     {
       Category_id: 5,
-      Category_name: "Clinic Services",
+      Category_name: "Pharmacy Services",
       Service_count: "300",
     },
     {
@@ -78,10 +80,6 @@ export default function SideServices() {
     setMaxvalue(value);
   };
 
-  const rangeBackgroundStyle = {
-    left: `${((Minvalue - rangeMin) / (rangeMax - rangeMin)) * 100}%`,
-    width: `${((Maxvalue - Minvalue) / (rangeMax - rangeMin)) * 100}%`,
-  };
   console.log(Minvalue);
   console.log(Maxvalue);
 
@@ -97,15 +95,18 @@ export default function SideServices() {
       );
       setCheckValue(updatedCheckValue);
     } else {
-      setCheckValue([...myCheckValue, finalCheckValue]);
+      setCheckValue([...myCheckValue, finalCheckValue, Minvalue]);
     }
   };
 
-  // استخدم useEffect لطباعة القيمة عندما تتغير
-  useEffect(() => {
-    console.log(myCheckValue);
-  }, [myCheckValue]);
+  //store custum services in usestate
+  const { setcustomServices } = useContext(useServices);
+  setcustomServices(myCheckValue);
 
+  const rangeBackgroundStyle = {
+    left: `${((Minvalue - rangeMin) / (rangeMax - rangeMin)) * 100}%`,
+    width: `${((Maxvalue - Minvalue) / (rangeMax - rangeMin)) * 100}%`,
+  };
   return (
     <Click_Outsite exceptionRef={ref} onClick={handleSide}>
       <div
@@ -123,7 +124,7 @@ export default function SideServices() {
               <Typography className={"text-xl pb-3"} component={"h1"}>
                 Categories
               </Typography>
-              {services.map((e, index) => (
+              {services.map((service, index) => (
                 <div
                   className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]"
                   key={index}
@@ -131,20 +132,20 @@ export default function SideServices() {
                   <div className="flex items-center gap-2">
                     <input
                       onClick={handleServicesType}
-                      name={e.Category_name}
+                      name={service.Category_name}
                       type="checkbox"
-                      id={index}
+                      id={service.Category_name}
                       className="appearance-none border border-myGray-500 rounded w-3 h-3 md:w-4 md:h-4 checked:bg-primary checked:border-transparent cursor-pointer "
                     />
                     <label
                       className="cursor-pointer text-xs md:text-sm "
-                      htmlFor={index}
+                      htmlFor={service.Category_name}
                     >
-                      {e.Category_name}
+                      {service.Category_name}
                     </label>
                   </div>
                   <span className="text-xs md:text-sm pe-2 md:pe-0">
-                    {e.Service_count}
+                    {service.Service_count}
                   </span>
                 </div>
               ))}
@@ -157,34 +158,33 @@ export default function SideServices() {
               <Typography className={"text-xl pb-3"} component={"h1"}>
                 Location
               </Typography>
-              {location.map((e, index) => (
+              {location.map((loc, LocIndex) => (
                 <div className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]">
-                  <div key={index} className="flex items-center gap-2">
+                  <div key={LocIndex} className="flex items-center gap-2">
                     <input
                       type="checkbox"
-                      id={""}
+                      id={loc.title}
                       className="appearance-none border border-myGray-500 rounded w-3 h-3 md:w-4 md:h-4  checked:bg-primary checked:border-transparent cursor-pointer "
                     />
                     <label
                       className="cursor-pointer text-xs md:text-sm "
-                      htmlFor={""}
+                      htmlFor={loc.title}
                     >
-                      {e.title}
+                      {loc.title}
                     </label>
                   </div>
                   <span className="text-xs md:text-sm pe-2 md:pe-0">
-                    {e.count}
+                    {loc.count}
                   </span>
                 </div>
               ))}
               <Link to={""}>
-                {" "}
                 <Typography
                   className={"text-start text-xs md:text-sm"}
                   component={"secondary-text"}
                 >
                   Choose yourself
-                </Typography>{" "}
+                </Typography>
               </Link>
             </div>
             <div
@@ -258,9 +258,9 @@ export default function SideServices() {
               <Typography className={"text-xl pb-3"} component={"h1"}>
                 Rating
               </Typography>
-              {rate.map((e, index) => (
+              {rate.map((rate, rateiIndex) => (
                 <div className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]">
-                  <div key={index} className="flex items-center gap-2">
+                  <div key={rateiIndex} className="flex items-center gap-2">
                     <input
                       type="checkbox"
                       id={""}
@@ -270,11 +270,11 @@ export default function SideServices() {
                       className="cursor-pointer text-xs md:text-sm "
                       htmlFor={""}
                     >
-                      {e.rate}
+                      {rate.rate}
                     </label>
                   </div>
                   <span className="text-xs md:text-sm pe-2 md:pe-0">
-                    {e.count}
+                    {rate.count}
                   </span>
                 </div>
               ))}

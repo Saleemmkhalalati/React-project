@@ -4,18 +4,14 @@ import SideServices from "../../user/Services/SideServices";
 import Container from "../../utilities/Container";
 import { useState } from "react";
 export default function TitleAndSideServices() {
-  const [myCheckValue, setCheckValue] = useState([]);
   return (
     <Container className={"overflow-hidden"}>
       <div className="flex lg:justify-normal justify-center ">
-        <SideServices
-          myCheckValue={myCheckValue}
-          setCheckValue={setCheckValue}
-        />
-        <div className=" ">
+        <SideServices />
+        <div className="">
           <OurServicesTitle />
           <div className="">
-            <Outlet myCheckValue={myCheckValue} />
+            <Outlet />
           </div>
         </div>
       </div>
