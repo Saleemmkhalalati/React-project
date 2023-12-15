@@ -204,5 +204,7 @@
   ],
 
   "noNotification": ["Notification", "Not Found Notification"],
-  "notification": ["Notification"]
+  "notification": ["Notification"],
+  "request_edit":["Request For Edit My Profile","Saturday,  September 2023 ","Request:","If you would like to amend your personal information, please send a request with the information you would like to change.",
+"Your Change Info: ","Please write what changes you want to make."," Send Request"]
 }

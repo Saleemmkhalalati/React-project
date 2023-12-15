@@ -63,7 +63,7 @@ const ChangePassword = React.forwardRef(({ open_change_password, set_open_change
         {/* If you click here inside this Nothing happens. */}
         {
           open_change_password && (
-            <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white min-w-[40%] min-h-full px-5 py-3 rounded-md shadow-md z-50">
+            <div ref={ref} className="flex flex-col gap-3 absolute ltr:right-0 rtl:left-0 bg-white min-w-[40%] min-h-full px-5 py-3 rounded-md shadow-md z-50">
 
               <Typography component={"h3"} >
                 Change Password
