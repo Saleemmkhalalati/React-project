@@ -7,7 +7,7 @@ import ResettPassword from "./components/user/Auth/Reset Password/ResetPassword"
 import Landing from "./components/user/Landing/Landing";
 import AboutUs from "./components/user/AboutUs/AboutUS";
 import Service from "./components/user/Services/Services";
-import TitleAndSideServices from "./components/utilities/TitleAndSideServices";
+import TitleAndSideServices from "./components/user/Services/TitleAndSideServices";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
@@ -49,7 +49,9 @@ function App() {
           <Route path="/reset-password" element={<ResettPassword />} />
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Landing />} />
-            <Route path="services" element={<TitleAndSideServices />} />
+            <Route path="services" element={<TitleAndSideServices />}>
+              <Route index element={<Service />} />
+            </Route>
             <Route path="about-us" element={<AboutUs />} />
             <Route path="contact-us" element={<ContactUs />} />
           </Route>

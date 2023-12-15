@@ -22,8 +22,8 @@ const NavBar = () => {
         <div className="flex justify-between items-center border-b-2 py-2">
           <Logo />
           <ul
-            className={`absolute flex flex-col items-start ps-5 shadow-md lg w-full left-0 py-5 gap-x-9 gap-y-3 z-10 transition-all duration-300 ease-in text-myGray-600 bg-white
-                                lg:static lg:flex-row lg:items-center lg:pe-0 lg:shadow-none lg:w-auto lg:h-auto lg:py-0
+            className={`absolute flex flex-col items-start ps-5 shadow-md lg w-full left-0 py-5 gap-x-9 gap-y-3 z-[55] transition-all duration-300 ease-in text-myGray-600 bg-white
+                                lg:static lg:flex-row lg:items-center lg:pe-0 lg:shadow-none lg:w-auto lg:h-auto lg:py-0 
                                 ${openList ? " top-16 " : " top-[-490px] "}`}
           >
             {links.map((link) => (
