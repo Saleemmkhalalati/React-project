@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Services.css";
 import Click_Outsite from "../../utilities/Click_Outsite";
-export default function SideServices({ myCheckValue, setCheckValue }) {
+export default function SideServices() {
   const [side, setSide] = useState(true);
   const [clickec, setClicked] = useState(false);
   const ref = useRef(null);
