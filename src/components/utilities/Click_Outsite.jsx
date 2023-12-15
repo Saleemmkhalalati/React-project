@@ -14,6 +14,7 @@ export default function ClickOutside({ children, exceptionRef, onClick, classNam
 
   const handleClickListener = (event) => {
     let clickedInside;
+    console.log(exceptionRef)
     if(exceptionRef) {
       clickedInside = (wrapperRef && wrapperRef.current.contains(event.target)) || exceptionRef.current === event.target || exceptionRef.current.contains(event.target);
     }

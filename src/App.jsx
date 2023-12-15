@@ -11,25 +11,27 @@ import TitleAndSideServices from "./components/user/Services/TitleAndSideService
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
-import Service_Provider from "./components/Dashbord/Users/Service_Providers/Service_Provider";
-import Patient_Users from "./components/Dashbord/Users/Patient_Users/Patient_Users";
-import Admin_Users from "./components/Dashbord/Users/Admin_Users/Admin_Users";
-import Requests from "./components/Dashbord/Requests/Requests ";
-import Report from "./components/Dashbord/Report/Report ";
-import Products from "./components/Dashbord/Products/Products";
-import Settings from "./components/Dashbord/Settings/Settings";
-import SignOut from "./components/Dashbord/Sign Out/SignOut";
+import Service_Provider from "./components/Dashbord/Admin_Dashboard/Users/Service_Providers/Service_Provider.jsx";
+import Patient_Users from "./components/Dashbord/Admin_Dashboard/Users/Patient_Users/Patient_Users";
+import Admin_Users from "./components/Dashbord/Admin_Dashboard/Users/Admin_Users/Admin_Users";
+import Requests from "./components/Dashbord/Admin_Dashboard/Requests/Requests ";
+import Report from "./components/Dashbord/Admin_Dashboard/Report/Report ";
+import Products from "./components/Dashbord/Admin_Dashboard/Products/Products";
+import Settings from "./components/Dashbord/Admin_Dashboard/Settings/Settings";
+import SignOut from "./components/Dashbord/Admin_Dashboard/Sign Out/SignOut";
 import VerfictionCode from "./components/user/Auth/VerificationCode/VerificationCode";
 import RegisterPatient from "./components/user/Auth/Register/RegisterPatient";
 import RegisterProvider from "./components/user/Auth/Register/RegisterProvider";
-import DoctorServices from "./components/Dashbord/Service/DoctorServices";
-import HospitalServices from "./components/Dashbord/Service/HospitalServices";
-import PharmacyServices from "./components/Dashbord/Service/PharmacyServices";
-import ClinicServices from "./components/Dashbord/Service/ClinicServices";
-import LabServices from "./components/Dashbord/Service/LabServices";
-import Allusers from "./components/Dashbord/Report/Allusers.jsx";
-import Allservices from "./components/Dashbord/Report/Allservices.jsx";
-import Allproducts from "./components/Dashbord/Report/Allproducts.jsx";
+import DoctorServices from "./components/Dashbord/Admin_Dashboard/Service/DoctorServices";
+import HospitalServices from "./components/Dashbord/Admin_Dashboard/Service/HospitalServices";
+import PharmacyServices from "./components/Dashbord/Admin_Dashboard/Service/PharmacyServices";
+import ClinicServices from "./components/Dashbord/Admin_Dashboard/Service/ClinicServices";
+import LabServices from "./components/Dashbord/Admin_Dashboard/Service/LabServices";
+import Allusers from "./components/Dashbord/Admin_Dashboard/Report/Allusers.jsx";
+import Allservices from "./components/Dashbord/Admin_Dashboard/Report/Allservices.jsx";
+import Allproducts from "./components/Dashbord/Admin_Dashboard/Report/Allproducts.jsx";
+import Home from "./components/Dashbord/Dashbord_service_provider/Service_provider_home/Home.jsx"
+import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
 
 function App() {
   return (
@@ -53,7 +55,7 @@ function App() {
             <Route path="about-us" element={<AboutUs />} />
             <Route path="contact-us" element={<ContactUs />} />
           </Route>
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<DashboardLayout  />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="users" element={<Dashboard />} />
@@ -92,6 +94,11 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
+          </Route>
+          <Route path="/dashboard_service_provider" element={<DashboardLayout />} >
+          <Route path="/dashboard_service_provider" element={<Home />} />
+          <Route path="settings" element={<Setting_service_provider  />} />
+
           </Route>
         </Routes>
       </BrowserRouter>

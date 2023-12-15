@@ -7,7 +7,7 @@ import {
   RadialBar,
   RadialBarChart,
 } from "recharts";
-import { dataCircel } from "../../Report/ReportData";
+import { dataCircel } from "../../Admin_Dashboard/Report/ReportData";
 import Typography from "../../../utilities/Typography";
 
 const CircleChart = ({ title }) => {
