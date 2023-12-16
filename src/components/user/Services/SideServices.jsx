@@ -4,13 +4,16 @@ import Typography from "../../utilities/Typography";
 import { Link } from "react-router-dom";
 import "./Services.css";
 import Click_Outsite from "../../utilities/Click_Outsite";
+import { useTranslation } from "react-i18next";
 
 import { useServices } from "../../../context/Context";
 import { useContext, useRef, useState } from "react";
 
 export default function SideServices() {
+  const { t } = useTranslation("global");
   const [side, setSide] = useState(true);
   const [clickec, setClicked] = useState(false);
+
   const ref = useRef(null);
   const handleSide = () => {
     setSide(!side);
@@ -55,11 +58,11 @@ export default function SideServices() {
     },
   ];
   const rate = [
-    { rate: "Five Stars", count: "5" },
-    { rate: "Four Stars", count: "4" },
-    { rate: "Three Stars", count: "3" },
-    { rate: "Two Stars", count: "2" },
-    { rate: "One Stars", count: "1" },
+    { name: "Five Stars", rate: "5" },
+    { name: "Four Stars", rate: "4" },
+    { name: "Three Stars", rate: "3" },
+    { name: "Two Stars", rate: "2" },
+    { name: "One Stars", rate: "1" },
   ];
   const location = [
     { title: "Closer to you", count: "200" },
@@ -80,13 +83,9 @@ export default function SideServices() {
     setMaxvalue(value);
   };
 
-  console.log(Minvalue);
-  console.log(Maxvalue);
-
   const [myCheckValue, setCheckValue] = useState([]);
   const handleServicesType = (checkValue) => {
     const finalCheckValue = checkValue.target.name;
-
     const isItemChecked = myCheckValue.includes(finalCheckValue);
 
     if (isItemChecked) {
@@ -95,7 +94,20 @@ export default function SideServices() {
       );
       setCheckValue(updatedCheckValue);
     } else {
-      setCheckValue([...myCheckValue, finalCheckValue, Minvalue]);
+      setCheckValue([...myCheckValue, { finalCheckValue, Minvalue, Maxvalue }]);
+    }
+  };
+  const handleRate = (rate) => {
+    const finalRate = rate.target.name;
+    const rateIsChecked = myCheckValue.includes(finalRate);
+
+    if (rateIsChecked) {
+      const updatedCheckValue = myCheckValue.filter(
+        (item) => item !== finalRate
+      );
+      setCheckValue(updatedCheckValue);
+    } else {
+      setCheckValue([...myCheckValue, finalRate]);
     }
   };
 
@@ -122,7 +134,7 @@ export default function SideServices() {
           <div className="flex flex-col gap-6 md:gap-12 xl:w-[21rem] lg:w-[18rem]  relative z-50 pt-5 md:py-20 lg:pt-60 lg:pb-12 px-1 xl:px-20 bg-myGray-200 md:bg-transparent shadow md:shadow-transparent rounded md:rounded-none lg:before:absolute lg:before-content[''] md:before:w-[1px] lg:before:h-full lg:before:bg-myGray-100 lg:before:-end-4 lg:after:absolute lg:after-content-[''] after:w-[0.4rem] after:h-[0.4rem] lg:after:bg-myGray-100 lg:after:rounded-full lg:after:-end-[1.13rem] ">
             <div className="flex flex-col gap-2 md:gap-5 ">
               <Typography className={"text-xl pb-3"} component={"h1"}>
-                Categories
+                {t("services.0")}
               </Typography>
               {services.map((service, index) => (
                 <div
@@ -156,7 +168,7 @@ export default function SideServices() {
             ></div>
             <div className="flex sm:min-w-[10rem]  flex-col gap-2 md:gap-5  ">
               <Typography className={"text-xl pb-3"} component={"h1"}>
-                Location
+                {t("services.1")}
               </Typography>
               {location.map((loc, LocIndex) => (
                 <div className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]">
@@ -183,7 +195,7 @@ export default function SideServices() {
                   className={"text-start text-xs md:text-sm"}
                   component={"secondary-text"}
                 >
-                  Choose yourself
+                  {t("services.2")}
                 </Typography>
               </Link>
             </div>
@@ -196,7 +208,7 @@ export default function SideServices() {
             </div>
             <div>
               <Typography className={"text-xl pb-3"} component={"h1"}>
-                Price
+                {t("services.3")}
               </Typography>
               <div className="relative">
                 <div className="h-[4px] bg-myGray-400 w-32 md:w-[15rem] rounded relative">
@@ -256,25 +268,27 @@ export default function SideServices() {
             ></div>
             <div className="flex flex-col sm:min-w-[10rem] gap-2 md:gap-5  ">
               <Typography className={"text-xl pb-3"} component={"h1"}>
-                Rating
+                {t("services.4")}
               </Typography>
-              {rate.map((rate, rateiIndex) => (
+              {rate.map((rateEle, rateiIndex) => (
                 <div className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]">
                   <div key={rateiIndex} className="flex items-center gap-2">
                     <input
+                      onClick={handleRate}
+                      name={rateEle.rate}
                       type="checkbox"
-                      id={""}
+                      id={rateEle.name}
                       className="appearance-none border border-myGray-500 rounded w-3 h-3 md:w-4 md:h-4  checked:bg-primary checked:border-transparent cursor-pointer "
                     />
                     <label
                       className="cursor-pointer text-xs md:text-sm "
-                      htmlFor={""}
+                      htmlFor={rateEle.name}
                     >
-                      {rate.rate}
+                      {rateEle.name}
                     </label>
                   </div>
                   <span className="text-xs md:text-sm pe-2 md:pe-0">
-                    {rate.count}
+                    {rateEle.rate}
                   </span>
                 </div>
               ))}
@@ -284,7 +298,7 @@ export default function SideServices() {
                   className={"text-start text-xs md:text-sm"}
                   component={"secondary-text"}
                 >
-                  Search For Another
+                  {t("services.5")}
                 </Typography>{" "}
               </Link>
             </div>

@@ -139,6 +139,14 @@
     "So, Let’s Started",
     "High-Quality Dental Care"
   ],
+  "services": [
+    "Categories",
+    "Location",
+    "Choose yourself",
+    "Price",
+    "Rating",
+    "Search For Another"
+  ],
   "error4": [
     "Page Not Found !",
     "Sorry, We couldn’t the find page you looking for.",
@@ -168,9 +176,12 @@
       "Services",
       "Products",
       "Report"
-    
     ],
-    "AdminDashbord_all_users_menu": [" Service Providers", " Patient Users", " Admin Users"],
+    "AdminDashbord_all_users_menu": [
+      " Service Providers",
+      " Patient Users",
+      " Admin Users"
+    ],
     "about_dashboard_menu": ["Settings", "Sign Out"],
     "Admin_dashboard_Services": [
       "Doctors Services",
@@ -179,10 +190,9 @@
       "Clinic Services",
       "Lab Services"
     ],
-    "serviceProvider_dashboard_Services":[
+    "serviceProvider_dashboard_Services": [
       "Request Services",
       " Table Services"
-
     ],
     "Contact_us_discrption": "We hope that our website will be useful to you and we are happy for you to ",
     "contact_us": " contact us"
@@ -205,6 +215,13 @@
 
   "noNotification": ["Notification", "Not Found Notification"],
   "notification": ["Notification"],
-  "request_edit":["Request For Edit My Profile","Saturday,  September 2023 ","Request:","If you would like to amend your personal information, please send a request with the information you would like to change.",
-"Your Change Info: ","Please write what changes you want to make."," Send Request"]
+  "request_edit": [
+    "Request For Edit My Profile",
+    "Saturday,  September 2023 ",
+    "Request:",
+    "If you would like to amend your personal information, please send a request with the information you would like to change.",
+    "Your Change Info: ",
+    "Please write what changes you want to make.",
+    " Send Request"
+  ]
 }
