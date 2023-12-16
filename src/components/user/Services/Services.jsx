@@ -12,10 +12,11 @@ import tean from "./Services_img/tean.svg";
 import BackPolygon from "../../utilities/BackPolygon";
 import { useContext } from "react";
 import { useServices } from "../../../context/Context";
+import NoData from "./Nodata";
 
 export default function Service() {
   const { customServices } = useContext(useServices);
-  console.log("from services", customServices);
+  console.log(customServices);
 
   const providers = [
     {
@@ -132,30 +133,36 @@ export default function Service() {
 
   return (
     <div>
-      <div className="  sm:pb-20 pt-6 lg:pt-36 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ps-5 md:ps-10 pe-5 gap-5">
-        {providers.map((e, index) => (
-          <div
-            className="relative  before:absolute before:content-[''] before:w-full before:h-full before:bg-black before:bg-opacity-30 before:rounded-xl "
-            key={index}
-          >
-            <img className="w-full" src={e.image} alt="" />
+      {providers.length >= 1 ? (
+        <>
+          <div className="  sm:pb-20 pt-6 lg:pt-36 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ps-5 md:ps-10 pe-5 gap-5">
+            {providers.map((e, index) => (
+              <div
+                className="relative  before:absolute before:content-[''] before:w-full before:h-full before:bg-black before:bg-opacity-30 before:rounded-xl "
+                key={index}
+              >
+                <img className="w-full" src={e.image} alt="" />
 
-            <div className="absolute bottom-0 px-4 py-2">
-              <span className="text-sm text-white">{e.title}</span>
-              <p className="text-xs text-white">{e.description}</p>
-            </div>
+                <div className="absolute bottom-0 px-4 py-2">
+                  <span className="text-sm text-white">{e.title}</span>
+                  <p className="text-xs text-white">{e.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="absolute -bottom-32 end-10">
-        <BackPolygon />
-      </div>
-      <div className=" hidden  bottom-0 md:flex items-center start-[50%] gap-2 absolute">
-        <div className="w-14 h-3 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
-        <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
-        <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
-        <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
-      </div>
+          <div className="absolute -bottom-32 end-10">
+            <BackPolygon />
+          </div>
+          <div className=" hidden  bottom-0 md:flex items-center start-[50%] gap-2 absolute">
+            <div className="w-14 h-3 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+            <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
+            <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
+            <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
+          </div>
+        </>
+      ) : (
+        <NoData />
+      )}
     </div>
   );
 }
