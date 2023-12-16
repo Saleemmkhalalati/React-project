@@ -129,10 +129,7 @@ export default function SideServices() {
   };
   return (
     <Click_Outsite exceptionRef={ref} onClick={handleSide}>
-      <div
-        ref={ref}
-        className="absolute md:relative start-1  w-[12rem] md:w-[25%] z-50"
-      >
+      <div ref={ref} className="absolute md:relative start-1 z-50">
         <div className="cursor-pointer block md:hidden px-4">
           <img className="w-7 " onClick={handleSide} src={menu} alt="" />
         </div>
