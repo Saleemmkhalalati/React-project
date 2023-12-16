@@ -7,7 +7,7 @@ import Click_Outsite from "../../utilities/Click_Outsite";
 import { useTranslation } from "react-i18next";
 
 import { useServices } from "../../../context/Context";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 export default function SideServices() {
   const { t } = useTranslation("global");
@@ -19,6 +19,58 @@ export default function SideServices() {
     setSide(!side);
     setClicked(true);
   };
+  const [rangePrice, setRangePrice] = useState({});
+  const [Minvalue, setMinvalue] = useState(0);
+  const [Maxvalue, setMaxvalue] = useState(2000);
+  const rangeMin = 0;
+  const rangeMax = 2000;
+
+  const handleMinChange = (event) => {
+    const value = parseInt(event.target.value);
+    setMinvalue(value);
+  };
+
+  const handleMaxChange = (event) => {
+    const value = parseInt(event.target.value);
+    setMaxvalue(value);
+  };
+  const handleRangePrice = () => {
+    setRangePrice(Minvalue, Maxvalue);
+    setCheckValue([rangePrice]);
+  };
+  const [myCheckValue, setCheckValue] = useState([]);
+  const handleServicesType = (checkValue) => {
+    const finalCheckValue = checkValue.target.name;
+    const isItemChecked = myCheckValue.includes(finalCheckValue);
+
+    if (isItemChecked) {
+      const updatedCheckValue = myCheckValue.filter(
+        (item) => item !== finalCheckValue
+      );
+      setCheckValue(updatedCheckValue);
+    } else {
+      setCheckValue([finalCheckValue]);
+    }
+  };
+  const handleRate = (rate) => {
+    const finalRate = rate.target.name;
+    const rateIsChecked = myCheckValue.includes(finalRate);
+
+    if (rateIsChecked) {
+      const updatedCheckValue = myCheckValue.filter(
+        (item) => item !== finalRate
+      );
+      setCheckValue(updatedCheckValue);
+    } else {
+      setCheckValue([...myCheckValue, finalRate]);
+    }
+  };
+
+  //store custum services in usestate
+  const { setcustomServices } = useContext(useServices);
+  useEffect(() => {
+    setcustomServices(myCheckValue);
+  }, [myCheckValue, setcustomServices]);
 
   const services = [
     {
@@ -68,52 +120,6 @@ export default function SideServices() {
     { title: "Closer to you", count: "200" },
     { title: "Farther from you", count: "350" },
   ];
-  const [Minvalue, setMinvalue] = useState(0);
-  const [Maxvalue, setMaxvalue] = useState(2000);
-  const rangeMin = 0;
-  const rangeMax = 2000;
-
-  const handleMinChange = (event) => {
-    const value = parseInt(event.target.value);
-    setMinvalue(value);
-  };
-
-  const handleMaxChange = (event) => {
-    const value = parseInt(event.target.value);
-    setMaxvalue(value);
-  };
-
-  const [myCheckValue, setCheckValue] = useState([]);
-  const handleServicesType = (checkValue) => {
-    const finalCheckValue = checkValue.target.name;
-    const isItemChecked = myCheckValue.includes(finalCheckValue);
-
-    if (isItemChecked) {
-      const updatedCheckValue = myCheckValue.filter(
-        (item) => item !== finalCheckValue
-      );
-      setCheckValue(updatedCheckValue);
-    } else {
-      setCheckValue([...myCheckValue, { finalCheckValue, Minvalue, Maxvalue }]);
-    }
-  };
-  const handleRate = (rate) => {
-    const finalRate = rate.target.name;
-    const rateIsChecked = myCheckValue.includes(finalRate);
-
-    if (rateIsChecked) {
-      const updatedCheckValue = myCheckValue.filter(
-        (item) => item !== finalRate
-      );
-      setCheckValue(updatedCheckValue);
-    } else {
-      setCheckValue([...myCheckValue, finalRate]);
-    }
-  };
-
-  //store custum services in usestate
-  const { setcustomServices } = useContext(useServices);
-  setcustomServices(myCheckValue);
 
   const rangeBackgroundStyle = {
     insetInlineStart: `${
@@ -125,7 +131,7 @@ export default function SideServices() {
     <Click_Outsite exceptionRef={ref} onClick={handleSide}>
       <div
         ref={ref}
-        className="absolute md:relative start-1  w-[12rem] md:w-[25%] z-50 "
+        className="absolute md:relative start-1  w-[12rem] md:w-[25%] z-50"
       >
         <div className="cursor-pointer block md:hidden px-4">
           <img className="w-7 " onClick={handleSide} src={menu} alt="" />
@@ -140,8 +146,8 @@ export default function SideServices() {
               </Typography>
               {services.map((service, index) => (
                 <div
-                  className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]"
                   key={index}
+                  className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]"
                 >
                   <div className="flex items-center gap-2">
                     <input
@@ -172,9 +178,12 @@ export default function SideServices() {
               <Typography className={"text-xl pb-3"} component={"h1"}>
                 {t("services.1")}
               </Typography>
-              {location.map((loc, LocIndex) => (
-                <div className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]">
-                  <div key={LocIndex} className="flex items-center gap-2">
+              {location.map((loc, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]"
+                >
+                  <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
                       id={loc.title}
@@ -273,8 +282,11 @@ export default function SideServices() {
                 {t("services.4")}
               </Typography>
               {rate.map((rateEle, rateiIndex) => (
-                <div className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]">
-                  <div key={rateiIndex} className="flex items-center gap-2">
+                <div
+                  key={rateiIndex}
+                  className="flex justify-between items-end  gap-2 md:gap-16 md:min-w-[15rem]"
+                >
+                  <div className="flex items-center gap-2">
                     <input
                       onClick={handleRate}
                       name={rateEle.rate}
@@ -294,6 +306,7 @@ export default function SideServices() {
                   </span>
                 </div>
               ))}
+
               <Link to={""}>
                 {" "}
                 <Typography
