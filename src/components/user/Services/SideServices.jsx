@@ -116,7 +116,9 @@ export default function SideServices() {
   setcustomServices(myCheckValue);
 
   const rangeBackgroundStyle = {
-    left: `${((Minvalue - rangeMin) / (rangeMax - rangeMin)) * 100}%`,
+    insetInlineStart: `${
+      ((Minvalue - rangeMin) / (rangeMax - rangeMin)) * 100
+    }%`,
     width: `${((Maxvalue - Minvalue) / (rangeMax - rangeMin)) * 100}%`,
   };
   return (
