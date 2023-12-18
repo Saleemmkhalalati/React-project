@@ -223,5 +223,16 @@
     "Your Change Info: ",
     "Please write what changes you want to make.",
     " Send Request"
-  ]
+  ],
+  "report_admin_page":{
+    "department":["All Users - 100.000","All Services - 190.000","All Product - 250.000"],
+    "department_des":["All users (supper admin, admin, service provider, patient)","All services from (doctor, hospital, lab, clinic, pharmacy)","All product (medical drugs, medical devices, cosmetic ointments)"],
+    "chart_des":["All users as (supper admin, admin, service provider, patient) and in this website the users is increased. ","All services from (doctor, hospital, lab, clinic, pharmacy) and in this website the users is increased.  ","All Product as (medical drugs, medical devices, cosmetic ointments) and in this website the users is increased. "]
+  },
+  "report_serice_provider":{
+ 
+    "department":["All Users - 100.000","All Services - 190.000","All Product - 250.000"]
+  },
+
+  "services_map":["Please choose the appropriate location for you so that we can determine the appropriate products and services for you according to the location you have chosen."]
 }
