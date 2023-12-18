@@ -8,7 +8,7 @@ import Landing from "./components/user/Landing/Landing";
 import AboutUs from "./components/user/AboutUs/AboutUS";
 import Service from "./components/user/Services/Services";
 import TitleAndSideServices from "./components/user/Services/TitleAndSideServices";
-import Map from "./components/user/Services/Map.jsx";
+import Map from "./components/user/Services/Map/Map.jsx";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
