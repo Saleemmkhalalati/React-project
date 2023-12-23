@@ -30,8 +30,9 @@ import LabServices from "./components/Dashbord/Admin_Dashboard/Service/LabServic
 import Allusers from "./components/Dashbord/Admin_Dashboard/Report/Allusers.jsx";
 import Allservices from "./components/Dashbord/Admin_Dashboard/Report/Allservices.jsx";
 import Allproducts from "./components/Dashbord/Admin_Dashboard/Report/Allproducts.jsx";
-import Home from "./components/Dashbord/Dashbord_service_provider/Service_provider_home/Home.jsx"
+import Home from "./components/Dashbord/Dashbord_service_provider/Service_provider_home/Home.jsx";
 import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
+import Details from "./components/user/Services/Details/Details";
 
 function App() {
   return (
@@ -52,10 +53,12 @@ function App() {
             <Route path="services" element={<TitleAndSideServices />}>
               <Route index element={<Service />} />
             </Route>
+            <Route path="/details/:id" element={<Details />} />
+
             <Route path="about-us" element={<AboutUs />} />
             <Route path="contact-us" element={<ContactUs />} />
           </Route>
-          <Route path="/dashboard" element={<DashboardLayout  />}>
+          <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="users" element={<Dashboard />} />
@@ -95,10 +98,12 @@ function App() {
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
           </Route>
-          <Route path="/dashboard_service_provider" element={<DashboardLayout />} >
-          <Route path="/dashboard_service_provider" element={<Home />} />
-          <Route path="settings" element={<Setting_service_provider  />} />
-
+          <Route
+            path="/dashboard_service_provider"
+            element={<DashboardLayout />}
+          >
+            <Route path="/dashboard_service_provider" element={<Home />} />
+            <Route path="settings" element={<Setting_service_provider />} />
           </Route>
         </Routes>
       </BrowserRouter>

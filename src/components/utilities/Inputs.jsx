@@ -1,4 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
+
+//datePik library
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
 
 export function FInput({
   label,
@@ -65,12 +72,15 @@ export function Textarea({
   errorMsg,
   rows,
   name,
+  className,
 }) {
   return (
     <div>
       <div className={`relative z-[0]`}>
         <textarea
-          className={`peer py-2 px-3 resize-none w-full h-52 rounded-md border-[1px]
+          className={`peer py-2 px-3 resize-none w-full ${
+            className ? className : "h-52"
+          }  rounded-md border-[1px]
                     bg-transparent placeholder-transparent  text-mySlate outline-0 focus:outline-none
                     ${
                       errorMsg !== ""
@@ -108,6 +118,34 @@ Textarea.propTypes = {
   rows: PropTypes.number,
 };
 import { easeInOut, motion } from "framer-motion";
+
+export function InputDatePicker({
+  label,
+  name,
+  value,
+  onBlur,
+  onChange,
+  icon,
+  errorMsg,
+  type,
+}) {
+  const [startDate, setStartDate] = useState("");
+  const CustomTimeInput = ({ date, value, onChange }) => <></>;
+  return (
+    <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      className={`flex flex-row  border-[1px] border-solid w-full outline-none py-2 px-4 rounded ${
+        errorMsg
+          ? "border-error "
+          : "border-myGray-400 focus-within:border-primary"
+      }`}
+    ></DatePicker>
+  );
+}
+
+export default InputDatePicker;
+
 export function Input({
   label,
   name,

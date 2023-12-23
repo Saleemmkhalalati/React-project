@@ -13,6 +13,7 @@ import BackPolygon from "../../utilities/BackPolygon";
 import { useContext } from "react";
 import { useServices } from "../../../context/Context";
 import NoData from "./Nodata";
+import { Link } from "react-router-dom";
 
 export default function Service() {
   const { customServices } = useContext(useServices);
@@ -135,21 +136,21 @@ export default function Service() {
     <div>
       {providers.length >= 1 ? (
         <>
-          <div className="  sm:pb-20 pt-6 lg:pt-36 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ps-5 md:ps-10 pe-5 gap-5">
-            {providers.map((e, index) => (
-              <div
-                className="relative  before:absolute before:content-[''] before:w-full before:h-full before:bg-black before:bg-opacity-30 before:rounded-xl "
-                key={index}
-              >
-                <img className="w-full" src={e.image} alt="" />
+          <div className="sm:pb-20 pt-6 lg:pt-36 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ps-5 md:ps-10 pe-5 gap-5">
+            {providers.map((e) => (
+              <Link to={`/details/${e.id}`} key={e.id}>
+                <div className="relative before:absolute before:content-[''] before:w-full before:h-full before:bg-black before:bg-opacity-30 before:rounded-xl">
+                  <img className="w-full" src={e.image} alt="" />
 
-                <div className="absolute bottom-0 px-4 py-2">
-                  <span className="text-sm text-white">{e.title}</span>
-                  <p className="text-xs text-white">{e.description}</p>
+                  <div className="absolute bottom-0 px-4 py-2">
+                    <span className="text-sm text-white">{e.title}</span>
+                    <p className="text-xs text-white">{e.description}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+
           <div className="absolute -bottom-32 end-10">
             <BackPolygon />
           </div>
