@@ -8,6 +8,7 @@ import Landing from "./components/user/Landing/Landing";
 import AboutUs from "./components/user/AboutUs/AboutUS";
 import Service from "./components/user/Services/Services";
 import TitleAndSideServices from "./components/user/Services/TitleAndSideServices";
+import Map from "./components/user/Services/Map/Map.jsx";
 import ContactUs from "./components/user/CantactUs/ContactUs";
 import DashboardLayout from "./components/Dashbord/Dashbord_layout/DashboardLayout";
 import Dashboard from "./components/Dashbord/Dashboard/Dashboard";
@@ -32,7 +33,10 @@ import Allservices from "./components/Dashbord/Admin_Dashboard/Report/Allservice
 import Allproducts from "./components/Dashbord/Admin_Dashboard/Report/Allproducts.jsx";
 import Home from "./components/Dashbord/Dashbord_service_provider/Service_provider_home/Home.jsx";
 import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
+
 import Details from "./components/user/Services/Details/Details";
+import Report_service_provider from "./components/Dashbord/Dashbord_service_provider/Reports/Report_service_provider .jsx";
+import AllPatient from "./components/Dashbord/Dashbord_service_provider/Reports/AllPatient.jsx";
 
 function App() {
   return (
@@ -52,6 +56,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="services" element={<TitleAndSideServices />}>
               <Route index element={<Service />} />
+              <Route path="map" element={<Map />} />
             </Route>
             <Route path="/details/:id" element={<Details />} />
 
@@ -98,11 +103,17 @@ function App() {
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
           </Route>
+
           <Route
             path="/dashboard_service_provider"
             element={<DashboardLayout />}
           >
             <Route path="/dashboard_service_provider" element={<Home />} />
+            <Route path="report" element={<Report_service_provider />}>
+              <Route index element={<AllPatient />} />
+              <Route path="all_services" element={<Allservices />} />
+              <Route path="all-product" element={<Allproducts />} />
+            </Route>
             <Route path="settings" element={<Setting_service_provider />} />
           </Route>
         </Routes>

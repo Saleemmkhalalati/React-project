@@ -4,7 +4,6 @@ import {userData} from "./ReportData"
 import {yuserData} from "./ReportData"
 import CircleChart from '../../Dashbord_layout/circle chart/CircleChart'
 import Table from '../../Dashbord_layout/TableLayout'
-import { useTranslation } from "react-i18next";
 
 
  
@@ -15,8 +14,6 @@ import { useTranslation } from "react-i18next";
 
 const Allproducts = () => {
   const [point, setPoint] = useState(null);
-  const { t } = useTranslation("global");
-
 
   //for table drobdown
   const handlepoint = (selected) => {
@@ -62,8 +59,8 @@ const Allproducts = () => {
    
 
 
-   <CircleChart title= {t("report_admin_page.department.2")}  />
-   <Chart data={userData} yuserData={yuserData} title= {t("report_admin_page.department.2")} dec={t("report_admin_page.chart_des.2")} grid dataKey="Active User" />
+   <CircleChart title="All product for you (service providers - doctor(dental)) and in this website the users is increased. "  />
+   <Chart data={userData} yuserData={yuserData} title="All Product - 250.000" dec="All Product as (medical drugs, medical devices, cosmetic ointments) and in this website the users is increased.  " grid dataKey="Active User" />
    <div className=' w-full   lg:w-[100%] xl:w-[77%] sm:w-[100%]  h-[80%] mt-10 rounded-md relative xl:bottom-48 bg-white '>
    <Table
             columns={columns}

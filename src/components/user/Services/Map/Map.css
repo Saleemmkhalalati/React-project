@@ -1,0 +1,15 @@
+@import url("leaflet/dist/leaflet.css");
+.leaflet-container{
+  width: 100%;
+  height: 100vh;
+}
+.leaflet-top{
+  position: relative;
+  background-color: rebeccapurple;
+}
+.leaflet-control-zoom{
+position: absolute;
+bottom: px;
+color: #2bc1f778;
+}
+

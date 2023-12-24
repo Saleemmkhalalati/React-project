@@ -1,19 +1,64 @@
+//components
 import OurServicesTitle from "../../../utilities/OurServicesTitle";
 import Container from "../../../utilities/Container";
+import Typography from "../../../utilities/Typography";
+import { InputDatePicker, Input, Textarea } from "../../../utilities/Inputs";
+import Button from "../../../utilities/Button";
+import BackPolygon from "../../../utilities/BackPolygon";
+
+//img
+import star from "../Services_img/star.svg";
 import d1 from "../Services_img/d1.svg";
 import backDetails from "../Services_img/backDetails.svg";
 import second from "../Services_img/second.svg";
-import Typography from "../../../utilities/Typography";
-import star from "../Services_img/star.svg";
-import "./Details.css";
-import { InputDatePicker, Input, Textarea } from "../../../utilities/Inputs";
-import Button from "../../../utilities/Button";
+import time from "../../../../assets/icons/time.svg";
+import dateicon from "../../../../assets/icons/Date range.svg";
+
+//react
 import { useEffect, useState } from "react";
-import { Formik } from "formik";
-import BackPolygon from "../../../utilities/BackPolygon";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Map from "../Map/Map";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
 function Details() {
-  const [date, setDate] = useState("");
+  const { t } = useTranslation("global");
+  const info = [
+    {
+      date: "2023-12-15",
+      details: {
+        from_time: "09:00:00",
+        to_time: "10:00:00",
+        patient_id: 23,
+        patient_email: "maamoun.haj.najeeb@gmail.com",
+        service_id: 8,
+        service_title: "check Endocrine",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        created_at: "2023-12-09T21:00:32.948291",
+      },
+    },
+  ];
+  const validationSchema = Yup.object({
+    dateInput: Yup.date().required("Booking date is required"),
+    bookingTime: Yup.string().required("Booking time is required"),
+    note: Yup.string(),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      dateInput: "",
+      bookingTime: "",
+      note: "",
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   const [totalVotes, setTotalVotes] = useState(0);
   const [percentageVotes, setPercentageVotes] = useState({});
   const Someservices = [
@@ -39,23 +84,6 @@ function Details() {
     },
   ];
 
-  const info = [
-    {
-      date: "2023-12-15",
-      details: {
-        from_time: "09:00:00",
-        to_time: "10:00:00",
-        patient_id: 23,
-        patient_email: "maamoun.haj.najeeb@gmail.com",
-        service_id: 8,
-        service_title: "check Endocrine",
-        provider_id: 30,
-        provider_business_name: "Remostart",
-        location_id: 3,
-        created_at: "2023-12-09T21:00:32.948291",
-      },
-    },
-  ];
   const fromTime = info[0].details.from_time;
   const ToTime = info[0].details.to_time;
 
@@ -87,6 +115,8 @@ function Details() {
     calculatePercentageVotes();
   }, []);
 
+  const { id } = useParams();
+
   return (
     <Container className={"overflow-hidden "}>
       {Someservices.map((e, index) => (
@@ -100,7 +130,7 @@ function Details() {
               </div>
               <div className="  sm:flex gap-5 flex-row md:flex-col  ">
                 <div
-                  className=" z-50 min-h-[47%] min-w-[50%] rounded bg-cover bg-center xl:pb-[3.4rem] "
+                  className="-z-50 min-h-[47%] min-w-[50%] rounded bg-cover bg-center xl:pb-[3.4rem] "
                   style={{
                     backgroundImage: `url(${backDetails})`,
                   }}
@@ -111,7 +141,7 @@ function Details() {
                         className={"text-xs lg:text-lg "}
                         component={"h3"}
                       >
-                        Review & Rating
+                        {t("details.0")}
                       </Typography>
                     </div>
                     <>
@@ -158,7 +188,7 @@ function Details() {
                               className={"text-xs lg:text-sm"}
                               component={"h4"}
                             >
-                              Reviews
+                              {t("details.1")}
                             </Typography>
                           </div>
                         </div>
@@ -197,35 +227,45 @@ function Details() {
               <Typography component={"h3"}>Information About BAC:</Typography>
               <Typography component={"h5"}>
                 {Someservices[0].description}
-                Bethel Analysis Center (BAC) is a medical analysis facility
-                known for its state-of-the-art, excellent machines and friendly
-                staff. Our place is as elegant as it is practical, and we take
-                pride in supporting our customers with the highest quality of
-                service and the accuracy of excellent laboratory tests. Whether
-                you are simple or simple analyses, we are constantly working
-                towards ensuring that our customers receive service that exceeds
-                expectations.
               </Typography>
             </div>
 
-            <Typography component={"h3"}>Our Schedule</Typography>
-
+            <Typography component={"h3"}> {t("details.8")}</Typography>
+            <div className="absolute top-[66rem] end-0">
+              <BackPolygon />
+            </div>
             <table className=" hidden sm:table md:w-full">
               <thead className="">
-                <th className=" py-2 w-20"></th>
-                <th className="bg-myGray-100 text-center py-2">Sun</th>
-                <th className="bg-myGray-100 text-center py-2">Mon</th>
-                <th className="bg-myGray-100 text-center py-2">Tue</th>
-                <th className="bg-myGray-100 text-center py-2">Wed</th>
-                <th className="bg-myGray-100 text-center py-2">Thu</th>
-                <th className="bg-myGray-100 text-center py-2">Fri</th>
-                <th className="bg-myGray-100 text-center py-2">Sat</th>
+                <tr>
+                  <th className=" py-2 w-20"></th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.12")}
+                  </th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.13")}
+                  </th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.14")}
+                  </th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.15")}
+                  </th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.16")}
+                  </th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.17")}
+                  </th>
+                  <th className="bg-myGray-100 text-center py-2">
+                    {t("details.18")}
+                  </th>
+                </tr>
               </thead>
 
               <tbody className="overflow-x-scroll w-full">
                 <tr className="">
                   <td className="py-2 text-center bg-myGray-100 border-b border-myGray-400">
-                    From
+                    {t("details.10")}
                   </td>
                   <td className="text-center border-[1px] border-solid border-myGray-400 py-4">
                     {fromTime}
@@ -251,7 +291,7 @@ function Details() {
                 </tr>
                 <tr className="">
                   <td className="py-2 text-center bg-myGray-100 border-b border-myGray-400">
-                    To
+                    {t("details.11")}
                   </td>
                   <td className="text-center border-[1px] border-solid border-myGray-400 py-4">
                     {ToTime}
@@ -279,9 +319,11 @@ function Details() {
             </table>
             <table className="sm:hidden">
               <thead>
-                <th className="bg-myGray-100 text-center py-2">Day</th>
-                <th className="bg-myGray-100 text-center py-2">From</th>
-                <th className="bg-myGray-100 text-center py-2">To</th>
+                <tr>
+                  <th className="bg-myGray-100 text-center py-2">Day</th>
+                  <th className="bg-myGray-100 text-center py-2">From</th>
+                  <th className="bg-myGray-100 text-center py-2">To</th>
+                </tr>
               </thead>
               <tbody>
                 <tr>
@@ -363,36 +405,69 @@ function Details() {
                 </tr>
               </tbody>
             </table>
-            <Typography component={"h3"}>Our Location</Typography>
+            <Typography component={"h3"}>{t("details.9")}</Typography>
+            <Map />
           </div>
           <div
-            className="xl:absolute w-full xl:w-[29rem]   bg-white py-4 px-6 rounded shadow
-          end-0 xl:end-24  top-[40rem]  xl:top-[30rem]   "
+            className="xl:absolute w-full xl:w-[29rem]  bg-white py-4 px-6 rounded shadow
+          end-0 xl:end-24  top-[40rem]  xl:top-[30rem] pb-24 xl:pb-10"
           >
             <div className="flex flex-col gap-3">
               <Typography className={"text"} component={"h3"}>
-                Make a Reservation
+                {t("details.2")}
               </Typography>
               <Typography className={"mb-7"} component={"h5"}>
-                If you want to book an appointment, please fill out this
-                information.
+                {t("details.3")}
               </Typography>
-              <InputDatePicker
-                name={"dateInput"}
-                value={date}
-                onChange={setDate}
-                icon={star}
-                label={"Booking Time"}
-                errorMsg={""}
-              />
-              <Input
-                name={"Booking Time"}
-                icon={star}
-                label={"Booking Time"}
-                errorMsg={""}
-              />
-              <Textarea className={"h-28"} label={"Note"} errorMsg={""} />
-              <Button type={"submit"}>Make a Reservation</Button>
+              <form
+                className="flex flex-col gap-5"
+                onSubmit={formik.handleSubmit}
+              >
+                {/* Input for Date */}
+                <InputDatePicker
+                  name={"dateInput"}
+                  value={formik.values.dateInput}
+                  onChange={(date) => formik.setFieldValue("dateInput", date)}
+                  onBlur={formik.handleBlur("dateInput")}
+                  icon={dateicon}
+                  label={t("details.5")}
+                  errorMsg={formik.touched.dateInput && formik.errors.dateInput}
+                />
+
+                {/* Input for Time */}
+                <Input
+                  type={"text"}
+                  onChange={(e) => formik.handleChange(e)}
+                  value={formik.values.bookingTime}
+                  onBlur={formik.handleBlur("bookingTime")}
+                  name={"bookingTime"}
+                  icon={time}
+                  label={t("details.4")}
+                  errorMsg={
+                    formik.touched.bookingTime &&
+                    formik.values.bookingTime === ""
+                      ? formik.errors.bookingTime
+                      : "" && formik.errors.bookingTime
+                      ? formik.errors.bookingTime
+                      : ""
+                  }
+                />
+
+                {/* Textarea for Note */}
+                <Textarea
+                  type={"textarea"}
+                  name={"note"}
+                  onChange={(e) => formik.handleChange(e)}
+                  value={formik.values.note}
+                  onBlur={formik.handleBlur("note")}
+                  className="h-28"
+                  label={t("details.6")}
+                  errorMsg={formik.errors.note ? formik.errors.note : ""}
+                />
+
+                {/* Submit Button */}
+                <Button type="submit">{t("details.7")}</Button>
+              </form>
             </div>
           </div>
         </div>

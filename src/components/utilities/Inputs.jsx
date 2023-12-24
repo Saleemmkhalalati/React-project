@@ -3,8 +3,8 @@ import { useState } from "react";
 
 //datePik library
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import isSameDay from "date-fns/isSameDay";
 import { format } from "date-fns";
 
 export function FInput({
@@ -129,22 +129,71 @@ export function InputDatePicker({
   errorMsg,
   type,
 }) {
-  const [startDate, setStartDate] = useState("");
-  const CustomTimeInput = ({ date, value, onChange }) => <></>;
-  return (
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      className={`flex flex-row  border-[1px] border-solid w-full outline-none py-2 px-4 rounded ${
+  const dateFormat = "MM/dd/yyyy";
+  const customInput = (
+    <div
+      className={`relative flex bg-white px-4 py-2 border-solid text-mySlate border-[1px] rounded-md  ${
         errorMsg
           ? "border-error "
+          : "border-myGray-400 focus-within:border-primary "
+      } `}
+    >
+      <label
+        htmlFor={name}
+        className="relative z-[0] w-full me-1 transition-all duration-100 ease-in"
+      >
+        <input
+          className="peer cursor-pointer w-full placeholder-transparent text-mySlate outline-0 focus:outline-none"
+          placeholder="p"
+          type={type}
+          name={name}
+          value={value ? format(new Date(value), dateFormat) : ""}
+          onBlur={onBlur}
+          readOnly
+          onChange={onChange}
+        />
+        <span className="absolute start-0 -top-[1.40rem] px-1 text-mySlate text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mySlate peer-placeholder-shown:top-0 peer-focus:-top-[1.40rem] peer-focus:text-mySlate peer-focus:text-sm rounded-md bg-gradient-to-b from-transparent from-65% to-white to-35%">
+          {label}
+        </span>
+      </label>
+      <img className="w-4" src={icon} alt={name} />
+    </div>
+  );
+
+  const handleTodayClick = () => {
+    onChange(new Date());
+  };
+
+  return (
+    <DatePicker
+      dateFormat={dateFormat}
+      customInput={customInput}
+      selected={value}
+      value={value}
+      onBlur={onBlur}
+      onChange={onChange}
+      showPopperArrow={false}
+      dayClassName={(date) =>
+        value && isSameDay(date, new Date(value))
+          ? "bg-gradient-to-b from-primary from-15% to-secondary to-85% rounded"
+          : ""
+      }
+      calendarClassName="border-none shadow"
+      className={`flex flex-row border-[1px] border-solid w-full outline-none py-2 px-4 rounded ${
+        errorMsg
+          ? "border-error"
           : "border-myGray-400 focus-within:border-primary"
       }`}
-    ></DatePicker>
+    >
+      <div
+        onClick={handleTodayClick}
+        className="text-secondary text-center cursor-pointer"
+      >
+        Today
+      </div>
+    </DatePicker>
   );
 }
-
-export default InputDatePicker;
 
 export function Input({
   label,

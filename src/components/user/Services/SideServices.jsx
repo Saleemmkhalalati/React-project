@@ -198,7 +198,7 @@ export default function SideServices() {
                   </span>
                 </div>
               ))}
-              <Link to={""}>
+              <Link to={"/services/map"}>
                 <Typography
                   className={"text-start text-xs md:text-sm"}
                   component={"secondary-text"}

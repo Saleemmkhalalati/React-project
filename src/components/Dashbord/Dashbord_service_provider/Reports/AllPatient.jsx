@@ -4,7 +4,6 @@ import {userData} from "./ReportData"
 import {yuserData} from "./ReportData"
 import CircleChart from '../../Dashbord_layout/circle chart/CircleChart'
 import Table from '../../Dashbord_layout/TableLayout'
-import { useTranslation } from "react-i18next";
 
 
  
@@ -13,10 +12,8 @@ import { useTranslation } from "react-i18next";
 
  
 
-const Allproducts = () => {
+const Allusers = () => {
   const [point, setPoint] = useState(null);
-  const { t } = useTranslation("global");
-
 
   //for table drobdown
   const handlepoint = (selected) => {
@@ -25,17 +22,17 @@ const Allproducts = () => {
 
   const columns = [
     "ID",
-    "Type Users",
+    "Type Patient",
     "Total Number",
-    "Total Active Users",
-    "Total Not Active Users",
+    "Total Active Patient",
+    "Total Not Active Patient",
   
     " ",
   ];
   const rows = [
     {
     
-      Type_Users :"Service Provides",
+      Type_Users :"Treatment Finished",
       Total_Number:"50.000",
       Total_Active_Users:"49.000",
       Total_Not_Active_Users:"1.000",
@@ -43,7 +40,7 @@ const Allproducts = () => {
     },
     {
     
-      Type_Users :"Service Provides",
+      Type_Users :"Treatment Finished",
       Total_Number:"50.000",
       Total_Active_Users:"49.000",
       Total_Not_Active_Users:"1.000",
@@ -53,8 +50,8 @@ const Allproducts = () => {
   ];
 
   const points = [
-    { name: "Go to service provides", type: "viwe" },
-    { name: "Export this filed ", type: "viwe" },
+    { name: "Go to patient users ", type: "view" },
+    { name: "Export this filed ", type: "view" },
   
   ];
   return (
@@ -62,8 +59,8 @@ const Allproducts = () => {
    
 
 
-   <CircleChart title= {t("report_admin_page.department.2")}  />
-   <Chart data={userData} yuserData={yuserData} title= {t("report_admin_page.department.2")} dec={t("report_admin_page.chart_des.2")} grid dataKey="Active User" />
+   <CircleChart title="All Patient - 50.000"  />
+   <Chart data={userData} yuserData={yuserData} title="All Patient - 50.000" dec="All patients for you (service providers - doctor (dental)) and in this website the users is increased. " grid dataKey="Active User" />
    <div className=' w-full   lg:w-[100%] xl:w-[77%] sm:w-[100%]  h-[80%] mt-10 rounded-md relative xl:bottom-48 bg-white '>
    <Table
             columns={columns}
@@ -79,4 +76,4 @@ const Allproducts = () => {
     
 )}
 
-export default Allproducts
+export default Allusers

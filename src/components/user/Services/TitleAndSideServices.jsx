@@ -4,11 +4,12 @@ import SideServices from "../../user/Services/SideServices";
 import Container from "../../utilities/Container";
 export default function TitleAndSideServices() {
   return (
-    <Container className={"overflow-hidden"}>
-      <div className="flex lg:justify-normal justify-center ">
+    <Container className={"overflow-hidden "}>
+      <div className="flex lg:justify-normal justify-center  ">
         <SideServices />
         <div className="w-[75%]">
           <OurServicesTitle className={"w-[100%]  lg:w-[85%] "} />
+
           <div className="w-full">
             <Outlet />
           </div>

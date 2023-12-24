@@ -4,6 +4,7 @@ import {userData} from "./ReportData"
 import {yuserData} from "./ReportData"
 import CircleChart from '../../Dashbord_layout/circle chart/CircleChart'
 import Table from '../../Dashbord_layout/TableLayout'
+import { useTranslation } from "react-i18next";
 
 
  
@@ -14,6 +15,8 @@ import Table from '../../Dashbord_layout/TableLayout'
 
 const Allusers = () => {
   const [point, setPoint] = useState(null);
+  const { t } = useTranslation("global");
+
 
   //for table drobdown
   const handlepoint = (selected) => {
@@ -59,8 +62,8 @@ const Allusers = () => {
    
 
 
-   <CircleChart title="All Users - 100.000"  />
-   <Chart data={userData} yuserData={yuserData} title="All Users - 100.000" dec="All users as (supper admin, admin, service provider, patient) and in this website the users is increased. " grid dataKey="Active User" />
+   <CircleChart title= {t("report_admin_page.department.0")}  />
+   <Chart data={userData} yuserData={yuserData} title= {t("report_admin_page.department.0")} dec={t("report_admin_page.chart_des.0")} grid dataKey="Active User" />
    <div className=' w-full   lg:w-[100%] xl:w-[77%] sm:w-[100%]  h-[80%] mt-10 rounded-md relative xl:bottom-48 bg-white '>
    <Table
             columns={columns}
