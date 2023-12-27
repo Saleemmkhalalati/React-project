@@ -33,7 +33,7 @@ import Allservices from "./components/Dashbord/Admin_Dashboard/Report/Allservice
 import Allproducts from "./components/Dashbord/Admin_Dashboard/Report/Allproducts.jsx";
 import Home from "./components/Dashbord/Dashbord_service_provider/Service_provider_home/Home.jsx";
 import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
-
+import Search from "./components/user/Services/Search";
 import Details from "./components/user/Services/Details/Details";
 import Report_service_provider from "./components/Dashbord/Dashbord_service_provider/Reports/Report_service_provider .jsx";
 import AllPatient from "./components/Dashbord/Dashbord_service_provider/Reports/AllPatient.jsx";
@@ -57,6 +57,7 @@ function App() {
             <Route path="services" element={<TitleAndSideServices />}>
               <Route index element={<Service />} />
               <Route path="map" element={<Map />} />
+              <Route path="search" element={<Search />} />
             </Route>
             <Route path="/details/:id" element={<Details />} />
 

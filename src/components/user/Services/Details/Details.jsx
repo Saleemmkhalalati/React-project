@@ -22,6 +22,11 @@ import Map from "../Map/Map";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
+const validationSchema = Yup.object({
+  dateInput: Yup.date().required("Booking date is required"),
+  bookingTime: Yup.string().required("Booking time is required"),
+  note: Yup.string(),
+});
 function Details() {
   const { t } = useTranslation("global");
   const info = [
@@ -41,11 +46,6 @@ function Details() {
       },
     },
   ];
-  const validationSchema = Yup.object({
-    dateInput: Yup.date().required("Booking date is required"),
-    bookingTime: Yup.string().required("Booking time is required"),
-    note: Yup.string(),
-  });
 
   const formik = useFormik({
     initialValues: {

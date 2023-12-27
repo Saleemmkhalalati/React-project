@@ -304,7 +304,7 @@ export default function SideServices() {
                 </div>
               ))}
 
-              <Link to={""}>
+              <Link to={"/services/search"}>
                 {" "}
                 <Typography
                   className={"text-start text-xs md:text-sm"}
