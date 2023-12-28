@@ -22,6 +22,7 @@ import Map from "../Map/Map";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
+
 const validationSchema = Yup.object({
   dateInput: Yup.date().required("Booking date is required"),
   bookingTime: Yup.string().required("Booking time is required"),
@@ -29,6 +30,8 @@ const validationSchema = Yup.object({
 });
 function Details() {
   const { t } = useTranslation("global");
+  
+  const { id } = useParams();
   const info = [
     {
       date: "2023-12-15",
@@ -114,8 +117,6 @@ function Details() {
   useEffect(() => {
     calculatePercentageVotes();
   }, []);
-
-  const { id } = useParams();
 
   return (
     <Container className={"overflow-hidden "}>
