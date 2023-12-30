@@ -14,6 +14,12 @@ import { useContext } from "react";
 import { useServices } from "../../../context/Context";
 import NoData from "./Nodata";
 import { Link } from "react-router-dom";
+//swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Grid, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/pagination";
 
 export default function Service() {
   const { customServices } = useContext(useServices);
@@ -109,8 +115,8 @@ export default function Service() {
       price: 33,
     },
     {
-      id: 9,
-      image: nghit,
+      id: 2,
+      image: tow,
       provider_location_id: 1,
       provider_name: "service",
       service_category: "OPTICS",
@@ -120,8 +126,140 @@ export default function Service() {
       price: 33,
     },
     {
-      id: 10,
-      image: tean,
+      id: 3,
+      image: three,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 4,
+      image: fore,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 5,
+      image: five,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 6,
+      image: six,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 7,
+      image: seven,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 8,
+      image: eaghit,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 2,
+      image: tow,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 3,
+      image: three,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 4,
+      image: fore,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 5,
+      image: five,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 6,
+      image: six,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 7,
+      image: seven,
+      provider_location_id: 1,
+      provider_name: "service",
+      service_category: "OPTICS",
+      title: "Analysis Of Sample Types",
+      description:
+        "We have many machines that help analyze different types of samples.",
+      price: 33,
+    },
+    {
+      id: 8,
+      image: eaghit,
       provider_location_id: 1,
       provider_name: "service",
       service_category: "OPTICS",
@@ -131,39 +269,67 @@ export default function Service() {
       price: 33,
     },
   ];
+  console.log(providers.length);
 
   return (
-    <div>
+    <>
       {providers.length >= 1 ? (
-        <>
-          <div className="sm:pb-20 pt-6 lg:pt-36 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ps-5 md:ps-10 pe-5 gap-5">
-            {providers.map((e) => (
-              <Link to={`/details/${e.id}`} key={e.id}>
-                <div className="relative before:absolute before:content-[''] before:w-full before:h-full before:bg-black before:bg-opacity-30 before:rounded-xl">
-                  <img className="w-full" src={e.image} alt="" />
-
-                  <div className="absolute bottom-0 px-4 py-2">
-                    <span className="text-sm text-white">{e.title}</span>
-                    <p className="text-xs text-white">{e.description}</p>
+        <div className=" pt-6 lg:pt-36 px-0 min-h-screen ">
+          <Swiper
+            allowTouchMove={false}
+            spaceBetween={20}
+            className="w-[90%] md:ps-3 "
+            slidesPerView={3}
+            grid={{
+              rows: 4,
+              fill: "row",
+            }}
+            pagination={{
+              el: ".swiper-pagination",
+              clickable: true,
+              renderBullet: function (index, className) {
+                return `<span class="${className} swiper-pagination-bullet bg-gradient-to-b from-primary to-secondary w-4 h-4  ${
+                  index === this.activeIndex
+                    ? "swiper-pagination-bullet-active w-12 h-[0.8rem] rounded-md "
+                    : ""
+                }"></span>`;
+              },
+            }}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              500: { slidesPerView: 1 },
+              600: { slidesPerView: 2 },
+              1150: { slidesPerView: 3 },
+            }}
+            modules={[Grid, Pagination]}
+          >
+            {providers.map((provider, index) => (
+              <SwiperSlide key={index}>
+                <Link to={`/details/${provider.id}`}>
+                  <div className="relative w-full sm:w-52 md:w-full  before:absolute before:content-[''] before:w-full before:h-full before:bg-black before:bg-opacity-30 before:rounded-xl">
+                    <img className="w-full" src={provider.image} alt="img" />
+                    <div className="absolute bottom-0 px-4 py-2">
+                      <span className="text-sm text-white">
+                        {provider.title}
+                      </span>
+                      <p className="text-xs text-white">
+                        {provider.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
 
+          <div className="swiper-pagination relative pt-10"></div>
           <div className="absolute -bottom-32 end-10">
             <BackPolygon />
           </div>
-          <div className=" hidden  bottom-0 md:flex items-center start-[50%] gap-2 absolute">
-            <div className="w-14 h-3 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
-            <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
-            <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
-            <div className="w-4 h-4 bg-myGray-400 rounded-full"></div>
-          </div>
-        </>
+        </div>
       ) : (
         <NoData />
       )}
-    </div>
+    </>
   );
 }
