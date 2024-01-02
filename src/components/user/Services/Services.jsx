@@ -14,9 +14,12 @@ import { useContext, useState } from "react";
 import { useServices } from "../../../context/Context";
 import NoData from "./ServicesComponents/Nodata";
 import { Link } from "react-router-dom";
-
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 export default function Service() {
   const { customServices } = useContext(useServices);
+  const { changeData } = useContext(useServices);
+
   console.log(customServices);
 
   const providers = {
@@ -158,12 +161,17 @@ export default function Service() {
       },
     ],
   };
+  const [filters, setFilters] = useSearchParams("filters");
+  const [curentPage, setCurentPagePage] = useState(1);
 
-  const [activePage, setActivePage] = useState(1);
-  const handelActive = (pageNumber) => {
-    setActivePage(pageNumber);
+  const handleActive = (pageNumber) => {
+    setCurentPagePage(pageNumber);
   };
-  console.log(activePage);
+  useEffect(() => {
+    changeData({ page: curentPage });
+    setFilters({ page: curentPage });
+  }, [curentPage]);
+
   return (
     <>
       {providers.services.length >= 1 ? (
@@ -194,12 +202,12 @@ export default function Service() {
                 const pageNumber = index + 1;
                 return (
                   <span
-                    onClick={() => handelActive(pageNumber)}
+                    onClick={() => handleActive(pageNumber)}
                     key={index}
-                    className={`cursor-pointer w-5 h-5 bg-myGray-400 rounded-full shadow z-50 ${
-                      pageNumber === activePage
+                    className={`cursor-pointer bg-myGray-400 rounded-full shadow z-50 ${
+                      pageNumber === curentPage
                         ? "bg-gradient-to-b from-primary to-secondary w-12 h-[0.9rem] transition-all"
-                        : ""
+                        : "w-5 h-5 "
                     }`}
                   ></span>
                 );

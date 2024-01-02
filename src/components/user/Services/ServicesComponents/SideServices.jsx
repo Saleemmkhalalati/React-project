@@ -5,65 +5,11 @@ import { Link } from "react-router-dom";
 import "./Sideservices.css";
 import Click_Outsite from "../../../utilities/Click_Outsite";
 import { useTranslation } from "react-i18next";
-
+import { useSearchParams } from "react-router-dom";
 import { useServices } from "../../../../context/Context";
 import { useContext, useEffect, useRef, useState } from "react";
 
 export default function SideServices() {
-  const { t } = useTranslation("global");
-  const [side, setSide] = useState(true);
-  const [clickec, setClicked] = useState(false);
-  const [myCheckValue, setCheckValue] = useState([]);
-
-  const [Minvalue, setMinvalue] = useState(0);
-  const [Maxvalue, setMaxvalue] = useState(2000);
-  const rangeMin = 0;
-  const rangeMax = 2000;
-
-  const ref = useRef(null);
-  const handleSide = () => {
-    setSide(!side);
-    setClicked(true);
-  };
-
-  const handleMinChange = (event) => {
-    const value = parseInt(event.target.value);
-    setMinvalue(value);
-  };
-
-  const handleMaxChange = (event) => {
-    const value = parseInt(event.target.value);
-    setMaxvalue(value);
-  };
-
-  const handleServicesType = (checkValue) => {
-    const finalCheckValue = checkValue.target.name;
-
-    setCheckValue((prevCheckValue) => {
-      const isItemChecked = prevCheckValue.includes(finalCheckValue);
-
-      if (isItemChecked) {
-        return prevCheckValue.filter((item) => item !== finalCheckValue);
-      } else {
-        return [...prevCheckValue, finalCheckValue];
-      }
-    });
-  };
-  const handleRate = (rate) => {
-    const finalRate = rate.target.name;
-
-    setRates((prevRates) => {
-      const rateExists = prevRates.some((item) => item.name === finalRate);
-
-      if (rateExists) {
-        return prevRates.map((item) =>
-          item.name === finalRate ? { ...item, count: item.count - 1 } : item
-        );
-      } else {
-        return [...prevRates, { name: finalRate, count: 1 }];
-      }
-    });
-  };
   const services = [
     {
       Category_id: 1,
@@ -112,6 +58,61 @@ export default function SideServices() {
     { title: "Closer to you", count: "200" },
     { title: "Farther from you", count: "350" },
   ];
+  const { t } = useTranslation("global");
+  const [side, setSide] = useState(true);
+  const [clickec, setClicked] = useState(false);
+  const [myCheckValue, setCheckValue] = useState([]);
+  const [myRate, setRate] = useState([]);
+
+  const [Minvalue, setMinvalue] = useState(0);
+  const [Maxvalue, setMaxvalue] = useState(2000);
+  const rangeMin = 0;
+  const rangeMax = 2000;
+  const { changeData } = useContext(useServices);
+  const [filter, setFilter] = useSearchParams("");
+  const limit = [Minvalue, Maxvalue];
+  console.log(limit);
+  const ref = useRef(null);
+  const handleSide = () => {
+    setSide(!side);
+    setClicked(true);
+  };
+
+  const handleMinChange = (event) => {
+    const value = parseInt(event.target.value);
+    setMinvalue(value);
+  };
+
+  const handleMaxChange = (event) => {
+    const value = parseInt(event.target.value);
+    setMaxvalue(value);
+  };
+
+  //chosen valus are myCheckValue
+  const handleServicesType = (checkValue) => {
+    const finalCheckValue = checkValue.target.name;
+
+    setCheckValue((prevCheckValue) => {
+      const isItemChecked = prevCheckValue.includes(finalCheckValue);
+
+      if (isItemChecked) {
+        return prevCheckValue.filter((item) => item !== finalCheckValue);
+      } else {
+        return [...prevCheckValue, finalCheckValue];
+      }
+    });
+  };
+  const handleRate = (rate) => {
+    const finalRate = rate.target.name;
+    setRate((prevRAte) => {
+      const isRateExest = prevRAte.includes(finalRate);
+      if (isRateExest) {
+        return prevRAte.filter((item) => item !== finalRate);
+      } else {
+        return [...prevRAte, finalRate];
+      }
+    });
+  };
 
   const rangeBackgroundStyle = {
     insetInlineStart: `${
@@ -120,10 +121,12 @@ export default function SideServices() {
     width: `${((Maxvalue - Minvalue) / (rangeMax - rangeMin)) * 100}%`,
   };
   //store custum services in usestate
-  const { setcustomServices } = useContext(useServices);
+
   useEffect(() => {
-    setcustomServices(myCheckValue);
-  }, [myCheckValue, setcustomServices]);
+    setFilter({ fiter: myCheckValue, rate: myRate, limit });
+    changeData(myCheckValue, myRate, limit);
+  }, [myCheckValue, changeData, myRate, Minvalue, Maxvalue]);
+
   return (
     <Click_Outsite exceptionRef={ref} onClick={handleSide}>
       <div ref={ref} className="absolute lg:relative start-1 z-50 ">

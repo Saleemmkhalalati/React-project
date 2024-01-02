@@ -9,7 +9,6 @@ const UseServicesProvider = ({ children }) => {
 
   const contextValue = {
     customServices,
-    setcustomServices,
     changeData, // إذا أردت توفير هذه الدالة في القيمة السياقية
   };
 
