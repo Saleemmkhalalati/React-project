@@ -272,5 +272,6 @@
     "Thu",
     "Fri",
     "Sat"
-  ]
+  ],
+  "search": ["Search About Services OR ", "Product Here !", "Search..."]
 }

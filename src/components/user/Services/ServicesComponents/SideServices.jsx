@@ -13,17 +13,18 @@ export default function SideServices() {
   const { t } = useTranslation("global");
   const [side, setSide] = useState(true);
   const [clickec, setClicked] = useState(false);
+  const [myCheckValue, setCheckValue] = useState([]);
+
+  const [Minvalue, setMinvalue] = useState(0);
+  const [Maxvalue, setMaxvalue] = useState(2000);
+  const rangeMin = 0;
+  const rangeMax = 2000;
 
   const ref = useRef(null);
   const handleSide = () => {
     setSide(!side);
     setClicked(true);
   };
-  const [rangePrice, setRangePrice] = useState({});
-  const [Minvalue, setMinvalue] = useState(0);
-  const [Maxvalue, setMaxvalue] = useState(2000);
-  const rangeMin = 0;
-  const rangeMax = 2000;
 
   const handleMinChange = (event) => {
     const value = parseInt(event.target.value);
@@ -34,44 +35,35 @@ export default function SideServices() {
     const value = parseInt(event.target.value);
     setMaxvalue(value);
   };
-  const handleRangePrice = () => {
-    setRangePrice(Minvalue, Maxvalue);
-    setCheckValue([rangePrice]);
-  };
-  const [myCheckValue, setCheckValue] = useState([]);
+
   const handleServicesType = (checkValue) => {
     const finalCheckValue = checkValue.target.name;
-    const isItemChecked = myCheckValue.includes(finalCheckValue);
 
-    if (isItemChecked) {
-      const updatedCheckValue = myCheckValue.filter(
-        (item) => item !== finalCheckValue
-      );
-      setCheckValue(updatedCheckValue);
-    } else {
-      setCheckValue([finalCheckValue]);
-    }
+    setCheckValue((prevCheckValue) => {
+      const isItemChecked = prevCheckValue.includes(finalCheckValue);
+
+      if (isItemChecked) {
+        return prevCheckValue.filter((item) => item !== finalCheckValue);
+      } else {
+        return [...prevCheckValue, finalCheckValue];
+      }
+    });
   };
   const handleRate = (rate) => {
     const finalRate = rate.target.name;
-    const rateIsChecked = myCheckValue.includes(finalRate);
 
-    if (rateIsChecked) {
-      const updatedCheckValue = myCheckValue.filter(
-        (item) => item !== finalRate
-      );
-      setCheckValue(updatedCheckValue);
-    } else {
-      setCheckValue([...myCheckValue, finalRate]);
-    }
+    setRates((prevRates) => {
+      const rateExists = prevRates.some((item) => item.name === finalRate);
+
+      if (rateExists) {
+        return prevRates.map((item) =>
+          item.name === finalRate ? { ...item, count: item.count - 1 } : item
+        );
+      } else {
+        return [...prevRates, { name: finalRate, count: 1 }];
+      }
+    });
   };
-
-  //store custum services in usestate
-  const { setcustomServices } = useContext(useServices);
-  useEffect(() => {
-    setcustomServices(myCheckValue);
-  }, [myCheckValue, setcustomServices]);
-
   const services = [
     {
       Category_id: 1,
@@ -127,16 +119,19 @@ export default function SideServices() {
     }%`,
     width: `${((Maxvalue - Minvalue) / (rangeMax - rangeMin)) * 100}%`,
   };
+  //store custum services in usestate
+  const { setcustomServices } = useContext(useServices);
+  useEffect(() => {
+    setcustomServices(myCheckValue);
+  }, [myCheckValue, setcustomServices]);
   return (
     <Click_Outsite exceptionRef={ref} onClick={handleSide}>
-      <div ref={ref} className="absolute lg:relative start-1 z-50">
+      <div ref={ref} className="absolute lg:relative start-1 z-50 ">
         <div className="cursor-pointer block lg:hidden px-4">
-          <img className="w-7 " onClick={handleSide} src={menu} alt="" />
+          <img className="w-7" onClick={handleSide} src={menu} alt="" />
         </div>
-        <div
-          className={`  lg:block  ${side && clickec ? "block" : "hidden"}  `}
-        >
-          <div className="flex flex-col gap-6 md:gap-12 xl:w-[21rem] lg:w-[18rem]  relative z-50 pt-5 md:py-20 lg:pt-60 lg:pb-12 px-1 xl:px-20 bg-myGray-200 md:bg-transparent shadow md:shadow-transparent rounded md:rounded-none lg:before:absolute lg:before-content[''] md:before:w-[1px] lg:before:h-full lg:before:bg-myGray-100 lg:before:-end-4 lg:after:absolute lg:after-content-[''] after:w-[0.4rem] after:h-[0.4rem] lg:after:bg-myGray-100 lg:after:rounded-full lg:after:-end-[1.13rem] ">
+        <div className={`lg:block  ${side && clickec ? "block" : "hidden"}  `}>
+          <div className="flex flex-col gap-6 md:gap-12 xl:w-[21rem] relative z-50 pt-5 px-5 lg:py-20 lg:pt-52 lg:pb-12 lg:px-1 xl:px-20 bg-myGray-200 lg:bg-transparent shadow lg:shadow-transparent rounded lg:rounded-none lg:before:absolute lg:before-content[''] md:before:w-[1px] lg:before:h-full lg:before:bg-myGray-100 lg:before:-end-4 lg:after:absolute lg:after-content-[''] after:w-[0.4rem] after:h-[0.4rem] lg:after:bg-myGray-100 lg:after:rounded-full lg:after:-end-[1.13rem] ">
             <div className="flex flex-col gap-2 md:gap-5 ">
               <Typography className={"text-xl pb-3"} component={"h1"}>
                 {t("services.0")}
@@ -316,6 +311,7 @@ export default function SideServices() {
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 -end-[1.20rem] w-[0.4rem] h-[0.4rem] bg-myGray-100 rounded-full"></div>
       </div>
     </Click_Outsite>
   );

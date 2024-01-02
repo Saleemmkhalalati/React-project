@@ -21,7 +21,7 @@ export default function OurServicesTitle({ className }) {
           {t("Services_Home.1")}
         </p>
       </div>
-      <div className=" absolute top-20 -start-32 hidden sm:block -z-30  ">
+      <div className=" absolute top-20 -start-32 -z-30  ">
         <BackPolygon />
       </div>
     </div>
