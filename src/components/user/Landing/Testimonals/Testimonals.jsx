@@ -42,7 +42,7 @@ const Testimonals = () => {
                 <Polygon
                   color={"gray"}
                   className={
-                    "w-[100%] h-[100%] ltr:rotate-[90deg] rtl:rotate-180 rtl:-rotate-45 overflow-hidden z-50"
+                    "w-[100%] h-[100%] ltr:rotate-[90deg] rtl:rotate-180  overflow-hidden z-50"
                   }
                 >
                   <img
@@ -238,4 +238,3 @@ const Testimonals = () => {
 };
 
 export default Testimonals;
-
