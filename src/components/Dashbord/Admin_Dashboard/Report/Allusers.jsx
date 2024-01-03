@@ -5,12 +5,6 @@ import {yuserData} from "./ReportData"
 import CircleChart from '../../Dashbord_layout/circle chart/CircleChart'
 import Table from '../../Dashbord_layout/TableLayout'
 import { useTranslation } from "react-i18next";
-
-
- 
-
-
-
  
 
 const Allusers = () => {

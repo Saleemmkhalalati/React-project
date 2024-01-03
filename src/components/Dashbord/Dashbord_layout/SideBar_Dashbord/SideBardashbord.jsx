@@ -151,14 +151,12 @@ const SideBardashbord = () => {
           icon: <Person_sidebar stoke="white" menue={menueClicked} />,
           subMenus: [
             {
-              name: t("sideBar_Dashbord.all_users_menu.0"),
-              src: "service_Providers",
-
-              cName: "sub-nav",
+              name: "c",
+              src: "Request_Product",
             },
             {
               name: t("sideBar_Dashbord.all_users_menu.1"),
-              src: "patient_Users",
+              src: "Table_Product",
 
               cName: "sub-nav",
             },
@@ -209,6 +207,17 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.serviceProvider_about_users_menu.2"),
           src: "/dashboard_service_provider/products",
           icon: <Notification stoke="white" menue={menueClicked} />,
+          subMenus: [
+            {
+              name:t("sideBar_Dashbord.serviceProvider_dashboard_products.0"),
+              src: "Request_Product",
+            },
+            {
+              name: t("sideBar_Dashbord.serviceProvider_dashboard_products.1"),
+              src: "Table_Product",
+            },
+      
+          ],
         },
         {
           title: t("sideBar_Dashbord.serviceProvider_about_users_menu.3"),

@@ -35,6 +35,12 @@ import Home from "./components/Dashbord/Dashbord_service_provider/Service_provid
 import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
 import Report_service_provider from "./components/Dashbord/Dashbord_service_provider/Reports/Report_service_provider .jsx"
 import AllPatient from "./components/Dashbord/Dashbord_service_provider/Reports/AllPatient.jsx"
+import Request_Product from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Request_Product.jsx";
+import All_Request from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/All_Request.jsx";
+import Requests_Rejected from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_Rejected.jsx";
+import Requests_accepted from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_accepted.jsx";
+import Last_Request from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Last_Request.jsx";
+import Table_Product from "./components/Dashbord/Dashbord_service_provider/Products/Table_Product/Table_Product.jsx";
 
 function App() {
   return (
@@ -60,7 +66,7 @@ function App() {
             <Route path="about-us" element={<AboutUs />} />
             <Route path="contact-us" element={<ContactUs />} />
           </Route>
-          <Route path="/dashboard" element={<DashboardLayout  />}>
+          <Route path="/dashboard" element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="users" element={<Dashboard />} />
@@ -101,13 +107,47 @@ function App() {
             <Route path="signOut" element={<SignOut />} />
           </Route>
           <Route path="/dashboard_service_provider" element={<DashboardLayout />} >
-          <Route path="/dashboard_service_provider" element={<Home />} />
-          <Route path="report" element={<Report_service_provider  />}>
+            <Route path="/dashboard_service_provider" element={<Home />} />
+            <Route path="report" element={<Report_service_provider />}>
               <Route index element={<AllPatient />} />
               <Route path="all_services" element={<Allservices />} />
               <Route path="all-product" element={<Allproducts />} />
             </Route>
-          <Route path="settings" element={<Setting_service_provider  />} />
+
+
+            <Route path="products" element={<Home />} />
+            <Route
+              path="products/Request_Product"
+              element={<Request_Product />}
+            >
+              <Route
+                path="All_Request"
+                element={<All_Request  />}
+              />
+                           <Route
+                path="Requests_Rejected"
+                element={<Requests_Rejected  />}
+              />
+                           <Route
+                path="Requests_accepted"
+                element={<Requests_accepted />}
+              />
+                           <Route
+                path="Last_Request"
+                element={<Last_Request  />}
+              />
+                
+
+              
+            </Route>
+            <Route
+              path="products/Table_Product"
+              element={<Table_Product />}
+            />
+
+
+
+            <Route path="settings" element={<Setting_service_provider />} />
 
           </Route>
         </Routes>

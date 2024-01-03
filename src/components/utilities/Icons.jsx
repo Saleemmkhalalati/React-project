@@ -160,7 +160,10 @@ export const Arrow_dropdown = (props) => {
             props.menue.title === "All Users" ||
             props.menue.title === "Services" ||
             props.menue.title === "كل المستخدمون" ||
-            props.menue.title === "الخدمات"
+            props.menue.title === "الخدمات" ||
+            props.menue.title === "Products" ||
+            props.menue.title === "المنتجات" 
+
               ? "fill-white"
               : ""
           }`}
