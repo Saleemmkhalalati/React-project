@@ -35,7 +35,9 @@ import Home from "./components/Dashbord/Dashbord_service_provider/Service_provid
 import Setting_service_provider from "./components/Dashbord/Dashbord_service_provider/Setting_service_provider/Setting_service_provider.jsx";
 import Report_service_provider from "./components/Dashbord/Dashbord_service_provider/Reports/Report_service_provider .jsx"
 import AllPatient from "./components/Dashbord/Dashbord_service_provider/Reports/AllPatient.jsx"
-
+import Search from "./components/user/Services/Search/Search.jsx";
+import Details from "./components/user/Services/Details/Details.jsx"
+import ChoselocationMap from "./components/user/Services/ChoselocationMap/ChoselocationMap.jsx";
 function App() {
   return (
     <div className="font-alegreya">
@@ -54,7 +56,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="services" element={<TitleAndSideServices />}>
               <Route index element={<Service />} />
-              <Route path="map" element={<Map />} />
+              <Route path="map" element={<ChoselocationMap />} />
               <Route path="search" element={<Search />} />
             </Route>
             <Route path="/details/:id" element={<Details />} />
