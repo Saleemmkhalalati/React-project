@@ -3,6 +3,7 @@ import Logo from "../../utilities/Logo";
 import Typography from "../../utilities/Typography";
 import Container from "../../utilities/Container";
 import { useTranslation } from "react-i18next";
+
 export default function Footer() {
   const { t } = useTranslation("global");
   const links = [
@@ -18,24 +19,22 @@ export default function Footer() {
           <div className="flex flex-col gap-y-3">
             <Logo />
             <Typography component={"p"} className={"max-w-md ms-1"}>
-              We are a platform that seeks to connect clinical patients with
-              doctors in various medical specialties and pharmacies all over the
-              Emirates.
+              {t("footer.0")}
             </Typography>
           </div>
           <div className="flex flex-col gap-y-3 mt-2">
-            <p htmlFor="email">Subscribe to our Quarterly newsletter ....</p>
+            <p htmlFor="email"> {t("footer.1")}</p>
             <div className="flex flex-row">
               <input
                 id="email"
-                placeholder="Enter your email "
+                placeholder={t("footer.3")}
                 className="p-2 border-[1px] border-e-0 border-primary bg-myGray-100 placeholder-myGray-500 rounded-s-md w-full outline-0 placeholder:focus:opacity-0"
               />
               <button
                 type="button"
                 className="rounded-e-md px-3 py-1 text-white bg-gradient-to-b from-primary to-secondary hover:opacity-90 opacity-100"
               >
-                Subscribe
+                {t("footer.2")}
               </button>
             </div>
           </div>

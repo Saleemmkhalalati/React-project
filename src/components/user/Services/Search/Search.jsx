@@ -7,6 +7,7 @@ import BackPolygon from "../../../utilities/BackPolygon";
 import Container from "../../../utilities/Container";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 //useContext
 import { useContext } from "react";
 import { useServices } from "../../../../context/Context";
@@ -16,19 +17,26 @@ import { useTranslation } from "react-i18next";
 
 function Search() {
   const { t } = useTranslation("global");
+  const [word, setWord] = useSearchParams("");
   const [search, setSearch] = useState("");
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  const { setcustomServices } = useContext(useServices);
+  console.log(search);
+  const { changeData } = useContext(useServices);
+
   useEffect(() => {
-    setcustomServices(search);
-  }, [setcustomServices]);
-  const { customServices } = useContext(useServices);
-  console.log(customServices);
+    if (search === "") {
+      setWord({ word: "" });
+    } else {
+      setWord({ word: search });
+    }
+    changeData(search);
+  }, [search, changeData]);
+
   return (
     <Container>
-      <div className="pt-6 md:pt-36 min-h-screen flex flex-col gap-52 sm:gap-80 ">
+      <div className="pt-6 lg:pt-36 min-h-screen flex flex-col gap-52 lg:gap-80 ">
         <div className="sm:px-12">
           <Input
             type={"text"}

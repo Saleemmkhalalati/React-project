@@ -22,7 +22,6 @@ import Map from "../Map/Map";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-
 const validationSchema = Yup.object({
   dateInput: Yup.date().required("Booking date is required"),
   bookingTime: Yup.string().required("Booking time is required"),
@@ -30,7 +29,7 @@ const validationSchema = Yup.object({
 });
 function Details() {
   const { t } = useTranslation("global");
-  
+
   const { id } = useParams();
   const info = [
     {
@@ -320,7 +319,7 @@ function Details() {
             </table>
             <table className="sm:hidden">
               <thead>
-                <tr>
+                <tr className="border-[1px] border-solid border-myGray-400">
                   <th className="bg-myGray-100 text-center py-2">Day</th>
                   <th className="bg-myGray-100 text-center py-2">From</th>
                   <th className="bg-myGray-100 text-center py-2">To</th>

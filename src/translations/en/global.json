@@ -273,5 +273,11 @@
     "Fri",
     "Sat"
   ],
-  "search": ["Search About Services OR ", "Product Here !", "Search..."]
+  "search": ["Search About Services OR ", "Product Here !", "Search..."],
+  "footer": [
+    "We are a platform that seeks to connect clinical patients with  doctors in various medical specialties and pharmacies all over the Emirates.",
+    "Subscribe to our Quarterly newsletter ....",
+    "Subscribe",
+    "Enter your email "
+  ]
 }

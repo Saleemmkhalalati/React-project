@@ -123,7 +123,7 @@ export default function SideServices() {
   //store custum services in usestate
 
   useEffect(() => {
-    setFilter({ fiter: myCheckValue, rate: myRate, limit });
+    setFilter({ fiter: myCheckValue, rate: myRate, limit: limit });
     changeData(myCheckValue, myRate, limit);
   }, [myCheckValue, changeData, myRate, Minvalue, Maxvalue]);
 
