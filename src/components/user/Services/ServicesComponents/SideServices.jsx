@@ -69,9 +69,9 @@ export default function SideServices() {
   const rangeMin = 0;
   const rangeMax = 2000;
   const { changeData } = useContext(useServices);
-  const [filter, setFilter] = useSearchParams("");
+  const [filter, setFilter] = useSearchParams();
   const limit = [Minvalue, Maxvalue];
-  console.log(limit);
+
   const ref = useRef(null);
   const handleSide = () => {
     setSide(!side);
@@ -121,9 +121,15 @@ export default function SideServices() {
     width: `${((Maxvalue - Minvalue) / (rangeMax - rangeMin)) * 100}%`,
   };
   //store custum services in usestate
-
+  const [searchParams] = useSearchParams();
+  const myParamValue = searchParams.get("page");
   useEffect(() => {
-    setFilter({ fiter: myCheckValue, rate: myRate, limit: limit });
+    setFilter({
+      filter: myCheckValue,
+      rate: myRate,
+      limit: limit,
+      page: myParamValue,
+    });
     changeData(myCheckValue, myRate, limit);
   }, [myCheckValue, changeData, myRate, Minvalue, Maxvalue]);
 
