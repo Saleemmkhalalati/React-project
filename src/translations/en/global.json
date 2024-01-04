@@ -194,6 +194,7 @@
       "Request Services",
       " Table Services"
     ],
+    "serviceProvider_dashboard_products":["Request Product","Table Product"],
     "Contact_us_discrption": "We hope that our website will be useful to you and we are happy for you to ",
     "contact_us": " contact us"
   },

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import mini_menu from "../../assets/icons/mini-menu.svg";
 import Dropdown from "./Dropdown";
 
-export default function TabsFillter({ children }) {
+export default function TabsFillter({ children,sortlist }) {
   // const sorts = ["Sort by name", "Sort by active", "Sort by non active"];
   const sorts = [    
   { name: "Sort by name",  type: "view" },
@@ -27,7 +27,7 @@ export default function TabsFillter({ children }) {
          
 
           <Dropdown
-            options={sorts}
+            options={sortlist}
             value={SortDropdown}
             onChange={handleChangeDropdown}
             className={""}
