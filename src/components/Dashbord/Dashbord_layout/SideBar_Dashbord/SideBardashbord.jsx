@@ -205,7 +205,7 @@ const SideBardashbord = () => {
         },
         {
           title: t("sideBar_Dashbord.serviceProvider_about_users_menu.2"),
-          src: "/dashboard_service_provider/products",
+          src: "/dashboard_service_provider/Products",
           icon: <Notification stoke="white" menue={menueClicked} />,
           subMenus: [
             {
@@ -366,6 +366,7 @@ const SideBardashbord = () => {
                     //  <Dropdown  />
                     <div className={` ${DropdownOpen === true ? " block" : "hidden"}  lg:hidden`}>
                       <Dropdown_whithout_icon
+                       
                         options={data.subMenus}
                         dataSrc={data.src}
                         SetDropdownOpen={SetDropdownOpen}

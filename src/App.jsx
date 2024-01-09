@@ -38,6 +38,13 @@ import AllPatient from "./components/Dashbord/Dashbord_service_provider/Reports/
 import Search from "./components/user/Services/Search/Search.jsx";
 import Details from "./components/user/Services/Details/Details.jsx"
 import ChoselocationMap from "./components/user/Services/ChoselocationMap/ChoselocationMap.jsx";
+import Request_Product from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Request_Product.jsx";
+import Table_Product from "./components/Dashbord/Dashbord_service_provider/Products/Table_Product/Table_Product.jsx";
+import Test from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Test.jsx";
+import All_Request from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/All_Request.jsx";
+import Requests_Rejected from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_Rejected.jsx";
+import Requests_accepted from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_accepted.jsx";
+import Last_Request from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Last_Request.jsx";
 function App() {
   return (
     <div className="font-alegreya">
@@ -104,13 +111,53 @@ function App() {
             <Route path="settings" element={<Settings />} />
             <Route path="signOut" element={<SignOut />} />
           </Route>
+
           <Route path="/dashboard_service_provider" element={<DashboardLayout />} >
-          <Route path="/dashboard_service_provider" element={<Home />} />
           <Route path="report" element={<Report_service_provider  />}>
               <Route index element={<AllPatient />} />
               <Route path="all_services" element={<Allservices />} />
               <Route path="all-product" element={<Allproducts />} />
             </Route>
+        
+
+          <Route path="Products" element={<Home  />}/>
+          <Route
+              path="products/Request_Product"
+              element={<Request_Product />}
+            >
+               <Route
+                path="All_Request"
+                element={<All_Request  />}
+              />
+                           <Route
+                path="Requests_Rejected"
+                element={<Requests_Rejected  />}
+              />
+                           <Route
+                path="Requests_accepted"
+                element={<Requests_accepted />}
+              />
+                           <Route
+                path="Last_Request"
+                element={<Last_Request  />}
+              />
+                
+
+              </Route>
+              <Route
+              path="products/Table_Product"
+              element={<Table_Product />}
+            />
+
+
+            
+
+          
+          {/* <Route path="Request_Product" element={<Request_Product />} /> */}
+          <Route path="Table_Product" element={<Table_Product />} />
+
+
+
           <Route path="settings" element={<Setting_service_provider  />} />
 
           </Route>

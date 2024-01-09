@@ -17,7 +17,6 @@ export default function Dropdown({
 
   const handleSelect = (selected) => {
     onChange(selected);
-
     setSelectedItem(selected.name);
     setIsOpen(false);
   };
@@ -106,9 +105,10 @@ export function Dropdown_whithout_icon({
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
   const handleSelect = (selected) => {
-    onChange(selected);
+    // onChange(selected);
     setSelectedItem(selected);
     setIsOpen(false);
+    console.log(`${dataSrc}/${selected.src}`)
   };
   const handleOutsideClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -143,7 +143,7 @@ export function Dropdown_whithout_icon({
             }  `}
             key={index}
             onClick={() => {
-              handleSelect(option.name);
+              handleSelect(option);
             }}
           >
             <NavLink

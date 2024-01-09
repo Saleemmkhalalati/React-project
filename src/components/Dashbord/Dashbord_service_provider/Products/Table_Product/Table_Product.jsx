@@ -109,7 +109,7 @@ console.log(point)
         classNameChildern="bg-white"
       >
         {/* // must be as a commponent  */}
-        <TabsFillter sortlist={sortlist}>
+        <TabsFillter >
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
             {rows.length} record
           </span>
