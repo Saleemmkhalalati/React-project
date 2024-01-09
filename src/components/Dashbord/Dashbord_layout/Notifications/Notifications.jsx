@@ -83,7 +83,7 @@ const Notifications = React.forwardRef(({ handleNotification }, ref) => {
   return (
     <div>
       <Click_Outsite onClick={handleNotification} exceptionRef={ref}>
-        <div ref={ref} className="">
+        <div ref={ref}>
           {notifications.length > 0 ? (
             <div className="absolute w-[14rem] sm:w-[26rem] max-h-[24rem] sm:max-h-[36.5rem] overflow-hidden overflow-y-auto hide-scrollbar -start-56 sm:end-8  z-20 top-20 shadow-sm">
               <div className="bg-white py-0 sm:py-4 rounded    ">

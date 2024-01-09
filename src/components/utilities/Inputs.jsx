@@ -344,16 +344,16 @@ export function DashInput({
   placeholder,
 }) {
   return (
-    <div className="relative">
+    <div className="relatie ">
       <div
-        className={`flex flex-row py-2 px-3 border-[1px] items-center justify-between focus-within:border-primary  ${
+        className={`flex  flex-row py-2 px-3 border-[1px] items-center justify-between focus-within:border-primary  ${
           errorMsg !== "" && !isDisabled ? "border-error " : "border-myGray-400"
         } bg-white rounded-lg transition-all duration-100 ease-in-out`}
       >
         <input
           className={`${
             className ? className : ""
-          } text-sm text-myGray-500 outline-0 focus:outline-none bg-white`}
+          } text-sm text-myGray-500 outline-0 focus:outline-none bg-white w-full`}
           id={name}
           name={name}
           value={value}

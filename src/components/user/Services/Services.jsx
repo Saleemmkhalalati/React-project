@@ -214,7 +214,7 @@ export default function Service() {
               })}
             </div>
           )}
-          <div className="absolute -bottom-32 end-10">
+          <div className="absolute -bottom-32 end-10 -z-40">
             <BackPolygon />
           </div>
         </div>
