@@ -10,7 +10,6 @@ export default function TabsFillter({ children,sortlist }) {
   { name: "Sort by non active",type:"view" },];
 
   const [SortDropdown, setSortDtopdown] = useState(null);
-
   const handleChangeDropdown = (selcted) => {
     setSortDtopdown(selcted);
   };
@@ -27,7 +26,7 @@ export default function TabsFillter({ children,sortlist }) {
          
 
           <Dropdown
-            options={sortlist}
+            options={ sorts}
             value={SortDropdown}
             onChange={handleChangeDropdown}
             className={""}
