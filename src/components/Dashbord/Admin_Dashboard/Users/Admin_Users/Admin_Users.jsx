@@ -17,8 +17,6 @@ import ChangePassword from "../../../Dashbord_layout/Mangment/ChangePassword";
 
 
 const Admin_Users = () => {
-  const [refrech, setrefrech] = useState(false);
-  const [Export, setexport] = useState(false);
   const [valueDropdown, setValueDtopdown] = useState(null);
   const [valueRadio, setValueRadio] = useState(null);
   const [view_user, set_View_user] = useState(false);
@@ -173,12 +171,6 @@ const Admin_Users = () => {
     // setValueDtopdown(event.target.value);
     console.log(value);
   };
-  const handleRefrech = () => {
-    setrefrech(!refrech);
-  };
-  const handleExport = () => {
-    setexport(!Export);
-  };
   
   const handlepoint_table=(value) => {
     console.log(value)
@@ -193,10 +185,6 @@ const Admin_Users = () => {
 
 <Content
       path="All Uers/Admin Users"
-      RefrechFun={handleRefrech}
-      ExportFunc={handleExport}
-      refrech={refrech}
-      Export={Export}
       classNameChildern="bg-white"
       hasExport={true}
       hasRefrech={true}
