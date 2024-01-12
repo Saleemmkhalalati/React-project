@@ -19,18 +19,14 @@ function Search() {
   const { t } = useTranslation("global");
   const [word, setWord] = useSearchParams("");
   const [search, setSearch] = useState("");
+  const { changeData } = useContext(useServices);
+
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  console.log(search);
-  const { changeData } = useContext(useServices);
 
   useEffect(() => {
-    if (search === "") {
-      setWord({ word: "" });
-    } else {
-      setWord({ word: search });
-    }
+    setWord({ word: search });
     changeData(search);
   }, [search, changeData]);
 

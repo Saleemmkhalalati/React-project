@@ -18,7 +18,7 @@ import done from "../../../../assets/icons/done_uplode.svg";
 
 
 
-const Add_product = React.forwardRef(({ Add_Product_content, validation_schema, addProduct_active, set_addProduct_active }, ref) => {
+const Add_product = React.forwardRef(({ Add_Product_content, validation_schema, addProduct_active, set_addProduct_active ,discount={discount} ,setDiscount={setDiscount}}, ref) => {
   const [addProductDropdown, setaddProductDropdown] = useState(null);
   const onDrop = useCallback((acceptedFiles) => {
     formik.setFieldValue("img", acceptedFiles[0]);
@@ -70,12 +70,12 @@ const Add_product = React.forwardRef(({ Add_Product_content, validation_schema, 
       >
         {
           addProduct_active && (
-            <div ref={ref} className="flex flex-col gap-3 absolute right-0 bg-white min-w-[45%] px-5 py-3 rounded-md shadow-md z-50 min-h-ful">
+            <div ref={ref} className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 rounded px-5 py-5 md:px-8 flex flex-col gap-3 absolute right-0 bg-white min-w-[45%]  shadow-md z-50 min-h-full">
 
               <Typography component={"h3"} >
                 {Add_Product_content.title}
               </Typography>
-              <Typography component={"h4"}>
+              <Typography component={"h5"} className="mb-5">
                 {Add_Product_content.descrption}
               </Typography>
               {/* inputs */}
@@ -142,7 +142,10 @@ const Add_product = React.forwardRef(({ Add_Product_content, validation_schema, 
 
                       </div>
 
-                      {input.des && (<Typography component={"h4"}>{input.des.text} <span className="cursor-pointer text-primary hover:text-success" >{input.des.click_here}</span></Typography>)}
+                      {input.des && (<Typography component={"h5"}>{input.des.text} <span className="cursor-pointer text-primary hover:text-success" onClick={() => { setDiscount(!discount) }}>{input.des.click_here}</span></Typography>)}
+
+                      
+                      
                     </>
                   )
                 }
@@ -167,7 +170,7 @@ const Add_product = React.forwardRef(({ Add_Product_content, validation_schema, 
             onChange={(e) => formik.setFieldValue("img", e.target.files[0])}
              label={
               formik.values.img && !formik.errors.img ? (
-                ""
+                "Click to upload two photos product or drag"
             ) : (
                 <Typography component={"h5"}>Click to upload two photos product or drag</Typography>
               )

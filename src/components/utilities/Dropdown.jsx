@@ -12,6 +12,7 @@ export default function Dropdown({
   classNameIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
 

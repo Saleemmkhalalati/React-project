@@ -43,7 +43,7 @@ function Details() {
         service_title: "check Endocrine",
         provider_id: 30,
         provider_business_name: "Remostart",
-        location_id: 3,
+        location_id: [33.510414, 36.278336],
         created_at: "2023-12-09T21:00:32.948291",
       },
     },
@@ -68,7 +68,7 @@ function Details() {
       id: 3,
       image: d1,
       secondImage: second,
-      provider_location_id: 1,
+      provider_location_id: [33.510414, 36.278336],
       provider_name: "service",
       category_name: "Doctor",
       title: "Analysis Of Sample Types",
@@ -406,7 +406,8 @@ function Details() {
               </tbody>
             </table>
             <Typography component={"h3"}>{t("details.9")}</Typography>
-            <Map />
+
+            <Map className="" position={Someservices.provider_location_id} />
           </div>
           <div
             className="xl:absolute w-full xl:w-[29rem]  bg-white py-4 px-6 rounded shadow
