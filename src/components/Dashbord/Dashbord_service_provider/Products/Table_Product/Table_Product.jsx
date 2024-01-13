@@ -13,12 +13,20 @@ import left from "../Table_Product/Products_img/left.svg";
 import right from "../Table_Product/Products_img/right.svg";
 
 import Content from "../../../Dashbord_layout/Content/Content";
-import TabsFillter from "../../../../utilities/TabsFillter";
 import Typography from "../../../../utilities/Typography";
 import Dropdown from "../../../../utilities/Dropdown";
 import Radio from "../../../../utilities/Radio";
 import NoData from "../../../Dashbord_layout/NoData/NoData";
 import Table from "../../../Dashbord_layout/TableLayout";
+import TabsFillter from "../../../../utilities/TabsFillter";
+import View from "../../../Dashbord_layout/Mangment/View";
+import Add_product from "../../../Dashbord_layout/Mangment/Add_product";
+// 8*************
+import Wrench from "../../../../../assets/icons/Wrench.svg";
+import Email from "../../../../../assets/icons/Email.svg";
+import View_Icon from "../../../../../assets/icons/View.svg";
+import { add_product_schema } from "../../../../utilities/Validation";
+
 import { DashInput, InputFile } from "../../../../utilities/Inputs";
 import { useFormik } from "formik";
 import { useDropzone } from "react-dropzone";
@@ -37,43 +45,10 @@ import { Navigation } from "swiper/modules";
 import * as Yup from "yup";
 import Button from "../../../../utilities/Button";
 import ClickOutside from "../../../../utilities/Click_Outsite";
-const productSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  description: Yup.string().required("Description is required"),
-  location: Yup.string().required("Location is required"),
-  price: Yup.string()
-    .required("Price is required")
-    .test("is-number", "Invalid price. Please enter only numbers.", (value) => {
-      return /^\d+$/.test(value);
-    }),
-  img: Yup.mixed().test(
-    "isImage",
-    "Please select a valid image file (JPG, PNG, GIF)",
-    function (value) {
-      if (!value) {
-        return true;
-      }
-
-      const supportedFormats = ["image/jpeg", "image/png", "image/gif"];
-
-      if (!supportedFormats.includes(value.type)) {
-        throw new Yup.ValidationError("Invalid image", value, "img");
-      }
-      return true;
-    }
-  ),
-  discountNumber: Yup.string()
-    .required("Discount is required")
-    .test(
-      "is-discount",
-      "Invalid discount. Please enter a valid number or percentage.",
-      (value) => {
-        return /^\d+(\%)?$/.test(value);
-      }
-    ),
-});
 
 export default function Table_Product() {
+  const [addProduct_active, set_addProduct_active] = useState(false);
+  const AddProductsRef = useRef(null);
   const swiperRef = useRef(null);
   const { t } = useTranslation("global");
   const [refrech, setrefrech] = useState(false);
@@ -84,6 +59,109 @@ export default function Table_Product() {
   const [view, setView] = useState(false);
   const [discount, setDiscount] = useState(false);
   const [EditDropdown, setEditDropdown] = useState(null);
+
+  // ******************
+
+  const initialValues_Add_Products = {
+    Product_Name: "Product Name",
+    Product_Type: "Product Type ",
+    Description: "Description",
+    Location: "Location",
+    Price: "Price",
+
+    // Add more initial values for other fields
+  };
+  const Add_Product_content = {
+    title: "Add Product",
+    descrption: " You can add your product from here. ",
+    inputs: [
+      {
+        text: "Product Name",
+        img: Wrench,
+        type: "text",
+        name: "Product Name",
+      },
+      {
+        text: "Product Type ",
+        img: Email,
+        type: "text",
+        input_type: "dropdown",
+        name: "Product Type",
+      },
+      {
+        text: "Description",
+        img: View_Icon,
+        type: "text",
+        name: "Description",
+      },
+
+      {
+        text: "Location",
+        img: View_Icon,
+        type: "text",
+        name: "Location",
+      },
+      {
+        text: "Price",
+        img: View_Icon,
+        type: "password",
+        name: "password",
+        des: {
+          text: "If you would like to add discounts please click  ",
+          click_here: " Here",
+        },
+      },
+    ],
+    button_content: "Add New Product",
+  };
+  // **************************8
+
+  const addProductFun = () => {
+    set_addProduct_active(!addProduct_active);
+  };
+
+  //for table drobdown
+
+  const productSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    description: Yup.string().required("Description is required"),
+    location: Yup.string().required("Location is required"),
+    price: Yup.string()
+      .required("Price is required")
+      .test(
+        "is-number",
+        "Invalid price. Please enter only numbers.",
+        (value) => {
+          return /^\d+$/.test(value);
+        }
+      ),
+    img: Yup.mixed().test(
+      "isImage",
+      "Please select a valid image file (JPG, PNG, GIF)",
+      function (value) {
+        if (!value) {
+          return true;
+        }
+
+        const supportedFormats = ["image/jpeg", "image/png", "image/gif"];
+
+        if (!supportedFormats.includes(value.type)) {
+          throw new Yup.ValidationError("Invalid image", value, "img");
+        }
+        return true;
+      }
+    ),
+    discountNumber: Yup.string()
+      .required("Discount is required")
+      .test(
+        "is-discount",
+        "Invalid discount. Please enter a valid number or percentage.",
+        (value) => {
+          return /^\d+(\%)?$/.test(value);
+        }
+      ),
+  });
+
   //for drag and drob img
 
   const radioItems = [
@@ -554,39 +632,103 @@ export default function Table_Product() {
 
       <Content
         path={" Products /Table Product"}
-        RefrechFun={handleRefrech}
-        ExportFunc={handleExport}
-        refrech={refrech}
-        Export={Export}
-        hasExport={true}
         hasRefrech={true}
-        classNameChildern="bg-white"
+        hasAddProducts={true}
+        classNameChildern="bg-white  h-screen"
+        set_addProduct_active={set_addProduct_active}
+        addProduct_active={addProduct_active}
+        addProductFun={addProductFun}
       >
-        {/* // must be as a commponent  */}
-        <TabsFillter>
-          <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
-            {rows.length} record
-          </span>
+        <div className="relative">
+          {addProduct_active ? (
+            <Add_product
+              discount={discount}
+              setDiscount={setDiscount}
+              ref={AddProductsRef}
+              Add_Product_content={Add_Product_content}
+              initialValues={initialValues_Add_Products}
+              validation_schema={add_product_schema}
+              addProduct_active={addProduct_active}
+              set_addProduct_active={set_addProduct_active}
+            />
+          ) : (
+            ""
+          )}
+          {/* {discount ? (
+                <div className="w-[17rem] min-h-full sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
+                  <div className="py-5 md:py-10 flex flex-col gap-3">
+                    <Typography component={"h3"}>View Product</Typography>
+                    <Typography component={"h5"}>
+                      Register Date in: 10/27/2023 11:34, for this product
+                    </Typography>
+                  </div>
+                  <div className="flex flex-col gap-2 md:gap-5">
+                    <DashInput
+                      name={"discountNumber"}
+                      type="text"
+                      value={formik.values.discountNumber}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      icon={priceIcon}
+                      errorMsg={
+                        formik.touched.discountNumber &&
+                        formik.errors.discountNumber
+                          ? formik.errors.discountNumber
+                          : ""
+                      }
+                    />
+                    <div className="flex flex-col gap-5">
+                      <div className="flex flex-col gap-2">
+                        <p className="text-primary text-xs">
+                          Price before discounter:{" "}
+                        </p>
+                        <p className="text-myGray-600 text-xs">
+                          {formik.values.price}
+                        </p>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <p className="text-primary text-xs">
+                          Price after discounter:{" "}
+                        </p>
+                        <p className="text-myGray-600 text-xs">
+                          {priceAfterDiscount}
+                        </p>
+                      </div>
+                    </div>
+                    <Button fullWidth={true} type="submit">
+                      Edit Discount
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )} */}
 
-          <Radio
-            name="Services"
-            items={radioItems}
-            value={valueRadio}
-            onChange={setValueRadio}
-          />
-        </TabsFillter>
-        {rows.length >= 1 ? (
-          <Table
-            className={"min-h-screen"}
-            columns={columns}
-            rows={rows}
-            points={points}
-            point={point}
-            handlepoint={handlepoint}
-          />
-        ) : (
-          <NoData></NoData>
-        )}
+          <TabsFillter>
+            <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
+              {rows.length} record
+            </span>
+
+            <Radio
+              name="Services"
+              items={radioItems}
+              value={valueRadio}
+              onChange={setValueRadio}
+            />
+          </TabsFillter>
+          {rows.length >= 1 ? (
+            <Table
+              className={"min-h-screen"}
+              columns={columns}
+              rows={rows}
+              points={points}
+              point={point}
+              handlepoint={handlepoint}
+            />
+          ) : (
+            <NoData></NoData>
+          )}
+        </div>
       </Content>
     </>
   );

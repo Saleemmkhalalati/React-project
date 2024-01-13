@@ -122,7 +122,7 @@ export function Dropdown_whithout_icon({
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-  // {console.log(options)}
+  
   return (
     <div
       className={` ${

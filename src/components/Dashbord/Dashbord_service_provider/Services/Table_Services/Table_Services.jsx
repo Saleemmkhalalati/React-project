@@ -26,7 +26,7 @@ import { useTranslation } from "react-i18next";
 import React, { useRef, useEffect } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import Discount from "../../Service_Provider_Laysout/Discount";
+import Discount from "../../../Dashbord_layout/Mangment/Discount";
 
 // Import Swiper styles
 import "swiper/css";
@@ -531,10 +531,8 @@ export default function Table_Services() {
       <Content
         path={" Products /Table Product"}
         RefrechFun={handleRefrech}
-        ExportFunc={handleExport}
+        hasAddProducts={true}
         refrech={refrech}
-        Export={Export}
-        hasExport={true}
         hasRefrech={true}
         classNameChildern="bg-white"
       >

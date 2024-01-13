@@ -1,23 +1,29 @@
 import { useState } from "react";
 import Typography from "../../../utilities/Typography";
 
-import Refrech from "../../../../assets/icons/Refrech.svg";
-import Export_img from "../../../../assets/icons/Export.svg";
-import {Export_icon} from "../../../utilities/Icons"
+
+import {Add, Export_icon,Refresh} from "../../../utilities/Icons"
 
 const Content = ({
   children,
   path,
-  RefrechFun,
-  ExportFunc,
-  refrech,
-  Export,
   classNameChildern,
   hasExport,
   hasRefrech,
+  hasAddProducts,
+  addProductFun
 }) => {
   const [Remostartactive, setRemostartActive] = useState(false);
+  const [refrech, setrefrech] = useState(false);
+  const [Export, setexport] = useState(false);
+  const [AddProduct, setAddProduct] = useState(false);
 
+  const RefrechFun = () => {
+    setrefrech(!refrech);
+  };
+  const ExportFunc = () => {
+    setexport(!Export);
+  };
   return (
     <div className="ltr:ps-1 rtl:pe-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between      ">
       <div className="flex justify-between  flex-wrap gap-2">
@@ -27,16 +33,7 @@ const Content = ({
         <div className="flex items-center gap-4 cursor-pointer mb-4  ">
           {hasRefrech ? (
             <div className="flex gap-1 " onClick={RefrechFun}>
-              {/* <img
-                src={Refrech}
-                alt=""
-                className={`${refrech ? "hidden" : "inline-block"}`}
-              />{" "}
-              <img
-                src={Export_img}
-                alt=""
-                className={`${refrech ? "inline-block" : "hidden"}`}
-              /> */}
+        <Refresh active={refrech}/>
               <span
                 className={`font-normal text-[13px] leading-[20px] text-myGray-500 hover:text-primary ${
                   refrech ? "text-primary" : ""
@@ -51,17 +48,7 @@ const Content = ({
 
           {hasExport ? (
             <div className="flex gap-1 items-center " onClick={ExportFunc}>
-              <Export_icon  />
-              {/* <img
-                src={Export_img}
-                alt=""
-                className={`${refrech ? "hidden" : "inline-block"}`}
-              />
-              <img
-                src=""
-                alt=""
-                className={`${Export ? "inline-block" : "hidden"}`}
-              /> */}
+              <Export_icon active={Export} />
               <span
                 className={`font-normal text-[13px] leading-[20px] text-myGray-500 hover:text-primary ${
                   Export ? "text-primary" : ""
@@ -73,6 +60,29 @@ const Content = ({
           ) : (
             ""
           )}
+
+
+          
+{hasAddProducts ? (
+            <div className="flex gap-1 items-center " onClick={() => {
+              setAddProduct(!AddProduct);
+              addProductFun()
+            }
+            }>
+              <Add  active={AddProduct} />
+
+              <span
+                className={`font-normal text-[13px] leading-[20px] text-myGray-500 hover:text-primary ${
+                  AddProduct ? "text-primary" : ""
+                }`}
+              >
+               Add Product
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
+        
         </div>
       </div>
 
