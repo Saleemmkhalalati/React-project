@@ -109,7 +109,16 @@ export default function Table_Product() {
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Not Active",
+      Create_Request: "Now",
+    },
+    {
+      Email_Address: "Ali@gmail.com",
+      Services_Name: "27.10.2023 11:34",
+      Location: "Mazh",
+      DateTo: "Mazh",
+      DateFrom: "Mazh",
+      status: "Not Active",
       Create_Request: "Mazh",
     },
     {
@@ -118,7 +127,7 @@ export default function Table_Product() {
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Active",
       Create_Request: "Mazh",
     },
     {
@@ -127,7 +136,7 @@ export default function Table_Product() {
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Active",
       Create_Request: "Mazh",
     },
     {
@@ -136,16 +145,7 @@ export default function Table_Product() {
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
-      Create_Request: "Mazh",
-    },
-    {
-      Email_Address: "Ali@gmail.com",
-      Services_Name: "27.10.2023 11:34",
-      Location: "Mazh",
-      DateTo: "Mazh",
-      DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Disabled",
       Create_Request: "Mazh",
     },
   ];
@@ -246,18 +246,6 @@ export default function Table_Product() {
   // حساب القيمة بعد الخصم
   const priceAfterDiscount = price - (validDiscount / 100) * price;
 
-  const handleReachEnd = () => {
-    // تحقق هنا إذا كان العنصر الحالي هو آخر عنصر
-    if (swiperRef.current.isEnd) {
-      // قم بتغيير الصورة هنا
-    }
-  };
-
-  useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.on("reachEnd", handleReachEnd);
-    }
-  }, []);
   return (
     <>
       <>
@@ -266,9 +254,12 @@ export default function Table_Product() {
             {edit ? (
               <div className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                 <div className="py-5 md:py-10 flex flex-col gap-3">
-                  <Typography component={"h3"}>Edit Product</Typography>
+                  <Typography component={"h3"}>
+                    {" "}
+                    {t("editProduct.0")}
+                  </Typography>
                   <Typography component={"h5"}>
-                    Register Date in: 10/27/2023 11:34, for this product
+                    {t("editProduct.1")}: 10/27/2023 11:34, {t("editProduct.2")}
                   </Typography>
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4">
@@ -350,12 +341,12 @@ export default function Table_Product() {
                     />
 
                     <Typography className={"flex gap-1"} component={"h5"}>
-                      If you would like to add discounts please
+                      {t("editProduct.3")}
                       <p
                         onClick={handleDiscount}
                         className="text-secondary hover:text-success cursor-pointer"
                       >
-                        click Here
+                        {t("editProduct.4")}
                       </p>
                     </Typography>
                   </div>
@@ -391,7 +382,7 @@ export default function Table_Product() {
                     isDragActive={isDragActive}
                   />
                   <Button fullWidth={true} type="submit">
-                    Change Details Product
+                    {t("editProduct.5")}
                   </Button>
                 </div>
               </div>
@@ -402,9 +393,12 @@ export default function Table_Product() {
               {view ? (
                 <div className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                   <div className="py-5 md:py-10 flex flex-col gap-3">
-                    <Typography component={"h3"}>View Product</Typography>
+                    <Typography component={"h3"}>
+                      {t("viewProduct.0")}
+                    </Typography>
                     <Typography component={"h5"}>
-                      Register Date in: 10/27/2023 11:34, for this product
+                      {t("viewProduct.1")} 10/27/2023 11:34
+                      {t("viewProduct.2")}
                     </Typography>
                   </div>
                   <>
@@ -417,7 +411,7 @@ export default function Table_Product() {
                       className="py-5"
                       ref={swiperRef}
                     >
-                      <SwiperSlide className="flex items-center justify-center">
+                      <SwiperSlide className="flex items-center justify-center ">
                         <img src={product} alt="img" />
                       </SwiperSlide>
                       <SwiperSlide className="flex items-center justify-center">
@@ -426,21 +420,21 @@ export default function Table_Product() {
 
                       <div className="custom-next-button custom-next-button-right absolute start-20 z-50 top-[50%] -translate-y-[50%] ">
                         <img
-                          className="w-10 h-10 cursor-pointer"
+                          className="w-10 h-10 cursor-pointer rtl:rotate-180"
                           src={left}
                           alt=""
                         />
                       </div>
                       <div className="custom-prev-button custom-next-button-left absolute end-20 z-50 top-[50%] -translate-y-[50%]">
                         <img
-                          className="w-10 h-10 cursor-pointer"
+                          className="w-10 h-10 cursor-pointer rtl:rotate-180"
                           src={right}
                           alt=""
                         />
                       </div>
                     </Swiper>
                   </>
-                  <div className="flex flex-col gap-2 md:gap-4">
+                  <div className="flex flex-col gap-2 md:gap-3">
                     <DashInput
                       name={"status"}
                       type={"text"}
@@ -497,7 +491,7 @@ export default function Table_Product() {
                       onClick={handleCloseView}
                       type="submit"
                     >
-                      Close View Product
+                      {t("viewProduct.3")}
                     </Button>
                   </div>
                 </div>
@@ -509,12 +503,10 @@ export default function Table_Product() {
               {discount ? (
                 <div className="w-[17rem] min-h-full sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                   <div className="py-5 md:py-10 flex flex-col gap-3">
-                    <Typography component={"h3"}>View Product</Typography>
-                    <Typography component={"h5"}>
-                      Register Date in: 10/27/2023 11:34, for this product
-                    </Typography>
+                    <Typography component={"h3"}>{t("discount.0")}</Typography>
+                    <Typography component={"h5"}>{t("discount.1")}</Typography>
                   </div>
-                  <div className="flex flex-col gap-2 md:gap-5">
+                  <div className="flex flex-col gap-2 md:gap-4">
                     <DashInput
                       name={"discountNumber"}
                       type="text"
@@ -532,7 +524,7 @@ export default function Table_Product() {
                     <div className="flex flex-col gap-5">
                       <div className="flex flex-col gap-2">
                         <p className="text-primary text-xs">
-                          Price before discounter:{" "}
+                          {t("discount.2")}
                         </p>
                         <p className="text-myGray-600 text-xs">
                           {formik.values.price}
@@ -540,7 +532,7 @@ export default function Table_Product() {
                       </div>
                       <div className="flex flex-col gap-2">
                         <p className="text-primary text-xs">
-                          Price after discounter:{" "}
+                          {t("discount.3")}
                         </p>
                         <p className="text-myGray-600 text-xs">
                           {priceAfterDiscount}
@@ -548,7 +540,7 @@ export default function Table_Product() {
                       </div>
                     </div>
                     <Button fullWidth={true} type="submit">
-                      Edit Discount
+                      {t("discount.4")}
                     </Button>
                   </div>
                 </div>
@@ -571,7 +563,7 @@ export default function Table_Product() {
         classNameChildern="bg-white"
       >
         {/* // must be as a commponent  */}
-        <TabsFillter >
+        <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
             {rows.length} record
           </span>

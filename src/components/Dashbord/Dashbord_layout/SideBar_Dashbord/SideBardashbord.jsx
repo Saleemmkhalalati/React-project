@@ -12,9 +12,9 @@ import {
   Graph,
   Notification,
   Person_sidebar,
-  Arrow_dropdown
+  Arrow_dropdown,
 } from "../../../utilities/Icons";
-import { Dropdown_whithout_icon } from "../../../utilities/Dropdown"
+import { Dropdown_whithout_icon } from "../../../utilities/Dropdown";
 import logo from "../../../../assets/icons/Logo.svg";
 import { Services } from "../../../utilities/Icons";
 
@@ -26,14 +26,14 @@ const SideBardashbord = () => {
   const [Menus, setMenus] = useState([]);
   const [subMenuType, setSubMenuType] = useState("");
   const [menueClicked, setMenueClicked] = useState("");
-  const Role = useLocation().pathname.split("/")[1]
+  const Role = useLocation().pathname.split("/")[1];
   useEffect(() => {
-    if (Role === "dashboard") { setMenus(Menus_Admin_dashboard) }
-    else if (Role === "dashboard_service_provider") {
-      setMenus(Menus_Service_provider)
+    if (Role === "dashboard") {
+      setMenus(Menus_Admin_dashboard);
+    } else if (Role === "dashboard_service_provider") {
+      setMenus(Menus_Service_provider);
     }
-  }
-    , [menueClicked])
+  }, [menueClicked]);
 
   const Menus_Admin_dashboard = [
     {
@@ -42,27 +42,22 @@ const SideBardashbord = () => {
         {
           title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.0"),
           src: "/dashboard/users",
-          icon: <Person_sidebar  menue={menueClicked}  />,
+          icon: <Person_sidebar menue={menueClicked} />,
           subMenus: [
             {
               name: t("sideBar_Dashbord.AdminDashbord_all_users_menu.0"),
               src: "service_Providers",
-
             },
             {
               name: t("sideBar_Dashbord.AdminDashbord_all_users_menu.1"),
               src: "patient_Users",
-
-
             },
             {
               name: t("sideBar_Dashbord.AdminDashbord_all_users_menu.2"),
               src: "Admin_Users",
-
-
             },
           ],
-          cname: " top-[-4rem] rtl:start-[4rem]  ltr:left-16"
+          cname: " top-[-4rem] rtl:start-[4rem]  ltr:left-16",
         },
 
         {
@@ -74,14 +69,10 @@ const SideBardashbord = () => {
             {
               name: t("sideBar_Dashbord.Admin_dashboard_Services.0"),
               src: "Doctors_Services",
-
-
             },
             {
               name: t("sideBar_Dashbord.Admin_dashboard_Services.1"),
               src: "Hospital_Services",
-
-
             },
             {
               name: t("sideBar_Dashbord.Admin_dashboard_Services.2"),
@@ -96,7 +87,7 @@ const SideBardashbord = () => {
               src: "Lab_Services",
             },
           ],
-          cname: "ltr:left-16 top-[-4rem] rtl:start-[4rem]"
+          cname: "ltr:left-16 top-[-4rem] rtl:start-[4rem]",
         },
         {
           title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.2"),
@@ -108,15 +99,11 @@ const SideBardashbord = () => {
           src: "/dashboard/report",
           gap: true,
           icon: <Graph stoke="white" menue={menueClicked} />,
-
-
         },
         {
           title: t("sideBar_Dashbord.AdminDashboard_about_users_menu.4"),
           src: "/dashboard/products",
           icon: <Notification stoke="white" menue={menueClicked} />,
-
-
         },
       ],
     },
@@ -127,16 +114,12 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
           src: "/dashboard/settings",
           icon: <Settings stoke="white" menue={menueClicked} />,
-
-
         },
 
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
           src: "/dashboard/signOut",
           icon: <Log_Out stoke="white" menue={menueClicked} />,
-
-
         },
       ],
     },
@@ -167,7 +150,7 @@ const SideBardashbord = () => {
               cName: "sub-nav",
             },
           ],
-          cname: " top-[-4rem] rtl:start-[4rem]  ltr:left-16"
+          cname: " top-[-4rem] rtl:start-[4rem]  ltr:left-16",
         },
 
         {
@@ -177,31 +160,19 @@ const SideBardashbord = () => {
 
           subMenus: [
             {
-              name: t("sideBar_Dashbord.Services.0"),
-              src: "Doctors_Services",
+              name: t("serviceProvider_dashboard_Services.0"),
+              src: "Requests_servies",
 
               cName: "sub-nav",
             },
             {
-              name: t("sideBar_Dashbord.Services.1"),
-              src: "Hospital_Services",
+              name: t("serviceProvider_dashboard_Services.1"),
+              src: "Table_Services",
 
               cName: "sub-nav",
-            },
-            {
-              name: t("sideBar_Dashbord.Services.2"),
-              src: "Pharmacy_Services",
-            },
-            {
-              name: t("sideBar_Dashbord.Services.3"),
-              src: "Clinic_Services",
-            },
-            {
-              name: t("sideBar_Dashbord.Services.4"),
-              src: "Lab_Services",
             },
           ],
-          cname: "ltr:left-16 top-[-4rem] rtl:start-[4rem]"
+          cname: "ltr:left-16 top-[-4rem] rtl:start-[4rem]",
         },
         {
           title: t("sideBar_Dashbord.serviceProvider_about_users_menu.2"),
@@ -209,14 +180,13 @@ const SideBardashbord = () => {
           icon: <Notification stoke="white" menue={menueClicked} />,
           subMenus: [
             {
-              name:t("sideBar_Dashbord.serviceProvider_dashboard_products.0"),
+              name: t("sideBar_Dashbord.serviceProvider_dashboard_products.0"),
               src: "Request_Product",
             },
             {
               name: t("sideBar_Dashbord.serviceProvider_dashboard_products.1"),
               src: "Table_Product",
             },
-      
           ],
         },
         {
@@ -224,10 +194,7 @@ const SideBardashbord = () => {
           src: "/dashboard_service_provider/report",
           gap: true,
           icon: <Graph stoke="white" menue={menueClicked} />,
-
-
         },
-
       ],
     },
     {
@@ -237,16 +204,12 @@ const SideBardashbord = () => {
           title: t("sideBar_Dashbord.about_dashboard_menu.0"),
           src: "/dashboard_service_provider/settings",
           icon: <Settings stoke="white" menue={menueClicked} />,
-
-
         },
 
         {
           title: t("sideBar_Dashbord.about_dashboard_menu.1"),
           src: "/dashboard_service_provider/signOut",
           icon: <Log_Out stoke="white" menue={menueClicked} />,
-
-
         },
       ],
     },
@@ -254,13 +217,6 @@ const SideBardashbord = () => {
   const toggleSidebar = () => {
     setOpen(!open);
   };
-
-
-
-
-
-
-
 
   return (
     // <div className={` sidebar_dashboard bg-red-200 flex justify-center flex-wrap  py-5  shadow-lg    px-10 w-[20%]  ${open ? "w-[20%]" :""} `}>
@@ -274,7 +230,10 @@ const SideBardashbord = () => {
       <img src={logo} alt="" className="w-10 h-10 lg:hidden" />
 
       {/* Dashbord  */}
-      <div className="flex grident  px-5 py-2 items-center gap-5 bg-gradient-to-r from-primary to-secondary rounded-[8px] w-full " onClick={toggleSidebar}>
+      <div
+        className="flex grident  px-5 py-2 items-center gap-5 bg-gradient-to-r from-primary to-secondary rounded-[8px] w-full "
+        onClick={toggleSidebar}
+      >
         <img src={vector} alt="" className="" />
         <p className="text-white hidden lg:block">
           {t("sideBar_Dashbord.main_title.0")}
@@ -295,14 +254,16 @@ const SideBardashbord = () => {
                 <>
                   <li
                     key={index}
-                    className={`${menueClicked.title === data.title ? "bg-gradient-to-r from-primary to-secondary text-white" : ""} flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-4 rounded-md text-sm items-center gap-x-5 
+                    className={`${
+                      menueClicked.title === data.title
+                        ? "bg-gradient-to-r from-primary to-secondary text-white"
+                        : ""
+                    } flex menue_li  hover:text-whitezrounded-md  cursor-pointer mb-4 rounded-md text-sm items-center gap-x-5 
                       ${data.gap ? "mt-9" : "mt-2"}  `}
                     onClick={() => {
-
                       setMenueClicked(data);
                       SetDropdownOpen(!DropdownOpen);
                       setSubMenuType(data.title);
-
                     }}
                   >
                     <NavLink
@@ -311,32 +272,26 @@ const SideBardashbord = () => {
                     >
                       {data.icon}
 
-
-                      <span className={`${menueClicked.title === data.title ? " text-white" : ""} flex-1 hidden  lg:inline-block`}>
+                      <span
+                        className={`${
+                          menueClicked.title === data.title ? " text-white" : ""
+                        } flex-1 hidden  lg:inline-block`}
+                      >
                         {data.title}
                       </span>
                       {data.subMenus && (
-                        <div onClick={(e) => {
-                          setSubMenuOpen(!subMenuOpen);
-                          setSubMenuType(data.title);
-
-                        }}
-                          className={`${subMenuOpen && "rotate-90 "
-                            } hidden lg:inline-block   `}>
-                          <Arrow_dropdown
-                            menue={menueClicked}
-                            stoke="white"
-
-
-
-
-                          />
-
-
+                        <div
+                          onClick={(e) => {
+                            setSubMenuOpen(!subMenuOpen);
+                            setSubMenuType(data.title);
+                          }}
+                          className={`${
+                            subMenuOpen && "rotate-90 "
+                          } hidden lg:inline-block   `}
+                        >
+                          <Arrow_dropdown menue={menueClicked} stoke="white" />
                         </div>
-
                       )}
-
                     </NavLink>
                   </li>
 
@@ -364,9 +319,12 @@ const SideBardashbord = () => {
                   {/*  submenues in md and sm screen  */}
                   {data.subMenus && subMenuType === data.title && (
                     //  <Dropdown  />
-                    <div className={` ${DropdownOpen === true ? " block" : "hidden"}  lg:hidden`}>
+                    <div
+                      className={` ${
+                        DropdownOpen === true ? " block" : "hidden"
+                      }  lg:hidden`}
+                    >
                       <Dropdown_whithout_icon
-                       
                         options={data.subMenus}
                         dataSrc={data.src}
                         SetDropdownOpen={SetDropdownOpen}
@@ -375,11 +333,8 @@ const SideBardashbord = () => {
                         showSlected={false}
                         ulClassname={`${data.cname}`}
                       />
-
                     </div>
                   )}
-
-
                 </>
               ))}
             </ul>
@@ -390,7 +345,11 @@ const SideBardashbord = () => {
 
       <p className="relative text-myGray-500 text-[14px] rounded-md hidden lg:block bg-myGray-200 px-4 py-5 font-semibold leading-[18px]">
         {t("sideBar_Dashbord.Contact_us_discrption")}
-        <span className="text-success cursor-pointer"> {t("sideBar_Dashbord.contact_us")}</span>.
+        <span className="text-success cursor-pointer">
+          {" "}
+          {t("sideBar_Dashbord.contact_us")}
+        </span>
+        .
       </p>
     </div>
   );

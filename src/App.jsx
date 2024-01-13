@@ -45,6 +45,12 @@ import All_Request from "./components/Dashbord/Dashbord_service_provider/Product
 import Requests_Rejected from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_Rejected.jsx";
 import Requests_accepted from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_accepted.jsx";
 import Last_Request from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Last_Request.jsx";
+import Table_Services from "./components/Dashbord/Dashbord_service_provider/Services/Table_Services/Table_Services";
+import Requests_servies from "./components/Dashbord/Dashbord_service_provider/Services/Request/Requests_services";
+import AllRequest_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/AllRequest_services";
+import RequestsRejected_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsRejected_services";
+import LastRequest_service from "./components/Dashbord/Dashbord_service_provider/Services/Request/LastRequest_servies";
+import RequestAccepted_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsAccepted_services";
 function App() {
   return (
     <div className="font-alegreya">
@@ -135,6 +141,31 @@ function App() {
             <Route path="products/Table_Product" element={<Table_Product />} />
 
             {/* <Route path="Request_Product" element={<Request_Product />} /> */}
+
+            <Route path="services" element={<Home />} />
+            <Route
+              path="services/Requests_servies"
+              element={<Requests_servies />}
+            >
+              <Route index element={<AllRequest_services />} />
+              <Route
+                path="LastRequest_service"
+                element={<LastRequest_service />}
+              />
+              <Route
+                path="RequestsRejected_services"
+                element={<RequestsRejected_services />}
+              />
+              <Route
+                path="RequestAccepted_services"
+                element={<RequestAccepted_services />}
+              />
+            </Route>
+
+            <Route
+              path="services/Table_Services"
+              element={<Table_Services />}
+            />
             <Route path="Table_Product" element={<Table_Product />} />
 
             <Route path="settings" element={<Setting_service_provider />} />
