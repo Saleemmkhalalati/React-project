@@ -7,6 +7,7 @@ import { useState } from "react";
 function Requests_servies() {
   const [active, setActive] = useState(null);
 
+
   const requests = [
     { AllRequest: 100 },
     { RequestsRejected: 10 },
@@ -15,7 +16,8 @@ function Requests_servies() {
   ];
 
   const handleClick = (id) => {
-    setActive(id === active ? null : id); // قم بتغيير القيمة إلى null إذا كانت متساوية، وإلا قم بتغييرها إلى id
+    setActive(id === active ? null : id);
+    console.log(id, active);
   };
 
   return (

@@ -320,16 +320,6 @@ export function InputFile({
     </>
   );
 }
-InputFile.propTypes = {
-  label: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-
-  type: PropTypes.oneOf(["file"]).isRequired,
-  onChange: PropTypes.func.isRequired,
-  onBlur: PropTypes.func,
-  icon: PropTypes.string.isRequired,
-  errorMsg: PropTypes.string.isRequired,
-};
 
 export function DashInput({
   name,

@@ -176,7 +176,7 @@ export default function Service() {
     <>
       {providers.services.length >= 1 ? (
         <div className="pt-6 lg:pt-28 px-0 min-h-screen">
-          <div className="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 lg:px-10 lg:ps-14">
+          <div className="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-7  lg:ps-14">
             {providers.services.map((provider, index) => (
               <div className="w-full" key={index}>
                 <Link to={`/details/${provider.id}`}>

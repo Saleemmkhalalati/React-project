@@ -407,7 +407,7 @@ function Details() {
             </table>
             <Typography component={"h3"}>{t("details.9")}</Typography>
 
-            <Map className="" position={Someservices.provider_location_id} />
+            <Map position={Someservices.provider_location_id} />
           </div>
           <div
             className="xl:absolute w-full xl:w-[29rem]  bg-white py-4 px-6 rounded shadow

@@ -7,7 +7,7 @@ export default function TitleAndSideServices() {
     <Container className={"overflow-hidden  "}>
       <div className="flex justify-center lg:justify-normal  ">
         <SideServices />
-        <div className="w-[75%] ">
+        <div className="w-[75%] flex flex-col items-center lg:pe-10 ">
           <OurServicesTitle className={"w-[100%]  lg:w-[85%]  "} />
           <div className="w-full">
             <Outlet />
