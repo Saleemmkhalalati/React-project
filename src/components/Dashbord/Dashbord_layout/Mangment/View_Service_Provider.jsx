@@ -2,7 +2,7 @@ import { DashInput } from "../../../utilities/Inputs";
 import { useFormik } from "formik";
 
 import { useTranslation } from "react-i18next";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Typography from "../../../utilities/Typography";
 
 import Business from "../../../../assets/icons/business-Dahshboard.svg";
@@ -18,9 +18,9 @@ import { Navigation } from "swiper/modules";
 import product from "../../Dashbord_service_provider/Services/Table_Services/Services_img/product.svg";
 import left from "../../Dashbord_service_provider/Services/Table_Services/Services_img/left.svg";
 import right from "../../Dashbord_service_provider/Services/Table_Services/Services_img/right.svg";
+import rightActive from "../../Dashbord_service_provider/Services/Table_Services/Services_img/right active.svg";
 
 function View_Service_Provider({ handleCloseView }) {
-  const swiperRef = useRef(null);
   const { t } = useTranslation("global");
   const formik = useFormik({
     initialValues: {
@@ -32,21 +32,27 @@ function View_Service_Provider({ handleCloseView }) {
       img: "",
     },
   });
+  const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
+  const [isPrevButtonDisabled, setIsPrevButtonDisabled] = useState(false);
+  const swiperRef = useRef(null);
+
   useEffect(() => {
     const swiperInstance = swiperRef.current.swiper;
-    const slides = swiperInstance.slides;
 
-    slides.forEach((slide, index) => {
-      const hasDisabledClass = slide.classList.contains(
-        "swiper-button-disabled"
-      );
+    swiperInstance.on("slideChange", () => {
+      const nextButton = document.querySelector(".custom-next-button");
+      const prevButton = document.querySelector(".custom-prev-button");
 
-      if (hasDisabledClass) {
-        // إذا كان الكلاس موجود، غير خلفية الصورة إلى اللون الأحمر
-        slide.style.background = "red";
+      if (nextButton.classList.contains("swiper-button-disabled")) {
+        setIsNextButtonDisabled(true);
       } else {
-        // إذا لم يكن الكلاس موجود، ابقِ على خلفية الصورة كما هي
-        slide.style.background = ""; // أو يمكنك تعيين لون خلفية افتراضي آخر
+        setIsNextButtonDisabled(false);
+      }
+
+      if (prevButton.classList.contains("swiper-button-disabled")) {
+        setIsPrevButtonDisabled(true);
+      } else {
+        setIsPrevButtonDisabled(false);
       }
     });
   }, []);
@@ -83,13 +89,26 @@ function View_Service_Provider({ handleCloseView }) {
               src={left}
               alt=""
             />
+            {isNextButtonDisabled && (
+              // You can render something specific when the next button is disabled
+              <p>Next button is disabled!</p>
+            )}
           </div>
+
           <div className="custom-prev-button custom-next-button-left absolute end-20 z-50 top-[50%] -translate-y-[50%]">
-            <img
-              className="w-10 h-10 cursor-pointer rtl:rotate-180 "
-              src={right}
-              alt=""
-            />
+            {isPrevButtonDisabled ? (
+              <img
+                className="w-10 h-10 cursor-pointer rtl:rotate-180 "
+                src={right}
+                alt="#"
+              />
+            ) : (
+              <img
+                className="w-10 h-10 cursor-pointer rtl:rotate-180 "
+                src={rightActive}
+                alt="#"
+              />
+            )}
           </div>
         </Swiper>
       </>

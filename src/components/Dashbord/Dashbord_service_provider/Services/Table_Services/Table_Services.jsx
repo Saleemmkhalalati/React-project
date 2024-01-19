@@ -17,7 +17,6 @@ import React, { useEffect } from "react";
 import Discount from "../../../Dashbord_layout/Mangment/Discount";
 import Edit_Service_Provider from "../../../Dashbord_layout/Mangment/Edit_Service_Provider";
 import View_Service_Provider from "../../../Dashbord_layout/Mangment/View_Service_Provider";
-import Add_Service_Provider from "../../../Dashbord_layout/Mangment/Add_Service_Provider";
 
 // Import Swiper styles
 import "swiper/css";
@@ -246,7 +245,7 @@ export default function Table_Services() {
           )}
         </ClickOutside>
       </>
-      {addProduct_active ? <Add_Service_Provider /> : ""}
+      {addProduct_active ? <div>ggggggg</div> : ""}
 
       <Content
         path={" Products / Table Services"}
