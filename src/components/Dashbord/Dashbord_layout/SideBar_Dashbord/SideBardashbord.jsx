@@ -147,25 +147,20 @@ const SideBardashbord = () => {
       Data: [
         {
           title: t("sideBar_Dashbord.serviceProvider_about_users_menu.0"),
-          src: "/dashboard_service_provider/users",
+          src: "/dashboard_service_provider/appointment",
           icon: <Person_sidebar stoke="white" menue={menueClicked} />,
           subMenus: [
             {
-              name: "c",
-              src: "Request_Product",
+              name: "Request Appointmentc",
+              src: "Request_Appointment",
             },
             {
-              name: t("sideBar_Dashbord.all_users_menu.1"),
-              src: "Table_Product",
+              name: " Table Appointment",
+              src: " Table_Appointment",
 
-              cName: "sub-nav",
+      
             },
-            {
-              name: t("sideBar_Dashbord.all_users_menu.2"),
-              src: "Admin_Users",
-
-              cName: "sub-nav",
-            },
+       
           ],
           cname: " top-[-4rem] rtl:start-[4rem]  ltr:left-16"
         },
