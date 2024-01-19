@@ -190,14 +190,12 @@
       "Clinic Services",
       "Lab Services"
     ],
-    "serviceProvider_dashboard_Services": [
-      "Request Services",
-      " Table Services"
-    ],
-    "serviceProvider_dashboard_products":["Request Product","Table Product"],
+
+    "serviceProvider_dashboard_products": ["Request Product", "Table Product"],
     "Contact_us_discrption": "We hope that our website will be useful to you and we are happy for you to ",
     "contact_us": " contact us"
   },
+  "serviceProvider_dashboard_Services": ["Request Services", " Table Services"],
   "Med_sal_dashbord": {
     "main_title": "med - Sal for  Admin - Dashboard ",
     "descrption": "The control panel for the med-sal website, its users, and its services"
@@ -280,5 +278,40 @@
     "Subscribe to our Quarterly newsletter ....",
     "Subscribe",
     "Enter your email "
+  ],
+  "editProduct": [
+    "Edit Product",
+    "Register Date in",
+    "for this product",
+    "If you would like to add discounts please",
+    "click Here",
+    "Change Detailes Product"
+  ],
+  "discount": [
+    "Edit Discounters",
+    "Add discounts to the product that has been added now.",
+    "Price before discounter:",
+    "Price after discounter:",
+    "Edit  Discount"
+  ],
+  "viewProduct": [
+    "View Products",
+    "Register Date in:",
+    " for this product",
+    "Close View Product"
+  ],
+  "editServices": [
+    "Edit Services",
+    "Register Date in",
+    "for this Service",
+    "If you would like to add discounts please",
+    "click Here",
+    "Change Detailes Service"
+  ],
+  "viewService": [
+    "View Services",
+    "Register Date in:",
+    " for this Service",
+    "Close View Service"
   ]
 }

@@ -22,10 +22,10 @@ import TabsFillter from "../../../../utilities/TabsFillter";
 import View from "../../../Dashbord_layout/Mangment/View";
 import Add_product from "../../../Dashbord_layout/Mangment/Add_product";
 // 8*************
-import Wrench from "../../../../../assets/icons/Wrench.svg"
-import Email from "../../../../../assets/icons/Email.svg"
-import View_Icon from "../../../../../assets/icons/View.svg"
-import { add_product_schema } from "../../../../utilities/Validation"
+import Wrench from "../../../../../assets/icons/Wrench.svg";
+import Email from "../../../../../assets/icons/Email.svg";
+import View_Icon from "../../../../../assets/icons/View.svg";
+import { add_product_schema } from "../../../../utilities/Validation";
 
 import { DashInput, InputFile } from "../../../../utilities/Inputs";
 import { useFormik } from "formik";
@@ -46,23 +46,8 @@ import * as Yup from "yup";
 import Button from "../../../../utilities/Button";
 import ClickOutside from "../../../../utilities/Click_Outsite";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default function Table_Product() {
-  
- 
-  const [addProduct_active,set_addProduct_active]=useState(false);
+  const [addProduct_active, set_addProduct_active] = useState(false);
   const AddProductsRef = useRef(null);
   const swiperRef = useRef(null);
   const { t } = useTranslation("global");
@@ -75,118 +60,107 @@ export default function Table_Product() {
   const [discount, setDiscount] = useState(false);
   const [EditDropdown, setEditDropdown] = useState(null);
 
-
   // ******************
 
-const initialValues_Add_Products = {
-  Product_Name: 'Product Name',
-  Product_Type : 'Product Type ',
-  Description: "Description",
-  Location: "Location",
-  Price: "Price",
- 
+  const initialValues_Add_Products = {
+    Product_Name: "Product Name",
+    Product_Type: "Product Type ",
+    Description: "Description",
+    Location: "Location",
+    Price: "Price",
 
+    // Add more initial values for other fields
+  };
+  const Add_Product_content = {
+    title: "Add Product",
+    descrption: " You can add your product from here. ",
+    inputs: [
+      {
+        text: "Product Name",
+        img: Wrench,
+        type: "text",
+        name: "Product Name",
+      },
+      {
+        text: "Product Type ",
+        img: Email,
+        type: "text",
+        input_type: "dropdown",
+        name: "Product Type",
+      },
+      {
+        text: "Description",
+        img: View_Icon,
+        type: "text",
+        name: "Description",
+      },
 
-  // Add more initial values for other fields
-};
-const Add_Product_content = {
-  title: "Add Product",
-  descrption: " You can add your product from here. ",
-  inputs: [
-    {
-      text: 'Product Name',
-      img: Wrench ,
-      type: "text",
-      name: "Product Name",
-     
+      {
+        text: "Location",
+        img: View_Icon,
+        type: "text",
+        name: "Location",
+      },
+      {
+        text: "Price",
+        img: View_Icon,
+        type: "password",
+        name: "password",
+        des: {
+          text: "If you would like to add discounts please click  ",
+          click_here: " Here",
+        },
+      },
+    ],
+    button_content: "Add New Product",
+  };
+  // **************************8
 
-    },
-    {
-      text:'Product Type ',
-      img: Email ,
-      type: "text",
-      input_type: "dropdown",
-      name: "Product Type"
-
-    },
-    {
-      text: "Description",
-      img: View_Icon ,
-      type: "text",
-      name: "Description",
-
-    },
-
-    {
-      text: "Location",
-      img: View_Icon ,
-      type: "text",
-      name: "Location",
-
-    },
-    {
-      text: "Price",
-      img: View_Icon ,
-      type: "password",
-      name: "password",
-      des: {
-        text: "If you would like to add discounts please click  ",
-        click_here: " Here"
-      }
-    },
-
-  ],
-  button_content: "Add New Product",
-
-
-
-}
-// **************************8
-  
-const addProductFun = () => {
-  set_addProduct_active(!addProduct_active)
-}
+  const addProductFun = () => {
+    set_addProduct_active(!addProduct_active);
+  };
 
   //for table drobdown
 
+  const productSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    description: Yup.string().required("Description is required"),
+    location: Yup.string().required("Location is required"),
+    price: Yup.string()
+      .required("Price is required")
+      .test(
+        "is-number",
+        "Invalid price. Please enter only numbers.",
+        (value) => {
+          return /^\d+$/.test(value);
+        }
+      ),
+    img: Yup.mixed().test(
+      "isImage",
+      "Please select a valid image file (JPG, PNG, GIF)",
+      function (value) {
+        if (!value) {
+          return true;
+        }
 
+        const supportedFormats = ["image/jpeg", "image/png", "image/gif"];
 
-const productSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  description: Yup.string().required("Description is required"),
-  location: Yup.string().required("Location is required"),
-  price: Yup.string()
-    .required("Price is required")
-    .test("is-number", "Invalid price. Please enter only numbers.", (value) => {
-      return /^\d+$/.test(value);
-    }),
-  img: Yup.mixed().test(
-    "isImage",
-    "Please select a valid image file (JPG, PNG, GIF)",
-    function (value) {
-      if (!value) {
+        if (!supportedFormats.includes(value.type)) {
+          throw new Yup.ValidationError("Invalid image", value, "img");
+        }
         return true;
       }
-
-      const supportedFormats = ["image/jpeg", "image/png", "image/gif"];
-
-      if (!supportedFormats.includes(value.type)) {
-        throw new Yup.ValidationError("Invalid image", value, "img");
-      }
-      return true;
-    }
-  ),
-  discountNumber: Yup.string()
-    .required("Discount is required")
-    .test(
-      "is-discount",
-      "Invalid discount. Please enter a valid number or percentage.",
-      (value) => {
-        return /^\d+(\%)?$/.test(value);
-      }
     ),
-});
-
+    discountNumber: Yup.string()
+      .required("Discount is required")
+      .test(
+        "is-discount",
+        "Invalid discount. Please enter a valid number or percentage.",
+        (value) => {
+          return /^\d+(\%)?$/.test(value);
+        }
+      ),
+  });
 
   //for drag and drob img
 
@@ -213,7 +187,16 @@ const productSchema = Yup.object().shape({
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Not Active",
+      Create_Request: "Now",
+    },
+    {
+      Email_Address: "Ali@gmail.com",
+      Services_Name: "27.10.2023 11:34",
+      Location: "Mazh",
+      DateTo: "Mazh",
+      DateFrom: "Mazh",
+      status: "Not Active",
       Create_Request: "Mazh",
     },
     {
@@ -222,7 +205,7 @@ const productSchema = Yup.object().shape({
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Active",
       Create_Request: "Mazh",
     },
     {
@@ -231,7 +214,7 @@ const productSchema = Yup.object().shape({
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Active",
       Create_Request: "Mazh",
     },
     {
@@ -240,16 +223,7 @@ const productSchema = Yup.object().shape({
       Location: "Mazh",
       DateTo: "Mazh",
       DateFrom: "Mazh",
-      Status: "Mazh",
-      Create_Request: "Mazh",
-    },
-    {
-      Email_Address: "Ali@gmail.com",
-      Services_Name: "27.10.2023 11:34",
-      Location: "Mazh",
-      DateTo: "Mazh",
-      DateFrom: "Mazh",
-      Status: "Mazh",
+      status: "Disabled",
       Create_Request: "Mazh",
     },
   ];
@@ -350,28 +324,6 @@ const productSchema = Yup.object().shape({
   // حساب القيمة بعد الخصم
   const priceAfterDiscount = price - (validDiscount / 100) * price;
 
-  const handleReachEnd = () => {
-    // تحقق هنا إذا كان العنصر الحالي هو آخر عنصر
-    if (swiperRef.current.isEnd) {
-      // قم بتغيير الصورة هنا
-    }
-  };
-
-  useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.on("reachEnd", handleReachEnd);
-    }
-  }, []);
-
-  
-  // useEffect(() => {
-  //   if(discount){
-  //     set_addProduct_active(false)
-      
-  //   }
-  // }, [discount,addProduct_active]);
-
-
   return (
     <>
       <>
@@ -380,9 +332,12 @@ const productSchema = Yup.object().shape({
             {edit ? (
               <div className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                 <div className="py-5 md:py-10 flex flex-col gap-3">
-                  <Typography component={"h3"}>Edit Product</Typography>
+                  <Typography component={"h3"}>
+                    {" "}
+                    {t("editProduct.0")}
+                  </Typography>
                   <Typography component={"h5"}>
-                    Register Date in: 10/27/2023 11:34, for this product
+                    {t("editProduct.1")}: 10/27/2023 11:34, {t("editProduct.2")}
                   </Typography>
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4">
@@ -464,12 +419,12 @@ const productSchema = Yup.object().shape({
                     />
 
                     <Typography className={"flex gap-1"} component={"h5"}>
-                      If you would like to add discounts please
+                      {t("editProduct.3")}
                       <p
                         onClick={handleDiscount}
                         className="text-secondary hover:text-success cursor-pointer"
                       >
-                        click Here
+                        {t("editProduct.4")}
                       </p>
                     </Typography>
                   </div>
@@ -505,7 +460,7 @@ const productSchema = Yup.object().shape({
                     isDragActive={isDragActive}
                   />
                   <Button fullWidth={true} type="submit">
-                    Change Details Product
+                    {t("editProduct.5")}
                   </Button>
                 </div>
               </div>
@@ -516,9 +471,12 @@ const productSchema = Yup.object().shape({
               {view ? (
                 <div className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                   <div className="py-5 md:py-10 flex flex-col gap-3">
-                    <Typography component={"h3"}>View Product</Typography>
+                    <Typography component={"h3"}>
+                      {t("viewProduct.0")}
+                    </Typography>
                     <Typography component={"h5"}>
-                      Register Date in: 10/27/2023 11:34, for this product
+                      {t("viewProduct.1")} 10/27/2023 11:34
+                      {t("viewProduct.2")}
                     </Typography>
                   </div>
                   <>
@@ -531,7 +489,7 @@ const productSchema = Yup.object().shape({
                       className="py-5"
                       ref={swiperRef}
                     >
-                      <SwiperSlide className="flex items-center justify-center">
+                      <SwiperSlide className="flex items-center justify-center ">
                         <img src={product} alt="img" />
                       </SwiperSlide>
                       <SwiperSlide className="flex items-center justify-center">
@@ -540,21 +498,21 @@ const productSchema = Yup.object().shape({
 
                       <div className="custom-next-button custom-next-button-right absolute start-20 z-50 top-[50%] -translate-y-[50%] ">
                         <img
-                          className="w-10 h-10 cursor-pointer"
+                          className="w-10 h-10 cursor-pointer rtl:rotate-180"
                           src={left}
                           alt=""
                         />
                       </div>
                       <div className="custom-prev-button custom-next-button-left absolute end-20 z-50 top-[50%] -translate-y-[50%]">
                         <img
-                          className="w-10 h-10 cursor-pointer"
+                          className="w-10 h-10 cursor-pointer rtl:rotate-180"
                           src={right}
                           alt=""
                         />
                       </div>
                     </Swiper>
                   </>
-                  <div className="flex flex-col gap-2 md:gap-4">
+                  <div className="flex flex-col gap-2 md:gap-3">
                     <DashInput
                       name={"status"}
                       type={"text"}
@@ -611,7 +569,7 @@ const productSchema = Yup.object().shape({
                       onClick={handleCloseView}
                       type="submit"
                     >
-                      Close View Product
+                      {t("viewProduct.3")}
                     </Button>
                   </div>
                 </div>
@@ -623,12 +581,10 @@ const productSchema = Yup.object().shape({
               {discount ? (
                 <div className="w-[17rem] min-h-full sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                   <div className="py-5 md:py-10 flex flex-col gap-3">
-                    <Typography component={"h3"}>View Product</Typography>
-                    <Typography component={"h5"}>
-                      Register Date in: 10/27/2023 11:34, for this product
-                    </Typography>
+                    <Typography component={"h3"}>{t("discount.0")}</Typography>
+                    <Typography component={"h5"}>{t("discount.1")}</Typography>
                   </div>
-                  <div className="flex flex-col gap-2 md:gap-5">
+                  <div className="flex flex-col gap-2 md:gap-4">
                     <DashInput
                       name={"discountNumber"}
                       type="text"
@@ -646,7 +602,7 @@ const productSchema = Yup.object().shape({
                     <div className="flex flex-col gap-5">
                       <div className="flex flex-col gap-2">
                         <p className="text-primary text-xs">
-                          Price before discounter:{" "}
+                          {t("discount.2")}
                         </p>
                         <p className="text-myGray-600 text-xs">
                           {formik.values.price}
@@ -654,7 +610,7 @@ const productSchema = Yup.object().shape({
                       </div>
                       <div className="flex flex-col gap-2">
                         <p className="text-primary text-xs">
-                          Price after discounter:{" "}
+                          {t("discount.3")}
                         </p>
                         <p className="text-myGray-600 text-xs">
                           {priceAfterDiscount}
@@ -662,7 +618,7 @@ const productSchema = Yup.object().shape({
                       </div>
                     </div>
                     <Button fullWidth={true} type="submit">
-                      Edit Discount
+                      {t("discount.4")}
                     </Button>
                   </div>
                 </div>
@@ -684,8 +640,21 @@ const productSchema = Yup.object().shape({
         addProductFun={addProductFun}
       >
         <div className="relative">
-        {addProduct_active ? ( <Add_product discount={discount} setDiscount={setDiscount} ref={AddProductsRef} Add_Product_content={Add_Product_content} initialValues={initialValues_Add_Products} validation_schema={add_product_schema} addProduct_active={addProduct_active} set_addProduct_active={set_addProduct_active} />)  : "" }
-        {/* {discount ? (
+          {addProduct_active ? (
+            <Add_product
+              discount={discount}
+              setDiscount={setDiscount}
+              ref={AddProductsRef}
+              Add_Product_content={Add_Product_content}
+              initialValues={initialValues_Add_Products}
+              validation_schema={add_product_schema}
+              addProduct_active={addProduct_active}
+              set_addProduct_active={set_addProduct_active}
+            />
+          ) : (
+            ""
+          )}
+          {/* {discount ? (
                 <div className="w-[17rem] min-h-full sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
                   <div className="py-5 md:py-10 flex flex-col gap-3">
                     <Typography component={"h3"}>View Product</Typography>
@@ -734,32 +703,32 @@ const productSchema = Yup.object().shape({
               ) : (
                 ""
               )} */}
-       
-        <TabsFillter >
-          <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
-            {rows.length} record
-          </span>
 
-          <Radio
-            name="Services"
-            items={radioItems}
-            value={valueRadio}
-            onChange={setValueRadio}
-          />
-        </TabsFillter>
-        {rows.length >= 1 ? (
-          <Table
-            className={"min-h-screen"}
-            columns={columns}
-            rows={rows}
-            points={points}
-            point={point}
-            handlepoint={handlepoint}
-          />
-        ) : (
-          <NoData></NoData>
-        )}
-         </div>
+          <TabsFillter>
+            <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
+              {rows.length} record
+            </span>
+
+            <Radio
+              name="Services"
+              items={radioItems}
+              value={valueRadio}
+              onChange={setValueRadio}
+            />
+          </TabsFillter>
+          {rows.length >= 1 ? (
+            <Table
+              className={"min-h-screen"}
+              columns={columns}
+              rows={rows}
+              points={points}
+              point={point}
+              handlepoint={handlepoint}
+            />
+          ) : (
+            <NoData></NoData>
+          )}
+        </div>
       </Content>
     </>
   );

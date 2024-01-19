@@ -27,7 +27,7 @@ const Map = ({ className, position }) => {
         center={position}
         zoom={13}
         scrollWheelZoom={false}
-        className="rounded-xl w-full"
+        className="rounded-xl w-full max-h-60 sm:max-h-80 md:max-h-[40rem] z-10 "
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -41,7 +41,7 @@ const Map = ({ className, position }) => {
       </MapContainer>
       <Typography
         component="h4"
-        className="sm:w-[70%] w-[15rem]  mx-auto mt-10 text-center"
+        className="sm:w-[70%] w-[15rem]  mx-auto pt-10 text-center h-[22rem] "
       >
         {t("services_map.0")}
       </Typography>
