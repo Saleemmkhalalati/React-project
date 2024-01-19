@@ -37,7 +37,7 @@ export default function Dropdown({
     <div
       className={` ${
         className ? className : ""
-      } relative  flex flex-col   z-10 text-myGray-500 `}
+      } relative  flex flex-col z-10 text-myGray-500 `}
       ref={dropdownRef}
     >
       <button
@@ -109,7 +109,7 @@ export function Dropdown_whithout_icon({
     // onChange(selected);
     setSelectedItem(selected);
     setIsOpen(false);
-    console.log(`${dataSrc}/${selected.src}`)
+    console.log(`${dataSrc}/${selected.src}`);
   };
   const handleOutsideClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -122,7 +122,7 @@ export function Dropdown_whithout_icon({
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-  
+
   return (
     <div
       className={` ${

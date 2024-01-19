@@ -122,6 +122,7 @@ function App() {
             path="/dashboard_service_provider"
             element={<DashboardLayout />}
           >
+            
             <Route path="report" element={<Report_service_provider />}>
               <Route index element={<AllPatient />} />
               <Route path="all_services" element={<Allservices />} />

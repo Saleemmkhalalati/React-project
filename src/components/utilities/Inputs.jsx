@@ -205,6 +205,7 @@ export function Input({
   iconOnClick,
   errorMsg,
   type,
+  handleOnclick,
 }) {
   console.log(errorMsg);
   return (
@@ -228,6 +229,7 @@ export function Input({
             value={value}
             onBlur={onBlur}
             onChange={onChange}
+            onClick={handleOnclick}
           />
           <span className="absolute start-0 -top-[1.40rem] px-1 text-mySlate text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-mySlate peer-placeholder-shown:top-0 peer-focus:-top-[1.40rem] peer-focus:text-mySlate peer-focus:text-sm rounded-md bg-gradient-to-b from-transparent from-65% to-white to-35%">
             {label}

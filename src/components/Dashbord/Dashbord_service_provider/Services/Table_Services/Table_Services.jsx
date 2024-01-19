@@ -17,6 +17,7 @@ import React, { useEffect } from "react";
 import Discount from "../../../Dashbord_layout/Mangment/Discount";
 import Edit_Service_Provider from "../../../Dashbord_layout/Mangment/Edit_Service_Provider";
 import View_Service_Provider from "../../../Dashbord_layout/Mangment/View_Service_Provider";
+import Add_Service_Provider from "../../../Dashbord_layout/Mangment/Add_Service_Provider";
 
 // Import Swiper styles
 import "swiper/css";
@@ -56,6 +57,7 @@ export default function Table_Services() {
   const [addProduct_active, set_addProduct_active] = useState(false);
   //for drag and drob img
 
+  console.log(addProduct_active);
   const radioItems = [
     { value: "All services", label: "All Product" },
     { value: "Last services", label: "Last Product" },
@@ -244,6 +246,7 @@ export default function Table_Services() {
           )}
         </ClickOutside>
       </>
+      {addProduct_active ? <Add_Service_Provider /> : ""}
 
       <Content
         path={" Products / Table Services"}

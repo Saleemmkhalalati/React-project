@@ -2,7 +2,7 @@ import { DashInput } from "../../../utilities/Inputs";
 import { useFormik } from "formik";
 
 import { useTranslation } from "react-i18next";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Typography from "../../../utilities/Typography";
 
 import Business from "../../../../assets/icons/business-Dahshboard.svg";
@@ -32,6 +32,24 @@ function View_Service_Provider({ handleCloseView }) {
       img: "",
     },
   });
+  useEffect(() => {
+    const swiperInstance = swiperRef.current.swiper;
+    const slides = swiperInstance.slides;
+
+    slides.forEach((slide, index) => {
+      const hasDisabledClass = slide.classList.contains(
+        "swiper-button-disabled"
+      );
+
+      if (hasDisabledClass) {
+        // إذا كان الكلاس موجود، غير خلفية الصورة إلى اللون الأحمر
+        slide.style.background = "red";
+      } else {
+        // إذا لم يكن الكلاس موجود، ابقِ على خلفية الصورة كما هي
+        slide.style.background = ""; // أو يمكنك تعيين لون خلفية افتراضي آخر
+      }
+    });
+  }, []);
 
   return (
     <div className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 bg-white absolute top-32 end-0 sm:end-5 rounded shadow z-20 px-4 md:px-8 ">
@@ -68,7 +86,7 @@ function View_Service_Provider({ handleCloseView }) {
           </div>
           <div className="custom-prev-button custom-next-button-left absolute end-20 z-50 top-[50%] -translate-y-[50%]">
             <img
-              className="w-10 h-10 cursor-pointer rtl:rotate-180"
+              className="w-10 h-10 cursor-pointer rtl:rotate-180 "
               src={right}
               alt=""
             />
