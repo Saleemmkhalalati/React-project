@@ -315,7 +315,7 @@ const Service_Provider = () => {
 
         {view_user ?
          <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user}  open_change_password={open_change_password} set_open_change_password={set_open_change_password}/> : ""}
-        {Edit_user ? <Edit ref={EditRef} Edit_content={Edit_content} initialValues={initialValues_Edit} validation_schema={service_provider_schema} Edit_user={Edit_user} set_Edit_user={set_Edit_user} open_change_password={open_change_password} set_open_change_password={set_open_change_password} /> : ""}
+        {Edit_user ? <Edit ref={EditRef} Edit_content={Edit_content} initialValues={initialValues_Edit} validation_schema={service_provider_schema} Edit_user={Edit_user} set_Edit_user={set_Edit_user} set_other_section={set_open_change_password} other_section={open_change_password} /> : ""}
         {open_change_password ? <ChangePassword open_change_password={open_change_password} set_open_change_password={set_open_change_password}  /> : ""}
         <TabsFillter>
           <span className="px-2 py-1 border-[1px] border-solid border-myGray-100 opacity-[70%]  flex items-center rounded-[5px] font-semibold text-myGray-500">

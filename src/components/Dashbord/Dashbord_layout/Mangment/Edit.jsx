@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useFormik } from "formik";
 import Typography from "../../../utilities/Typography";
 import Button from "../../../utilities/Button";
-import { DashInput } from "../../../utilities/Inputs";
+import { DashInput, InputFile } from "../../../utilities/Inputs";
 import eye from "../../../../assets/icons/eyepass.svg";
 import iconShow from "../../../../assets/icons/View.svg";
+import { useTranslation } from "react-i18next";
+import { useDropzone } from "react-dropzone";
+import * as Yup from "yup";
+import upload from "../../../../assets/icons/uplode.svg";
+import done from "../../../../assets/icons/done_uplode.svg";
 
 const Edit = React.forwardRef(
   (
@@ -13,13 +18,24 @@ const Edit = React.forwardRef(
       validation_schema,
       Edit_user,
       set_Edit_user,
+      other_section,
+      set_other_section,
       open_change_password,
       set_open_change_password,
+      Uplode_imge
     },
     ref
   ) => {
+    const onDrop = useCallback((acceptedFiles) => {
+      formik.setFieldValue("img", acceptedFiles[0]);
+    }, []);
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+      onDrop,
+    });
     const [showpass, setshowpass] = useState(false);
     const [EditDropdown, setEditDropdown] = useState(null);
+  const { t } = useTranslation("global");
+
     const formik = useFormik({
       initialValues: {
         inputs: [""],
@@ -66,10 +82,10 @@ const Edit = React.forwardRef(
           {Edit_user && (
             <div
               ref={ref}
-              className="flex flex-col gap-3 absolute right-0 bg-white min-w-[45%] px-5 py-3 rounded-md shadow-md z-50 min-h-full"
+              className=" flex flex-col gap-3 absolute right-0 bg-white min-w-[45%] px-7 py-10 rounded-md shadow-md z-50 min-h-full"
             >
               <Typography component={"h3"}>{Edit_content.title}</Typography>
-              <Typography component={"h4"}>
+              <Typography component={"h5"} className="mb-8">
                 {Edit_content.descrption}
               </Typography>
               {/* inputs */}
@@ -136,12 +152,12 @@ const Edit = React.forwardRef(
                       </div>
 
                       {input.des && (
-                        <Typography component={"h4"}>
+                        <Typography component={"h5"}>
                           {input.des.text}{" "}
                           <span
                             className="cursor-pointer text-primary hover:text-success"
                             onClick={() => {
-                              set_open_change_password(!open_change_password);
+                              set_other_section(!other_section);
                             }}
                           >
                             {input.des.click_here}
@@ -160,6 +176,45 @@ const Edit = React.forwardRef(
                     </Typography>
                   </div>
                 )}
+                {
+                  Uplode_imge && (
+
+          
+
+
+
+
+
+
+
+
+                    <InputFile
+                    name={"img"}
+                    type={"file"}
+                    value={formik.values.img}
+                    onChange={(e) => formik.setFieldValue("img", e.target.files[0])}
+                    label={
+                      formik.values.img && !formik.errors.img ? (
+                        t("sitting.6")
+                      ) : (
+                        <Typography component={"h5"}>{t("sitting.4")}</Typography>
+                      )
+                    }
+                    className={
+                      "h-28  flex flex-col-reverse items-center justify-center gap-4 "
+                    }
+                    icon={formik.values.img && !formik.errors.img ? done : upload}
+                    classNameIcon={"w-[3rem] "}
+                    id={"img"}
+                    errorMsg={formik.errors.img ? formik.errors.img : ""}
+                    hasValueTrue={formik.values.img && !formik.errors.img}
+                    isInvalidType={formik.errors.img ? formik.errors.img : ""}
+                    getRootProps={{ ...getRootProps() }}
+                    getInputProps={{ ...getInputProps() }}
+                    isDragActive={isDragActive}
+                  />
+                  )
+                }
 
                 <Button type="submit" fullWidth>
                   {Edit_content.button_content}
@@ -185,5 +240,6 @@ Edit.propTypes = {
   set_Edit_user: PropTypes.func,
   open_change_password: PropTypes.bool,
   set_open_change_password: PropTypes.func,
+  Uplode_imge:PropTypes.bool
 };
 export default Edit;
