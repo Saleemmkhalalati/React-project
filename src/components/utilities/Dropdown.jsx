@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function 
-Dropdown({
+export default function Dropdown({
   value,
   options,
   onChange,
@@ -12,7 +11,7 @@ Dropdown({
   ulClassname,
   classNameIcon,
 }) {
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
 
@@ -36,8 +35,8 @@ Dropdown({
   return (
     <div
       className={` ${
-        className ? className : ""
-      } relative  flex flex-col z-10 text-myGray-500 `}
+        className ? className : "text-myGray-500"
+      } relative  flex flex-col z-10  `}
       ref={dropdownRef}
     >
       <button
