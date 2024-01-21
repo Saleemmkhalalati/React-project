@@ -1,3 +1,5 @@
 .Department_box.active{
+    background-color: white !important;
+    opacity: 75% !important;
 }
 

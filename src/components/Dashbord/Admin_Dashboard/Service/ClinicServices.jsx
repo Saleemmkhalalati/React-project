@@ -232,6 +232,7 @@ export default function ClinicServices() {
               validation_schema={service_provider_schema}
               Edit_user={Edit_user}
               set_Edit_user={set_Edit_user}
+              
             />
           ) : (
             ""

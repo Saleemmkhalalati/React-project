@@ -349,8 +349,8 @@ export default function HospitalServices() {
               validation_schema={service_provider_schema}
               Edit_user={Edit_user}
               set_Edit_user={set_Edit_user}
-              open_change_password={open_change_password}
-              set_open_change_password={set_open_change_password}
+              set_other_section={set_open_change_password}
+               other_section={open_change_password}
             />
           ) : (
             ""
