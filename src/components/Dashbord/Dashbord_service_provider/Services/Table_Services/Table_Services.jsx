@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 //icons
 
 import priceIcon from "../../../../../assets/icons/Price.svg";
@@ -17,6 +17,14 @@ import React, { useEffect } from "react";
 import Discount from "../../../Dashbord_layout/Mangment/Discount";
 import Edit_Service_Provider from "../../../Dashbord_layout/Mangment/Edit_Service_Provider";
 import View_Service_Provider from "../../../Dashbord_layout/Mangment/View_Service_Provider";
+import Wrench  from "../../../../../assets/icons/Wrench.svg"
+import Email from "../../../../../assets/icons/Email.svg"
+import location from "../../../../../assets/icons/Location.svg"
+import Business from "../../../../../assets/icons/Business.svg"
+import file from "../../../../../assets/icons/File.svg"
+import discountIcon from "../../../../../assets/icons/Disc.svg"
+
+
 
 // Import Swiper styles
 import "swiper/css";
@@ -25,6 +33,8 @@ import "swiper/css/navigation";
 import * as Yup from "yup";
 
 import ClickOutside from "../../../../utilities/Click_Outsite";
+import Edit from "../../../Dashbord_layout/Mangment/Edit";
+import { Edit_Services_schema } from "../../../../utilities/Validation";
 const productSchema = Yup.object().shape({
   price: Yup.string()
     .required("Price is required")
@@ -52,6 +62,15 @@ export default function Table_Services() {
   const [edit, setEdit] = useState(false);
   const [view, setView] = useState(false);
   const [discount, setDiscount] = useState(false);
+  const EditRef = useRef(null);
+  
+  useEffect(() => {
+    if(discount){
+      setEdit(false)
+
+    }
+  }, [discount,edit]);
+
 
   const [addProduct_active, set_addProduct_active] = useState(false);
   //for drag and drob img
@@ -206,15 +225,80 @@ export default function Table_Services() {
   // حساب القيمة بعد الخصم
   const priceAfterDiscount = price - (validDiscount / 100) * price;
 
+
+
+  const Edit_content = {
+    title: t("editServices.0"),
+    descrption: t("editServices.1") + ": 10/27/2023 11:34 ," +t("editServices.2"),
+    inputs: [
+      {
+        text: "Active",
+        img: Wrench,
+        type: "text",
+        name: "state",
+        input_type: "dropdown"
+
+      },
+      {
+        text: "Artificial foot",
+        img: Business,
+        type: "text",
+        name: "name"
+
+      },
+      {
+        text: "Artificial foot for people with special needs",
+        img: file,
+        type: "text",
+        name: "description"
+
+      },
+      {
+        text: "Maza",
+        img: location,
+        type: "text",
+        name: "location"
+
+      },
+      {
+        text: "2000",
+        img: priceIcon,
+        type: "text",
+        name: "price"
+
+      },
+      {
+        text: "1800",
+        img: discountIcon,
+        type: "text",
+        name: "discount",
+        des: {
+          text: t("editServices.3"),
+          click_here: t("editServices.4")
+        }
+
+      },
+  
+ 
+    ],
+    button_content: t("editServices.5"),
+ 
+
+
+  }
+
   return (
     <>
       <>
         <ClickOutside onClick={handleClose}>
+        <div className=" relative">
           {edit ? (
-            <Edit_Service_Provider handleDiscount={handleDiscount} />
+          <Edit   ref={EditRef} Edit_content={Edit_content}  validation_schema={Edit_Services_schema}  Edit_user={edit} set_Edit_user={setEdit} Uplode_imge={true}    other_section={discount} set_other_section={setDiscount} />
+            
           ) : (
             ""
           )}
+           </div>
         </ClickOutside>
         <ClickOutside onClick={handleCloseView}>
           {view ? (
