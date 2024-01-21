@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Dropdown({
+export default function 
+Dropdown({
   value,
   options,
   onChange,
@@ -11,8 +12,7 @@ export default function Dropdown({
   ulClassname,
   classNameIcon,
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false); 
   const [selectedItem, setSelectedItem] = useState(options[0].name);
   const dropdownRef = useRef(null);
 
