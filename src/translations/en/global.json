@@ -313,5 +313,17 @@
     "Register Date in:",
     " for this Service",
     "Close View Service"
+  ],
+  "AddServices": [
+    "Add Services",
+    "You can add your services from here.",
+    "Services Name",
+    "Service Type",
+    "Description",
+    "Location",
+    "Price",
+    "If you would like to add discounts please ",
+    "click Here",
+    "Add New Services"
   ]
 }

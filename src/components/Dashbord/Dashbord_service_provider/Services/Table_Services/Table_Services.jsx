@@ -76,6 +76,7 @@ export default function Table_Services() {
   const [addProduct_active, set_addProduct_active] = useState(false);
   //for drag and drob img
 
+  console.log(addProduct_active);
   const radioItems = [
     { value: "All services", label: "All Product" },
     { value: "Last services", label: "Last Product" },
@@ -330,6 +331,7 @@ export default function Table_Services() {
           )}
         </ClickOutside>
       </>
+      {addProduct_active ? <div>ggggggg</div> : ""}
 
       <Content
         path={" Products / Table Services"}

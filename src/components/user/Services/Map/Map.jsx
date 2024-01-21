@@ -41,7 +41,7 @@ const Map = ({ className, position }) => {
       </MapContainer>
       <Typography
         component="h4"
-        className="sm:w-[70%] w-[15rem]  mx-auto pt-10 text-center h-[22rem] "
+        className="sm:w-[70%] w-[15rem]  mx-auto pt-10 text-center"
       >
         {t("services_map.0")}
       </Typography>

@@ -139,11 +139,8 @@ const SideBardashbord = () => {
             },
             {
               name: " Table Appointment",
-              src: " Table_Appointment",
-
-      
+              src: "Table_Appointment",
             },
-       
           ],
           cname: " top-[-4rem] rtl:start-[4rem]  ltr:left-16",
         },
