@@ -35,6 +35,7 @@ import * as Yup from "yup";
 import ClickOutside from "../../../../utilities/Click_Outsite";
 import Edit from "../../../Dashbord_layout/Mangment/Edit";
 import { Edit_Services_schema } from "../../../../utilities/Validation";
+import View from "../../../Dashbord_layout/Mangment/View";
 const productSchema = Yup.object().shape({
   price: Yup.string()
     .required("Price is required")
@@ -301,6 +302,7 @@ export default function Table_Services() {
         </ClickOutside>
         <ClickOutside onClick={handleCloseView}>
           {view ? (
+            // <View ref={viewRef} view_content={view_content } view_user={view_user} set_View_user={set_View_user}  open_change_password={open_change_password} set_open_change_password={set_open_change_password}/> 
             <View_Service_Provider handleCloseView={handleCloseView} />
           ) : (
             ""
