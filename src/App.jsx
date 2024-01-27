@@ -53,7 +53,7 @@ import AllRequest_services from "./components/Dashbord/Dashbord_service_provider
 import RequestsRejected_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsRejected_services";
 import LastRequest_service from "./components/Dashbord/Dashbord_service_provider/Services/Request/LastRequest_servies";
 import RequestAccepted_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsAccepted_services";
-import Table_Appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Table_Appointment";
+import Table_Appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Appointmentt_Table/Table_Appointment";
 function App() {
   return (
     <div className="font-alegreya">

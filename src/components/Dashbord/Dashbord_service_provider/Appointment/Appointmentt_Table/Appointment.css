@@ -1,0 +1,120 @@
+.month .fc * {
+  text-align: start;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: white;
+}
+.fc .fc-col-header-cell-cushion {
+  padding-left: 20px;
+}
+.fc .fc-daygrid-day-top {
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.fc-theme-standard .fc-scrollgrid,
+.fc .fc-scrollgrid-section-liquid > td {
+  border: none !important;
+}
+.fc .fc-scrollgrid-section-footer > *,
+.fc .fc-scrollgrid-section-header > * {
+  border-top: 2px solid #eeee;
+  border-right: none;
+}
+
+.fc .fc-daygrid-day-number {
+  padding: 0px 0px 0px 4px !important;
+}
+.fc .fc-scrollgrid-section-body table {
+  height: 520px !important;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border: 2px solid #eeee;
+  width: 146px;
+}
+/* salender */
+
+fc-event fc-event-start fc-event-end fc-event-past fc-list-event {
+  background-color: red !important;
+}
+.schedule .fc .fc-view-harness-active > .fc-view {
+  border: none;
+}
+.schedule .fc-theme-standard .fc-list-day-cushion {
+  background-color: white;
+}
+/* no events */
+.schedule .fc .fc-list-empty {
+  background-color: white;
+}
+
+/* day fullcalender */
+.day .fc-event-title-container {
+  color: black !important;
+}
+.day .fc .fc-daygrid-day-top {
+  display: none;
+}
+/* .day .fc .fc-scrollgrid-section {
+  display: none;
+} */
+.day .fc .fc-daygrid-event-harness {
+  padding-left: 40px;
+  padding-right: 40px;
+  border-bottom: 2px solid #eeee;
+}
+
+/* date picker  */
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  background-color: white;
+  border-bottom: none;
+  padding: 10px 0px 0px 0px;
+}
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #fdf7f7;
+}
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow,
+.react-datepicker__navigation-icon::before {
+  border-width: 1px 1px 0 0;
+
+  top: 12px;
+}
+.react-datepicker__month {
+  border-bottom: 1px solid #fdf7f7;
+  font-family: "Alegreya";
+  font-size: 1rem;
+}
+.react-datepicker__day-names {
+  font-weight: bold;
+  font-family: "Alegreya";
+  font-size: 1rem;
+}
+.react-datepicker__day--today {
+  color: black;
+}
+
+/* تغيير لون أيام الشهور الأخرى */
+.react-datepicker__day--outside-month {
+  color: #ddd;
+}
+
+/* year deopdown */
+.react-datepicker__year-read-view {
+}
+.react-datepicker__year-dropdown {
+  width: 15rem;
+  height: 16.7rem;
+  inset-inline-start: 0rem;
+  display: grid;
+  background-color: white;
+  border: none;
+}

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 
 //datePik library
 import DatePicker from "react-datepicker";
@@ -129,6 +128,8 @@ export function InputDatePicker({
   errorMsg,
   className,
   customdateFormat,
+  classNameInput,
+  showYearDropdown,
 }) {
   const dateFormat = `${customdateFormat ? customdateFormat : "dd/MM/yyyy"} `;
   const customInput = (
@@ -144,7 +145,9 @@ export function InputDatePicker({
         className="relative z-[0] w-full me-1 transition-all duration-100 ease-in"
       >
         <input
-          className="peer z-10  cursor-pointer w-full placeholder-transparent text-mySlate outline-0 focus:outline-none"
+          className={`${
+            classNameInput ? classNameInput : "w-full"
+          } peer z-10  cursor-pointer  placeholder-transparent text-mySlate outline-0 focus:outline-none`}
           placeholder="p"
           name={name}
           value={value ? format(new Date(value), dateFormat) : ""}
@@ -167,18 +170,18 @@ export function InputDatePicker({
     <DatePicker
       dateFormat={dateFormat}
       customInput={customInput}
-      selected={value}
       onBlur={onBlur}
       onChange={onChange}
-      popperClassName={"z-10"}
+      showYearDropdown={showYearDropdown}
+      popperClassName={"z-10 "}
       showPopperArrow={false}
       dayClassName={(date) =>
         value && isSameDay(date, new Date(value))
-          ? "bg-gradient-to-b from-primary from-15% to-secondary to-85% rounded "
+          ? "bg-gradient-to-b from-primary from-15% to-secondary to-85% rounded text-white "
           : ""
       }
       calendarClassName="border-none shadow  "
-      className={`flex flex-row border-[1px] border-solid w-full outline-none py-2 px-4 rounded  ${
+      className={`flex flex-row border-[1px] border-solid w-full outline-none py-2 px-4 rounded   ${
         errorMsg
           ? "border-error"
           : "border-myGray-400 focus-within:border-primary"
@@ -186,7 +189,7 @@ export function InputDatePicker({
     >
       <div
         onClick={handleTodayClick}
-        className="text-secondary text-center cursor-pointer   "
+        className="text-secondary text-center cursor-pointer py-3 font-alegreya text-md  "
       >
         Today
       </div>
