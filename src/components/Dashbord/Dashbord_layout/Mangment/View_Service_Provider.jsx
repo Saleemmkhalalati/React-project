@@ -1,10 +1,8 @@
 import { DashInput } from "../../../utilities/Inputs";
 import { useFormik } from "formik";
-
 import { useTranslation } from "react-i18next";
 import React, { useEffect, useRef, useState } from "react";
 import Typography from "../../../utilities/Typography";
-
 import Business from "../../../../assets/icons/business-Dahshboard.svg";
 import file from "../../../../assets/icons/File.svg";
 import priceIcon from "../../../../assets/icons/Price.svg";
@@ -13,7 +11,6 @@ import location from "../../../../assets/icons/Location.svg";
 
 import Button from "../../../utilities/Button";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import { Navigation } from "swiper/modules";
 import product from "../../Dashbord_service_provider/Services/Table_Services/Services_img/product.svg";
 import left from "../../Dashbord_service_provider/Services/Table_Services/Services_img/left.svg";
@@ -80,6 +77,7 @@ function View_Service_Provider({ handleCloseView }) {
             <img src={product} alt="img" />
           </SwiperSlide>
           <SwiperSlide className="flex items-center justify-center">
+            
             <img src={product} alt="img" />
           </SwiperSlide>
 

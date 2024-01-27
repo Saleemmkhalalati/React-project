@@ -8,7 +8,7 @@ import Table from "../../../Dashbord_layout/TableLayout";
 import NoData from "../../../Dashbord_layout/NoData/NoData";
 import arrowIcon from "../../../../../assets/icons/arrowDropdown.svg";
 
-const All_Request = () => {
+const All_Request_appointment = () => {
   // for radio commponenet
   const radioItems = [
     { value: "Active", label: " Active" },
@@ -125,4 +125,8 @@ const All_Request = () => {
   );
 };
 
-export default All_Request;
+export default All_Request_appointment;
+
+
+
+

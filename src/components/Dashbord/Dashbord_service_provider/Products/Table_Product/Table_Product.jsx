@@ -21,7 +21,6 @@ import Table from "../../../Dashbord_layout/TableLayout";
 import TabsFillter from "../../../../utilities/TabsFillter";
 import View from "../../../Dashbord_layout/Mangment/View";
 import Add_product from "../../../Dashbord_layout/Mangment/Add_product";
-// 8*************
 import Wrench from "../../../../../assets/icons/Wrench.svg";
 import Email from "../../../../../assets/icons/Email.svg";
 import View_Icon from "../../../../../assets/icons/View.svg";
@@ -32,6 +31,8 @@ import { useFormik } from "formik";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import React, { useRef, useEffect } from "react";
+import Edit from "../../../Dashbord_layout/Mangment/Edit";
+import { Edit_Services_schema } from "../../../../utilities/Validation";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -45,10 +46,11 @@ import { Navigation } from "swiper/modules";
 import * as Yup from "yup";
 import Button from "../../../../utilities/Button";
 import ClickOutside from "../../../../utilities/Click_Outsite";
+import Discount from "../../../Dashbord_layout/Mangment/Discount";
 
 export default function Table_Product() {
   const [addProduct_active, set_addProduct_active] = useState(false);
-  const AddProductsRef = useRef(null);
+  
   const swiperRef = useRef(null);
   const { t } = useTranslation("global");
   const [refrech, setrefrech] = useState(false);
@@ -59,8 +61,18 @@ export default function Table_Product() {
   const [view, setView] = useState(false);
   const [discount, setDiscount] = useState(false);
   const [EditDropdown, setEditDropdown] = useState(null);
+  const EditRef = useRef(null);
+  const viewRef = useRef(null);
+  const AddProductsRef = useRef(null);
 
-  // ******************
+ useEffect(()=>{
+  if(discount){
+    setEdit(false);
+    setView(false);
+    set_addProduct_active(false)
+  }
+
+ },[discount,addProduct_active,edit,view])
 
   const initialValues_Add_Products = {
     Product_Name: "Product Name",
@@ -114,7 +126,7 @@ export default function Table_Product() {
     ],
     button_content: "Add New Product",
   };
-  // **************************8
+
 
   const addProductFun = () => {
     set_addProduct_active(!addProduct_active);
@@ -297,13 +309,149 @@ export default function Table_Product() {
   const validDiscount = numericDiscount <= 100 ? numericDiscount : 100;
   // حساب القيمة بعد الخصم
   const priceAfterDiscount = price - (validDiscount / 100) * price;
+  const Edit_content = {
+    title:"Edit Product",
+    descrption: " Register Date in: 10/27/2023 11:34, for this product",
+    inputs: [
+      {
+        text: "Active",
+        img: Wrench,
+        type: "text",
+        name: "state",
+        input_type: "dropdown"
+
+      },
+      {
+        text: "Artificial foot",
+        img: Business,
+        type: "text",
+        name: "name"
+
+      },
+      {
+        text: "Artificial foot for people with special needs",
+        img: file,
+        type: "text",
+        name: "description"
+
+      },
+      {
+        text: "Maza",
+        img: location,
+        type: "text",
+        name: "location"
+
+      },
+      {
+        text: "2000",
+        img: priceIcon,
+        type: "text",
+        name: "price"
+
+      },
+      {
+        text: "1800",
+        img: discountIcon,
+        type: "text",
+        name: "discount",
+        des: {
+          text: t("editServices.3"),
+          click_here: t("editServices.4")
+        }
+
+      },
+  
+ 
+    ],
+    button_content: t("editServices.5"),
+ 
+
+
+  }
+
+
+  const view_content = {
+    title:"View Product",
+    descrption: "",
+    inputs: [
+      {
+        text: "Active",
+        img: Business
+      },
+      {
+        text: "Artificial foot",
+        img: Business
+      },
+      {
+        text: "Artificial foot for people with special needs",
+        img: file
+      },
+      {
+        text: "Maza",
+        img: location
+      },
+      {
+        text: "2000",
+        img: priceIcon
+      },
+      {
+        text: "1800",
+        img: discountIcon
+      },
+
+     
+     
+    ],
+         
+          button_content:  t("viewService.3") ,
+
+
+
+  }
 
   return (
     <>
-      <ClickOutside onClick={handleClose}> </ClickOutside>
-
-      <ClickOutside onClick={handleCloseView}></ClickOutside>
-      <ClickOutside onClick={handleEditDiscount}></ClickOutside>
+         <>
+        <ClickOutside onClick={handleClose}>
+        <div className=" relative">
+          {edit ? (
+          <Edit   ref={EditRef} Edit_content={Edit_content}  validation_schema={Edit_Services_schema}  Edit_user={edit} set_Edit_user={setEdit} Uplode_imge={true}    other_section={discount} set_other_section={setDiscount} />
+            
+          ) : (
+            ""
+          )}
+           </div>
+        </ClickOutside>
+        <ClickOutside onClick={handleCloseView}>
+          {view ? (
+            <View ref={viewRef} view_content={view_content } view_user={view} set_View_user={setView} hasSlider={true} /> 
+            
+          ) : (
+            ""
+          )}
+        </ClickOutside>
+        <ClickOutside onClick={handleEditDiscount}>
+          {discount ? (
+            <Discount
+              name={"discountNumber"}
+              type="text"
+              value={formik.values.discountNumber}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              icon={priceIcon}
+              errorMsg={
+                formik.touched.discountNumber && formik.errors.discountNumber
+                  ? formik.errors.discountNumber
+                  : ""
+              }
+              price={formik.values.price}
+              priceAfterDiscount={priceAfterDiscount}
+            />
+          ) : (
+            ""
+          )}
+        </ClickOutside>
+      </>
 
       <Content
         path={" Products / Table Product"}
@@ -321,7 +469,7 @@ export default function Table_Product() {
               setDiscount={setDiscount}
               ref={AddProductsRef}
               Add_Product_content={Add_Product_content}
-              initialValues={initialValues_Add_Products}
+            
               validation_schema={add_product_schema}
               addProduct_active={addProduct_active}
               set_addProduct_active={set_addProduct_active}

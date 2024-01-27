@@ -121,6 +121,7 @@ const Add_product = React.forwardRef(
                               autoComplete="off"
                               id={input.name}
                               placeholder={input.text}
+                              icon={input.img}
                               // icon={input.type === "password" ? (showpass ? eye : iconShow) : input.img}
                               // iconOnClick={ShowPassword}
                               isDisabled={false}
@@ -144,6 +145,7 @@ const Add_product = React.forwardRef(
                             className="cursor-pointer text-primary hover:text-success"
                             onClick={() => {
                               setDiscount(!discount);
+                              console.log("jj")
                             }}
                           >
                             {input.des.click_here}

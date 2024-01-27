@@ -2,13 +2,11 @@
 import React, { useState } from "react";
 import Content from "../../../Dashbord_layout/Content/Content";
 import TabsFillter from "../../../../utilities/TabsFillter";
-import Dropdown from "../../../../utilities/Dropdown";
 import Radio from "../../../../utilities/Radio";
 import Table from "../../../Dashbord_layout/TableLayout";
 import NoData from "../../../Dashbord_layout/NoData/NoData";
-import arrowIcon from "../../../../../assets/icons/arrowDropdown.svg";
 
-const All_Request = () => {
+const Requests_Rejected_appointment = () => {
   // for radio commponenet
   const radioItems = [
     { value: "Active", label: " Active" },
@@ -125,4 +123,8 @@ const All_Request = () => {
   );
 };
 
-export default All_Request;
+export default Requests_Rejected_appointment;
+
+
+
+
