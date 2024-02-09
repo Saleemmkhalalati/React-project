@@ -161,6 +161,7 @@
   "NavBar_Dashbord": {
     "search": "search"
   },
+  "DashPath": ["Dashbord"],
   "sideBar_Dashbord": {
     "main_title": ["dashboard"],
     "dashboard_menu": ["About Users", "About dashboard"],
@@ -330,5 +331,12 @@
     "Welcome, Rawan, to Med-sal",
     "  The service provider at Med - sal in the doctors department can provide his services through these pages. We hope that they will be useful to you.",
     "Last Patient"
+  ],
+  "tableAppointment": [
+    "Month",
+    "Schedule",
+    "Day",
+    "Appointment",
+    "Table Appointment"
   ]
 }

@@ -14,8 +14,10 @@ import Click_Outsite from "../../../../utilities/Click_Outsite";
 import Content from "../../../Dashbord_layout/Content/Content";
 import NoData from "../../../Dashbord_layout/NoData/NoData";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 function Table_Appointment() {
+  const { t } = useTranslation("global");
   const events = [
     {
       date: "2024-01-24",
@@ -25,7 +27,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -42,7 +44,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -59,7 +61,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -93,7 +95,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -110,7 +112,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -127,7 +129,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -144,7 +146,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -161,7 +163,7 @@ function Table_Appointment() {
         patient_id: 29,
         patient_email: "maamoun.h.najeeb@gmail.com",
         service_id: 8,
-        title: "فحص الغدد الصم",
+        title: "chandeleer",
         provider_id: 30,
         provider_business_name: "Remostart",
         location_id: 3,
@@ -177,9 +179,9 @@ function Table_Appointment() {
     end: moment(`${event.date}T${event.details.to_time}`).format(),
   }));
   const myOptions = [
-    { name: "Month", type: "dayGridMonth" },
-    { name: "Schedule", type: "listWeek" },
-    { name: "Day", type: "timeGridDay" },
+    { name: t("tableAppointment.0"), type: "dayGridMonth" },
+    { name: t("tableAppointment.1"), type: "listWeek" },
+    { name: t("tableAppointment.2"), type: "timeGridDay" },
   ];
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().slice(0, 10)
@@ -218,7 +220,7 @@ function Table_Appointment() {
         classNameChildern={
           "min-h-screen bg-white px-7 py-5 mt-4 rounded -z-[0]"
         }
-        path={"Appointment / Table Appointment"}
+        path={`${t("tableAppointment.3")} / ${t("tableAppointment.4")}`}
       >
         <div className="flex items-center gap-4">
           <div>
@@ -349,7 +351,7 @@ function Table_Appointment() {
               )}
               eventContent={({ event }) => {
                 return (
-                  <div className="flex gap-1 p-1 bg-blue-100 text-myGray-500 rounded-md cursor-pointer hover:bg-red-50 transition-all">
+                  <div className="flex  gap-1 p-1 bg-blue-100 text-myGray-500 rounded-md cursor-pointer hover:bg-red-50 transition-all">
                     <p>{event.extendedProps.details.title}</p>
                     <p>{event.extendedProps.details.from_time}</p>
                   </div>
