@@ -40,7 +40,6 @@ import Details from "./components/user/Services/Details/Details.jsx";
 import ChoselocationMap from "./components/user/Services/ChoselocationMap/ChoselocationMap.jsx";
 import Request_Product from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Request_Product.jsx";
 import Table_Product from "./components/Dashbord/Dashbord_service_provider/Products/Table_Product/Table_Product.jsx";
-import Test from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Test.jsx";
 import All_Request from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/All_Request.jsx";
 import Requests_Rejected from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_Rejected.jsx";
 import Requests_accepted from "./components/Dashbord/Dashbord_service_provider/Products/Request_Product/Requests_accepted.jsx";
@@ -54,6 +53,12 @@ import RequestsRejected_services from "./components/Dashbord/Dashbord_service_pr
 import LastRequest_service from "./components/Dashbord/Dashbord_service_provider/Services/Request/LastRequest_servies";
 import RequestAccepted_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsAccepted_services";
 import Table_Appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Appointmentt_Table/Table_Appointment";
+
+import All_Request_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/All_Request_appointment.jsx";
+import Last_Request_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Last_Request_appointment.jsx";
+import Requests_Rejected_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Requests_Rejected_appointment.jsx";
+import Requests_accepted_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Requests_accepted_appointment.jsx";
+
 function App() {
   return (
     <div className="font-alegreya">
@@ -127,11 +132,23 @@ function App() {
           >
             <Route path="appointment" element={<Appointment />} />
 
-            <Route path="Request_Appointment" element={<Request_Appointment />}>
-              <Route path="All_Request" element={<All_Request />} />
-              <Route path="Requests_Rejected" element={<Requests_Rejected />} />
-              <Route path="Requests_accepted" element={<Requests_accepted />} />
-              <Route path="Last_Request" element={<Last_Request />} />
+            <Route
+              path="appointment/Request_Appointment"
+              element={<Request_Appointment />}
+            >
+              <Route path="All_Request" element={<All_Request_appointment />} />
+              <Route
+                path="Requests_Rejected"
+                element={<Requests_Rejected_appointment />}
+              />
+              <Route
+                path="Requests_accepted"
+                element={<Requests_accepted_appointment />}
+              />
+              <Route
+                path="Last_Request"
+                element={<Last_Request_appointment />}
+              />
             </Route>
             <Route
               path="appointment/Table_Appointment"
@@ -155,8 +172,6 @@ function App() {
               <Route path="Last_Request" element={<Last_Request />} />
             </Route>
             <Route path="products/Table_Product" element={<Table_Product />} />
-
-            {/* <Route path="Request_Product" element={<Request_Product />} /> */}
 
             <Route path="services" element={<Home />} />
             <Route

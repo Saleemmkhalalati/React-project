@@ -82,4 +82,4 @@ const Table = ({ columns, rows, points, handlepoint, point, className }) => {
   );
 };
 
-export default Table;
+export default Table 

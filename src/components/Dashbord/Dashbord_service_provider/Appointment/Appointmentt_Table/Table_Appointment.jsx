@@ -6,54 +6,180 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import Dropdown from "../../../../utilities/Dropdown";
 import arrowIcon from "../../../../../assets/icons/arrowDropdown.svg";
 import { InputDatePicker } from "../../../../utilities/Inputs";
-import { format, isToday } from "date-fns";
-import { Calendar } from "@fullcalendar/core";
+import { format, isToday, isAfter } from "date-fns";
 import listPlugin from "@fullcalendar/list";
 import "./Appointment.css";
 import Typography from "../../../../utilities/Typography";
 import Click_Outsite from "../../../../utilities/Click_Outsite";
 import Content from "../../../Dashbord_layout/Content/Content";
 import NoData from "../../../Dashbord_layout/NoData/NoData";
+import moment from "moment";
+
 function Table_Appointment() {
   const events = [
     {
-      id: "1",
-      resourceId: "1",
-      date: today,
-      time: "09:00 AM - 11:00 PM",
-      title: "Cholecystectomy",
-      start: today + "T09:00:00",
-      end: today + "T11:00:00",
-      color: "#2F4050",
+      date: "2024-01-24",
+      details: {
+        from_time: "08:00:00",
+        to_time: "09:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: "Dddd",
+      },
     },
     {
-      id: "2",
-      resourceId: "2",
-      date: today,
-      time: "11:15 AM - 14:00 PM",
-
-      title: "Kidney Transplant",
-      start: today + "T11:15:00",
-      end: today + "T14:00:00",
-      color: "#5A81FD",
+      date: "2024-01-25",
+      details: {
+        from_time: "08:00:00",
+        to_time: "09:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: null,
+      },
     },
     {
-      id: "3",
-      resourceId: "3",
-      date: today,
-      time: "08:00 AM - 11:00 AM",
-
-      title: "Regular Medical Examination",
-      start: today + "T13:15:00",
-      end: today + "T16:00:00",
-      color: "#FAA209 ",
+      date: "2024-01-28",
+      details: {
+        from_time: "08:00:00",
+        to_time: "09:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: "ssss",
+      },
+    },
+    {
+      date: "2024-02-03",
+      details: {
+        from_time: "08:00:00",
+        to_time: "09:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: " chandeleer",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: "This appointment is not sure yet.",
+      },
+    },
+    {
+      date: "2024-02-01",
+      details: {
+        from_time: "08:00:00",
+        to_time: "09:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: null,
+      },
+    },
+    {
+      date: "2024-02-06",
+      details: {
+        from_time: "11:00:00",
+        to_time: "12:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: null,
+      },
+    },
+    {
+      date: "2024-02-07",
+      details: {
+        from_time: "08:00:00",
+        to_time: "09:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: null,
+      },
+    },
+    {
+      date: "2024-02-07",
+      details: {
+        from_time: "10:00:00",
+        to_time: "11:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: null,
+      },
+    },
+    {
+      date: "2024-02-07",
+      details: {
+        from_time: "13:00:00",
+        to_time: "14:00:00",
+        patient_id: 29,
+        patient_email: "maamoun.h.najeeb@gmail.com",
+        service_id: 8,
+        title: "فحص الغدد الصم",
+        provider_id: 30,
+        provider_business_name: "Remostart",
+        location_id: 3,
+        diagonsis: null,
+        created_at: "2023-12-09T20:56:54.340246",
+        note: null,
+      },
     },
   ];
-
+  const dayEvents = events.map((event) => ({
+    title: event.details.title,
+    start: moment(`${event.date}T${event.details.from_time}`).format(),
+    end: moment(`${event.date}T${event.details.to_time}`).format(),
+  }));
   const myOptions = [
     { name: "Month", type: "dayGridMonth" },
     { name: "Schedule", type: "listWeek" },
-    { name: "Day", type: "dayGrid" },
+    { name: "Day", type: "timeGridDay" },
   ];
   const [selectedDate, setSelectedDate] = useState(
     new Date().toISOString().slice(0, 10)
@@ -85,6 +211,7 @@ function Table_Appointment() {
   const handleCloseEvent = () => {
     SetEvent(false);
   };
+
   return (
     <div>
       <Content
@@ -102,7 +229,7 @@ function Table_Appointment() {
               onChange={handleDateChange}
               // showYearDropdown={true}
               customdateFormat={"MMMM,dd,yyyy"}
-              classNameInput={"w-28"}
+              classNameInput={"w-32"}
             />
           </div>
           <div>
@@ -124,13 +251,7 @@ function Table_Appointment() {
               initialView={valueDropdown}
               key={valueDropdown}
               plugins={[listPlugin]}
-              events={[
-                { title: "zero", date: "2024-01-22", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-24", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-24", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-27", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-28", from_time: "08:00:00" },
-              ]}
+              events={events}
               eventClassNames={"text-xs border-none py-1 px-0 cursor-pointer"}
               noEventsContent={<NoData />}
               noEventsClassNames={"bg-white "}
@@ -140,13 +261,6 @@ function Table_Appointment() {
                 left: "",
               }}
               dayHeaderFormat={{ weekday: "long" }}
-              firstDay={1}
-              eventContent={({ event }) => (
-                <div className="">
-                  {event.title}
-                  {""}
-                </div>
-              )}
               dayCellContent={({ date }) => (
                 <div
                   className={`${
@@ -158,6 +272,37 @@ function Table_Appointment() {
                   {format(date, date ? "dd" : "")}
                 </div>
               )}
+              eventContent={({ event }) => {
+                return (
+                  <>
+                    <div className="flex items-center gap-16 p-1">
+                      <div className="flex items-center gap-7 text-myGray-500 rounded-md cursor-pointer hover:bg-red-50 transition-all py-2 px-4">
+                        <span className="w-[0.50rem] h-[0.50rem] bg-blue-500 rounded-full"></span>
+
+                        <div className="flex items-center">
+                          <p className="text-black text-sm">
+                            {event.extendedProps.details.from_time}
+                          </p>
+                          <span className="text-black text-sm">-</span>
+                          <p className="text-black text-sm">
+                            {event.extendedProps.details.to_time}
+                          </p>
+                        </div>
+
+                        <p className="text-sm text-myGray-500">
+                          {event.extendedProps.details.title}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 text-sm text-myGray-500">
+                        <p className="text-error ">Note:</p>
+                        {""}
+                        {event.extendedProps.details.note}
+                      </div>
+                    </div>
+                  </>
+                );
+              }}
               dayHeaderClassNames={`font-medium`}
               dayHeaderContent={({ date }) => (
                 <div className="flex justify-between">
@@ -181,9 +326,7 @@ function Table_Appointment() {
               key={valueDropdown}
               plugins={[dayGridPlugin]}
               events={events}
-              eventClassNames={
-                "text-xs bg-myGray-400 border-none py-1 px-0 cursor-pointer hover:bg-myGray-500 "
-              }
+              eventClassNames={"border-none "}
               noEventsContent={<NoData />}
               noEventsClassNames={"bg-white "}
               eventClick={handleEvent}
@@ -204,6 +347,14 @@ function Table_Appointment() {
                   {format(date, date ? "dd" : "")}
                 </div>
               )}
+              eventContent={({ event }) => {
+                return (
+                  <div className="flex gap-1 p-1 bg-blue-100 text-myGray-500 rounded-md cursor-pointer hover:bg-red-50 transition-all">
+                    <p>{event.extendedProps.details.title}</p>
+                    <p>{event.extendedProps.details.from_time}</p>
+                  </div>
+                );
+              }}
               dayHeaderClassNames={`font-medium`}
               dayHeaderContent={({ date }) => (
                 <div className="text-md font-normal py-2  ">
@@ -215,64 +366,43 @@ function Table_Appointment() {
         ) : (
           ""
         )}
-        {valueDropdown === "dayGrid" ? (
+
+        {valueDropdown === "timeGridDay" ? (
           <div className="day">
             <FullCalendar
               ref={calendarRef}
               initialView={valueDropdown}
               key={valueDropdown}
-              plugins={[dayGridPlugin]}
-              events={[
-                { title: "zero", date: "2024-01-22", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-24", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-24", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-27", from_time: "08:00:00" },
-                { title: "one", date: "2024-01-28", from_time: "08:00:00" },
-              ]}
-              eventClassNames={
-                "text-xs border-none py-1 px-0 cursor-pointer bg-white text-black  "
-              }
-              noEventsContent={<NoData />}
-              noEventsClassNames={"bg-white "}
-              eventClick={handleEvent}
-              headerToolbar={{
-                right: "",
-                left: "",
+              plugins={[timeGridPlugin]}
+              events={dayEvents}
+              slotMinTime="08:00:00"
+              slotLabelFormat={{
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true,
+                hourCycle: "h12",
               }}
+              headerToolbar={false}
               eventContent={({ event }) => {
+                const formattedTime = format(event.start, "HH:mm:ss");
                 return (
-                  <div className="hover:bg-red-100 text-myGray-500 py-1 px-3 rounded bg-blue-100 transition-all my-5">
-                    {event.from_time}
-                    {event.title}
-
-                    {""}
+                  <div className="flex gap-2 py-1 px-3 bg-blue-100 text-myGray-500 rounded-md cursor-pointer hover:bg-red-50 transition-all">
+                    <p>{event.title}</p>
+                    <span>-</span>
+                    <p>{formattedTime}</p>
                   </div>
                 );
               }}
-              dayHeaderFormat={{ weekday: "long" }}
-              firstDay={1}
-              dayCellContent={({ date }) => (
-                <div
-                  className={`${
-                    isToday(date)
-                      ? "text-primary text-2xl font-bold   "
-                      : "text-myGray-500"
-                  }`}
-                >
-                  {format(date, date ? "dd" : "")}
-                </div>
-              )}
-              dayHeaderClassNames={`font-medium`}
-              dayHeaderContent={({ date }) => (
-                <div className="text-md font-normal py-2  ">
-                  {date.toLocaleDateString("en-US", { weekday: "long" })}
-                </div>
-              )}
+              noEventsContent={<NoData />}
+              noEventsClassNames={"bg-white "}
+              eventClick={handleEvent}
             />
           </div>
         ) : (
           ""
         )}
+
         <Click_Outsite onClick={handleCloseEvent}>
           {event ? (
             <div className="lg:h-[43rem] w-[28rem] bg-white shadow absolute end-5 top-[8.5rem] z-50 rounded flex flex-col gap-7 px-7 py-14">

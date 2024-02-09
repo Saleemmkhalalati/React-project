@@ -11,12 +11,15 @@ const Content = ({
   hasExport,
   hasRefrech,
   hasAddProducts,
+  hasAddServices,
   addProductFun
 }) => {
   const [Remostartactive, setRemostartActive] = useState(false);
   const [refrech, setrefrech] = useState(false);
   const [Export, setexport] = useState(false);
   const [AddProduct, setAddProduct] = useState(false);
+  const [AddService, setAddService] = useState(false);
+
 
   const RefrechFun = () => {
     setrefrech(!refrech);
@@ -77,6 +80,28 @@ const Content = ({
                 }`}
               >
                Add Product
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
+
+
+
+          {hasAddServices ? (
+            <div className="flex gap-1 items-center " onClick={() => {
+              setAddService(!AddService);
+              addProductFun()
+            }
+            }>
+              <Add  active={AddService} />
+
+              <span
+                className={`font-normal text-[13px] leading-[20px] text-myGray-500 hover:text-primary ${
+                  AddService ? "text-primary" : ""
+                }`}
+              >
+               Add Service
               </span>
             </div>
           ) : (

@@ -23,6 +23,8 @@ import location from "../../../../../assets/icons/Location.svg"
 import Business from "../../../../../assets/icons/Business.svg"
 import file from "../../../../../assets/icons/File.svg"
 import discountIcon from "../../../../../assets/icons/Disc.svg"
+import { add_product_schema } from "../../../../utilities/Validation";
+import View_Icon from "../../../../../assets/icons/View.svg";
 
 
 
@@ -35,6 +37,8 @@ import * as Yup from "yup";
 import ClickOutside from "../../../../utilities/Click_Outsite";
 import Edit from "../../../Dashbord_layout/Mangment/Edit";
 import { Edit_Services_schema } from "../../../../utilities/Validation";
+import View from "../../../Dashbord_layout/Mangment/View";
+import Add_product from "../../../Dashbord_layout/Mangment/Add_product";
 const productSchema = Yup.object().shape({
   price: Yup.string()
     .required("Price is required")
@@ -63,6 +67,10 @@ export default function Table_Services() {
   const [view, setView] = useState(false);
   const [discount, setDiscount] = useState(false);
   const EditRef = useRef(null);
+  const viewRef = useRef(null);
+  const AddProductsRef = useRef(null);
+
+
   
   useEffect(() => {
     if(discount){
@@ -71,6 +79,49 @@ export default function Table_Services() {
     }
   }, [discount,edit]);
 
+  const Add_Product_content = {
+    title: "Add Services",
+    descrption: "  You can add your services from here.  ",
+    inputs: [
+      {
+        text: "Services Name",
+        img: Wrench,
+        type: "text",
+        name: "Product Name",
+      },
+      {
+        text: "Service Type ",
+        img: Email,
+        type: "text",
+        input_type: "dropdown",
+        name: "Product Type",
+      },
+      {
+        text: "Description",
+        img: View_Icon,
+        type: "text",
+        name: "Description",
+      },
+
+      {
+        text: "Location",
+        img: View_Icon,
+        type: "text",
+        name: "Location",
+      },
+      {
+        text: "Price",
+        img: View_Icon,
+        type: "password",
+        name: "password",
+        des: {
+          text: "If you would like to add discounts please click  ",
+          click_here: " Here",
+        },
+      },
+    ],
+    button_content: "Add New Services",
+  };
 
   const [addProduct_active, set_addProduct_active] = useState(false);
   //for drag and drob img
@@ -287,6 +338,45 @@ export default function Table_Services() {
 
   }
 
+
+  const view_content = {
+    title: t("viewService.0"),
+    descrption:  t("viewService.1")+ "10/27/2023 11:" + t("viewService.2"),
+    inputs: [
+      {
+        text: "Active",
+        img: Business
+      },
+      {
+        text: "Artificial foot",
+        img: Business
+      },
+      {
+        text: "Artificial foot for people with special needs",
+        img: file
+      },
+      {
+        text: "Maza",
+        img: location
+      },
+      {
+        text: "2000",
+        img: priceIcon
+      },
+      {
+        text: "1800",
+        img: discountIcon
+      },
+
+     
+     
+    ],
+         
+          button_content:  t("viewService.3") ,
+
+
+
+  }
   return (
     <>
       <>
@@ -302,7 +392,8 @@ export default function Table_Services() {
         </ClickOutside>
         <ClickOutside onClick={handleCloseView}>
           {view ? (
-            <View_Service_Provider handleCloseView={handleCloseView} />
+            <View ref={viewRef} view_content={view_content } view_user={view} set_View_user={setView} hasSlider={true} /> 
+            
           ) : (
             ""
           )}
@@ -328,19 +419,35 @@ export default function Table_Services() {
             ""
           )}
         </ClickOutside>
+        <>
+        {addProduct_active ? (
+            <Add_product
+              discount={discount}
+              setDiscount={setDiscount}
+              ref={AddProductsRef}
+              Add_Product_content={Add_Product_content}
+              
+              validation_schema={add_product_schema}
+              addProduct_active={addProduct_active}
+              set_addProduct_active={set_addProduct_active}
+            />
+          ) : (
+            ""
+          )}
+        </>
       </>
-      {addProduct_active ? <div>ggggggg</div> : ""}
+      
 
       <Content
         path={" Products / Table Services"}
         RefrechFun={handleRefrech}
-        hasAddProducts={true}
+        hasAddServices={true}
         refrech={refrech}
         hasRefrech={true}
         classNameChildern="bg-white"
         addProductFun={addProductFun}
       >
-        {/* // must be as a commponent  */}
+        
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
             {rows.length} record

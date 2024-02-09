@@ -1,0 +1,9 @@
+.fc-theme-standard td{
+    border: none !important;
+}
+.fc-theme-standard th {
+    border: none !important;
+    color: #7B7B7B    !important;
+    margin-bottom: 10px !important;
+
+}
