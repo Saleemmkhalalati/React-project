@@ -172,7 +172,7 @@
       "Products"
     ],
     "serviceProvider_about_users_menu": [
-      "Appointment ",
+      "Appointment",
       "Services",
       "Products",
       "Report"
@@ -300,6 +300,14 @@
     " for this product",
     "Close View Product"
   ],
+  
+  "addProuct": [
+    "Add Product",
+    " You can add your product from here. ",
+    "If you would like to add discounts please click  ",
+    " Here"
+
+  ],
   "editServices": [
     "Edit Services",
     "Register Date in",
@@ -326,6 +334,7 @@
     "click Here",
     "Add New Services"
   ],
+  
   "Appointment": [
     "Welcome, Rawan, to Med-sal",
     "  The service provider at Med - sal in the doctors department can provide his services through these pages. We hope that they will be useful to you.",

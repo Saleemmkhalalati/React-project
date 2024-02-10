@@ -67,7 +67,7 @@ const Add_product = React.forwardRef(
           {addProduct_active && (
             <div
               ref={ref}
-              className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 rounded px-5 py-5 md:px-8 flex flex-col gap-3 absolute right-0 bg-white min-w-[45%]  shadow-md z-50 min-h-full"
+              className="w-[17rem] sm:w-[22rem] md:w-[36rem] pb-5 rounded px-5 py-5 md:px-8 flex flex-col gap-3 absolute ltr:right-0 rtl:left-0 bg-white min-w-[45%]  shadow-md z-50 min-h-full"
             >
               <Typography component={"h3"}>
                 {Add_Product_content.title}

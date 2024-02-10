@@ -281,7 +281,7 @@ const Appointment = () => {
         const eventColor = arg.event.extendedProps.color;
         // Custom styling for events
         arg.el.style.backgroundColor = eventColor;
-        arg.el.style.opacity = "80%"
+        arg.el.style.opacity = "70%"
         arg.el.style.padding = "5px"
         arg.el.style.borderRadius = '5px';
         arg.el.style.width = '250px';

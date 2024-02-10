@@ -82,7 +82,7 @@ const Edit = React.forwardRef(
           {Edit_user && (
             <div
               ref={ref}
-              className=" flex flex-col gap-3 absolute right-0 bg-white min-w-[45%] px-7 py-10 rounded-md shadow-md z-50 min-h-full"
+              className=" flex flex-col gap-3 absolute ltr:right-0 rtl:left-0 bg-white min-w-[45%] px-7 py-10 rounded-md shadow-md z-50 min-h-full"
             >
               <Typography component={"h3"}>{Edit_content.title}</Typography>
               <Typography component={"h5"} className="mb-8">

@@ -14,7 +14,10 @@ export const Person_sidebar = (props) => {
         <path
           className={` ${
             props.menue.title === "All Users" ||
-            props.menue.title === "كل المستخدمون"
+            props.menue.title === "Appointment" ||
+            
+            props.menue.title === "مواعيد" ||
+            props.menue.title === "كل المستخدمون" 
               ? "fill-white"
               : ""
           }`}
@@ -37,6 +40,7 @@ export const Services = ({menue}) => {
       <g opacity="0.8">
         <path
           className={` ${
+            menue.title === "خدمات" ||
             menue.title === "Services" || menue.title === "الخدمات"
               ? "fill-white"
               : ""
@@ -124,7 +128,7 @@ export const Notification = (props) => {
       <g opacity="0.8">
         <path
           className={` ${
-            props.menue.title === "Products" || props.menue.title === "المنتجات"
+            props.menue.title === "Products" || props.menue.title === "المنتجات"  || props.menue.title === "منتجات"  
               ? "fill-white"
               : ""
           }`}
@@ -133,7 +137,8 @@ export const Notification = (props) => {
         />
         <path
           className={` ${
-            props.menue.title === "Products" || props.menue.title === "المنتجات"
+            props.menue.title === "Products" || props.menue.title === "المنتجات"  || props.menue.title === "منتجات"  
+            
               ?"fill-white"
               :""
           }`}
@@ -161,6 +166,7 @@ export const Arrow_dropdown = (props) => {
             props.menue.title === "Services" ||
             props.menue.title === "كل المستخدمون" ||
             props.menue.title === "الخدمات" ||
+            props.menue.title === "خدمات" ||
             props.menue.title === "Products" ||
             props.menue.title === "المنتجات" 
 

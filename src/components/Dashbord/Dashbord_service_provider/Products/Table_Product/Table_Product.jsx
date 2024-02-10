@@ -84,8 +84,8 @@ export default function Table_Product() {
     // Add more initial values for other fields
   };
   const Add_Product_content = {
-    title: "Add Product",
-    descrption: " You can add your product from here. ",
+    title: t("addProuct.0"),
+    descrption:  t("addProuct.1"),
     inputs: [
       {
         text: "Product Name",
@@ -119,8 +119,8 @@ export default function Table_Product() {
         type: "password",
         name: "password",
         des: {
-          text: "If you would like to add discounts please click  ",
-          click_here: " Here",
+          text:  t("addProuct.2"),
+          click_here:  t("addProuct.3"),
         },
       },
     ],
@@ -310,8 +310,8 @@ export default function Table_Product() {
   // حساب القيمة بعد الخصم
   const priceAfterDiscount = price - (validDiscount / 100) * price;
   const Edit_content = {
-    title:"Edit Product",
-    descrption: " Register Date in: 10/27/2023 11:34, for this product",
+    title:t("editProduct.0"),
+    descrption: t("editProduct.1")+"10/27/2023 11:34,"+ t("editProduct.2"),
     inputs: [
       {
         text: "Active",
@@ -371,7 +371,7 @@ export default function Table_Product() {
 
 
   const view_content = {
-    title:"View Product",
+    title:t("viewProduct.0"),
     descrption: "",
     inputs: [
       {
@@ -411,47 +411,7 @@ export default function Table_Product() {
 
   return (
     <>
-         <>
-        <ClickOutside onClick={handleClose}>
-        <div className=" relative">
-          {edit ? (
-          <Edit   ref={EditRef} Edit_content={Edit_content}  validation_schema={Edit_Services_schema}  Edit_user={edit} set_Edit_user={setEdit} Uplode_imge={true}    other_section={discount} set_other_section={setDiscount} />
-            
-          ) : (
-            ""
-          )}
-           </div>
-        </ClickOutside>
-        <ClickOutside onClick={handleCloseView}>
-          {view ? (
-            <View ref={viewRef} view_content={view_content } view_user={view} set_View_user={setView} hasSlider={true} /> 
-            
-          ) : (
-            ""
-          )}
-        </ClickOutside>
-        <ClickOutside onClick={handleEditDiscount}>
-          {discount ? (
-            <Discount
-              name={"discountNumber"}
-              type="text"
-              value={formik.values.discountNumber}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              icon={priceIcon}
-              errorMsg={
-                formik.touched.discountNumber && formik.errors.discountNumber
-                  ? formik.errors.discountNumber
-                  : ""
-              }
-              price={formik.values.price}
-              priceAfterDiscount={priceAfterDiscount}
-            />
-          ) : (
-            ""
-          )}
-        </ClickOutside>
-      </>
+         
 
       <Content
         path={" Products / Table Product"}
@@ -477,6 +437,47 @@ export default function Table_Product() {
           ) : (
             ""
           )}
+
+
+          {edit ? (
+          <Edit   ref={EditRef} Edit_content={Edit_content}  validation_schema={Edit_Services_schema}  Edit_user={edit} set_Edit_user={setEdit} Uplode_imge={true}    other_section={discount} set_other_section={setDiscount} />
+            
+          ) : (
+            ""
+          )}
+
+
+
+          {view ? (
+            <View ref={viewRef} view_content={view_content } view_user={view} set_View_user={setView} hasSlider={true} /> 
+            
+          ) : (
+            ""
+          )}
+      
+      
+          {discount ? (
+            <Discount
+              name={"discountNumber"}
+              type="text"
+              value={formik.values.discountNumber}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              icon={priceIcon}
+              errorMsg={
+                formik.touched.discountNumber && formik.errors.discountNumber
+                  ? formik.errors.discountNumber
+                  : ""
+              }
+              price={formik.values.price}
+              priceAfterDiscount={priceAfterDiscount}
+            />
+          ) : (
+            ""
+          )}
+  
+         
+       
 
           <TabsFillter>
             <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">

@@ -5,18 +5,13 @@ import priceIcon from "../../../../../assets/icons/Price.svg";
 
 import Content from "../../../Dashbord_layout/Content/Content";
 import TabsFillter from "../../../../utilities/TabsFillter";
-
 import Radio from "../../../../utilities/Radio";
 import NoData from "../../../Dashbord_layout/NoData/NoData";
 import Table from "../../../Dashbord_layout/TableLayout";
-
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import React, { useEffect } from "react";
-
 import Discount from "../../../Dashbord_layout/Mangment/Discount";
-import Edit_Service_Provider from "../../../Dashbord_layout/Mangment/Edit_Service_Provider";
-import View_Service_Provider from "../../../Dashbord_layout/Mangment/View_Service_Provider";
 import Wrench  from "../../../../../assets/icons/Wrench.svg"
 import Email from "../../../../../assets/icons/Email.svg"
 import location from "../../../../../assets/icons/Location.svg"
@@ -33,8 +28,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import * as Yup from "yup";
-
-import ClickOutside from "../../../../utilities/Click_Outsite";
 import Edit from "../../../Dashbord_layout/Mangment/Edit";
 import { Edit_Services_schema } from "../../../../utilities/Validation";
 import View from "../../../Dashbord_layout/Mangment/View";
@@ -80,8 +73,8 @@ export default function Table_Services() {
   }, [discount,edit]);
 
   const Add_Product_content = {
-    title: "Add Services",
-    descrption: "  You can add your services from here.  ",
+    title: t("AddServices.0"),
+    descrption: t("AddServices.1"),
     inputs: [
       {
         text: "Services Name",
@@ -115,8 +108,8 @@ export default function Table_Services() {
         type: "password",
         name: "password",
         des: {
-          text: "If you would like to add discounts please click  ",
-          click_here: " Here",
+          text:  t("AddServices.7"),
+          click_here:t("AddServices.8"),
         },
       },
     ],
@@ -380,25 +373,59 @@ export default function Table_Services() {
   return (
     <>
       <>
-        <ClickOutside onClick={handleClose}>
-        <div className=" relative">
+       
+        <>
+
+        </>
+      </>
+      
+
+      <Content
+        path={" Products / Table Services"}
+        RefrechFun={handleRefrech}
+        hasAddServices={true}
+        refrech={refrech}
+        hasRefrech={true}
+        classNameChildern="bg-white"
+        addProductFun={addProductFun}
+      >
+<div className="relative">
+{addProduct_active ? (
+            <Add_product
+              discount={discount}
+              setDiscount={setDiscount}
+              ref={AddProductsRef}
+              Add_Product_content={Add_Product_content}
+              
+              validation_schema={add_product_schema}
+              addProduct_active={addProduct_active}
+              set_addProduct_active={set_addProduct_active}
+            />
+          ) : (
+            ""
+          )}
+
+
+          
+        
+        
           {edit ? (
           <Edit   ref={EditRef} Edit_content={Edit_content}  validation_schema={Edit_Services_schema}  Edit_user={edit} set_Edit_user={setEdit} Uplode_imge={true}    other_section={discount} set_other_section={setDiscount} />
             
           ) : (
             ""
           )}
-           </div>
-        </ClickOutside>
-        <ClickOutside onClick={handleCloseView}>
+          
+      
+          
           {view ? (
             <View ref={viewRef} view_content={view_content } view_user={view} set_View_user={setView} hasSlider={true} /> 
             
           ) : (
             ""
           )}
-        </ClickOutside>
-        <ClickOutside onClick={handleEditDiscount}>
+      
+        
           {discount ? (
             <Discount
               name={"discountNumber"}
@@ -418,36 +445,8 @@ export default function Table_Services() {
           ) : (
             ""
           )}
-        </ClickOutside>
-        <>
-        {addProduct_active ? (
-            <Add_product
-              discount={discount}
-              setDiscount={setDiscount}
-              ref={AddProductsRef}
-              Add_Product_content={Add_Product_content}
-              
-              validation_schema={add_product_schema}
-              addProduct_active={addProduct_active}
-              set_addProduct_active={set_addProduct_active}
-            />
-          ) : (
-            ""
-          )}
-        </>
-      </>
-      
-
-      <Content
-        path={" Products / Table Services"}
-        RefrechFun={handleRefrech}
-        hasAddServices={true}
-        refrech={refrech}
-        hasRefrech={true}
-        classNameChildern="bg-white"
-        addProductFun={addProductFun}
-      >
         
+  
         <TabsFillter>
           <span className="ps-2 pe-5 py-1 border-[1px] border-solid border-myGray-100  flex items-center  justify-start rounded-lg   text-myGray-500">
             {rows.length} record
@@ -472,6 +471,8 @@ export default function Table_Services() {
         ) : (
           <NoData></NoData>
         )}
+  </div>        
+
       </Content>
     </>
   );

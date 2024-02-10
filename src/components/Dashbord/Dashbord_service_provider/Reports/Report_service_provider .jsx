@@ -12,17 +12,22 @@ const Report_service_provider = () => {
             path="all_users"
             title="All Patient - 50.000"
             descrption="All patients for you (service providers - doctor (dental))"
+            className="p-6"
           />
           <Department
             path="all_services"
             title="All Services - 100"
             descrption="All services for you (service providers - doctor (dental))"
+            className="p-6"
+
           />
 
           <Department
             path="all-product"
             title="All Product - 20"
             descrption="All product for you (service providers - doctor(dental))"
+            className="p-6"
+
           />
         </div>
 

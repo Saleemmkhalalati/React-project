@@ -12,6 +12,7 @@ import product from "../../Dashbord_service_provider/Services/Table_Services/Ser
 import left from "../../Dashbord_service_provider/Services/Table_Services/Services_img/left.svg";
 import right from "../../Dashbord_service_provider/Services/Table_Services/Services_img/right.svg";
 import rightActive from "../../Dashbord_service_provider/Services/Table_Services/Services_img/right active.svg";
+import ArrowDropdown from "../../../../assets/icons/Arrow Dropdown.svg"
 
 const View = React.forwardRef(({ view_content, view_user, set_View_user, open_change_password, set_open_change_password,hasSlider }, ref) => {
   const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
@@ -76,15 +77,19 @@ const View = React.forwardRef(({ view_content, view_user, set_View_user, open_ch
           </SwiperSlide>
 
           <div className="custom-next-button custom-next-button-right absolute start-20 z-50 top-[50%] -translate-y-[50%] ">
-            <img
+          {isNextButtonDisabled ?
+          
+          (    <img
               className="w-10 h-10 cursor-pointer rtl:rotate-180 "
               src={left}
               alt=""
-            />
-            {isNextButtonDisabled && (
-              // You can render something specific when the next button is disabled
-              <p>Next button is disabled!</p>
-            )}
+            />) :  
+            
+            (   <img
+              className="w-10 h-10 cursor-pointer rtl:rotate-180 "
+              src={ArrowDropdown}
+              alt="#"
+            />) }
           </div>
 
           <div className="custom-prev-button custom-next-button-left absolute end-20 z-50 top-[50%] -translate-y-[50%]">
