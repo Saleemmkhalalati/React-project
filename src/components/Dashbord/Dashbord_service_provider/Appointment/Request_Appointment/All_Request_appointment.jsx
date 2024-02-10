@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Content from "../../../Dashbord_layout/Content/Content";
 import TabsFillter from "../../../../utilities/TabsFillter";
@@ -126,7 +125,3 @@ const All_Request_appointment = () => {
 };
 
 export default All_Request_appointment;
-
-
-
-

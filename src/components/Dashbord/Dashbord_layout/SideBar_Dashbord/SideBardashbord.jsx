@@ -134,11 +134,11 @@ const SideBardashbord = () => {
           icon: <Person_sidebar stoke="white" menue={menueClicked} />,
           subMenus: [
             {
-              name: "Request Appointmentc",
+              name: t("sideBar_Dashbord.serviceProvider_Appointment.0"),
               src: "Request_Appointment",
             },
             {
-              name: " Table Appointment",
+              name: t("sideBar_Dashbord.serviceProvider_Appointment.1"),
               src: "Table_Appointment",
             },
           ],

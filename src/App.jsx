@@ -52,12 +52,12 @@ import AllRequest_services from "./components/Dashbord/Dashbord_service_provider
 import RequestsRejected_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsRejected_services";
 import LastRequest_service from "./components/Dashbord/Dashbord_service_provider/Services/Request/LastRequest_servies";
 import RequestAccepted_services from "./components/Dashbord/Dashbord_service_provider/Services/Request/RequestsAccepted_services";
-import Table_Appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Table_Appointment";
-import All_Request_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/All_Request_appointment.jsx"
-import Last_Request_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Last_Request_appointment.jsx"
-import Requests_Rejected_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Requests_Rejected_appointment.jsx"
-import Requests_accepted_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Requests_accepted_appointment.jsx"
+import Table_Appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Appointmentt_Table/Table_Appointment";
 
+import All_Request_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/All_Request_appointment.jsx";
+import Last_Request_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Last_Request_appointment.jsx";
+import Requests_Rejected_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Requests_Rejected_appointment.jsx";
+import Requests_accepted_appointment from "./components/Dashbord/Dashbord_service_provider/Appointment/Request_Appointment/Requests_accepted_appointment.jsx";
 
 function App() {
   return (
@@ -130,38 +130,7 @@ function App() {
             path="/dashboard_service_provider"
             element={<DashboardLayout />}
           >
-            <Route path="appointment" element={<Appointment />} />
-
-            <Route path="appointment/Request_Appointment" element={<Request_Appointment />}>
-              <Route  path="All_Request"  element={<All_Request_appointment />} />
-              <Route path="Requests_Rejected" element={<Requests_Rejected_appointment />} />
-              <Route path="Requests_accepted" element={<Requests_accepted_appointment />} />
-              <Route path="Last_Request" element={<Last_Request_appointment />} />
-            </Route>
-            <Route
-              path="appointment/Table_Appointment"
-              element={<Table_Appointment />}
-            />
-
-            <Route path="report" element={<Report_service_provider />}>
-              <Route index element={<AllPatient />} />
-              <Route path="all_services" element={<Allservices />} />
-              <Route path="all-product" element={<Allproducts />} />
-            </Route>
-
-            <Route path="Products" element={<Home />} />
-            <Route
-              path="products/Request_Product"
-              element={<Request_Product />}
-            >
-              <Route path="All_Request" element={<All_Request />} />
-              <Route path="Requests_Rejected" element={<Requests_Rejected />} />
-              <Route path="Requests_accepted" element={<Requests_accepted />} />
-              <Route path="Last_Request" element={<Last_Request />} />
-            </Route>
-            <Route path="products/Table_Product" element={<Table_Product />} />
-
-            <Route path="services" element={<Home />} />
+                 <Route path="services" element={<Home />} />
             <Route
               path="services/Requests_servies"
               element={<Requests_servies />}
@@ -181,6 +150,27 @@ function App() {
               />
             </Route>
 
+
+            <Route path="report" element={<Report_service_provider />}>
+              <Route index element={<AllPatient />} />
+              <Route path="all_services" element={<Allservices />} />
+              <Route path="all-product" element={<Allproducts />} />
+            </Route>
+
+            <Route path="Products" element={<Home />} />
+            <Route
+              path="products/Request_Product"
+              element={<Request_Product />}
+            >
+              <Route path="All_Request" element={<All_Request />} />
+              <Route path="Requests_Rejected" element={<Requests_Rejected />} />
+              <Route path="Requests_accepted" element={<Requests_accepted />} />
+              <Route path="Last_Request" element={<Last_Request />} />
+            </Route>
+            <Route path="products/Table_Product" element={<Table_Product />} />
+
+       
+
             <Route
               path="services/Table_Services"
               element={<Table_Services />}
@@ -189,6 +179,41 @@ function App() {
             <Route path="Table_Product" element={<Table_Product />} />
 
             <Route path="settings" element={<Setting_service_provider />} />
+            <Route path="appointment" element={<Appointment />} />
+
+
+            <Route path="appointment/Request_Appointment" element={<Request_Appointment />}>
+              <Route  path="All_Request"  element={<All_Request_appointment />} />
+              <Route path="Requests_Rejected" element={<Requests_Rejected_appointment />} />
+              <Route path="Requests_accepted" element={<Requests_accepted_appointment />} />
+              <Route path="Last_Request" element={<Last_Request_appointment />} />
+            <Route
+              path="appointment/Request_Appointment"
+              element={<Request_Appointment />}
+            >
+              <Route path="All_Request" element={<All_Request_appointment />} />
+              <Route
+                path="Requests_Rejected"
+                element={<Requests_Rejected_appointment />}
+              />
+              <Route
+                path="Requests_accepted"
+                element={<Requests_accepted_appointment />}
+              />
+              <Route
+                path="Last_Request"
+                element={<Last_Request_appointment />}
+              />
+          </Route>
+      
+
+       
+          </Route>
+          <Route
+              path="appointment/Table_Appointment"
+              element={<Table_Appointment />}
+            />
+
           </Route>
         </Routes>
       </BrowserRouter>

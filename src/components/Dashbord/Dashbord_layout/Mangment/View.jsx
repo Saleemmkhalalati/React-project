@@ -89,7 +89,7 @@ const View = React.forwardRef(({ view_content, view_user, set_View_user, open_ch
               className="w-10 h-10 cursor-pointer rtl:rotate-180 "
               src={ArrowDropdown}
               alt="#"
-            />) }
+            />) } 
           </div>
 
           <div className="custom-prev-button custom-next-button-left absolute end-20 z-50 top-[50%] -translate-y-[50%]">
