@@ -31,7 +31,7 @@ const Content = ({
     <div className="ltr:ps-1 rtl:pe-1 ltr:sm:px-5 rtl:sm:px-5 py-4 flex flex-col justify-between      ">
       <div className="flex justify-between  flex-wrap gap-2">
         <p className="text-[16px] font-normal text-myGray-600">
-          <span className="text-secondary">{t("DashPath.0")} /</span> {path}
+          <span className="text-secondary">{t("DashPath.0n")} /</span> {path}
         </p>
         <div className="flex items-center gap-4 cursor-pointer mb-4  ">
           {hasRefrech ? (
